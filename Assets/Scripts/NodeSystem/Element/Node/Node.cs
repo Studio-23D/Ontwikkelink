@@ -3,8 +3,32 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Node
+public abstract class Node: Element
 {
+    public Rect rect;
+    public Action onRemove;
+
+    public Node()
+    {
+
+    }
+
+    public virtual void AddConnectionPoint()
+    {
+
+    }
+
+    public virtual void Drag()
+    {
+
+    }
+
+    public override void Draw()
+    {
+
+    }
+}
+/*
     public Rect rect;
     public string title;
     public bool isDragged;
@@ -20,17 +44,6 @@ public class Node
     public GUIStyle selectedNodeStyle;
 
     public Action<Node> OnRemoveNode;
-
-    /*public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, GUIStyle selectedStyle, GUIStyle inPointStyle, GUIStyle outPointStyle, Action<ConnectionPoint> OnClickInPoint, Action<ConnectionPoint> OnClickOutPoint, Action<Node> OnClickRemoveNode)
-    {
-        rect = new Rect(position.x, position.y, width, height);
-        style = nodeStyle;
-        inPoint = new ConnectionPoint(this, ConnectionPointType.In, inPointStyle, OnClickInPoint);
-        outPoint = new ConnectionPoint(this, ConnectionPointType.Out, outPointStyle, OnClickOutPoint);
-        defaultNodeStyle = nodeStyle;
-        selectedNodeStyle = selectedStyle;
-        OnRemoveNode = OnClickRemoveNode;
-    }*/
       
     public void Drag(Vector2 delta)
     {
@@ -121,4 +134,4 @@ public class Node
             OnRemoveNode(this);
         }
     }
-}
+    */

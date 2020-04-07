@@ -4,7 +4,30 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
-    [SerializeField]
+    private List<Node> node;
+    private SystemEventHandeler eventHandeler;
+    void Init()
+    {
+        node = new List<Node>();
+        eventHandeler = new SystemEventHandeler();
+        SystemEventHandeler.onInit.Invoke();
+    }
+
+    void InstaniateNode(Node node)
+    {
+
+        SystemEventHandeler.onNodeAdded.Invoke();
+    }
+
+    void RemoveNode()
+    {
+
+        SystemEventHandeler.onRemoveNode.Invoke();
+    }
+}
+
+/*
+ * [SerializeField]
     private Texture2D nodeBackground;
     [SerializeField]
     private Texture2D pointBackground;
@@ -228,15 +251,15 @@ public class NodeManager : MonoBehaviour
 					connectionsToRemove.Add(connections[i]);
 				}
 
-				/*if (connections[i].inPoint == node.inPoint || connections[i].outPoint == node.outPoint)
+				if (connections[i].inPoint == node.inPoint || connections[i].outPoint == node.outPoint)
                 {
                     connectionsToRemove.Add(connections[i]);
-                }*/
+                }
 
-                connectionsToRemove = null;
+connectionsToRemove = null;
             }
 
             nodes.Remove(node);
         }
     }
-}
+    */
