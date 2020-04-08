@@ -7,7 +7,7 @@ public enum ConnectionPointType { In, Out }
 
 public class ConnectionPoint
 {
-    public Rect rect;
+	public Rect rect;
 
     public ConnectionPointType type;
 
@@ -15,30 +15,28 @@ public class ConnectionPoint
 
     public GUIStyle style;
 
-    public int height;
+    public float height;
 
-    public Action<ConnectionPoint> OnClickConnectionPoint;
+	public Action<ConnectionPoint> OnClickConnectionPoint;
 
-    //public T data;
-
-    public ConnectionPoint(Node node, ConnectionPointType type, GUIStyle style, int height, Action<ConnectionPoint> OnClickConnectionPoint)
+    public ConnectionPoint(Node node, ConnectionPointType type, GUIStyle style, float height, Action<ConnectionPoint> OnClickConnectionPoint)
     {
         this.node = node;
         this.type = type;
         this.style = style;
         this.height = height;
-        this.OnClickConnectionPoint = OnClickConnectionPoint;
+		this.OnClickConnectionPoint = OnClickConnectionPoint;
 
-        //this.data = data;
-        
-        rect = new Rect(0, 0, 20f, 20f);
-    }
+		rect = new Rect(0, 0, 20f, 20f);
+	}
 
-    public void Draw()
+	public void Draw()
     {
-        rect.y = node.rect.y + (30 * height);
+		//rect.y = node.rect.y + (30 * index);
+		//rect.y = node.rect.y + (index * (node.rect.height / maxIndex));
+		rect.y = node.rect.y - node.rect.height + height + rect.height;
 
-        switch(type)
+		switch (type)
         {
             case ConnectionPointType.In:
                 rect.x = node.rect.x - rect.width + 8f;
@@ -49,7 +47,7 @@ public class ConnectionPoint
                 break;
         }
 
-        if(GUI.Button(rect, "", style))
+        if (GUI.Button(rect, "", style))
         {
             if(OnClickConnectionPoint != null)
             {
