@@ -6,11 +6,12 @@ public class NodeManager : MonoBehaviour
 {
     private List<Node> node;
     private SystemEventHandeler eventHandeler;
-    void Init()
+    void Awake()
     {
         node = new List<Node>();
         eventHandeler = new SystemEventHandeler();
         SystemEventHandeler.onInit.Invoke();
+        node.Add(new Node());
     }
 
     void InstaniateNode(Node node)

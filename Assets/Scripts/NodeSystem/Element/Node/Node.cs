@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-public abstract class Node: Element
+public class Node: Element
 {
-    public Rect rect;
+    [InputPropperty]
+    public Rect rect = new Rect(new Vector2(1,1), new Vector2(1, 1));
     public Action onRemove;
+
+    
+    public int aaaa = 0;
 
     public Node()
     {
-
+        FieldInfo[] objectFields = this.GetType().GetFields();
+        foreach (FieldInfo field in objectFields)
+        {
+            var attribute = Attribute.GetCustomAttribute(field, typeof(InputProppertyAttribute));
+            Debug.Log(field.Name);
+            if (attribute == null) return;
+            Type type = attribute.GetType();
+            Debug.Log(field.GetValue(this));
+        }
     }
 
-    public virtual void AddConnectionPoint()
+    public virtual void AddConnectionPoint<T>()
     {
 
     }
