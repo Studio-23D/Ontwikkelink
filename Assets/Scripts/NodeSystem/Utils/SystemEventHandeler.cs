@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SystemEventHandeler
@@ -12,17 +13,20 @@ public class SystemEventHandeler
         eventPairs.Add(EventType.MouseDown, onButtonDown);
     }
 
-    private void OnGUI()
+    public void CheckInput()
     {
         Event currentEvent = Event.current;
+
+        if (!eventPairs.ContainsKey(currentEvent.type))
+            return;
 
         eventPairs[currentEvent.type]?.Invoke();
     }
 
-    public static Action onButtonDown = () => { };
+    public static Action onButtonDown = () => { NodeMenu nodeMenu =  new NodeMenu(Event.current.mousePosition); nodeMenu.Init(); };
 
     public static Action onInit = ()=> { };
-    public static Action onNodeAdded = () => { };
+    public static Action<Node> onNodeAdd = (node) => { };
     public static Action onRemoveNode = () => { };
     public static Action onGui = () => { };
 }

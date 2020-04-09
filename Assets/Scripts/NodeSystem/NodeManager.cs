@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
-    private List<Node> node;
+    private List<Node> nodes;
+    private List<Connection> connections;
     private SystemEventHandeler eventHandeler;
-    void Init()
+
+    private NodeMenu nodeMenu;
+
+    private GUIStyle nodeStyle;
+    private GUIStyle selectedNodeStyle;
+    private GUIStyle inPointStyle;
+    private GUIStyle outPointStyle;
+
+    void Awake()
     {
-        node = new List<Node>();
+        nodes = new List<Node>();
         eventHandeler = new SystemEventHandeler();
         SystemEventHandeler.onInit.Invoke();
     }
 
-    void InstaniateNode(Node node)
+    private void OnGUI()
     {
+        eventHandeler.CheckInput();
 
-        SystemEventHandeler.onNodeAdded.Invoke();
-    }
 
-    void RemoveNode()
-    {
 
-        SystemEventHandeler.onRemoveNode.Invoke();
+        SystemEventHandeler.onGui.Invoke();
     }
 }
-
 /*
  * [SerializeField]
     private Texture2D nodeBackground;
