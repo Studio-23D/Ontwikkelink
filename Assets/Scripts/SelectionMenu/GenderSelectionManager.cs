@@ -5,8 +5,7 @@ using UnityEngine;
 #region PUBLIC_CLASS 
 public class GenderSelectionManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject selectionMenu;
+    [SerializeField] private GameObject selectionMenu;
 
     private string gender;
 
