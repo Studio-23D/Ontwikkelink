@@ -7,6 +7,8 @@ using UnityEngine;
 public class SystemEventHandeler
 {
     private Dictionary<EventType, Action> eventPairs;
+
+    public Action onButtonDown = delegate { };
     public SystemEventHandeler()
     {
         eventPairs = new Dictionary<EventType, Action>();
@@ -19,14 +21,18 @@ public class SystemEventHandeler
 
         if (!eventPairs.ContainsKey(currentEvent.type))
             return;
-
+    
         eventPairs[currentEvent.type]?.Invoke();
     }
 
-    public static Action onButtonDown = () => { NodeMenu nodeMenu =  new NodeMenu(Event.current.mousePosition); nodeMenu.Init(); };
+    public void SubscribeTo(EventType eventType, Action action)
+    {
+        if (!eventPairs.ContainsKey(eventType)) return;
+        eventPairs[eventType] += action;
+    }
 
-    public static Action onInit = ()=> { };
-    public static Action<Node> onNodeAdd = (node) => { };
-    public static Action onRemoveNode = () => { };
-    public static Action onGui = () => { };
+    public Action onInit = ()=> { };
+    public Action<Node> onNodeAdd = (node) => { };
+    public Action onRemoveNode = () => { };
+    public Action onGui = () => { };
 }

@@ -19,7 +19,13 @@ public class NodeManager : MonoBehaviour
     {
         nodes = new List<Node>();
         eventHandeler = new SystemEventHandeler();
-        SystemEventHandeler.onInit.Invoke();
+        this.eventHandeler.onButtonDown += () =>
+        {
+            Debug.Log("hello");
+        };
+        nodeMenu = new NodeMenu(this.eventHandeler);
+        nodeMenu.CreateMenuEntry("Temp", ()=> { Debug.Log("Template"); });
+        eventHandeler.onInit.Invoke();
     }
 
     private void OnGUI()
@@ -28,7 +34,7 @@ public class NodeManager : MonoBehaviour
 
 
 
-        SystemEventHandeler.onGui.Invoke();
+        eventHandeler.onGui.Invoke();
     }
 }
 /*

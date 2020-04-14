@@ -1,27 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class NodeMenu 
 {
     GenericMenu genericMenu;
+    SystemEventHandeler eventHandeler;
 
-    public Vector2 position;
+    private List<MenuEntry> menuEntries;
 
-    public NodeMenu(Vector2 mousePosition)
+    public NodeMenu(SystemEventHandeler eventHandeler)
     {
-        this.position = mousePosition;
+        this.eventHandeler = eventHandeler; 
+        menuEntries = new List<MenuEntry>();
+        this.Init();
     }
 
-    public void Init()
+    private void Init()
     {
-        genericMenu = new GenericMenu();
 
-        genericMenu.ShowAsContext();
+        eventHandeler.SubscribeTo(EventType.MouseDown, () =>
+        {
+            genericMenu = new GenericMenu();
+            menuEntries.ForEach(entry => genericMenu.AddItem(new GUIContent(entry.name), false, () => entry.OnClick.Invoke()));
+            genericMenu.ShowAsContext();
+        });
     }
 
     public void CreateMenuEntry(String node, Action OnClick)
     {
-        genericMenu.AddItem(new GUIContent(node), false, () => OnClick.Invoke());
+        MenuEntry menuEntry = new MenuEntry
+        {
+            name = node,
+            OnClick = OnClick
+        };
+
+        menuEntries.Add(menuEntry);
+        
     }
+}
+
+struct MenuEntry {
+    public string name;
+    public Action OnClick;
 }
