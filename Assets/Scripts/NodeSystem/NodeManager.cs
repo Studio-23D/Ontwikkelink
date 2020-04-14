@@ -9,10 +9,16 @@ public class NodeManager : MonoBehaviour
     private SystemEventHandeler eventHandeler;
 
     void Init()
+	{
+
+	}
+
+    void Awake()
     {
         node = new List<Node>();
         eventHandeler = new SystemEventHandeler();
         SystemEventHandeler.onInit.Invoke();
+        node.Add(new Node());
     }
 
     void InstaniateNode(Node node)
@@ -28,53 +34,50 @@ public class NodeManager : MonoBehaviour
     }
 }*/
 
-
 	[SerializeField]
 	private Texture2D nodeBackground;
 	[SerializeField]
 	private Texture2D pointBackground;
 
 	[SerializeField]
-	private int pointsInAmount;
+	private float nodeWidth;
 	[SerializeField]
-	private int pointsOutAmount;
+	private Node.Sections nodeSections;
+
+	private Node.Styles nodeStyles;
 
 	private List<Node> nodes;
 	private List<Connection> connections;
-
-	private GUIStyle nodeStyle;
-	private GUIStyle selectedNodeStyle;
-	private GUIStyle pointStyle;
-	private GUIStyle inPointStyle;
-	private GUIStyle outPointStyle;
 
 	private ConnectionPoint selectedInPoint;
 	private ConnectionPoint selectedOutPoint;
 
 	private void OnEnable()
 	{
-		nodeStyle = new GUIStyle();
-		nodeStyle.normal.background = nodeBackground;
-		nodeStyle.border = new RectOffset(12, 12, 12, 12);
+		nodeStyles.main = new GUIStyle();
+		nodeStyles.main.normal.background = nodeBackground;
+		nodeStyles.main.border = new RectOffset(12, 12, 12, 12);
 
-		selectedNodeStyle = new GUIStyle();
-		selectedNodeStyle.normal.background = nodeBackground;
-		selectedNodeStyle.border = new RectOffset(12, 12, 12, 12);
+		nodeStyles.selected = new GUIStyle();
+		nodeStyles.selected.normal.background = nodeBackground;
+		nodeStyles.selected.border = new RectOffset(12, 12, 12, 12);
 
-		pointStyle = new GUIStyle();
-		pointStyle.normal.background = pointBackground;
-		pointStyle.active.background = pointBackground;
-		pointStyle.border = new RectOffset(4, 4, 12, 12);
+		nodeStyles.top = new GUIStyle();
+		nodeStyles.top.normal.background = nodeSections.topBackground;
+		nodeStyles.top.border = new RectOffset(12, 12, 12, 12);
 
-		inPointStyle = new GUIStyle();
-		inPointStyle.normal.background = pointBackground;
-		inPointStyle.active.background = pointBackground;
-		inPointStyle.border = new RectOffset(4, 4, 12, 12);
+		nodeStyles.mid = new GUIStyle();
+		nodeStyles.mid.normal.background = nodeSections.midBackground;
+		nodeStyles.mid.border = new RectOffset(12, 12, 12, 12);
 
-		outPointStyle = new GUIStyle();
-		outPointStyle.normal.background = pointBackground;
-		outPointStyle.active.background = pointBackground;
-		outPointStyle.border = new RectOffset(4, 4, 12, 12);
+		nodeStyles.bot = new GUIStyle();
+		nodeStyles.bot.normal.background = nodeSections.botBackground;
+		nodeStyles.bot.border = new RectOffset(12, 12, 12, 12);
+
+		nodeStyles.pointStyle = new GUIStyle();
+		nodeStyles.pointStyle.normal.background = pointBackground;
+		nodeStyles.pointStyle.active.background = pointBackground;
+		nodeStyles.pointStyle.border = new RectOffset(4, 4, 12, 12);
 	}
 
 	private void OnGUI()
@@ -186,18 +189,11 @@ public class NodeManager : MonoBehaviour
 			nodes = new List<Node>();
 		}
 
-		Node.Style nodeStyleContainer = new Node.Style();
-		nodeStyleContainer.nodeStyle = nodeStyle;
-		nodeStyleContainer.selectedNodeStyle = selectedNodeStyle;
-		nodeStyleContainer.pointStyle = pointStyle;
-
 		Node.Actions actionsContainer = new Node.Actions();
 		actionsContainer.OnRemoveNode = OnClickRemoveNode;
 		actionsContainer.OnClickConnectionPoint = OnClickOutPoint;
 
-		nodes.Add(new ColorNode(mousePosition, 200, 50, nodeStyleContainer, actionsContainer, pointsInAmount, pointsOutAmount));
-
-		//nodes.Add(new ColorNode(mousePosition, 200, 50, nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode));
+		nodes.Add(new ColorNode(mousePosition, nodeWidth, nodeSections, nodeStyles, actionsContainer));
 	}
 
 	private void OnClickInPoint(ConnectionPoint inPoint)

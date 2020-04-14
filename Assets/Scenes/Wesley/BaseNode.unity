@@ -572,10 +572,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeBackground: {fileID: 2800000, guid: 3f77dcdf169c9854c98fff9b1bc36f6a, type: 3}
+  nodeBackground: {fileID: 2800000, guid: 69593205f791cdc43989fb4885d68d38, type: 3}
   pointBackground: {fileID: 2800000, guid: 53ec7b4b2b9e8ea40986e3b1cc1ded75, type: 3}
-  pointsInAmount: 3
-  pointsOutAmount: 5
+  nodeWidth: 200
+  nodeSections:
+    mainRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    topHeight: 50
+    topBackground: {fileID: 2800000, guid: 7c2849424eaf20b4c83a530744e79e10, type: 3}
+    topRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    midHeight: 50
+    midBackground: {fileID: 2800000, guid: 69593205f791cdc43989fb4885d68d38, type: 3}
+    midRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    botHeight: 50
+    botBackground: {fileID: 2800000, guid: 375acbe870c33c64484a1dc1a4c4fe10, type: 3}
+    botRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
 --- !u!114 &1655085060
 MonoBehaviour:
   m_ObjectHideFlags: 0
