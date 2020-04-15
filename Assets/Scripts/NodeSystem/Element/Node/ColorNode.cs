@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ColorNode : Node
 {
-    private Color color = Color.white;
+	[OutputPropperty]
+	public Color colorOut1 = Color.white;
 
-	public ColorNode()
+	public ColorNode(Vector2 position, float width, Node.Sections sections, Styles style, Actions actions)
+	: base(position, width, sections, style, actions)
 	{
-		
+		this.title = "Color";
+		AddConnectionPoints(style);
 	}
 }
-
