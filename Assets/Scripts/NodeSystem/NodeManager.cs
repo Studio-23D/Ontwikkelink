@@ -2,41 +2,43 @@
 using UnityEditor;
 using UnityEngine;
 
-public class NodeManager : MonoBehaviour
+namespace NodeSystem
 {
-    private List<Node> nodes;
-    private List<Connection> connections;
-    private SystemEventHandeler eventHandeler;
-
-    private NodeMenu nodeMenu;
-
-    private GUIStyle nodeStyle;
-    private GUIStyle selectedNodeStyle;
-    private GUIStyle inPointStyle;
-    private GUIStyle outPointStyle;
-
-    void Awake()
+    public class NodeManager : MonoBehaviour
     {
-        nodes = new List<Node>();
-        eventHandeler = new SystemEventHandeler();
-        this.eventHandeler.onButtonDown += () =>
+        private List<Node> nodes;
+        private List<Connection> connections;
+        private SystemEventHandeler eventHandeler;
+        private ElementDrawer elementDrawer;
+
+        private NodeMenu nodeMenu;
+
+        private GUIStyle nodeStyle;
+        private GUIStyle selectedNodeStyle;
+        private GUIStyle inPointStyle;
+        private GUIStyle outPointStyle;
+
+        void Awake()
         {
-            Debug.Log("hello");
-        };
-        nodeMenu = new NodeMenu(this.eventHandeler);
-        nodeMenu.CreateMenuEntry("Temp", ()=> { Debug.Log("Template"); });
-        eventHandeler.onInit.Invoke();
-    }
+            nodes = new List<Node>();
+            eventHandeler = new SystemEventHandeler();
+            this.eventHandeler.onButtonDown += () =>
+            {
+                Debug.Log("hello");
+            };
+            nodeMenu = new NodeMenu(this.eventHandeler);
+            nodeMenu.CreateMenuEntry("Temp", () => { Debug.Log("Template"); });
+        }
 
-    private void OnGUI()
-    {
-        eventHandeler.CheckInput();
-
-
-
-        eventHandeler.onGui.Invoke();
+        private void OnGUI()
+        {
+            eventHandeler.CheckInput();
+            elementDrawer.Draw(nodes);
+        }
     }
 }
+
+
 /*
  * [SerializeField]
     private Texture2D nodeBackground;

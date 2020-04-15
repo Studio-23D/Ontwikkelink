@@ -30,9 +30,4 @@ public class SystemEventHandeler
         if (!eventPairs.ContainsKey(eventType)) return;
         eventPairs[eventType] += action;
     }
-
-    public Action onInit = ()=> { };
-    public Action<Node> onNodeAdd = (node) => { };
-    public Action onRemoveNode = () => { };
-    public Action onGui = () => { };
 }
