@@ -2,15 +2,18 @@
 using System.Reflection;
 using UnityEngine;
 
-public class ColorNode : Node
+namespace NodeSystem
 {
-	[OutputPropperty]
-	public Color colorOut1 = Color.white;
-
-	public ColorNode(Vector2 position, float width, Node.Sections sections, Styles style, Actions actions)
-	: base(position, width, sections, style, actions)
+	public class ColorNode : Node
 	{
-		this.title = "Color";
-		AddConnectionPoints(style);
+		[OutputPropperty]
+		public Color colorOut1 = Color.white;
+
+		public override void Init(Rect rect)
+		{
+			base.Init(rect);
+
+		}
 	}
 }
+

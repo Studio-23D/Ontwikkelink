@@ -4,54 +4,60 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ConnectionPointType { In, Out }
-
-public class ConnectionPoint
+/*
+namespace NodeSystem
 {
-	public Rect rect;
-
-    public ConnectionPointType type;
-
-    public Node node;
-
-    public GUIStyle style;
-
-    public float height;
-
-	public Action<ConnectionPoint> OnClickConnectionPoint;
-
-    public ConnectionPoint(Node node, ConnectionPointType type, GUIStyle style, float height, Action<ConnectionPoint> OnClickConnectionPoint)
+    public class ConnectionPoint
     {
-        this.node = node;
-        this.type = type;
-        this.style = style;
-        this.height = height;
-		this.OnClickConnectionPoint = OnClickConnectionPoint;
+        public Rect rect;
 
-		rect = new Rect(0, 0, 20f, 20f);
-	}
+        public ConnectionPointType type;
 
-	public void Draw()
-    {
-		Rect nodeMidRect = node.sections.midRect;
-		rect.y = nodeMidRect.y + height - (rect.height / 2);
+        public Node node;
 
-		switch (type)
+        public GUIStyle style;
+
+        public float height;
+
+        public Action<ConnectionPoint> OnClickConnectionPoint;
+
+        public ConnectionPoint(Node node, ConnectionPointType type, GUIStyle style, float height, Action<ConnectionPoint> OnClickConnectionPoint)
         {
-            case ConnectionPointType.In:
-                rect.x = nodeMidRect.x - rect.width + 8f;
-                break;
+            this.node = node;
+            this.type = type;
+            this.style = style;
+            this.height = height;
+            this.OnClickConnectionPoint = OnClickConnectionPoint;
 
-            case ConnectionPointType.Out:
-                rect.x = nodeMidRect.x + nodeMidRect.width - 8f;
-                break;
+            rect = new Rect(0, 0, 20f, 20f);
         }
 
-        if (GUI.Button(rect, "", style))
+        public void Draw()
         {
-            if(OnClickConnectionPoint != null)
+            Rect nodeMidRect = node.sections.midRect;
+            rect.y = nodeMidRect.y + height - (rect.height / 2);
+
+            switch (type)
             {
-                OnClickConnectionPoint(this);
+                case ConnectionPointType.In:
+                    rect.x = nodeMidRect.x - rect.width + 8f;
+                    break;
+
+                case ConnectionPointType.Out:
+                    rect.x = nodeMidRect.x + nodeMidRect.width - 8f;
+                    break;
+            }
+
+            if (GUI.Button(rect, "", style))
+            {
+                if (OnClickConnectionPoint != null)
+                {
+                    OnClickConnectionPoint(this);
+                }
             }
         }
     }
+
 }
+*/
+

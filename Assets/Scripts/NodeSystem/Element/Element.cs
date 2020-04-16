@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Element
+namespace NodeSystem
 {
-    public abstract void Draw();
+    public abstract class Element :  MonoBehaviour
+    {
+        protected Rect rect;
+        public abstract void Draw();
+    }
 }
+

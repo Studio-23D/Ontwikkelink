@@ -7,7 +7,6 @@ namespace NodeSystem
     public class NodeManager : MonoBehaviour
     {
         private List<Node> nodes;
-        private List<Connection> connections;
         private SystemEventHandeler eventHandeler;
         private ElementDrawer elementDrawer;
 
@@ -22,12 +21,14 @@ namespace NodeSystem
         {
             nodes = new List<Node>();
             eventHandeler = new SystemEventHandeler();
-            this.eventHandeler.onButtonDown += () =>
-            {
-                Debug.Log("hello");
-            };
             nodeMenu = new NodeMenu(this.eventHandeler);
-            nodeMenu.CreateMenuEntry("Temp", () => { Debug.Log("Template"); });
+            nodeMenu.CreateMenuEntry("Temp", () => { new ColorNode(); });
+        }
+
+        private void CreateNode(Node node)
+        {
+    
+            nodes.Add(node);
         }
 
         private void OnGUI()

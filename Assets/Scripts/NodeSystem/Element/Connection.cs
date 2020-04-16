@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
+/*
 public class Connection
 {
     public ConnectionPoint inPoint;
@@ -35,4 +36,4 @@ public class Connection
             }
         }
     }
-}
+}*/
