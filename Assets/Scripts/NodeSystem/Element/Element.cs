@@ -6,8 +6,19 @@ namespace NodeSystem
 {
     public abstract class Element :  MonoBehaviour
     {
-        protected Rect rect;
+        public virtual void Init()
+        {
+            SystemEventHandeler.OnElementCreate?.Invoke(this);
+        }
         public abstract void Draw();
+        public virtual void Destroy()
+        {
+            SystemEventHandeler.OnElementRemove?.Invoke(this);
+        }
+        public virtual void OnClick()
+        {
+
+        }
     }
 }
 

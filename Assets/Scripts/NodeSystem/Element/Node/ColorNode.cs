@@ -9,9 +9,14 @@ namespace NodeSystem
 		[OutputPropperty]
 		public Color colorOut1 = Color.white;
 
-		public override void Init(Rect rect)
+		public override void CalculateChange()
 		{
-			base.Init(rect);
+			throw new NotImplementedException();
+		}
+
+		public override void Init()
+		{
+			
 
 		}
 	}

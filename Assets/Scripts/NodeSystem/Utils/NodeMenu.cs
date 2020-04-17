@@ -3,45 +3,49 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class NodeMenu 
+namespace NodeSystem
 {
-    GenericMenu genericMenu;
-    SystemEventHandeler eventHandeler;
-
-    private List<MenuEntry> menuEntries;
-
-    public NodeMenu(SystemEventHandeler eventHandeler)
+    public class NodeMenu
     {
-        this.eventHandeler = eventHandeler; 
-        menuEntries = new List<MenuEntry>();
-        this.Init();
-    }
+        GenericMenu genericMenu;
+        SystemEventHandeler eventHandeler;
 
-    private void Init()
-    {
+        private List<MenuEntry> menuEntries;
 
-        eventHandeler.SubscribeTo(EventType.MouseDown, () =>
+        public NodeMenu(SystemEventHandeler eventHandeler)
         {
-            genericMenu = new GenericMenu();
-            menuEntries.ForEach(entry => genericMenu.AddItem(new GUIContent(entry.name), false, () => entry.OnClick.Invoke()));
-            genericMenu.ShowAsContext();
-        });
-    }
+            this.eventHandeler = eventHandeler;
+            menuEntries = new List<MenuEntry>();
+            this.Init();
+        }
 
-    public void CreateMenuEntry(String node, Action OnClick)
-    {
-        MenuEntry menuEntry = new MenuEntry
+        private void Init()
         {
-            name = node,
-            OnClick = OnClick
-        };
 
-        menuEntries.Add(menuEntry);
-        
+            eventHandeler.SubscribeTo(EventType.MouseDown, () =>
+            {
+                genericMenu = new GenericMenu();
+                menuEntries.ForEach(entry => genericMenu.AddItem(new GUIContent(entry.name), false, () => entry.OnClick.Invoke()));
+                genericMenu.ShowAsContext();
+            });
+        }
+
+        public void CreateMenuEntry(String node, Action OnClick)
+        {
+            MenuEntry menuEntry = new MenuEntry
+            {
+                name = node,
+                OnClick = OnClick
+            };
+
+            menuEntries.Add(menuEntry);
+
+        }
     }
-}
 
-struct MenuEntry {
-    public string name;
-    public Action OnClick;
+    struct MenuEntry
+    {
+        public string name;
+        public Action OnClick;
+    }
 }

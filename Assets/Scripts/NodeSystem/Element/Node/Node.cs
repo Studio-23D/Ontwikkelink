@@ -6,24 +6,29 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-	public class Node : Element
+	public abstract class Node : Element
 	{
 
-		public virtual void Init(Rect rect)
+		public virtual void Init()
 		{
-			this.rect = rect;
-		}
-
-		public override void Draw()
-		{
-			GUIStyle guiStyle = new GUIStyle();
 			
-			GUI.Box(this.rect, "", guiStyle);
 		}
 
 		public virtual void AddConnectionPoint()
 		{
 
+		}
+
+		public abstract void CalculateChange();
+
+		public override void Draw()
+		{
+			throw new NotImplementedException();
+		}
+
+		public override void Destroy()
+		{
+			throw new NotImplementedException();
 		}
 
 		public virtual void Drag()
