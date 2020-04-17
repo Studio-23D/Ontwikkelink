@@ -1,42 +1,24 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAppearence : MonoBehaviour
 {
-	#region PUBLIC_STRUCTS
-
-	[Serializable]
-	public struct Body
-	{
-		[Header("References")]
-		[Tooltip("Holds the hair object")]
-		public Transform hair;
-		public Transform torso;
-		public Transform legs;
-		public Transform feet;
-	}
-
-	#endregion
-
-
-
 	#region PUBLIC_MEMBERS 
 
 	public Transform HairItem
 	{
 		get
 		{
-			return body.hair.GetChild(0);
+			return character.GetBody.hair.GetChild(0);
 		}
 		set
 		{
-			if (body.hair.childCount > 0)
-				Destroy(body.hair.GetChild(0).gameObject);
+			if (character.GetBody.hair.childCount > 0)
+				Destroy(character.GetBody.hair.GetChild(0).gameObject);
 
 			if (value)
-				Instantiate(value, body.hair);
+				Instantiate(value, character.GetBody.hair);
 		}
 	}
 
@@ -44,15 +26,15 @@ public class CharacterAppearence : MonoBehaviour
 	{
 		get
 		{
-			return body.torso.GetChild(0);
+			return character.GetBody.torso.GetChild(0);
 		}
 		set
 		{
-			if (body.torso.childCount >= maxTorsoItems)
-				Destroy(body.torso.GetChild(0).gameObject);
+			if (character.GetBody.torso.childCount >= maxTorsoItems)
+				Destroy(character.GetBody.torso.GetChild(0).gameObject);
 
 			if (value)
-				Instantiate(value, body.torso);
+				Instantiate(value, character.GetBody.torso);
 		}
 	}
 
@@ -60,15 +42,15 @@ public class CharacterAppearence : MonoBehaviour
 	{
 		get
 		{
-			return body.legs.GetChild(0);
+			return character.GetBody.legs.GetChild(0);
 		}
 		set
 		{
-			if (body.legs.childCount >= maxLegsItems)
-				Destroy(body.legs.GetChild(0).gameObject);
+			if (character.GetBody.legs.childCount >= maxLegsItems)
+				Destroy(character.GetBody.legs.GetChild(0).gameObject);
 
 			if (value)
-				Instantiate(value, body.legs);
+				Instantiate(value, character.GetBody.legs);
 		}
 	}
 
@@ -76,15 +58,15 @@ public class CharacterAppearence : MonoBehaviour
 	{
 		get
 		{
-			return body.feet.GetChild(0);
+			return character.GetBody.feet.GetChild(0);
 		}
 		set
 		{
-			if (body.feet.childCount >= maxFeetItems)
-				Destroy(body.feet.GetChild(0).gameObject);
+			if (character.GetBody.feet.childCount >= maxFeetItems)
+				Destroy(character.GetBody.feet.GetChild(0).gameObject);
 
 			if (value)
-				Instantiate(value, body.feet);
+				Instantiate(value, character.GetBody.feet);
 		}
 	}
 
@@ -97,15 +79,20 @@ public class CharacterAppearence : MonoBehaviour
 	[SerializeField]
 	[Tooltip("Sets appearence objects to index 0 objects at start")]
 	private bool setDefault = false;
-	[Tooltip("Max amount of items the torso can hold")]
-	public int maxTorsoItems = 1;
-	[Tooltip("Max amount of items the legs can hold")]
-	public int maxLegsItems = 1;
-	[Tooltip("Max amount of items the feet can hold")]
-	public int maxFeetItems = 1;
 	[SerializeField]
-	[Tooltip("Holds all container references")]
-	private Body body;
+	[Tooltip("Max amount of items the torso can hold")]
+	private int maxTorsoItems = 1;
+	[SerializeField]
+	[Tooltip("Max amount of items the legs can hold")]
+	private int maxLegsItems = 1;
+	[SerializeField]
+	[Tooltip("Max amount of items the feet can hold")]
+	private int maxFeetItems = 1;
+
+
+	private string characterTag = "Character";
+
+	private Character character;
 
 	#endregion
 
@@ -128,6 +115,14 @@ public class CharacterAppearence : MonoBehaviour
 
 		if (testFeetItems[1])
 			FeetItem = testFeetItems[1];
+	}
+
+	private void Update()
+	{
+		if (!character)
+		{
+			character = GameObject.FindGameObjectWithTag(characterTag).GetComponent<Character>();
+		}
 	}
 
 	#endregion
