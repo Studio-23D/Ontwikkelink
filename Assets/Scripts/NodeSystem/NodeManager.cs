@@ -6,9 +6,11 @@ namespace NodeSystem
 {
     public class NodeManager : MonoBehaviour
     {
+        protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
         protected Menu menu;
-        protected List<Element> elements;
+        protected List<Element> elements = new List<Element>();
+        protected List<Element> garbage = new List<Element>();
 
         private void Awake()
         {
@@ -18,10 +20,19 @@ namespace NodeSystem
         public void Init()
         {
             eventHandeler = new SystemEventHandeler();
+            elementDrawer = new ElementDrawer();
+            menu = new Menu();
+            menu.CreateMenuEntry("Hello", () =>
+            {
+                Debug.Log("Hello");
+            });
             eventHandeler.SubscribeTo(EventType.MouseDown, ()=>
             {
-                menu = new Menu(Input.mousePosition);
+                menu.Init(eventHandeler.MousPosition);
             });
+
+            elements.Add(menu);
+            SystemEventHandeler.OnElementRemove += RemoveElement;
         }
 
         public void InstantiateNode()
@@ -31,12 +42,26 @@ namespace NodeSystem
 
         public void RemoveElement(Element element)
         {
-            element.Destroy();
+            garbage.Add(element);
+        }
+
+        private void DestroyGarbage()
+        {
+            garbage.ForEach(element =>
+            {
+                if (elements.Contains(element))
+                {
+                    elements.Remove(element);
+                }
+            });
+            garbage = new List<Element>();
         }
 
         private void OnGUI()
         {
             eventHandeler.CheckInput();
+            elementDrawer.Draw(elements);
+            DestroyGarbage();
         }
     }
 }

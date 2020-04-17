@@ -11,6 +11,12 @@ namespace NodeSystem
 		private Dictionary<EventType, Action> guiEventPairs;
 
 		private Action onButtonDown = delegate { };
+		public Vector2 MousPosition {
+			get
+			{
+				return Event.current.mousePosition;
+			}
+		}
 		public SystemEventHandeler()
 		{
 			guiEventPairs = new Dictionary<EventType, Action>();

@@ -14,9 +14,9 @@ namespace NodeSystem
 			throw new NotImplementedException();
 		}
 
-		public override void Init()
+		public override void Init(Vector2 position)
 		{
-			
+			base.Init(position);
 
 		}
 	}

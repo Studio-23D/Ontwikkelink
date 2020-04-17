@@ -6,8 +6,10 @@ namespace NodeSystem
 {
     public abstract class Element
     {
-        public virtual void Init()
+        protected Vector2 position;
+        public virtual void Init(Vector2 position)
         {
+            this.position = position;
             SystemEventHandeler.OnElementCreate?.Invoke(this);
         }
         public abstract void Draw();

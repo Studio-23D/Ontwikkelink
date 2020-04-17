@@ -6,9 +6,11 @@ namespace NodeSystem
 {
     public class ElementDrawer 
     {
-        public void Draw(List<Node> elements)
+        public void Draw(List<Element> elements)
         {
-            elements.ForEach(element => element.Draw());
+            elements.ForEach(element => {
+                element.Draw();
+          });
         }
     }
 }
