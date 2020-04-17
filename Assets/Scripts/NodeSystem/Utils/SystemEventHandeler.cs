@@ -19,7 +19,7 @@ public class SystemEventHandeler
     {
         Event currentEvent = Event.current;
 
-        if (!eventPairs.ContainsKey(currentEvent.type))
+        if (!eventPairs.ContainsKey(currentEvent.type) || currentEvent.button == 0)
             return;
     
         eventPairs[currentEvent.type]?.Invoke();

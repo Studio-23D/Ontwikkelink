@@ -4,36 +4,65 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
-	/*
-    private List<Node> node;
+    [SerializeField]
+    private GameObject nodeMenu;
+
+    private List<Element> elements;
+    private List<Connection> connections;
+    
     private SystemEventHandeler eventHandeler;
 
-    void Init()
-	{
-
-	}
+    private GUIStyle nodeStyle;
+    private GUIStyle selectedNodeStyle;
+    private GUIStyle inPointStyle;
+    private GUIStyle outPointStyle;
 
     void Awake()
     {
-        node = new List<Node>();
+        elements = new List<Element>();
         eventHandeler = new SystemEventHandeler();
-        SystemEventHandeler.onInit.Invoke();
-        node.Add(new Node());
+        
+        eventHandeler.SubscribeTo(EventType.MouseDown, () =>
+        {
+            Menu menu = new Menu(Event.current.mousePosition);
+            menu.CreateMenuEntry("Create Node", tata);
+            menu.CreateMenuEntry("Delete Node", pata);
+            elements.Add(menu);
+        });
+        //nodeMenu.CreateMenuEntry("Node", () => { InstantiateNode(new Node(); });
+        //nodeMenu.CreateMenuEntry("ColorNode", () => { InstantiateNode(new ColorNode(); });
+
+        eventHandeler.onInit.Invoke();
     }
 
-    void InstaniateNode(Node node)
+    private void OnGUI()
     {
+        eventHandeler.CheckInput();
 
-        SystemEventHandeler.onNodeAdded.Invoke();
+        foreach(Element element in elements)
+        {
+            element.Draw();
+        }
+
+        eventHandeler.onGui.Invoke();
     }
 
-    void RemoveNode()
+    private void tata()
     {
-
-        SystemEventHandeler.onRemoveNode.Invoke();
+        print("tata");
     }
-}*/
 
+    private void pata()
+    {
+        print("pata");
+    }
+
+    private void InstantiateNode<T>(T node)
+    {
+        //nodes.Add(node);
+    }
+}
+/*
 	[SerializeField]
 	private Texture2D nodeBackground;
 	[SerializeField]
@@ -257,4 +286,4 @@ public class NodeManager : MonoBehaviour
 	{
 		nodes.Remove(node);
 	}
-}
+}*/
