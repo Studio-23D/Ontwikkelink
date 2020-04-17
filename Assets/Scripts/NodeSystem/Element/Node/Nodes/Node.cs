@@ -9,7 +9,7 @@ namespace NodeSystem
 	public abstract class Node : Element
 	{
 
-		public virtual void Init()
+		public override void Init()
 		{
 			
 		}

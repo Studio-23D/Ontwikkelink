@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public abstract class Element :  MonoBehaviour
+    public abstract class Element
     {
         public virtual void Init()
         {

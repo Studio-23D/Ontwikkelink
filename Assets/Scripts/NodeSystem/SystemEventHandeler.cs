@@ -10,7 +10,7 @@ namespace NodeSystem
 	{
 		private Dictionary<EventType, Action> guiEventPairs;
 
-		public Action onButtonDown = delegate { };
+		private Action onButtonDown = delegate { };
 		public SystemEventHandeler()
 		{
 			guiEventPairs = new Dictionary<EventType, Action>();
