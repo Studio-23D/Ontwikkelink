@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public enum ConnectionPointType { In, Out }
@@ -11,11 +12,11 @@ namespace NodeSystem
     {
         private Node node;
         private Connection connection;
-        private Type value;
+        private FieldInfo value;
 
-        public void Init()
+        public ConnectionPoint(FieldInfo value)
         {
-
+            this.value = value;
         }
 
         public override void Draw()
