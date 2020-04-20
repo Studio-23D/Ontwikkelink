@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum ConnectionPointType { In, Out }
 
 namespace NodeSystem
 {
@@ -13,14 +9,31 @@ namespace NodeSystem
         private Connection connection;
         private Type value;
 
+        public Rect rect;
+
+        public Action<ConnectionPoint> OnClickConnectionPoint;
+
+        public ConnectionPoint(Node node, Vector2 position)
+        {
+            this.node = node;
+
+            rect = new Rect(position.x, position.y, 10f, 20f);
+        }
+
         public void Init()
         {
-
+            
         }
 
         public override void Draw()
         {
-            throw new NotImplementedException();
+            if (GUI.Button(rect, ""))
+            {
+                if (OnClickConnectionPoint != null)
+                {
+                    OnClickConnectionPoint(this);
+                }
+            }
         }
 
         public override void Destroy()

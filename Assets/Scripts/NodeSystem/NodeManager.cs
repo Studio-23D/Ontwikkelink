@@ -6,9 +6,11 @@ namespace NodeSystem
 {
     public class NodeManager : MonoBehaviour
     {
+        protected Rect rect;
+
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
-        protected Menu menu;
+        //protected Menu menu;
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
 
@@ -19,25 +21,27 @@ namespace NodeSystem
 
         public void Init()
         {
-            eventHandeler = new SystemEventHandeler();
+            rect = new Rect(0, 0, Screen.width - 200, Screen.height);
+            eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
-            menu = new Menu();
-            menu.CreateMenuEntry("Hello", () =>
+            /*menu = new Menu();
+            menu.CreateMenuEntry("ColorNode", () =>
             {
-                Debug.Log("Hello");
+                InstantiateNode(new ColorNode());
             });
             eventHandeler.SubscribeTo(EventType.MouseDown, ()=>
             {
-                menu.Init(eventHandeler.MousPosition);
-            });
+                menu.Init(eventHandeler.MousePosition);
+            });*/
 
-            elements.Add(menu);
+            //elements.Add(menu);
             SystemEventHandeler.OnElementRemove += RemoveElement;
         }
 
-        public void InstantiateNode()
+        public void InstantiateNode(Node node)
         {
-
+            node.Init(eventHandeler.MousePosition);
+            elements.Add(node);
         }
 
         public void RemoveElement(Element element)
@@ -62,6 +66,16 @@ namespace NodeSystem
             eventHandeler.CheckInput();
             elementDrawer.Draw(elements);
             DestroyGarbage();
+
+            foreach(Node node in elements)
+            {
+                node.ProcessEvents(Event.current);
+            }
+
+            if(GUILayout.Button("ColorNode"))
+            {
+                InstantiateNode(new ColorNode());
+            }
         }
     }
 }

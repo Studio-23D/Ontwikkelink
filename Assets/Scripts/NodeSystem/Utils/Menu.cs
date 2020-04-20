@@ -15,7 +15,9 @@ namespace NodeSystem
     {
         private List<MenuEntry> menuEntries;
 
-        private bool show = false; 
+        private bool show = false;
+
+        private Rect rect;
 
         GUIStyle mainStyle;
         GUIStyle buttonStyle;
@@ -25,8 +27,6 @@ namespace NodeSystem
 
         public Menu()
         {
-            
-
             menuEntries = new List<MenuEntry>();
             mainBackground = Resources.Load("MenuBackground") as Texture2D;
             buttonBackground = Resources.Load("ButtonBackground") as Texture2D;
@@ -39,12 +39,12 @@ namespace NodeSystem
             buttonStyle.padding = new RectOffset(20, 0, 10, 10);
             buttonStyle.hover.background = buttonBackground;
             buttonStyle.alignment = TextAnchor.MiddleLeft;
-
         }
 
         public override void Init(Vector2 position)
         {
             base.Init(position);
+
             if (!show) show = true;
         }
 
@@ -58,9 +58,15 @@ namespace NodeSystem
             menuEntries.Add(menuEntry);
         }
 
+        public void ToggleShow()
+        {
+            show = false;
+        }
+
         public override void Draw()
         {
             if (!show) return;
+
             GUI.BeginGroup(new Rect(position.x, position.y, 150, 300));
             GUI.Box(new Rect(0, 0, 150, menuEntries.Count * 25), "", mainStyle);
 
@@ -69,7 +75,7 @@ namespace NodeSystem
                 if (GUI.Button(new Rect(0, 0 + 25 * i, 150, 25), menuEntries[i].name, buttonStyle))
                 {
                     menuEntries[i].OnClick();
-                    show = false;
+                    ToggleShow();
                 }
             }
             GUI.EndGroup();

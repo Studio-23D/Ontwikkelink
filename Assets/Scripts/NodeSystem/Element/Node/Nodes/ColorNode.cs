@@ -17,7 +17,7 @@ namespace NodeSystem
 		public override void Init(Vector2 position)
 		{
 			base.Init(position);
-
+            name = "Color Node";
 		}
 	}
 }

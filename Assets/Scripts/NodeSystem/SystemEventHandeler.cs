@@ -9,25 +9,29 @@ namespace NodeSystem
 	public class SystemEventHandeler
 	{
 		private Dictionary<EventType, Action> guiEventPairs;
+        private Rect inputField;
 
 		private Action onButtonDown = delegate { };
-		public Vector2 MousPosition {
+		public Vector2 MousePosition {
 			get
 			{
 				return Event.current.mousePosition;
 			}
 		}
-		public SystemEventHandeler()
+		public SystemEventHandeler(Rect inputField)
 		{
+            this.inputField = inputField;
+
 			guiEventPairs = new Dictionary<EventType, Action>();
+
 			guiEventPairs.Add(EventType.MouseDown, onButtonDown);
 		}
 
 		public void CheckInput()
 		{
 			EventType currentEvent = Event.current.type;
-
-			if (!guiEventPairs.ContainsKey(currentEvent)) return;
+      
+			if (!guiEventPairs.ContainsKey(currentEvent) || !inputField.Contains(MousePosition)) return;
 			guiEventPairs[currentEvent]?.Invoke();
 		}
 

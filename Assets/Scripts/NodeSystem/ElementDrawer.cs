@@ -10,7 +10,7 @@ namespace NodeSystem
         {
             elements.ForEach(element => {
                 element.Draw();
-          });
+            });
         }
     }
 }
