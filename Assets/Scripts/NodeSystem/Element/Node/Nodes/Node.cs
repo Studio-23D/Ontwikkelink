@@ -4,6 +4,8 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+public enum ConnectionPointType { In, Out }
+
 namespace NodeSystem
 {
 	public abstract class Node : Element
@@ -13,24 +15,54 @@ namespace NodeSystem
         public bool isDragged;
         public bool isSelected;
 
-        protected List<ConnectionPoint> inputs;
-        protected List<ConnectionPoint> outputs;
-        
+		private List<ConnectionPoint> inputPoints;
+		private List<ConnectionPoint> outputPoints;
+
+		public Node()
+		{
+			inputPoints = new List<ConnectionPoint>();
+			outputPoints = new List<ConnectionPoint>();
+		}
+
 		public override void Init(Vector2 position)
 		{
             base.Init(position);
 
             rect = new Rect(position.x, position.y, 150, 200);
 
-            inputs = new List<ConnectionPoint>();
-            outputs = new List<ConnectionPoint>();
+            FieldInfo[] objectFields = this.GetType().GetFields();
+            foreach (FieldInfo field in objectFields)
+            {
+                var inputAttribute = Attribute.GetCustomAttribute(field, typeof(InputProppertyAttribute));
+                var outputAttribute = Attribute.GetCustomAttribute(field, typeof(OutputProppertyAttribute));
+
+                if (inputAttribute != null)
+                {
+                    AddConnectionPoint(field, ConnectionPointType.In);
+                }
+                else if (outputAttribute != null)
+                {
+                    AddConnectionPoint(field, ConnectionPointType.Out);
+                }
+
+            }
         }
 
-		public virtual void AddConnectionPoint()
+		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
 		{
-            inputs.Add(new ConnectionPoint(this, new Vector2(rect.x - 10 + 8f, rect.y + (rect.height * 0.5f) - 20 * 0.5f)));
-            outputs.Add(new ConnectionPoint(this, new Vector2(rect.x + 10 - 8f, rect.y + (rect.height * 0.5f) - 20 * 0.5f)));
-        }
+			ConnectionPoint point = new ConnectionPoint(this, field);
+			switch (pointType)
+			{
+				case ConnectionPointType.In:
+					inputPoints.Add(point);
+                    point.Init(new Vector2(10, point.RectSize.y + 20 * inputPoints.Count));
+					break;
+                case ConnectionPointType.Out:
+                    outputPoints.Add(point);
+                    point.Init(new Vector2(rect.width - point.RectSize.x - 10, point.RectSize.y + 20 * outputPoints.Count));
+					break;
+			}
+		}
 
 		public abstract void CalculateChange();
 
@@ -39,14 +71,13 @@ namespace NodeSystem
             GUI.BeginGroup(rect);
             GUI.Box(new Rect(0, 0, 150, 200), name);
 
-            foreach(ConnectionPoint input in inputs)
-            {
-                input.Draw();
-            };
+            List<ConnectionPoint> points = new List<ConnectionPoint>();
+            points.AddRange(inputPoints);
+            points.AddRange(outputPoints);
 
-            foreach (ConnectionPoint output in outputs)
+            foreach (ConnectionPoint point in points)
             {
-                output.Draw();
+                point.Draw();
             };
 
             GUI.EndGroup();
@@ -57,9 +88,10 @@ namespace NodeSystem
 			throw new NotImplementedException();
 		}
 
-		public virtual void Drag(Vector2 delta)
+
+		public virtual void Drag(Vector2 position)
 		{
-            rect.position += delta;
+			rect.position += position;
 		}
 
         public bool ProcessEvents(Event e)

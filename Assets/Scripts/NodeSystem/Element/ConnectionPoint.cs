@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace NodeSystem
@@ -7,22 +10,36 @@ namespace NodeSystem
     {
         private Node node;
         private Connection connection;
-        private Type value;
+        private FieldInfo value;
 
-        public Rect rect;
+        private Rect rect;
 
         public Action<ConnectionPoint> OnClickConnectionPoint;
 
-        public ConnectionPoint(Node node, Vector2 position)
+        public ConnectionPoint(Node node, FieldInfo value)
         {
             this.node = node;
 
-            rect = new Rect(position.x, position.y, 10f, 20f);
+            this.value = value;
+            
+            rect = new Rect();
+
+            rect.width = 10;
+            rect.height = 10;
         }
 
-        public void Init()
+        public override void Init(Vector2 position)
         {
-            
+            base.Init(position);
+            rect.position = position;
+        }
+
+        public Vector2 RectSize
+        {
+            get
+            {
+                return rect.size;
+            }
         }
 
         public override void Draw()

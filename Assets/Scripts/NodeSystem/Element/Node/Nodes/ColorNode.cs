@@ -9,7 +9,7 @@ namespace NodeSystem
 		[OutputPropperty]
 		public Color colorOut1 = Color.white;
 
-		public override void CalculateChange()
+        public override void CalculateChange()
 		{
 			throw new NotImplementedException();
 		}
