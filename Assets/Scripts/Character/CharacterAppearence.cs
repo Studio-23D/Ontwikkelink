@@ -104,6 +104,8 @@ public class CharacterAppearence : MonoBehaviour
 	{
 		if (!setDefault) return;
 
+		character = GameObject.FindGameObjectWithTag(characterTag).GetComponent<Character>();
+
 		if (testHairStyles[1])
 			HairItem = testHairStyles[1];
 

@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Clothing_Set_01
+  m_Name: Mat_torso
   m_Shader: {fileID: -6465566751694194690, guid: e7bf0746ec60d2048a57184205bbfc5e,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: Color_C67D4219 Texture2D_23DA1713
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,7 +85,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_C67D4219: {r: 1, g: 1, b: 1, a: 0}
+    - Color_C67D4219: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
