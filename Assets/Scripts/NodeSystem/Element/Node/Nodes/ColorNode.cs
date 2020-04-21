@@ -19,6 +19,13 @@ namespace NodeSystem
 			base.Init(position);
             name = "Color Node";
 		}
-	}
+
+        public override void Draw()
+        {
+            base.Draw();
+            
+            GUI.EndGroup();
+        }
+    }
 }
 

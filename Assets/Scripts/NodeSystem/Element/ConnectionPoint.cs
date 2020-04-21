@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -11,17 +9,23 @@ namespace NodeSystem
         private Node node;
         private Connection connection;
 
+
 		public FieldInfo Value { get; }
 
 		private Rect rect;
 
+        private ConnectionPointType type;
+
+
+
         public Action<ConnectionPoint> OnClickConnectionPoint;
 
-        public ConnectionPoint(Node node, FieldInfo value)
+        public ConnectionPoint(Node node, FieldInfo value, ConnectionPointType type)
         {
             this.node = node;
 
             this.Value = value;
+            this.type = type;
             
             rect = new Rect();
 
@@ -32,6 +36,7 @@ namespace NodeSystem
         public override void Init(Vector2 position)
         {
             base.Init(position);
+
             rect.position = position;
         }
 
@@ -49,8 +54,17 @@ namespace NodeSystem
             {
                 if (OnClickConnectionPoint != null)
                 {
-                    OnClickConnectionPoint(this);
+
                 }
+            }
+            switch(type)
+            {
+                case ConnectionPointType.In:
+                    GUI.Label(new Rect(position.x + 15, position.y - 5, 30, 20), "IN");
+                    break;
+                case ConnectionPointType.Out:
+                    GUI.Label(new Rect(position.x - 30, position.y - 5, 30, 20), "OUT");
+                    break;
             }
         }
 
