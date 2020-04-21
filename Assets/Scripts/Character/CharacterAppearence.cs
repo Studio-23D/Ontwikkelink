@@ -102,7 +102,7 @@ public class CharacterAppearence : MonoBehaviour
 
 	private void Start()
 	{
-		if (!setDefault) return;
+		if (!setDefault || !GameObject.FindGameObjectWithTag(characterTag)) return;
 
 		character = GameObject.FindGameObjectWithTag(characterTag).GetComponent<Character>();
 
@@ -121,7 +121,7 @@ public class CharacterAppearence : MonoBehaviour
 
 	private void Update()
 	{
-		if (!character)
+		if (GameObject.FindGameObjectWithTag(characterTag))
 		{
 			character = GameObject.FindGameObjectWithTag(characterTag).GetComponent<Character>();
 		}

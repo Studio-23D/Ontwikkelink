@@ -34,7 +34,8 @@ public class MaterialPropertyApplier : MonoBehaviour
 
 	#region PUBLIC_MEMBERS
 
-	[HideInInspector] public Pattern pattern;
+	public Transform ClothingPiece { get { return clothingPiece; } }
+	public Pattern pattern;
 	public Textile textile;
 
 	#endregion
@@ -42,7 +43,8 @@ public class MaterialPropertyApplier : MonoBehaviour
 
 
 	#region PRIVATE_MEMBERS
-
+	
+	[Tooltip("The material of the mesh renderer of this object will be edited and outputed")]
 	[SerializeField] private Transform clothingPiece;
 
 	[Header("Shader property keywords")]
@@ -68,7 +70,7 @@ public class MaterialPropertyApplier : MonoBehaviour
 
 	private void Start()
 	{
-		// INIT WHEN CLOTHINGPIECE SELECTED
+		// INIT WHEN CLOTHINGPIECE SELECTED IN NODE
 
 		Init(clothingPiece);
 	}
@@ -106,6 +108,7 @@ public class MaterialPropertyApplier : MonoBehaviour
 		{
 			this.clothingPiece = clothingPiece;
 			meshRenderer = clothingPiece.GetComponent<MeshRenderer>();
+
 
 			defaultMaterial = meshRenderer.sharedMaterial;
 
