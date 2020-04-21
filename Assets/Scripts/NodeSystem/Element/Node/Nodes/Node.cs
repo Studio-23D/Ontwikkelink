@@ -50,7 +50,7 @@ namespace NodeSystem
 
 		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
 		{
-			ConnectionPoint point = new ConnectionPoint(this, field);
+			ConnectionPoint point = new ConnectionPoint(this, field, pointType);
 			switch (pointType)
 			{
 				case ConnectionPointType.In:
@@ -79,8 +79,6 @@ namespace NodeSystem
             {
                 point.Draw();
             };
-
-            GUI.EndGroup();
 		}
 
 		public override void Destroy()

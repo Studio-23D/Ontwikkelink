@@ -76,6 +76,8 @@ namespace NodeSystem
             {
                 InstantiateNode(new ColorNode());
             }
+
+            MyGUI.DrawLine(new Vector2(100, 100), new Vector2(300, 300), Color.black, 3);
         }
     }
 }
