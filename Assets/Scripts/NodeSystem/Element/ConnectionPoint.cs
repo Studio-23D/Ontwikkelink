@@ -10,9 +10,10 @@ namespace NodeSystem
     {
         private Node node;
         private Connection connection;
-        private FieldInfo value;
 
-        private Rect rect;
+		public FieldInfo Value { get; }
+
+		private Rect rect;
 
         public Action<ConnectionPoint> OnClickConnectionPoint;
 
@@ -20,7 +21,7 @@ namespace NodeSystem
         {
             this.node = node;
 
-            this.value = value;
+            this.Value = value;
             
             rect = new Rect();
 
