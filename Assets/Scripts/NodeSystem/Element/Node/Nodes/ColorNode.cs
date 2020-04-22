@@ -24,6 +24,8 @@ namespace NodeSystem
         {
             base.Draw();
             
+            MyGUI.DrawLine(new Vector2(Event.current.mousePosition.x, Event.current.mousePosition.y), new Vector2(0, 0), Color.black, 3);
+
             GUI.EndGroup();
         }
     }
