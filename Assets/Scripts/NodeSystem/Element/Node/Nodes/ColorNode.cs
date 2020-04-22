@@ -6,17 +6,21 @@ namespace NodeSystem
 {
 	public class ColorNode : Node
 	{
-		[OutputPropperty]
+
+		[InputPropperty]
 		public Color colorOut1 = Color.white;
 
-        public override void CalculateChange()
+		[OutputPropperty]
+		public Color colorOut2 = Color.white;
+
+		public override void CalculateChange()
 		{
 			throw new NotImplementedException();
 		}
 
-		public override void Init(Vector2 position)
+		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			base.Init(position);
+			base.Init(position, eventHandeler);
             name = "Color Node";
 		}
 

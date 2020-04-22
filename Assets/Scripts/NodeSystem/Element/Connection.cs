@@ -6,27 +6,84 @@ namespace NodeSystem {
 	public class Connection : Element
 	{
 		private ConnectionPoint inPoint;
-		private ConnectionPoint outPoint;
+		private ConnectionPoint outPoint;	
 
-		public Connection(ConnectionPoint inPoint, ConnectionPoint outPoint)
+		private Type type;
+
+		private bool isConnected = false;
+
+
+		public ConnectionPoint InPoint
 		{
-			this.inPoint = inPoint;
-			this.outPoint = outPoint;
+			get => inPoint;
+			set
+			{
+				inPoint = value;
+				type = (type == null) ? value.Value.FieldType : type;
+			}
+		}
+		public ConnectionPoint OutPoint
+		{
+			get => outPoint;
+			set
+			{
+				outPoint = value;
+				type = (type == null) ? value.Value.FieldType : type;
+			}
 		}
 
 		public void SetValue()
 		{
+			if (!isConnected) return;
 			outPoint.Value.SetValue(outPoint, inPoint.Value.GetValue(inPoint));
 		}
 
 		public override void Destroy()
 		{
-			throw new NotImplementedException();
+			base.Destroy();
+			inPoint = null;
+			outPoint = null;
+			Disconect();
+		}
+
+		public void Connect(Element element)
+		{
+			Debug.Log("hey");
+			if (!(element is ConnectionPoint)) return;
+			ConnectionPoint point = element as ConnectionPoint;
+			ConnectionPoint otherPoint = (inPoint != null) ? inPoint : outPoint;
+
+			if (point.type == otherPoint.type || point.Value.FieldType != type) {
+				Destroy();
+				return;
+			}
+
+			switch (point.type)
+			{
+				case ConnectionPointType.In:
+					inPoint = point;
+					break;
+				default:
+					outPoint = point;
+					break;
+			}
+
+			point.OnConnection(this);
+			isConnected = true;
+		}
+
+		private void Disconect()
+		{
+			inPoint?.Disconect();
+			outPoint?.Disconect();
 		}
 
 		public override void Draw()
 		{
-			throw new NotImplementedException();
+			Vector2 positionA = (outPoint != null) ? outPoint.Position : SystemEventHandeler.mousePosition; 
+			Vector2 positionB = (inPoint != null) ? inPoint.Position : SystemEventHandeler.mousePosition;
+
+			GuiLineRenderer.DrawLine(positionA, positionB, Color.black, 1);
 		}
 	}
 }

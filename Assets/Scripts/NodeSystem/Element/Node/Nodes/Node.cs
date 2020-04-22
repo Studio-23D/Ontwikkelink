@@ -11,7 +11,6 @@ namespace NodeSystem
 	public abstract class Node : Element
 	{
         protected string name;
-        protected Rect rect;
         public bool isDragged;
         public bool isSelected;
 
@@ -24,12 +23,10 @@ namespace NodeSystem
 			outputPoints = new List<ConnectionPoint>();
 		}
 
-		public override void Init(Vector2 position)
+        public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-            base.Init(position);
-
-            rect = new Rect(position.x, position.y, 150, 200);
-
+            base.Init(position, eventHandeler);
+            rect.size = new Vector2(150, 200);
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
             {
@@ -51,17 +48,20 @@ namespace NodeSystem
 		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
 		{
 			ConnectionPoint point = new ConnectionPoint(this, field, pointType);
+            Vector2 position;
+            Vector2 size = new Vector2(10, 10);
 			switch (pointType)
 			{
 				case ConnectionPointType.In:
 					inputPoints.Add(point);
-                    point.Init(new Vector2(10, point.RectSize.y + 20 * inputPoints.Count));
+                    position = new Vector2(10, point.Size.y + 20 * inputPoints.Count);
 					break;
-                case ConnectionPointType.Out:
+                default:
                     outputPoints.Add(point);
-                    point.Init(new Vector2(rect.width - point.RectSize.x - 10, point.RectSize.y + 20 * outputPoints.Count));
+                    position = new Vector2(rect.width - point.Size.x - 20, point.Size.y + 20 * outputPoints.Count);
 					break;
 			}
+            point.Init(position, this.eventHandeler);
 		}
 
 		public abstract void CalculateChange();
@@ -69,7 +69,7 @@ namespace NodeSystem
 		public override void Draw()
 		{
             GUI.BeginGroup(rect);
-            GUI.Box(new Rect(0, 0, 150, 200), name);
+            GUI.Box(new Rect(0, 0, rect.width, rect.height), name);
 
             List<ConnectionPoint> points = new List<ConnectionPoint>();
             points.AddRange(inputPoints);

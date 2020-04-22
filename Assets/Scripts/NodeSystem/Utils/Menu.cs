@@ -17,8 +17,6 @@ namespace NodeSystem
 
         private bool show = false;
 
-        private Rect rect;
-
         GUIStyle mainStyle;
         GUIStyle buttonStyle;
 
@@ -41,9 +39,9 @@ namespace NodeSystem
             buttonStyle.alignment = TextAnchor.MiddleLeft;
         }
 
-        public override void Init(Vector2 position)
+        public void Init(Vector2 position)
         {
-            base.Init(position);
+            base.Init(position, this.eventHandeler);
 
             if (!show) show = true;
         }
@@ -67,7 +65,7 @@ namespace NodeSystem
         {
             if (!show) return;
 
-            GUI.BeginGroup(new Rect(position.x, position.y, 150, 300));
+            GUI.BeginGroup(new Rect(Position.x, Position.y, 150, 300));
             GUI.Box(new Rect(0, 0, 150, menuEntries.Count * 25), "", mainStyle);
 
             for (int i = 0; i < menuEntries.Count; i++)

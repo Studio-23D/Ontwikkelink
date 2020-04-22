@@ -18,6 +18,10 @@ namespace NodeSystem
 				return Event.current.mousePosition;
 			}
 		}
+
+		public Action CheckHover = delegate { };
+
+		public static Vector2 mousePosition => Event.current.mousePosition;
 		public SystemEventHandeler(Rect inputField)
 		{
             this.inputField = inputField;
@@ -30,7 +34,7 @@ namespace NodeSystem
 		public void CheckInput()
 		{
 			EventType currentEvent = Event.current.type;
-      
+			CheckHover?.Invoke();
 			if (!guiEventPairs.ContainsKey(currentEvent) || !inputField.Contains(MousePosition)) return;
 			guiEventPairs[currentEvent]?.Invoke();
 		}
@@ -41,7 +45,11 @@ namespace NodeSystem
 			guiEventPairs[eventType] += action;
 		}
 
+		public ConnectionPoint selectedPropertyPoint;
+
 		public static Action<Element> OnElementCreate = (element) => { };
+		public static Action<Element> OnElementClick = (element) => { };
+		public static Action<Element> OnElementHover = (element) => { };
 		public static Action<Element> OnElementRemove = (element) => { };
 	}
 }

@@ -24,23 +24,16 @@ namespace NodeSystem
             rect = new Rect(0, 0, Screen.width - 200, Screen.height);
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
-            /*menu = new Menu();
-            menu.CreateMenuEntry("ColorNode", () =>
-            {
-                InstantiateNode(new ColorNode());
-            });
-            eventHandeler.SubscribeTo(EventType.MouseDown, ()=>
-            {
-                menu.Init(eventHandeler.MousePosition);
-            });*/
-
-            //elements.Add(menu);
             SystemEventHandeler.OnElementRemove += RemoveElement;
+            SystemEventHandeler.OnElementCreate += (Element element) =>
+            {
+                if (element is Connection) elements.Add(element);
+            };
         }
 
         public void InstantiateNode(Node node)
         {
-            node.Init(eventHandeler.MousePosition);
+            node.Init(eventHandeler.MousePosition, eventHandeler);
             elements.Add(node);
         }
 
@@ -67,17 +60,20 @@ namespace NodeSystem
             elementDrawer.Draw(elements);
             DestroyGarbage();
 
-            foreach(Node node in elements)
+            foreach(Element element in elements)
             {
-                node.ProcessEvents(Event.current);
+                if (element is Node)
+                {
+                    Node node = element as Node;
+                    node.ProcessEvents(Event.current);
+                }
+                
             }
 
             if(GUILayout.Button("ColorNode"))
             {
                 InstantiateNode(new ColorNode());
             }
-
-            MyGUI.DrawLine(new Vector2(100, 100), new Vector2(300, 300), Color.black, 3);
         }
     }
 }
