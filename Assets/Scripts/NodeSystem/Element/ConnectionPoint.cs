@@ -92,7 +92,7 @@ namespace NodeSystem
 
         public override void Draw()
         {
-            GUI.Box(rect, "");
+            GUI.Box(rect, "", style);
             switch(type)
             {
                 case ConnectionPointType.In:

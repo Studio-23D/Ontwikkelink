@@ -48,7 +48,6 @@ namespace NodeSystem {
 
 		public void Connect(Element element)
 		{
-			Debug.Log("hey");
 			if (!(element is ConnectionPoint)) return;
 			ConnectionPoint point = element as ConnectionPoint;
 			ConnectionPoint otherPoint = (inPoint != null) ? inPoint : outPoint;

@@ -67,6 +67,7 @@ namespace NodeSystem
         {
             elementDrawer.Draw(elements);
             DestroyGarbage();
+            eventHandeler.CheckInput();
 
             foreach(Element element in elements)
             {

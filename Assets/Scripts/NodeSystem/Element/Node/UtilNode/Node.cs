@@ -14,7 +14,6 @@ namespace NodeSystem
         public bool isDragged;
         public bool isSelected;
 
-
         protected Rect nodeTopRect;
         protected Rect nodeMiddleRect;
         protected Rect nodeMiddleSecondRect;
@@ -57,9 +56,7 @@ namespace NodeSystem
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
             base.Init(position, eventHandeler);
-            rect.size = new Vector2(150, 200);
-
-            rect = new Rect(position.x, position.y, 400, 450);
+            rect.size = new Vector2(200, 300);
 
             nodeTopRect = new Rect(0, 0, 200, 25);
             nodeMiddleRect = new Rect(0, nodeTopRect.height, 200, 0);
