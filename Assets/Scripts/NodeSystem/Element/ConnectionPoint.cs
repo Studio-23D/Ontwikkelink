@@ -12,6 +12,8 @@ namespace NodeSystem
 
         private ConnectionPointType type;
 
+        GUIStyle style;
+
         private Rect rect;
 
         public Action<ConnectionPoint> OnClickConnectionPoint;
@@ -27,6 +29,9 @@ namespace NodeSystem
 
             rect.width = 10;
             rect.height = 10;
+
+            style = new GUIStyle();
+            style.normal.background = Resources.Load<Texture2D>("NodeSystem/nodeDot");
         }
 
         public override void Init(Vector2 position)
@@ -46,7 +51,7 @@ namespace NodeSystem
 
         public override void Draw()
         {
-            if (GUI.Button(rect, ""))
+            if (GUI.Button(rect, "", style))
             {
                 if (OnClickConnectionPoint != null)
                 {
@@ -56,10 +61,10 @@ namespace NodeSystem
             switch(type)
             {
                 case ConnectionPointType.In:
-                    GUI.Label(new Rect(position.x + 15, position.y - 5, 30, 20), "IN");
+                    GUI.Label(new Rect(position.x + 15, position.y - 5, 30, 20), value.Name);
                     break;
                 case ConnectionPointType.Out:
-                    GUI.Label(new Rect(position.x - 30, position.y - 5, 30, 20), "OUT");
+                    GUI.Label(new Rect(position.x - 30, position.y - 5, 30, 20), value.Name);
                     break;
             }
         }

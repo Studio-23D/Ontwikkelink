@@ -22,11 +22,17 @@ namespace NodeSystem
         {
             base.Init(position);
             name = "Charakter Node";
+
+            nodeMiddleSecondRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height, 200, 0);
+            nodeBottomRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height + nodeMiddleSecondRect.height, 200, 10);
         }
 
         public override void Draw()
         {
             base.Draw();
+
+            GUI.Box(nodeMiddleSecondRect, "", styleMiddleSecond);
+            GUI.Box(nodeBottomRect, "", styleBottom);
 
             GUI.EndGroup();
         }
