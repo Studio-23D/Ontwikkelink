@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class GuiLineRenderer
 {
-    //public static Texture2D lineTex;
-
     public static void DrawLine(Vector2 pointA, Vector2 pointB, Color color, float width)
     {
 

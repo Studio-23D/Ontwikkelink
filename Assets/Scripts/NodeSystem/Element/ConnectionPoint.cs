@@ -14,6 +14,7 @@ namespace NodeSystem
 
         public ConnectionPointType type;
 
+
         public override Rect Rect
         {
             get
@@ -23,6 +24,7 @@ namespace NodeSystem
                 return rect;
             }
         }
+        GUIStyle style;
 
         public override Vector2 Position => Rect.position;
 
@@ -65,6 +67,12 @@ namespace NodeSystem
                 connection.Init(Vector2.zero, eventHandeler);
                 eventHandeler.selectedPropertyPoint = point;
             });
+            rect.width = 10;
+            rect.height = 10;
+
+            style = new GUIStyle();
+            style.normal.background = Resources.Load<Texture2D>("NodeSystem/nodeDot");
+
         }
 
         private Connection CreateConnection()
@@ -88,10 +96,10 @@ namespace NodeSystem
             switch(type)
             {
                 case ConnectionPointType.In:
-                    GUI.Label(new Rect(base.Position.x + 15, base.Position.y - 5, 30, 20), "IN");
+                    GUI.Label(new Rect(base.Position.x + 15, base.Position.y - 5, 30, 20), Value.Name);
                     break;
                 case ConnectionPointType.Out:
-                    GUI.Label(new Rect(base.Position.x - 30, base.Position.y - 5, 30, 20), "OUT");
+                    GUI.Label(new Rect(base.Position.x - 30, base.Position.y - 5, 30, 20), Value.Name);
                     break;
             }
         }
