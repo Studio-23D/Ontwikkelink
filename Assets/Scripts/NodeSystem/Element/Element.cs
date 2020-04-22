@@ -6,7 +6,7 @@ namespace NodeSystem
 {
     public abstract class Element
     {
-        protected Vector2 position;
+        protected Vector2 position { set; get; }
 
         public virtual void Init(Vector2 position)
         {

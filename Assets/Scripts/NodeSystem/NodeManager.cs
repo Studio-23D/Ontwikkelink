@@ -11,6 +11,11 @@ namespace NodeSystem
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
         //protected Menu menu;
+
+        protected GameObject charackterEdit;
+        protected MasterNode masterNode;
+        protected PatternNode patternNode;
+
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
 
@@ -24,6 +29,14 @@ namespace NodeSystem
             rect = new Rect(0, 0, Screen.width - 200, Screen.height);
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
+
+            masterNode = new MasterNode();
+            masterNode.Init(new Vector2(rect.width/2, rect.height/2));
+            elements.Add(masterNode);
+
+            patternNode = new PatternNode();
+            patternNode.Init(new Vector2(rect.width / 2, rect.height / 2));
+            elements.Add(patternNode);
             /*menu = new Menu();
             menu.CreateMenuEntry("ColorNode", () =>
             {
@@ -72,12 +85,37 @@ namespace NodeSystem
                 node.ProcessEvents(Event.current);
             }
 
-            if(GUILayout.Button("ColorNode"))
+            if (GUILayout.Button("Compile"))
+            {
+                foreach(Node node in elements)
+                {
+                    node.CalculateChange();
+                }
+            }
+
+            if (GUILayout.Button("ColorNode"))
             {
                 InstantiateNode(new ColorNode());
             }
+            if (GUILayout.Button("PaternNode red to blue"))
+            {
+                patternNode.colorR = Color.blue;
+            }
+            if (GUILayout.Button("PaternNode red to green"))
+            {
+                patternNode.colorR = Color.green;
+            }
+            if (GUILayout.Button("PaternNode red to red"))
+            {
+                patternNode.colorR = Color.red;
+            }
 
-            MyGUI.DrawLine(new Vector2(100, 100), new Vector2(300, 300), Color.black, 3);
+            if (GUILayout.Button("PaternNode"))
+            {
+                InstantiateNode(new PatternNode());
+            }
+
+            //MyGUI.DrawLine(new Vector2(100, 100), new Vector2(300, 300), Color.black, 3);
         }
     }
 }

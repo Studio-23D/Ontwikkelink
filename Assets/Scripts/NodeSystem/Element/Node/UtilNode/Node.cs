@@ -12,23 +12,31 @@ namespace NodeSystem
 	{
         protected string name;
         protected Rect rect;
-        public bool isDragged;
-        public bool isSelected;
+        protected bool isDragged;
+        protected bool isSelected;
 
-		private List<ConnectionPoint> inputPoints;
+        protected Rect nodeRect = new Rect(0, 0, 200, 250);
+
+        private GUIStyle style;
+
+        private List<ConnectionPoint> inputPoints;
 		private List<ConnectionPoint> outputPoints;
 
 		public Node()
 		{
 			inputPoints = new List<ConnectionPoint>();
 			outputPoints = new List<ConnectionPoint>();
-		}
+
+            style = new GUIStyle();
+            style.overflow = new RectOffset(100, 100, 100, 100);
+            style.alignment = TextAnchor.MiddleCenter;
+        }
 
 		public override void Init(Vector2 position)
 		{
             base.Init(position);
 
-            rect = new Rect(position.x, position.y, 150, 200);
+            rect = new Rect(position.x, position.y, 400, 450);
 
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
@@ -59,7 +67,7 @@ namespace NodeSystem
 					break;
                 case ConnectionPointType.Out:
                     outputPoints.Add(point);
-                    point.Init(new Vector2(rect.width - point.RectSize.x - 10, point.RectSize.y + 20 * outputPoints.Count));
+                    point.Init(new Vector2(nodeRect.width - point.RectSize.x - 10, point.RectSize.y + 20 * outputPoints.Count));
 					break;
 			}
 		}
@@ -69,7 +77,7 @@ namespace NodeSystem
 		public override void Draw()
 		{
             GUI.BeginGroup(rect);
-            GUI.Box(new Rect(0, 0, 150, 200), name);
+            GUI.Box(nodeRect, name);
 
             List<ConnectionPoint> points = new List<ConnectionPoint>();
             points.AddRange(inputPoints);
