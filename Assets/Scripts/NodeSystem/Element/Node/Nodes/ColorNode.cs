@@ -23,30 +23,32 @@ namespace NodeSystem
 			base.Init(position, eventHandeler);
             name = "Color Node";
 
-            nodeMiddleSecondRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height, 200, 65);
-            nodeBottomRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height + nodeMiddleSecondRect.height, 200, 10);
+            nodeAreas.Add(new Rect(0, CalculateAreaY(2), 200, 65));
+            nodeAreas.Add(new Rect(0, CalculateAreaY(3), 200, 10));
+
+            rect.size = new Vector2(200, CalculateAreaY(nodeAreas.Count));
         }
 
         public override void Draw()
         {
             base.Draw();
 
-            GUI.Box(nodeMiddleSecondRect, "", styleMiddleSecond);
+            GUI.Box(nodeAreas[2], "", styleExtraArea);
 
-            if(GUI.Button(new Rect(0, nodeMiddleSecondRect.y + 5, nodeMiddleSecondRect.width, 20), "set color red"))
+            if(GUI.Button(new Rect(0, nodeAreas[2].y + 5, nodeAreas[2].width, 20), "set color red"))
             {
                 colorOut1 = Color.red;
             }
-            if (GUI.Button(new Rect(0, nodeMiddleSecondRect.y + 25, nodeMiddleSecondRect.width, 20), "set color Green"))
+            if (GUI.Button(new Rect(0, nodeAreas[2].y + 25, nodeAreas[2].width, 20), "set color Green"))
             {
                 colorOut1 = Color.green;
             }
-            if (GUI.Button(new Rect(0, nodeMiddleSecondRect.y + 45, nodeMiddleSecondRect.width, 20), "set color Blue"))
+            if (GUI.Button(new Rect(0, nodeAreas[2].y + 45, nodeAreas[2].width, 20), "set color Blue"))
             {
                 colorOut1 = Color.blue;
             }
 
-            GUI.Box(nodeBottomRect, "", styleBottom);
+            GUI.Box(nodeAreas[3], "", styleBottomArea);
 
             GUI.EndGroup();
         }

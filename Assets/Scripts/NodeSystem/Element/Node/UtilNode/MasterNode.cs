@@ -23,16 +23,16 @@ namespace NodeSystem
             base.Init(position, eventHandeler);
             name = "Charakter Node";
 
-            nodeMiddleSecondRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height, 200, 0);
-            nodeBottomRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height + nodeMiddleSecondRect.height, 200, 10);
+            nodeAreas.Add(new Rect(0, CalculateAreaY(2), 200, 10));
+
+            rect.size = new Vector2(200, CalculateAreaY(nodeAreas.Count));
         }
 
         public override void Draw()
         {
             base.Draw();
 
-            GUI.Box(nodeMiddleSecondRect, "", styleMiddleSecond);
-            GUI.Box(nodeBottomRect, "", styleBottom);
+            GUI.Box(nodeAreas[2], "", styleBottomArea);
 
             GUI.EndGroup();
         }

@@ -10,44 +10,45 @@ namespace NodeSystem
 {
 	public abstract class Node : Element
 	{
-        protected string name;
         public bool isDragged;
         public bool isSelected;
 
-        protected Rect nodeTopRect;
-        protected Rect nodeMiddleRect;
-        protected Rect nodeMiddleSecondRect;
-        protected Rect nodeBottomRect;
+        protected string name;
 
-        protected GUIStyle styleTop;
-        protected GUIStyle styleMiddle;
-        protected GUIStyle styleMiddleSecond;
-        protected GUIStyle styleBottom;
+        protected List<Rect> nodeAreas;
+
+        protected GUIStyle styleTitleArea;
+        protected GUIStyle styleConnectionPointsArea;
+        protected GUIStyle styleExtraArea;
+        protected GUIStyle styleBottomArea;
 
         protected GUIStyle styleCenter;
 
         private List<ConnectionPoint> inputPoints;
 		private List<ConnectionPoint> outputPoints;
 
+
 		public Node()
 		{
 			inputPoints = new List<ConnectionPoint>();
 			outputPoints = new List<ConnectionPoint>();
 
-            styleTop = new GUIStyle();
-            styleTop.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Top");
-            styleTop.alignment = TextAnchor.MiddleCenter;
-            styleTop.normal.textColor = Color.white;
-            styleTop.font = (Font)Resources.Load("NodeSystem/bebas-neue-semiroundedNode");
+            nodeAreas = new List<Rect>();
 
-            styleMiddle = new GUIStyle();
-            styleMiddle.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Middle");
+            styleTitleArea = new GUIStyle();
+            styleTitleArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Top");
+            styleTitleArea.alignment = TextAnchor.MiddleCenter;
+            styleTitleArea.normal.textColor = Color.white;
+            styleTitleArea.font = (Font)Resources.Load("NodeSystem/bebas-neue-semiroundedNode");
 
-            styleMiddleSecond = new GUIStyle();
-            styleMiddleSecond.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Middle2");
+            styleConnectionPointsArea = new GUIStyle();
+            styleConnectionPointsArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Middle");
 
-            styleBottom = new GUIStyle();
-            styleBottom.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Bottom");
+            styleExtraArea = new GUIStyle();
+            styleExtraArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Middle2");
+
+            styleBottomArea = new GUIStyle();
+            styleBottomArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Bottom");
 
             styleCenter = new GUIStyle();
             styleCenter.alignment = TextAnchor.MiddleCenter;
@@ -56,10 +57,10 @@ namespace NodeSystem
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
             base.Init(position, eventHandeler);
-            rect.size = new Vector2(200, 300);
 
-            nodeTopRect = new Rect(0, 0, 200, 25);
-            nodeMiddleRect = new Rect(0, nodeTopRect.height, 200, 0);
+            //rect.size = new Vector2(200, 0);
+
+            nodeAreas.Add(new Rect(0, 0, 200, 25));
 
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
@@ -79,13 +80,12 @@ namespace NodeSystem
 
             if (inputPoints.Count > outputPoints.Count)
             {
-                nodeMiddleRect.height = 25 * inputPoints.Count;
+                nodeAreas.Add(new Rect(0, CalculateAreaY(1), 200, 25 * inputPoints.Count));
             }
             else
             {
-                nodeMiddleRect.height = 25 * outputPoints.Count;
+                nodeAreas.Add(new Rect(0, CalculateAreaY(1), 200, 25 * outputPoints.Count));
             }
-            
         }
 
 		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
@@ -97,11 +97,11 @@ namespace NodeSystem
 			{
 				case ConnectionPointType.In:
 					inputPoints.Add(point);
-                    position = new Vector2(10, point.Size.y + 20 * inputPoints.Count);
+                    position = new Vector2(10, ((point.Size.y + CalculateAreaY(1)) * inputPoints.Count) + 10);
 					break;
                 default:
                     outputPoints.Add(point);
-                    position = new Vector2(rect.width - point.Size.x - 20, point.Size.y + 20 * outputPoints.Count);
+                    position = new Vector2(200 - point.Size.x - 20, ((point.Size.y + CalculateAreaY(1)) * outputPoints.Count) + 10);
 					break;
 			}
             point.Init(position, this.eventHandeler);
@@ -113,9 +113,9 @@ namespace NodeSystem
 		{
             GUI.BeginGroup(rect);
 
-            GUI.Box(nodeTopRect, name, styleTop);
+            GUI.Box(nodeAreas[0], name, styleTitleArea);
 
-            GUI.Box(nodeMiddleRect, "", styleMiddle);
+            GUI.Box(nodeAreas[1], "", styleConnectionPointsArea);
 
             List<ConnectionPoint> points = new List<ConnectionPoint>();
             points.AddRange(inputPoints);
@@ -126,6 +126,17 @@ namespace NodeSystem
                 point.Draw();
             };
 		}
+
+        protected float CalculateAreaY(int above)
+        {
+            float value = 0;
+            for (int i = 0; i < above; i++)
+            {
+                if (i < above)
+                value += nodeAreas[i].height;
+            }
+            return value;
+        }
 
 		public override void Destroy()
 		{
