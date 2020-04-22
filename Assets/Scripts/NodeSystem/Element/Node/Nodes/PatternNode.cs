@@ -63,15 +63,6 @@ namespace NodeSystem
             pattern = chosenValue as Texture2D;
             patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
             Graphics.CopyTexture(pattern, patternTexture);
-
-            Debug.Log(pattern.format);
-
-            //material.SetTexture("Pattern", pattern);
-            //material.SetColor("ColorRed", colorR);
-            //material.SetColor("ColorGreen", colorG);
-            //material.SetColor("ColorBlue", colorB);
-
-            //material.GetColor
             
             for (int w = 0; w < pattern.width; w++)
             {

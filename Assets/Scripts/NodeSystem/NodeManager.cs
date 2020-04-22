@@ -19,11 +19,6 @@ namespace NodeSystem
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
 
-        private void Awake()
-        {
-            Init();
-        }
-
         public void Init()
         {
             rect = new Rect(0, 0, Screen.width - 200, Screen.height);
@@ -76,7 +71,7 @@ namespace NodeSystem
 
         private void OnGUI()
         {
-            eventHandeler.CheckInput();
+//            eventHandeler.CheckInput();
             elementDrawer.Draw(elements);
             DestroyGarbage();
 
