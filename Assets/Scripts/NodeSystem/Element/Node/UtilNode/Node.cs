@@ -132,7 +132,6 @@ namespace NodeSystem
             float value = 0;
             for (int i = 0; i < above; i++)
             {
-                if (i < above)
                 value += nodeAreas[i].height;
             }
             return value;

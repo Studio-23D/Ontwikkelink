@@ -37,16 +37,17 @@ namespace NodeSystem
 
             if(GUI.Button(new Rect(0, nodeAreas[2].y + 5, nodeAreas[2].width, 20), "set color red"))
             {
-                colorOut1 = Color.red;
+                colorOut2 = Color.red;
             }
             if (GUI.Button(new Rect(0, nodeAreas[2].y + 25, nodeAreas[2].width, 20), "set color Green"))
             {
-                colorOut1 = Color.green;
+                colorOut2 = Color.green;
             }
             if (GUI.Button(new Rect(0, nodeAreas[2].y + 45, nodeAreas[2].width, 20), "set color Blue"))
             {
-                colorOut1 = Color.blue;
+                colorOut2 = Color.blue;
             }
+
 
             GUI.Box(nodeAreas[3], "", styleBottomArea);
 
