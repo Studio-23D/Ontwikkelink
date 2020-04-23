@@ -19,7 +19,7 @@ namespace NodeSystem
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
 
-        public void Init()
+		public void Init()
         {
             rect = new Rect(0, 0, Screen.width - 200, Screen.height);
             eventHandeler = new SystemEventHandeler(rect);
@@ -65,6 +65,8 @@ namespace NodeSystem
 
         private void OnGUI()
         {
+			if (elementDrawer == null) return;
+
             elementDrawer.Draw(elements);
             DestroyGarbage();
             eventHandeler.CheckInput();

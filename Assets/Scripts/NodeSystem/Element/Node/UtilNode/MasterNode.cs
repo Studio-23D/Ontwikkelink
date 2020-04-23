@@ -7,7 +7,7 @@ namespace NodeSystem
     public class MasterNode : Node
     {
         [InputPropperty]
-        public GameObject hair;
+        public Color hair;
 
         [InputPropperty]
         public GameObject torso;
@@ -21,7 +21,7 @@ namespace NodeSystem
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
             base.Init(position, eventHandeler);
-            name = "Charakter Node";
+            name = "Personage Node";
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
@@ -33,6 +33,8 @@ namespace NodeSystem
             base.Draw();
 
             GUI.Box(nodeAreas[2], "", styleBottomArea);
+
+            Debug.Log(hair);
 
             GUI.EndGroup();
         }

@@ -1544,6 +1544,7 @@ GameObject:
   - component: {fileID: 1052945808}
   - component: {fileID: 1052945806}
   - component: {fileID: 1052945810}
+  - component: {fileID: 1052945807}
   m_Layer: 5
   m_Name: NodeCanvas
   m_TagString: Untagged
@@ -1568,6 +1569,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1052945807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052945805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &1052945808
 Canvas:
   m_ObjectHideFlags: 0
@@ -2463,7 +2476,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655085057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
   m_Name: 
@@ -3120,9 +3133,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetGender
-        m_Mode: 5
+      - m_Target: {fileID: 1655085059}
+        m_MethodName: Init
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3397,6 +3410,17 @@ MonoBehaviour:
           m_StringArgument: Female
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1052945807}
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1874208624}
         m_MethodName: SetGender
         m_Mode: 2
@@ -3404,17 +3428,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 4023381834798882719, guid: 9f79ec104c2e3de49bf5ca4ae8e68b31,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1655085059}
-        m_MethodName: Init
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

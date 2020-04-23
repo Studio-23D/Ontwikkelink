@@ -19,7 +19,7 @@ namespace NodeSystem {
 			set
 			{
 				inPoint = value;
-				type = (type == null) ? value.Value.FieldType : type;
+				type = type ?? value.Value.FieldType;
 			}
 		}
 		public ConnectionPoint OutPoint
@@ -28,22 +28,23 @@ namespace NodeSystem {
 			set
 			{
 				outPoint = value;
-				type = (type == null) ? value.Value.FieldType : type;
+				type = type ?? value.Value.FieldType;
 			}
 		}
 
 		public void SetValue()
 		{
 			if (!isConnected) return;
-			outPoint.Value.SetValue(outPoint, inPoint.Value.GetValue(inPoint));
+			inPoint.Value.SetValue(inPoint.node, outPoint.Value.GetValue(outPoint.node));
 		}
 
 		public override void Destroy()
 		{
 			base.Destroy();
+			Disconect();
 			inPoint = null;
 			outPoint = null;
-			Disconect();
+			eventHandeler.selectedPropertyPoint = null;
 		}
 
 		public void Connect(Element element)
@@ -69,6 +70,8 @@ namespace NodeSystem {
 
 			point.OnConnection(this);
 			isConnected = true;
+			eventHandeler.selectedPropertyPoint = null;
+			this.SetValue();
 		}
 
 		private void Disconect()

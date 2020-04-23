@@ -25,8 +25,8 @@ namespace NodeSystem
         {
             base.Init(position, eventHandeler);
 
-            name = "Pattern Node";
-            dropdownName = "Patterns";
+            name = "Patronen Node";
+            dropdownName = "Patronen";
 
             foreach (Texture2D texture in Resources.LoadAll("Patterns", typeof(Texture2D)))
             {

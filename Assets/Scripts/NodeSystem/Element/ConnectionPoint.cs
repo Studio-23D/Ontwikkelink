@@ -7,13 +7,12 @@ namespace NodeSystem
 
     public class ConnectionPoint : Element
     {
-        private Node node;
+        public Node node;
         private Connection connection;
 
 		public FieldInfo Value { get; }
 
         public ConnectionPointType type;
-
 
         public override Rect Rect
         {
@@ -110,5 +109,3 @@ namespace NodeSystem
         }
     }
 }
-
-

@@ -128,7 +128,6 @@ namespace NodeSystem
             };
 		}
 
-
 		public override void Destroy()
 		{
 			throw new NotImplementedException();
