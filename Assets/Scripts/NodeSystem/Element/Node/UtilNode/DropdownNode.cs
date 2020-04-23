@@ -16,7 +16,7 @@ namespace NodeSystem
 
         protected List<DropdownElement> dropdownElements = new List<DropdownElement>();
 
-        protected object chosenValue;
+        //protected object chosenValue;
 
         protected Rect dropdrownRect;
 
@@ -26,12 +26,12 @@ namespace NodeSystem
         {
             base.Init(position, eventHandeler);
 
-            chosenValue = dropdownElements[0].value;
+            //chosenValue = dropdownElements[0].value;
 
-            dropdrownRect = new Rect(nodeAreas[2].width, 100, 200, 200);
+            dropdrownRect = new Rect(200, 100, 200, 200);
 
-            nodeAreas.Add(new Rect(0, CalculateAreaY(2), 200, 230));
-
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 230));
+            
         }
 
         public override void Draw()
@@ -39,7 +39,7 @@ namespace NodeSystem
             base.Draw();
             GUI.Box(nodeAreas[2], "", styleExtraArea);
 
-            if (GUI.Button(new Rect(0, 100, nodeAreas[2].width, 20), dropdownName))
+            if (GUI.Button(new Rect(0, 100, 200, 20), dropdownName))
             {
                 ToggleDropdown();
             }
@@ -50,10 +50,10 @@ namespace NodeSystem
             GUI.Box(dropdrownRect, "");
             for(int i = 0; i < dropdownElements.Count; i++)
             {
-                if(GUI.Button(new Rect(nodeAreas[2].width + (i % 2) * (nodeAreas[2].width / 2), dropdrownRect.position.y + Mathf.FloorToInt(i / 2) * (dropdrownRect.height / 2), dropdrownRect.width / 2, dropdrownRect.height / 2), dropdownElements[i].visual))
+                if(GUI.Button(new Rect(200 + (i % 2) * (200 / 2), dropdrownRect.position.y + Mathf.FloorToInt(i / 2) * (dropdrownRect.height / 2), dropdrownRect.width / 2, dropdrownRect.height / 2), dropdownElements[i].visual))
                 {
                     ToggleDropdown();
-                    chosenValue = dropdownElements[i].value;
+                    //chosenValue = dropdownElements[i].value;
                 }
             }
         }

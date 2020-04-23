@@ -29,9 +29,9 @@ namespace NodeSystem
             masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
             elements.Add(masterNode);
 
-            //patternNode = new PatternNode();
-            //patternNode.Init(new Vector2(rect.width / 2, rect.height / 2), eventHandeler);
-            //elements.Add(patternNode);
+            patternNode = new PatternNode();
+            patternNode.Init(new Vector2(rect.width / 2, rect.height / 2), eventHandeler);
+            elements.Add(patternNode);
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
             SystemEventHandeler.OnElementCreate += (Element element) =>
@@ -91,7 +91,7 @@ namespace NodeSystem
             {
                 InstantiateNode(new ColorNode());
             }
-            /*
+            
             if (GUILayout.Button("PaternNode red to blue"))
             {
                 patternNode.colorR = Color.blue;
@@ -108,7 +108,7 @@ namespace NodeSystem
             if (GUILayout.Button("PaternNode"))
             {
                 InstantiateNode(new PatternNode());
-            }*/
+            }
         }
     }
 }

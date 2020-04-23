@@ -77,15 +77,16 @@ namespace NodeSystem
                     AddConnectionPoint(field, ConnectionPointType.Out);
                 }
             }
-
+            float pointAreaHeight = 0;
             if (inputPoints.Count > outputPoints.Count)
             {
-                nodeAreas.Add(new Rect(0, CalculateAreaY(1), 200, 25 * inputPoints.Count));
+                pointAreaHeight = 25 * inputPoints.Count;
             }
             else
             {
-                nodeAreas.Add(new Rect(0, CalculateAreaY(1), 200, 25 * outputPoints.Count));
+                pointAreaHeight = 25 * outputPoints.Count;
             }
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count-1].y + nodeAreas[nodeAreas.Count - 1].height, 200, pointAreaHeight));
         }
 
 		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
@@ -97,11 +98,11 @@ namespace NodeSystem
 			{
 				case ConnectionPointType.In:
 					inputPoints.Add(point);
-                    position = new Vector2(10, ((point.Size.y + CalculateAreaY(1)) * inputPoints.Count) + 10);
+                    position = new Vector2(10, ((point.Size.y + nodeAreas[nodeAreas.Count-1].height) * inputPoints.Count) + 10);
 					break;
                 default:
                     outputPoints.Add(point);
-                    position = new Vector2(200 - point.Size.x - 20, ((point.Size.y + CalculateAreaY(1)) * outputPoints.Count) + 10);
+                    position = new Vector2(200 - point.Size.x - 20, ((point.Size.y + nodeAreas[nodeAreas.Count-1].height) * outputPoints.Count) + 10);
 					break;
 			}
             point.Init(position, this.eventHandeler);
@@ -127,16 +128,6 @@ namespace NodeSystem
             };
 		}
 
-        protected float CalculateAreaY(int above)
-        {
-            float value = 0;
-            for (int i = 0; i < above; i++)
-            {
-                if (i < above)
-                value += nodeAreas[i].height;
-            }
-            return value;
-        }
 
 		public override void Destroy()
 		{

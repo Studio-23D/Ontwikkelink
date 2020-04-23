@@ -23,10 +23,18 @@ namespace NodeSystem
 			base.Init(position, eventHandeler);
             name = "Color Node";
 
-            nodeAreas.Add(new Rect(0, CalculateAreaY(2), 200, 65));
-            nodeAreas.Add(new Rect(0, CalculateAreaY(3), 200, 10));
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 65));
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
-            rect.size = new Vector2(200, CalculateAreaY(nodeAreas.Count));
+            Debug.Log("1 " + nodeAreas[0].y);
+
+            for (int i = 0; i < nodeAreas.Count; i++)
+            {
+                if(i > 0)
+                Debug.Log(nodeAreas[i - 1].y);
+            }
+
+            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
         }
 
         public override void Draw()

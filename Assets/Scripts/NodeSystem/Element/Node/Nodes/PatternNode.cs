@@ -21,10 +21,10 @@ namespace NodeSystem
 
         protected Texture2D pattern;
 
-        //Material material = new Material(Shader.Find("NodeShaders/PatternShader"));
-
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
+            base.Init(position, eventHandeler);
+
             name = "Pattern Node";
             dropdownName = "Patterns";
 
@@ -38,17 +38,15 @@ namespace NodeSystem
                 dropdownElements.Add(element);
             }
 
-            base.Init(position, eventHandeler);
+            //pattern = chosenValue as Texture2D;
 
-            pattern = chosenValue as Texture2D;
-
-            patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
+            //patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
 
             Graphics.CopyTexture(pattern, patternTexture);
 
-            nodeAreas.Add(new Rect(0, CalculateAreaY(3), 200, 10));
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
-            rect.size = new Vector2(200, CalculateAreaY(nodeAreas.Count));
+            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
         }
 
         public override void Draw()
@@ -59,9 +57,9 @@ namespace NodeSystem
             GUI.Box(nodeAreas[3], "", styleBottomArea);
             GUI.EndGroup();
         }
-
+      
         public override void CalculateChange()
-        {
+        {  /*
             pattern = chosenValue as Texture2D;
             patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
             Graphics.CopyTexture(pattern, patternTexture);
@@ -88,7 +86,7 @@ namespace NodeSystem
                     }
                 }
             }
-            patternTexture.Apply();
+            patternTexture.Apply();*/
         }
-    }
+        }
 }

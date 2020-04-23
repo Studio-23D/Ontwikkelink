@@ -23,9 +23,9 @@ namespace NodeSystem
             base.Init(position, eventHandeler);
             name = "Charakter Node";
 
-            nodeAreas.Add(new Rect(0, CalculateAreaY(2), 200, 10));
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
-            rect.size = new Vector2(200, CalculateAreaY(nodeAreas.Count));
+            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count-1].y + nodeAreas[nodeAreas.Count-1].height);
         }
 
         public override void Draw()
