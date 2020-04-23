@@ -28,17 +28,18 @@ namespace NodeSystem
 
             chosenValue = dropdownElements[0].value;
 
-            dropdrownRect = new Rect(nodeMiddleRect.width, 100, 200, 200);
+            dropdrownRect = new Rect(nodeAreas[2].width, 100, 200, 200);
 
-            nodeMiddleSecondRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height, 200, nodeMiddleRect.width + 30);
+            nodeAreas.Add(new Rect(0, CalculateAreaY(2), 200, 230));
+
         }
 
         public override void Draw()
         {
             base.Draw();
-            GUI.Box(nodeMiddleSecondRect, "", styleMiddleSecond);
+            GUI.Box(nodeAreas[2], "", styleExtraArea);
 
-            if (GUI.Button(new Rect(0, 100, nodeMiddleRect.width, 20), dropdownName))
+            if (GUI.Button(new Rect(0, 100, nodeAreas[2].width, 20), dropdownName))
             {
                 ToggleDropdown();
             }
@@ -49,7 +50,7 @@ namespace NodeSystem
             GUI.Box(dropdrownRect, "");
             for(int i = 0; i < dropdownElements.Count; i++)
             {
-                if(GUI.Button(new Rect(nodeMiddleRect.width + (i % 2) * (nodeMiddleRect.width / 2), dropdrownRect.position.y + Mathf.FloorToInt(i / 2) * (dropdrownRect.height / 2), dropdrownRect.width / 2, dropdrownRect.height / 2), dropdownElements[i].visual))
+                if(GUI.Button(new Rect(nodeAreas[2].width + (i % 2) * (nodeAreas[2].width / 2), dropdrownRect.position.y + Mathf.FloorToInt(i / 2) * (dropdrownRect.height / 2), dropdrownRect.width / 2, dropdrownRect.height / 2), dropdownElements[i].visual))
                 {
                     ToggleDropdown();
                     chosenValue = dropdownElements[i].value;

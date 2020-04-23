@@ -46,15 +46,17 @@ namespace NodeSystem
 
             Graphics.CopyTexture(pattern, patternTexture);
 
-            nodeBottomRect = new Rect(0, nodeTopRect.height + nodeMiddleRect.height + nodeMiddleSecondRect.height, 200, 10);
+            nodeAreas.Add(new Rect(0, CalculateAreaY(3), 200, 10));
+
+            rect.size = new Vector2(200, CalculateAreaY(nodeAreas.Count));
         }
 
         public override void Draw()
         {
             base.Draw();
             
-            GUI.Label(new Rect(0, 120, nodeMiddleRect.width, nodeMiddleRect.width), patternTexture, styleCenter);
-            GUI.Box(nodeBottomRect, "", styleBottom);
+            GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), patternTexture, styleCenter);
+            GUI.Box(nodeAreas[3], "", styleBottomArea);
             GUI.EndGroup();
         }
 
