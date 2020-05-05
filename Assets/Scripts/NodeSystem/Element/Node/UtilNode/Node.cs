@@ -27,6 +27,7 @@ namespace NodeSystem
         private List<ConnectionPoint> inputPoints;
 		private List<ConnectionPoint> outputPoints;
 
+        public Action OnChange = delegate { };
 
 		public Node()
 		{
@@ -108,7 +109,10 @@ namespace NodeSystem
             point.Init(position, this.eventHandeler);
 		}
 
-		public abstract void CalculateChange();
+        public virtual void CalculateChange()
+        {
+            OnChange?.Invoke();
+        }
 
 		public override void Draw()
 		{

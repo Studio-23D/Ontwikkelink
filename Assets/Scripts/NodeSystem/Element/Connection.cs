@@ -72,10 +72,14 @@ namespace NodeSystem {
 			isConnected = true;
 			eventHandeler.selectedPropertyPoint = null;
 			this.SetValue();
+			outPoint.node.OnChange += this.SetValue;
+			outPoint.node.OnChange += inPoint.node.CalculateChange;
 		}
 
 		private void Disconect()
 		{
+			outPoint.node.OnChange -= this.SetValue;
+			outPoint.node.OnChange -= inPoint.node.CalculateChange;
 			inPoint?.Disconect();
 			outPoint?.Disconect();
 		}

@@ -26,14 +26,6 @@ namespace NodeSystem
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 65));
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
-            Debug.Log("1 " + nodeAreas[0].y);
-
-            for (int i = 0; i < nodeAreas.Count; i++)
-            {
-                if(i > 0)
-                Debug.Log(nodeAreas[i - 1].y);
-            }
-
             rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
         }
 

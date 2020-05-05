@@ -34,8 +34,6 @@ namespace NodeSystem
 
             GUI.Box(nodeAreas[2], "", styleBottomArea);
 
-            Debug.Log(hair);
-
             GUI.EndGroup();
         }
 
