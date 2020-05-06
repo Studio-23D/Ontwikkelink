@@ -70,21 +70,17 @@ namespace NodeSystem
             {
                 for (int h = 0; h < pattern.height; h++)
                 {
-                    //Debug.Log(pattern.GetPixel(w, h));
                     if (pattern.GetPixel(w, h).r >= .5)
                     {
                         patternTexture.SetPixel(w, h, colorR);
-                        //Debug.Log("setPixel R");
                     }
                     else if (pattern.GetPixel(w, h).g >= .5)
                     {
                         patternTexture.SetPixel(w, h, colorG);
-                        //Debug.Log("setPixel G");
                     }
                     else if (pattern.GetPixel(w, h).b >= .5)
                     {
                         patternTexture.SetPixel(w, h, colorB);
-                        //Debug.Log("setPixel B");
                     }
                 }
             }
