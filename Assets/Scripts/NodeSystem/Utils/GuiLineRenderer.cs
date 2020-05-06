@@ -16,7 +16,7 @@ public static class GuiLineRenderer
         float angle = Mathf.Atan2(pointB.y - pointA.y, pointB.x - pointA.x) * 180f / Mathf.PI;
         float length = Vector2.Distance(pointA, pointB);
         
-        GUIUtility.RotateAroundPivot(angle, pointA);
+        GUIUtility.RotateAroundPivot(angle, pointA + new Vector2(0, width/2));
         GUI.DrawTexture(new Rect(pointA.x, pointA.y, length, width), lineTex);
 
         GUI.matrix = matrixBackup;

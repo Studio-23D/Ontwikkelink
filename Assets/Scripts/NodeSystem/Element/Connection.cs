@@ -82,10 +82,10 @@ namespace NodeSystem {
 
 		public override void Draw()
 		{
-			Vector2 positionA = (outPoint != null) ? outPoint.Position : SystemEventHandeler.mousePosition; 
-			Vector2 positionB = (inPoint != null) ? inPoint.Position : SystemEventHandeler.mousePosition;
+			Vector2 positionA = (outPoint != null) ? outPoint.Position + outPoint.Size / new Vector2(2 ,2) : SystemEventHandeler.mousePosition; 
+			Vector2 positionB = (inPoint != null) ? inPoint.Position + inPoint.Size / new Vector2(2, 2) : SystemEventHandeler.mousePosition;
 
-			GuiLineRenderer.DrawLine(positionA, positionB, Color.black, 1);
+			GuiLineRenderer.DrawLine(positionA, positionB, Color.black, 2);
 		}
 	}
 }

@@ -18,6 +18,8 @@ namespace NodeSystem
         [InputPropperty]
         public GameObject feet;
 
+        private Character character;
+
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
             base.Init(position, eventHandeler);
@@ -28,13 +30,16 @@ namespace NodeSystem
             rect.size = new Vector2(200, nodeAreas[nodeAreas.Count-1].y + nodeAreas[nodeAreas.Count-1].height);
         }
 
+        public void SetCharakterScript(Character character)
+        {
+            this.character = character;
+        }
+
         public override void Draw()
         {
             base.Draw();
 
             GUI.Box(nodeAreas[2], "", styleBottomArea);
-
-            Debug.Log(hair);
 
             GUI.EndGroup();
         }

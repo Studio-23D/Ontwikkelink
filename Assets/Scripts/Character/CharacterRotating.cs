@@ -20,19 +20,9 @@ public class CharacterRotating : MonoBehaviour
 
 	[SerializeField]
 	private Transform characterContainer;
-	[SerializeField]
-	private string characterTag = "Character";
-
-	private GameObject character;
 
     private void Update()
     {
-		if (!character)
-		{
-			character = GameObject.FindGameObjectWithTag(characterTag);
-			return;
-		}
-
 		if (buttonHeldDown)
         {
             RotateByButton();
@@ -42,7 +32,6 @@ public class CharacterRotating : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) { savedMousePosition = Input.mousePosition; }
             if (Input.GetMouseButton(0) && rect.rect.Contains(new Vector2(Input.mousePosition.x - 1100, Input.mousePosition.y))) { RotateByMouse(); }
         }
-
     }
 
     public void HoldRotateButton(string directionParameter)
@@ -61,12 +50,12 @@ public class CharacterRotating : MonoBehaviour
             savedMousePosition = Input.mousePosition;
 
             Vector3 axis = Quaternion.AngleAxis(-90f, Vector3.forward) * delta;
-            character.transform.rotation = Quaternion.AngleAxis(delta.magnitude * 0.5f, axis) * character.transform.rotation;
+            characterContainer.transform.rotation = Quaternion.AngleAxis(delta.magnitude * 0.5f, axis) * characterContainer.transform.rotation;
         }
         else if (!freeRotation)
         {
             float rotationX = Input.GetAxis("Mouse X") * rotateMomentum * Mathf.Deg2Rad;
-            character.transform.Rotate(Vector3.down, rotationX);
+            characterContainer.transform.Rotate(Vector3.down, rotationX);
         }
     }
 
@@ -75,10 +64,10 @@ public class CharacterRotating : MonoBehaviour
         switch (direction)
         {
             case "Left":
-                character.transform.Rotate(Vector3.down, -rotateMomentum * Time.deltaTime);
+                characterContainer.transform.Rotate(Vector3.down, -rotateMomentum * Time.deltaTime);
                 break;
             case "Right":
-                character.transform.Rotate(Vector3.down, rotateMomentum * Time.deltaTime);
+                characterContainer.transform.Rotate(Vector3.down, rotateMomentum * Time.deltaTime);
                 break;
         }
     }

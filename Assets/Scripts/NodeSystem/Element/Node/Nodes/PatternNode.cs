@@ -37,16 +37,18 @@ namespace NodeSystem
                 };
                 dropdownElements.Add(element);
             }
+            chosenValue = dropdownElements[0].value;
+            pattern = chosenValue as Texture2D;
 
-            //pattern = chosenValue as Texture2D;
-
-            //patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
+            patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
 
             Graphics.CopyTexture(pattern, patternTexture);
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
             rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+            originalSize = new Vector2(Size.x, Size.y);
+            dropdownSize = new Vector2(Size.x + 200, Size.y);
         }
 
         public override void Draw()
@@ -59,7 +61,7 @@ namespace NodeSystem
         }
       
         public override void CalculateChange()
-        {  /*
+        {  
             pattern = chosenValue as Texture2D;
             patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
             Graphics.CopyTexture(pattern, patternTexture);
@@ -86,7 +88,7 @@ namespace NodeSystem
                     }
                 }
             }
-            patternTexture.Apply();*/
+            patternTexture.Apply();
         }
         }
 }

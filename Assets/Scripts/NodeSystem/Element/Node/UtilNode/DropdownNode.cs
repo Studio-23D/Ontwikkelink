@@ -16,9 +16,12 @@ namespace NodeSystem
 
         protected List<DropdownElement> dropdownElements = new List<DropdownElement>();
 
-        //protected object chosenValue;
+        protected object chosenValue;
 
         protected Rect dropdrownRect;
+
+        protected Vector2 dropdownSize;
+        protected Vector2 originalSize;
 
         private bool toggleDropdown = false;
 
@@ -26,12 +29,9 @@ namespace NodeSystem
         {
             base.Init(position, eventHandeler);
 
-            //chosenValue = dropdownElements[0].value;
-
             dropdrownRect = new Rect(200, 100, 200, 200);
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 230));
-            
         }
 
         public override void Draw()
@@ -43,9 +43,12 @@ namespace NodeSystem
             {
                 ToggleDropdown();
             }
+            rect.size = originalSize;
 
             if (!toggleDropdown)
              return;
+
+            rect.size = dropdownSize;
 
             GUI.Box(dropdrownRect, "");
             for(int i = 0; i < dropdownElements.Count; i++)
@@ -53,7 +56,7 @@ namespace NodeSystem
                 if(GUI.Button(new Rect(200 + (i % 2) * (200 / 2), dropdrownRect.position.y + Mathf.FloorToInt(i / 2) * (dropdrownRect.height / 2), dropdrownRect.width / 2, dropdrownRect.height / 2), dropdownElements[i].visual))
                 {
                     ToggleDropdown();
-                    //chosenValue = dropdownElements[i].value;
+                    chosenValue = dropdownElements[i].value;
                 }
             }
         }

@@ -6,15 +6,16 @@ namespace NodeSystem
 {
     public class NodeManager : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject charackterEdit;
+
         protected Rect rect;
 
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
         //protected Menu menu;
 
-        protected GameObject charackterEdit;
         protected MasterNode masterNode;
-        protected PatternNode patternNode;
 
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
@@ -27,11 +28,8 @@ namespace NodeSystem
 
             masterNode = new MasterNode();
             masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
+            //masterNode.SetCharakterScript(charackterEdit.GetComponent<Character>());
             elements.Add(masterNode);
-
-            patternNode = new PatternNode();
-            patternNode.Init(new Vector2(rect.width / 2, rect.height / 2), eventHandeler);
-            elements.Add(patternNode);
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
             SystemEventHandeler.OnElementCreate += (Element element) =>
@@ -78,7 +76,6 @@ namespace NodeSystem
                     Node node = element as Node;
                     node.ProcessEvents(Event.current);
                 }
-                
             }
 
             if (GUILayout.Button("Compile"))
@@ -92,19 +89,6 @@ namespace NodeSystem
             if (GUILayout.Button("ColorNode"))
             {
                 InstantiateNode(new ColorNode());
-            }
-            
-            if (GUILayout.Button("PaternNode red to blue"))
-            {
-                patternNode.colorR = Color.blue;
-            }
-            if (GUILayout.Button("PaternNode red to green"))
-            {
-                patternNode.colorR = Color.green;
-            }
-            if (GUILayout.Button("PaternNode red to red"))
-            {
-                patternNode.colorR = Color.red;
             }
 
             if (GUILayout.Button("PaternNode"))
