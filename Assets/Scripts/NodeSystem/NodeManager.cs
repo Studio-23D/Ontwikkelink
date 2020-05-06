@@ -78,14 +78,6 @@ namespace NodeSystem
                 }
             }
 
-            if (GUILayout.Button("Compile"))
-            {
-                foreach(Node node in elements)
-                {
-                    node.CalculateChange();
-                }
-            }
-
             if (GUILayout.Button("ColorNode"))
             {
                 InstantiateNode(new ColorNode());
