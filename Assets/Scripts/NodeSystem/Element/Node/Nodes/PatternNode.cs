@@ -90,5 +90,5 @@ namespace NodeSystem
             }
             patternTexture.Apply();
         }
-        }
+    }
 }

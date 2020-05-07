@@ -9,11 +9,6 @@ namespace NodeSystem
 		[OutputPropperty]
 		public Color colorOut = Color.white;
 
-		public override void CalculateChange()
-		{
-            Debug.Log(colorOut);
-		}
-
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
 			base.Init(position, eventHandeler);
@@ -47,6 +42,11 @@ namespace NodeSystem
             GUI.Box(nodeAreas[3], "", styleBottomArea);
 
             GUI.EndGroup();
+        }
+
+        public override void CalculateChange()
+        {
+            Debug.Log(colorOut);
         }
     }
 }

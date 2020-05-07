@@ -1,26 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-	#region PUBLIC_STRUCTS
+    [SerializeField] private Transform hairPosition;
+    [SerializeField] private Transform torsoPosition;
+    [SerializeField] private Transform legsPosition;
+    [SerializeField] private Transform feetPosition;
 
-	[Serializable]
-	public struct Body
-	{
-		[Header("References")]
-		[Tooltip("Holds the hair object")]
-		public Transform hair;
-		public Transform torso;
-		public Transform legs;
-		public Transform feet;
-	}
+    public Dictionary<string, Transform> appearenceItemLocations = new Dictionary<string, Transform>();
 
-	#endregion
-
-	public Body GetBody { get { return body; } }
-
-	[SerializeField]
-	[Tooltip("Holds all container references")]
-	private Body body;
+    private void OnEnable()
+    {
+        appearenceItemLocations.Add("hair", hairPosition);
+        appearenceItemLocations.Add("torso", torsoPosition);
+        appearenceItemLocations.Add("legs", legsPosition);
+        appearenceItemLocations.Add("feet", feetPosition);
+    }
 }

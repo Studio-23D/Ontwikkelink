@@ -7,7 +7,7 @@ namespace NodeSystem
     public class NodeManager : MonoBehaviour
     {
         [SerializeField]
-        private GameObject charackterEdit;
+        private CharacterAppearence characterAppearence;
 
         protected Rect rect;
 
@@ -15,7 +15,7 @@ namespace NodeSystem
         protected SystemEventHandeler eventHandeler;
         //protected Menu menu;
 
-        protected MasterNode masterNode;
+        protected PersonageNode masterNode;
 
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
@@ -26,9 +26,9 @@ namespace NodeSystem
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
 
-            masterNode = new MasterNode();
+            masterNode = new PersonageNode();
             masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            //masterNode.SetCharakterScript(charackterEdit.GetComponent<Character>());
+            masterNode.characterAppearence = characterAppearence;
             elements.Add(masterNode);
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
@@ -75,14 +75,6 @@ namespace NodeSystem
                 {
                     Node node = element as Node;
                     node.ProcessEvents(Event.current);
-                }
-            }
-
-            if (GUILayout.Button("Compile"))
-            {
-                foreach(Node node in elements)
-                {
-                    node.CalculateChange();
                 }
             }
 
