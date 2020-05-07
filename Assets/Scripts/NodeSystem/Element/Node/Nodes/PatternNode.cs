@@ -89,6 +89,7 @@ namespace NodeSystem
                 }
             }
             patternTexture.Apply();
+            base.CalculateChange();
         }
     }
 }

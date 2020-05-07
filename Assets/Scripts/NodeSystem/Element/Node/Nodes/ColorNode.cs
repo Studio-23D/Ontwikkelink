@@ -9,6 +9,12 @@ namespace NodeSystem
 		[OutputPropperty]
 		public Color colorOut = Color.white;
 
+		public override void CalculateChange()
+		{
+
+            base.CalculateChange();
+		}
+
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
 			base.Init(position, eventHandeler);
@@ -29,24 +35,22 @@ namespace NodeSystem
             if(GUI.Button(new Rect(0, nodeAreas[2].y + 5, nodeAreas[2].width, 20), "set color red"))
             {
                 colorOut = Color.red;
+                this.CalculateChange();
             }
             if (GUI.Button(new Rect(0, nodeAreas[2].y + 25, nodeAreas[2].width, 20), "set color Green"))
             {
                 colorOut = Color.green;
+                this.CalculateChange();
             }
             if (GUI.Button(new Rect(0, nodeAreas[2].y + 45, nodeAreas[2].width, 20), "set color Blue"))
             {
                 colorOut = Color.blue;
+                this.CalculateChange();
             }
 
             GUI.Box(nodeAreas[3], "", styleBottomArea);
 
             GUI.EndGroup();
-        }
-
-        public override void CalculateChange()
-        {
-            Debug.Log(colorOut);
         }
     }
 }
