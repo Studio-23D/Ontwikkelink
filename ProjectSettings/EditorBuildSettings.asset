@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 89c2ae1ec43f70241a34213cce28a474
+  - enabled: 1
+    path: Assets/Scenes/Wesley/NodeField.unity
+    guid: 04381a618f0971b4bb5998418f463174
   m_configObjects: {}
