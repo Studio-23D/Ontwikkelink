@@ -7,7 +7,7 @@ namespace NodeSystem
     public class NodeManager : MonoBehaviour
     {
         [SerializeField]
-        private CharacterAppearence characterAppearence;
+        private CharacterAppearance characterAppearance;
 
         protected Rect rect;
 
@@ -28,7 +28,7 @@ namespace NodeSystem
 
             masterNode = new PersonageNode();
             masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            masterNode.characterAppearence = characterAppearence;
+            masterNode.characterAppearance = characterAppearance;
             elements.Add(masterNode);
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
@@ -83,9 +83,19 @@ namespace NodeSystem
                 InstantiateNode(new ColorNode());
             }
 
-            if (GUILayout.Button("PaternNode"))
+            if (GUILayout.Button("PatternNode"))
             {
                 InstantiateNode(new PatternNode());
+            }
+
+            if (GUILayout.Button("TestNode"))
+            {
+                InstantiateNode(new TestNode());
+            }
+
+            if (GUILayout.Button("Compile"))
+            {
+                masterNode.CalculateChange();
             }
         }
     }

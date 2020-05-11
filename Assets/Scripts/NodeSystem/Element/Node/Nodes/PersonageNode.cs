@@ -19,9 +19,7 @@ namespace NodeSystem
         [InputPropperty]
         public GameObject feet;
 
-        public Dictionary<string, GameObject> appearenceItems = new Dictionary<string, GameObject>();
-
-        public CharacterAppearence characterAppearence;
+        public CharacterAppearance characterAppearance;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
@@ -31,11 +29,6 @@ namespace NodeSystem
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
             rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-
-            appearenceItems.Add("hair", hair);
-            appearenceItems.Add("torso", torso); 
-            appearenceItems.Add("legs", legs);
-            appearenceItems.Add("feet", feet);
         }
 
         public override void Draw()
@@ -49,13 +42,31 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
-            foreach(KeyValuePair<string, GameObject> appearenceItem in appearenceItems)
+            if (hair != null)
             {
-                if(appearenceItem.Value != null)
-                {
-                    characterAppearence.SetAppearenceItem(appearenceItem);
-                }
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Hair, hair));
             }
+            if (torso != null)
+            {
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Torso, torso));
+            }
+            if (legs != null)
+            {
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Legs, legs));
+            }
+            if (feet != null)
+            {
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Feet, feet));
+            }
+            /*
+            foreach(KeyValuePair<AppearanceItemType, GameObject> appearanceItem in appearanceItems)
+            {
+                if(appearanceItem.Value != null)
+                {
+                    characterAppearance.SetAppearanceItem(appearanceItem);
+                }
+            }*/
+            base.CalculateChange();
         }
     }
 }

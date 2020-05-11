@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private NodeManager nodeManager;
     [SerializeField] private ColorFader colorFader;
-    [SerializeField] private CharacterAppearence characterAppearence;
+    [SerializeField] private CharacterAppearance characterAppearance;
     [SerializeField] private GenderHandler genderHandler;
 
     [SerializeField] private Button buttonFemale;
@@ -25,20 +25,20 @@ public class GameManager : MonoBehaviour
 
     private void InitFemale()
     {
-        genderHandler.SetGender(GMFemale);
+        character = genderHandler.SetGender(GMFemale);
         Init();
     }
 
     private void InitMale()
     {
-        genderHandler.SetGender(GMMale);
+        character = genderHandler.SetGender(GMMale);
         Init();
     }
 
     private void Init()
     {
         nodeManager.Init();
-        characterAppearence.Character = genderHandler.character.GetComponent<Character>();
+        characterAppearance.Character = character.GetComponent<Character>();
 
         colorFader.StartFadeOut();
     }

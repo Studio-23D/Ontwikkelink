@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAppearence: {fileID: 595484757}
+  characterAppearance: {fileID: 595484757}
 --- !u!223 &1052945808
 Canvas:
   m_ObjectHideFlags: 0
@@ -2475,7 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAppearence: {fileID: 0}
+  characterAppearance: {fileID: 0}
 --- !u!114 &1655085060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeManager: {fileID: 1052945807}
   colorFader: {fileID: 1874208625}
-  characterAppearence: {fileID: 595484757}
+  characterAppearance: {fileID: 595484757}
   genderHandler: {fileID: 595484759}
   buttonFemale: {fileID: 1082765096195609903}
   buttonMale: {fileID: 1082765095959588489}

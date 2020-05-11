@@ -9,13 +9,13 @@ public class Character : MonoBehaviour
     [SerializeField] private Transform legsPosition;
     [SerializeField] private Transform feetPosition;
 
-    public Dictionary<string, Transform> appearenceItemLocations = new Dictionary<string, Transform>();
+    public Dictionary<AppearanceItemType, Transform> appearenceItemLocations = new Dictionary<AppearanceItemType, Transform>();
 
     private void OnEnable()
     {
-        appearenceItemLocations.Add("hair", hairPosition);
-        appearenceItemLocations.Add("torso", torsoPosition);
-        appearenceItemLocations.Add("legs", legsPosition);
-        appearenceItemLocations.Add("feet", feetPosition);
+        appearenceItemLocations.Add(AppearanceItemType.Hair, hairPosition);
+        appearenceItemLocations.Add(AppearanceItemType.Torso, torsoPosition);
+        appearenceItemLocations.Add(AppearanceItemType.Legs, legsPosition);
+        appearenceItemLocations.Add(AppearanceItemType.Feet, feetPosition);
     }
 }
