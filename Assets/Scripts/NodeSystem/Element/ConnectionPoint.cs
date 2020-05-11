@@ -101,8 +101,6 @@ namespace NodeSystem
                     GUI.Label(new Rect(base.Position.x - 30, base.Position.y - 5, 30, 20), Value.Name);
                     break;
             }
-            //temp
-            connection?.SetValue();
         }
 
         public override void Destroy()

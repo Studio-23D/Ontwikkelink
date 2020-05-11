@@ -69,7 +69,7 @@ namespace NodeSystem
             draggableTexture = new Texture2D(1, 1);
             draggableTexture.SetPixel(0, 0, Color.black);
             draggableTexture.Apply();
-            
+
             if (GUI.Button(draggableRect, draggableTexture))
             {
                 isSelectingColor = !isSelectingColor;
@@ -77,7 +77,7 @@ namespace NodeSystem
             }
 
             SelectColor();
-            SetTexture();
+            SetPreview();
 
             GUI.Box(nodeAreas[4], "", styleBottomArea);
 
@@ -101,7 +101,7 @@ namespace NodeSystem
             }
         }
 
-        private void SetTexture()
+        private void SetPreview()
         {
             previewColor = selectionColor;
             previewTexture.SetPixel(0, 0, previewColor);

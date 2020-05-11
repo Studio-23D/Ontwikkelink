@@ -567,26 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d521965d569574b9772517831303b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setDefault: 0
-  maxTorsoItems: 1
-  maxLegsItems: 1
-  maxFeetItems: 1
-  testHairStyles:
-  - {fileID: 0}
-  - {fileID: 131713795155265158, guid: 9d6c19ba8001a964fa59c0cf1774a72d, type: 3}
-  - {fileID: 5345697641781758655, guid: 0a381a45ecd9c0a419d7a9c50900f343, type: 3}
-  testTorsoItems:
-  - {fileID: 0}
-  - {fileID: 2866576578631941762, guid: 0d6d65fb55d0f2f47b3e4f97eaae2ed6, type: 3}
-  - {fileID: 2470417886961262663, guid: cd2b003c6122ea14a9f8c4d4c13c8f5b, type: 3}
-  - {fileID: 3444851486010211028, guid: f07e5be171d0d994181ed3c6fcf59689, type: 3}
-  testLegsItems:
-  - {fileID: 0}
-  - {fileID: 5971348296571010364, guid: 945e31a520edd0a4c90b5d40fa83311f, type: 3}
-  - {fileID: 8668500719709611664, guid: be361277c7099114d8bbd64f9f88642d, type: 3}
-  testFeetItems:
-  - {fileID: 0}
-  - {fileID: 7019107700212087587, guid: 1fc871984d6f40b4bb6656763f9f1603, type: 3}
 --- !u!114 &595484758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charackterEdit: {fileID: 0}
+  characterAppearance: {fileID: 595484757}
 --- !u!223 &1052945808
 Canvas:
   m_ObjectHideFlags: 0
@@ -2495,7 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1755dc2aa047524abbc3291b1cd24c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charackterEdit: {fileID: 0}
+  characterAppearance: {fileID: 0}
 --- !u!114 &1655085060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2737,6 +2717,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734358755}
   m_CullTransparentMesh: 0
+--- !u!1 &1812388569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1812388571}
+  - component: {fileID: 1812388570}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1812388570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812388569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286e09f8b98f473408a0d6d74a60bca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeManager: {fileID: 1052945807}
+  colorFader: {fileID: 1874208625}
+  characterAppearance: {fileID: 595484757}
+  genderHandler: {fileID: 595484759}
+  buttonFemale: {fileID: 1082765096195609903}
+  buttonMale: {fileID: 1082765095959588489}
+  GMFemale: {fileID: 112226802568834444, guid: 9f79ec104c2e3de49bf5ca4ae8e68b31, type: 3}
+  GMMale: {fileID: 112226802568834444, guid: 9f79ec104c2e3de49bf5ca4ae8e68b31, type: 3}
+--- !u!4 &1812388571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812388569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1874208622
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,18 +3164,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1082765095959588490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1655085059}
-        m_MethodName: Init
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Male
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1082765095959588490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3399,41 +3419,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1082765096195609888}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1874208625}
-        m_MethodName: StartFadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Female
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1052945807}
-        m_MethodName: Init
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 595484759}
-        m_MethodName: SetGender
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4023381834798882719, guid: 9f79ec104c2e3de49bf5ca4ae8e68b31,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1082765096241711170
 GameObject:
   m_ObjectHideFlags: 0

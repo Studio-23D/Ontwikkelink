@@ -57,6 +57,7 @@ namespace NodeSystem
                 {
                     ToggleDropdown();
                     chosenValue = dropdownElements[i].value;
+                    this.CalculateChange();
                 }
             }
         }
