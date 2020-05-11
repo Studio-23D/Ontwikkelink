@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4023381834798882719}
   - component: {fileID: 6276542370424626565}
   m_Layer: 0
-  m_Name: FCharacter
+  m_Name: MCharacter
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7890725230369933424}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -332,7 +332,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7890725230369933424}
-  m_Mesh: {fileID: 7935339198810924699, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: -9133448521545676913, guid: aaca6e07e2bec8f4a85cc3f14cabcd99, type: 3}
 --- !u!23 &5877540444733619763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ada67230ba45cb04bb9ebf13d7a32a49, type: 2}
+  - {fileID: 2100000, guid: 92b27c60ac9d47a4cab8475883ad020c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
