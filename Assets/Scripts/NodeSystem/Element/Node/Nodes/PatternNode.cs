@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public class PatternNode : DropdownNode
+    public class PatternNode : DropdownNode<Texture2D>
     {
         [InputPropperty]
         public Color colorR = Color.red;
@@ -23,32 +23,27 @@ namespace NodeSystem
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
-            base.Init(position, eventHandeler);
-
             name = "Patronen Node";
             dropdownName = "Patronen";
 
             foreach (Texture2D texture in Resources.LoadAll("Patterns", typeof(Texture2D)))
             {
-                DropdownElement element = new DropdownElement
+                DropdownElement<Texture2D> element = new DropdownElement<Texture2D>
                 {
                     visual = texture,
-                    value = texture
+                    value = texture,
                 };
                 dropdownElements.Add(element);
             }
-            chosenValue = dropdownElements[0].value;
-            pattern = chosenValue as Texture2D;
 
-            patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
+            base.Init(position, eventHandeler);
 
-            Graphics.CopyTexture(pattern, patternTexture);
+            CalculateChange();
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
             rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
             originalSize = new Vector2(Size.x, Size.y);
-            dropdownSize = new Vector2(Size.x + 200, Size.y);
         }
 
         public override void Draw()
@@ -61,30 +56,8 @@ namespace NodeSystem
         }
       
         public override void CalculateChange()
-        {  
-            pattern = chosenValue as Texture2D;
-            patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
-            Graphics.CopyTexture(pattern, patternTexture);
-            
-            for (int w = 0; w < pattern.width; w++)
-            {
-                for (int h = 0; h < pattern.height; h++)
-                {
-                    if (pattern.GetPixel(w, h).r >= .5)
-                    {
-                        patternTexture.SetPixel(w, h, colorR);
-                    }
-                    else if (pattern.GetPixel(w, h).g >= .5)
-                    {
-                        patternTexture.SetPixel(w, h, colorG);
-                    }
-                    else if (pattern.GetPixel(w, h).b >= .5)
-                    {
-                        patternTexture.SetPixel(w, h, colorB);
-                    }
-                }
-            }
-            patternTexture.Apply();
+        {
+            patternTexture = chosenValue;
             base.CalculateChange();
         }
     }

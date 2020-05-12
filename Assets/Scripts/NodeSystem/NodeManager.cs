@@ -87,6 +87,11 @@ namespace NodeSystem
             {
                 InstantiateNode(new PatternNode());
             }
+
+            if (GUILayout.Button("HairNode"))
+            {
+                InstantiateNode(new HairNode());
+            }
         }
     }
 }
