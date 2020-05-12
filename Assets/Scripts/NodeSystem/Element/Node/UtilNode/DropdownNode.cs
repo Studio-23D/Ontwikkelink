@@ -88,8 +88,6 @@ namespace NodeSystem
                 y = ElementSize.y * (dropdownElements.Count / rowLimit)
             };
 
-            Debug.Log(dropdownElementSize);
-
             dropdrownRect = new Rect(Size.x, Size.y / 4, dropdownElementSize.x, dropdownElementSize.y);
             this.dropdownSize = Size + dropdownElementSize * rowLimit;
         }

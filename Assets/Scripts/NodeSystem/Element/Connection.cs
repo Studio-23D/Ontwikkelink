@@ -73,6 +73,7 @@ namespace NodeSystem {
 			this.SetValue();
 			outPoint.node.OnChange += this.SetValue;
 			outPoint.node.OnChange += inPoint.node.CalculateChange;
+			InPoint.node.CalculateChange();
 		}
 
 		private void Disconect()

@@ -8,16 +8,16 @@ namespace NodeSystem
     public class PersonageNode : Node
     {
         [InputPropperty]
-        public GameObject hair;
+        public ApperanceItem hair;
 
         [InputPropperty]
-        public GameObject torso;
+        public ApperanceItem torso;
 
         [InputPropperty]
-        public GameObject legs;
+        public ApperanceItem legs;
 
         [InputPropperty]
-        public GameObject feet;
+        public ApperanceItem feet;
 
         public CharacterAppearance characterAppearance;
 
@@ -44,28 +44,20 @@ namespace NodeSystem
         {
             if (hair != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Hair, hair));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Hair, hair));
             }
             if (torso != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Torso, torso));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Torso, torso));
             }
             if (legs != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Legs, legs));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Legs, legs));
             }
             if (feet != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, GameObject>(AppearanceItemType.Feet, feet));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Feet, feet));
             }
-            /*
-            foreach(KeyValuePair<AppearanceItemType, GameObject> appearanceItem in appearanceItems)
-            {
-                if(appearanceItem.Value != null)
-                {
-                    characterAppearance.SetAppearanceItem(appearanceItem);
-                }
-            }*/
             base.CalculateChange();
         }
     }

@@ -12,7 +12,7 @@ public class CharacterAppearance : MonoBehaviour
         set { character = value; }
     }
 
-    public void SetAppearanceItem(KeyValuePair<AppearanceItemType, GameObject> appearanceItem)
+    public void SetAppearanceItem(KeyValuePair<AppearanceItemType, ApperanceItem> appearanceItem)
     {
         if (character.appearenceItemLocations[appearanceItem.Key].childCount != 0)
         {

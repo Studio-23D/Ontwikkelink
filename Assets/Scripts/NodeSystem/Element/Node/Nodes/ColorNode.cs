@@ -12,7 +12,8 @@ namespace NodeSystem
 		public override void CalculateChange()
 		{
             base.CalculateChange();
-		}
+            Debug.Log("Ik doe mijn ding2");
+        }
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
