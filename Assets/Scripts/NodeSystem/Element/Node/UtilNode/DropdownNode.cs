@@ -84,7 +84,7 @@ namespace NodeSystem
             toggleDropdown = !toggleDropdown;
             Vector2 dropdownElementSize = new Vector2
             {
-                x = ElementSize.x,
+                x = ElementSize.x * rowLimit,
                 y = ElementSize.y * (dropdownElements.Count / rowLimit)
             };
 
