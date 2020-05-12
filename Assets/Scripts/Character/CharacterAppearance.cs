@@ -16,7 +16,7 @@ public class CharacterAppearance : MonoBehaviour
     {
         if (character.appearenceItemLocations[appearanceItem.Key].childCount != 0)
         {
-            Destroy(character.appearenceItemLocations[appearanceItem.Key].GetChild(0));
+            Destroy(character.appearenceItemLocations[appearanceItem.Key].GetChild(0).gameObject);
         }
         Instantiate(appearanceItem.Value, character.appearenceItemLocations[appearanceItem.Key]);
     }
