@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ApperanceItem : MonoBehaviour
 {
@@ -10,9 +8,14 @@ public class ApperanceItem : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        //print(gameObject.GetComponent<MeshRenderer>().sharedMaterial.GetColor("BaseColor"));
-        this.gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetColor("BaseColor", color);
-        //print(gameObject.GetComponent<MeshRenderer>().sharedMaterial.GetColor("BaseColor"));
-
+        this.gameObject.GetComponent<Renderer>().sharedMaterial.SetColor("BaseColor", color);
+    }
+    public void SetPattern(Texture2D texture)
+    {
+        this.gameObject.GetComponent<Renderer>().sharedMaterial.SetTexture("Pattern", texture);
+    }
+    public void SetTextile(Texture2D texture)
+    {
+        this.gameObject.GetComponent<Renderer>().sharedMaterial.SetTexture("Textile", texture);
     }
 }

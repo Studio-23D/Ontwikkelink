@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Torso
-  m_Shader: {fileID: -6465566751694194690, guid: ee5b79ec92b1f5045938baab5a1684ce,
+  m_Shader: {fileID: -6465566751694194690, guid: c0adc4065dcfd51499d75cb2eb892e54,
     type: 3}
   m_ShaderKeywords: Color_C67D4219 Texture2D_23DA1713
   m_LightmapFlags: 4
@@ -20,6 +20,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Normal:
+        m_Texture: {fileID: 2800000, guid: 0b7e380e5fd4fe74289137aece558094, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Pattern:
+        m_Texture: {fileID: 2800000, guid: 0b7e380e5fd4fe74289137aece558094, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Textile:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_23DA1713:
         m_Texture: {fileID: 2800000, guid: b8ca1cb4f2b71bf459083b206f732b0e, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -76,6 +88,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DLOD_D4A16CA_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -109,6 +125,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - Color_451E5A82: {r: 1, g: 1, b: 1, a: 1}
     - Color_AB0FD0D: {r: 0.7169812, g: 0.3889285, b: 0.3889285, a: 0}
     - Color_ABDE12DD: {r: 0.7169812, g: 0.3889285, b: 0.3889285, a: 0}

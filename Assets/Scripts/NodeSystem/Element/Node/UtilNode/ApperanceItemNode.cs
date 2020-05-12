@@ -10,11 +10,11 @@ namespace NodeSystem
 			get;
 		}
 
-		[OutputPropperty]
-		public ApperanceItem apperanceItem;
+        [InputPropperty]
+        public Color color = Color.white;
 
-		[InputPropperty]
-		public Color color = Color.white;
+        [OutputPropperty]
+		public ApperanceItem apperanceItem;
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{

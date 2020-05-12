@@ -18,6 +18,6 @@ public class CharacterAppearance : MonoBehaviour
         {
             Destroy(character.appearenceItemLocations[appearanceItem.Key].GetChild(0).gameObject);
         }
-        ApperanceItem test = Instantiate(appearanceItem.Value, character.appearenceItemLocations[appearanceItem.Key]);
+        Instantiate(appearanceItem.Value, character.appearenceItemLocations[appearanceItem.Key]);
     }
 }
