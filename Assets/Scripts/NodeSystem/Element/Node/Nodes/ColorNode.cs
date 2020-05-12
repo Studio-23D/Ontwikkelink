@@ -11,7 +11,6 @@ namespace NodeSystem
 
 		public override void CalculateChange()
 		{
-
             base.CalculateChange();
 		}
 
