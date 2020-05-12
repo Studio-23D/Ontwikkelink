@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace NodeSystem {
-	public class TorsoClothingNode : ApperanceItemNode
+	public class TorsoClothingNode : AppearanceItemNode
 	{
 		[InputPropperty]
 		public Texture2D patern;
