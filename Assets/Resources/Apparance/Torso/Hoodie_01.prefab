@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2866576578631941762}
   - component: {fileID: 1605668642219342249}
   - component: {fileID: 7081472461544268469}
+  - component: {fileID: 484524940240147053}
   m_Layer: 0
   m_Name: Hoodie_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &484524940240147053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921598632145789064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc65231556041142bca916dc603a518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: e883b8b9158666a468d58156ae5f8c29, type: 3}

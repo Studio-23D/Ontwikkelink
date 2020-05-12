@@ -92,6 +92,11 @@ namespace NodeSystem
             {
                 InstantiateNode(new HairNode());
             }
+
+            if (GUILayout.Button("TorsoClothingNode"))
+            {
+                InstantiateNode(new TorsoClothingNode());
+            }
         }
     }
 }

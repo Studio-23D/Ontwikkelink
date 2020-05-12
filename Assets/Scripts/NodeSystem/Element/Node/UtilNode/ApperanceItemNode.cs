@@ -14,7 +14,7 @@ namespace NodeSystem
 		public ApperanceItem apperanceItem;
 
 		[InputPropperty]
-		public Color color;
+		public Color color = Color.white;
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
@@ -41,6 +41,8 @@ namespace NodeSystem
 		public override void CalculateChange()
 		{
 			apperanceItem = chosenValue;
+
+			apperanceItem.SetColor(color);
 
 			base.CalculateChange();
 		}

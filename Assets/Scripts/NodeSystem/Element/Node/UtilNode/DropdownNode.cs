@@ -48,7 +48,7 @@ namespace NodeSystem
 
             rect.size = dropdownSize;
 
-            float dropdownWidthCap = this.dropdownSize.x;
+            float dropdownWidthCap = dropdrownRect.position.x + rowLimit * ElementSize.x;
 
             GUI.Box(dropdrownRect, "");
             int xIndex = 0;
