@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-	public abstract class ApperanceItemNode : DropdownNode <ApperanceItem>
+	public abstract class AppearanceItemNode : DropdownNode <ApperanceItem>
 	{
 		protected abstract string ResourcePath {
 			get;
