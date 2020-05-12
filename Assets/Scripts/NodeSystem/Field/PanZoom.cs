@@ -103,7 +103,7 @@ public class PanZoom : MonoBehaviour
 		Vector3 direction = startPosition - inputManager.GetTouchPos;
 
 #if UNITY_EDITOR
-		direction = new Vector3(direction.x, -direction.y, direction.z);
+		direction = new Vector3(-direction.x, -direction.y, direction.z);
 #else
 		direction = new Vector3(direction.x, -direction.y, direction.z);
 #endif

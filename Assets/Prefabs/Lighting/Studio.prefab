@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 8814892173555444498}
   - component: {fileID: 2983706022997088235}
   m_Layer: 0
-  m_Name: Light Room
+  m_Name: LightRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,26 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d521965d569574b9772517831303b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setDefault: 0
-  maxTorsoItems: 1
-  maxLegsItems: 1
-  maxFeetItems: 1
-  testHairStyles:
-  - {fileID: 0}
-  - {fileID: 131713795155265158, guid: 9d6c19ba8001a964fa59c0cf1774a72d, type: 3}
-  - {fileID: 5345697641781758655, guid: 0a381a45ecd9c0a419d7a9c50900f343, type: 3}
-  testTorsoItems:
-  - {fileID: 0}
-  - {fileID: 1410222765621619550, guid: 0d6d65fb55d0f2f47b3e4f97eaae2ed6, type: 3}
-  - {fileID: 2306252166571112667, guid: cd2b003c6122ea14a9f8c4d4c13c8f5b, type: 3}
-  - {fileID: 9091305649468839615, guid: f07e5be171d0d994181ed3c6fcf59689, type: 3}
-  testLegsItems:
-  - {fileID: 0}
-  - {fileID: 5211266902540834901, guid: 945e31a520edd0a4c90b5d40fa83311f, type: 3}
-  - {fileID: 5354353059797877990, guid: be361277c7099114d8bbd64f9f88642d, type: 3}
-  testFeetItems:
-  - {fileID: 0}
-  - {fileID: 3987748280219017047, guid: 1fc871984d6f40b4bb6656763f9f1603, type: 3}
 --- !u!114 &8095529578316919120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +598,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -630,6 +609,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2

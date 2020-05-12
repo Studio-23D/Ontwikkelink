@@ -10,7 +10,7 @@ namespace NodeSystem
 
 
         [SerializeField]
-        private GameObject charackterEdit;
+        private CharacterAppearance characterAppearance;
 
         protected Rect rect;
 
@@ -18,7 +18,7 @@ namespace NodeSystem
         protected SystemEventHandeler eventHandeler;
         //protected Menu menu;
 
-        protected MasterNode masterNode;
+        protected PersonageNode masterNode;
 
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
@@ -29,9 +29,9 @@ namespace NodeSystem
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
 
-            masterNode = new MasterNode();
+            masterNode = new PersonageNode();
             masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            //masterNode.SetCharakterScript(charackterEdit.GetComponent<Character>());
+            masterNode.characterAppearance = characterAppearance;
             elements.Add(masterNode);
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
@@ -86,9 +86,19 @@ namespace NodeSystem
                 InstantiateNode(new ColorNode());
             }
 
-            if (GUILayout.Button("PaternNode"))
+            if (GUILayout.Button("PatternNode"))
             {
                 InstantiateNode(new PatternNode());
+            }
+
+            if (GUILayout.Button("HairNode"))
+            {
+                InstantiateNode(new HairNode());
+            }
+
+            if (GUILayout.Button("TorsoClothingNode"))
+            {
+                InstantiateNode(new TorsoClothingNode());
             }
         }
     }

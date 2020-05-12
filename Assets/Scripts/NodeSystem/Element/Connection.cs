@@ -12,7 +12,6 @@ namespace NodeSystem {
 
 		private bool isConnected = false;
 
-
 		public ConnectionPoint InPoint
 		{
 			get => inPoint;
@@ -74,12 +73,14 @@ namespace NodeSystem {
 			this.SetValue();
 			outPoint.node.OnChange += this.SetValue;
 			outPoint.node.OnChange += inPoint.node.CalculateChange;
+			InPoint.node.CalculateChange();
 		}
 
 		private void Disconect()
 		{
 			outPoint.node.OnChange -= this.SetValue;
-			outPoint.node.OnChange -= inPoint.node.CalculateChange;
+			if (isConnected)
+				outPoint.node.OnChange -= inPoint.node.CalculateChange;
 			inPoint?.Disconect();
 			outPoint?.Disconect();
 		}
