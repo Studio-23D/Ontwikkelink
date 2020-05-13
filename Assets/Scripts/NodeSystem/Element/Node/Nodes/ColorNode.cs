@@ -9,21 +9,49 @@ namespace NodeSystem
 		[OutputPropperty]
 		public Color colorOut = Color.white;
 
-		public override void CalculateChange()
-		{
+        private Rect previewRect;
+        private Rect palleteRect;
+        private Rect draggableRect;
+        private Rect draggableContainRect;
 
-            base.CalculateChange();
-		}
+        private Color previewColor;
+        private Color selectionColor = Color.red;
+
+        private GUIStyle noBoxStyle = new GUIStyle();
+
+        private Texture2D previewTexture;
+        private Texture2D selectionTexture = Resources.Load<Texture2D>("NodeSystem/ColorNode/ColorPallete");
+        private Texture2D draggableTexture;
+
+        private Vector2 draggableCenter;
+
+        private Vector2 multi; 
+
+        private bool isSelectingColor = false;
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
 			base.Init(position, eventHandeler);
             name = "Kleuren Node";
 
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 65));
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 30));
+
+            previewRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 30);
+
+            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 200));
+
+            palleteRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 200);
+            draggableRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 10, 10);
+
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
             rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+
+            previewTexture = new Texture2D(1, 1);
+            previewTexture.SetPixel(0, 0, previewColor);
+            previewTexture.Apply();
+
+            multi = new Vector2(selectionTexture.width / palleteRect.width, selectionTexture.height / palleteRect.height);
         }
 
         public override void Draw()
@@ -32,25 +60,58 @@ namespace NodeSystem
 
             GUI.Box(nodeAreas[2], "", styleExtraArea);
 
-            if(GUI.Button(new Rect(0, nodeAreas[2].y + 5, nodeAreas[2].width, 20), "set color red"))
+            GUI.DrawTextureWithTexCoords(previewRect, previewTexture, new Rect(0, 0, 1, -1));
+
+            GUI.Box(nodeAreas[3], "", styleExtraArea);
+
+            GUI.DrawTextureWithTexCoords(palleteRect, selectionTexture, new Rect(0, 0, 1, -1));
+
+            draggableTexture = new Texture2D(1, 1);
+            draggableTexture.SetPixel(0, 0, Color.black);
+            draggableTexture.Apply();
+
+            if (GUI.Button(draggableRect, draggableTexture))
             {
-                colorOut = Color.red;
-                this.CalculateChange();
-            }
-            if (GUI.Button(new Rect(0, nodeAreas[2].y + 25, nodeAreas[2].width, 20), "set color Green"))
-            {
-                colorOut = Color.green;
-                this.CalculateChange();
-            }
-            if (GUI.Button(new Rect(0, nodeAreas[2].y + 45, nodeAreas[2].width, 20), "set color Blue"))
-            {
-                colorOut = Color.blue;
-                this.CalculateChange();
+                isSelectingColor = !isSelectingColor;
+                CalculateChange();
             }
 
-            GUI.Box(nodeAreas[3], "", styleBottomArea);
+            SelectColor();
+            SetPreview();
+
+            GUI.Box(nodeAreas[4], "", styleBottomArea);
 
             GUI.EndGroup();
+        }
+
+        private void SelectColor()
+        {
+            if (!palleteRect.Contains(eventHandeler.MousePosition))
+                return;
+
+            if (isSelectingColor)
+            {
+                draggableCenter.x = eventHandeler.MousePosition.x - (draggableRect.width / 2);
+                draggableCenter.y = eventHandeler.MousePosition.y - (draggableRect.height / 2);
+
+                draggableRect.x = draggableCenter.x;
+                draggableRect.y = draggableCenter.y;
+
+                selectionColor = selectionTexture.GetPixel((int)(draggableCenter.x * multi.x), (int)(draggableCenter.y * multi.y - nodeAreas[nodeAreas.Count - 2].y - 16));
+            }
+        }
+
+        private void SetPreview()
+        {
+            previewColor = selectionColor;
+            previewTexture.SetPixel(0, 0, previewColor);
+            previewTexture.Apply();
+        }
+
+        public override void CalculateChange()
+        {
+            colorOut = selectionColor;
+            base.CalculateChange();
         }
     }
 }

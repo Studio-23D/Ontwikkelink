@@ -27,7 +27,7 @@ public class PanZoom : MonoBehaviour
 	private void Awake()
 	{
 		inputManager.OnTouch += CheckTouch;
-		inputManager.OnScroll += Zoom;
+		//inputManager.OnScroll += Zoom;
 	}
 
 	private void Start()
@@ -105,7 +105,7 @@ public class PanZoom : MonoBehaviour
 #if UNITY_EDITOR
 		direction = new Vector3(direction.x, -direction.y, direction.z);
 #else
-		direction = new Vector3(direction.x, -direction.y, direction.z);
+		direction = new Vector3(direction.x, direction.y, direction.z);
 #endif
 
 		foreach (Element element in nodeManager.GetElements)

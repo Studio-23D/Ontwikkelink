@@ -47,11 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dda34d3b7cc1b499bb46cb296ee72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body:
-    hair: {fileID: 8413091643421672605}
-    torso: {fileID: 8413091641845844015}
-    legs: {fileID: 8413091643035661872}
-    feet: {fileID: 8413091641855088371}
+  hairPosition: {fileID: 8413091643421672605}
+  torsoPosition: {fileID: 8413091641845844015}
+  legsPosition: {fileID: 8413091643035661872}
+  feetPosition: {fileID: 8413091641855088371}
 --- !u!1 &4652773851518555476
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +169,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4965887801574970678}
-  m_Mesh: {fileID: -1106318528950912304, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: -1106318528950912304, guid: dd103a44ddd87634da49ebc0135437c9, type: 3}
 --- !u!23 &7398379098827032491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -249,7 +248,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7644721341699410553}
-  m_Mesh: {fileID: 5140915589614218484, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: 5140915589614218484, guid: dd103a44ddd87634da49ebc0135437c9, type: 3}
 --- !u!23 &4932130476208409921
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -332,7 +331,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7890725230369933424}
-  m_Mesh: {fileID: 7935339198810924699, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: 7935339198810924699, guid: dd103a44ddd87634da49ebc0135437c9, type: 3}
 --- !u!23 &5877540444733619763
 MeshRenderer:
   m_ObjectHideFlags: 0
