@@ -18,7 +18,6 @@ namespace NodeSystem
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-
 			foreach (AppearanceItem item in Resources.LoadAll<AppearanceItem>(ResourcePath)){
 				DropdownElement<AppearanceItem> element = new DropdownElement<AppearanceItem>
 				{

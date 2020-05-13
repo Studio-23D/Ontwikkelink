@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 833630257405009265}
   - component: {fileID: 6389815287275807112}
   m_Layer: 0
-  m_Name: FEyebrows
+  m_Name: Eyebrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 5386535094887613332}
   - component: {fileID: 7398379098827032491}
   m_Layer: 0
-  m_Name: F_Eyes
+  m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4965887801574970678}
-  m_Mesh: {fileID: -1106318528950912304, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: 5979034518789617228, guid: 3dd4e6cf0e1224c469987f93ff3c5894, type: 3}
 --- !u!23 &7398379098827032491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 2707025676540553544}
   - component: {fileID: 4932130476208409921}
   m_Layer: 0
-  m_Name: F_Eyelashes
+  m_Name: Eyelashes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7644721341699410553}
-  m_Mesh: {fileID: 5140915589614218484, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: 1462252438158777237, guid: 3dd4e6cf0e1224c469987f93ff3c5894, type: 3}
 --- !u!23 &4932130476208409921
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 5816286104427840229}
   - component: {fileID: 5877540444733619763}
   m_Layer: 0
-  m_Name: F_Body
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,7 +332,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7890725230369933424}
-  m_Mesh: {fileID: 7935339198810924699, guid: ee7d0c0b4b93e374c9cc1d3f864d009e, type: 3}
+  m_Mesh: {fileID: 7935339198810924699, guid: 3dd4e6cf0e1224c469987f93ff3c5894, type: 3}
 --- !u!23 &5877540444733619763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8413091641845844015}
   m_Layer: 0
-  m_Name: F_Torso
+  m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8413091641855088371}
   m_Layer: 0
-  m_Name: F_Feet
+  m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8413091643035661872}
   m_Layer: 0
-  m_Name: F_Legs
+  m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8413091643421672605}
   m_Layer: 0
-  m_Name: F_Hair
+  m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

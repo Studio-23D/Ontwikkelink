@@ -54,7 +54,8 @@ public class InputManager : MonoBehaviour
 			OnTouch(GetTouchCount, touchStartPos);
 		}
 
-		OnScroll(-Input.GetAxis(ScrollWheelAxis));
+		if (OnScroll != null)
+			OnScroll(-Input.GetAxis(ScrollWheelAxis));
 	}
 
 

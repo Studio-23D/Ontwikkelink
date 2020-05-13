@@ -13,7 +13,6 @@ namespace NodeSystem {
 
 		protected override string ResourcePath => "Appearance/Torso";
 
-
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
 			name = "romp Stijlen";
