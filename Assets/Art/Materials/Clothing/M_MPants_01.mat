@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MPants_01
+  m_Name: M_MPants_01
   m_Shader: {fileID: -6465566751694194690, guid: c0adc4065dcfd51499d75cb2eb892e54,
     type: 3}
   m_ShaderKeywords: 
