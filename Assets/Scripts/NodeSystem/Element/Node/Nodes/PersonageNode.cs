@@ -8,7 +8,7 @@ namespace NodeSystem
     public class PersonageNode : Node
     {
         [InputPropperty]
-        public Color skin;
+        public Color skin = Color.white;
 
         [InputPropperty]
         public AppearanceItem hair;
