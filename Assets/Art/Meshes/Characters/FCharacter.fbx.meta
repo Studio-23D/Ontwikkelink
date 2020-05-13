@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd103a44ddd87634da49ebc0135437c9
+guid: 3dd4e6cf0e1224c469987f93ff3c5894
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,11 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: F_Character_MTL
-    second: {fileID: 2100000, guid: d22867a0d05836d4b9962a4ddf887a87, type: 2}
+      name: F_Body_exp_02_F_Body_MTL
+    second: {fileID: 2100000, guid: a200e7313274d264aaf9467410dc27f6, type: 2}
   materials:
     materialImportMode: 0
-    materialName: 1
+    materialName: 0
     materialSearch: 2
     materialLocation: 0
   animations:
@@ -88,7 +88,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
