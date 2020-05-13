@@ -8,6 +8,9 @@ namespace NodeSystem
     public class PersonageNode : Node
     {
         [InputPropperty]
+        public Color skin = Color.white;
+
+        [InputPropperty]
         public AppearanceItem hair;
 
         [InputPropperty]
@@ -42,6 +45,10 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
+            if (skin != null)
+            {
+                characterAppearance.SetSkin(skin);
+            }
             if (hair != null)
             {
                 characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Hair, hair));

@@ -57,8 +57,6 @@ namespace NodeSystem
       
         public override void CalculateChange()
         {
-            //patternTexture = chosenValue;
-
             pattern = chosenValue;
             patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
             Graphics.CopyTexture(pattern, patternTexture);
@@ -67,15 +65,15 @@ namespace NodeSystem
             {
                 for (int h = 0; h < pattern.height; h++)
                 {
-                    if (pattern.GetPixel(w, h).r >= .5)
+                    if (pattern.GetPixel(w, h).r >= .3)
                     {
                         patternTexture.SetPixel(w, h, colorR);
                     }
-                    else if (pattern.GetPixel(w, h).g >= .5)
+                    else if (pattern.GetPixel(w, h).g >= .3)
                     {
                         patternTexture.SetPixel(w, h, colorG);
                     }
-                    else if (pattern.GetPixel(w, h).b >= .5)
+                    else if (pattern.GetPixel(w, h).b >= .3)
                     {
                         patternTexture.SetPixel(w, h, colorB);
                     }

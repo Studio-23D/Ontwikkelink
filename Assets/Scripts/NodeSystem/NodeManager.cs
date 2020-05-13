@@ -100,6 +100,11 @@ namespace NodeSystem
             {
                 InstantiateNode(new TorsoClothingNode());
             }
+
+            if (GUILayout.Button("textileNode"))
+            {
+                InstantiateNode(new TextileNode());
+            }
         }
     }
 }

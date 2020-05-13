@@ -18,6 +18,11 @@ public class CharacterAppearance : MonoBehaviour
         {
             Destroy(character.appearenceItemLocations[appearanceItem.Key].GetChild(0).gameObject);
         }
-        AppearanceItem test = Instantiate(appearanceItem.Value, character.appearenceItemLocations[appearanceItem.Key]);
+        Instantiate(appearanceItem.Value, character.appearenceItemLocations[appearanceItem.Key]);
+    }
+
+    public void SetSkin(Color color)
+    {
+        character.body.GetComponent<Renderer>().material.SetColor("BaseColor", color);
     }
 }

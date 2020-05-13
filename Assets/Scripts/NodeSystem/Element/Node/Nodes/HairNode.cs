@@ -9,7 +9,6 @@ namespace NodeSystem {
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-
 			name = "Haar Stijlen";
 			dropdownName = "Haar stijlen kiezen";
 
