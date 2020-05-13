@@ -21,7 +21,6 @@ namespace NodeSystem
         protected GUIStyle styleConnectionPointsArea;
         protected GUIStyle styleExtraArea;
         protected GUIStyle styleBottomArea;
-
         protected GUIStyle styleCenter;
 
         private List<ConnectionPoint> inputPoints;
@@ -140,10 +139,14 @@ namespace NodeSystem
 
 		public virtual void Drag(Vector2 position)
 		{
-			rect.position += position;
+#if UNITY_EDITOR
+			rect.position += new Vector2(position.x, position.y);
+#else
+			rect.position += new Vector2(position.x, -position.y);
+#endif
 		}
 
-        public bool ProcessEvents(Event e)
+		public bool ProcessEvents(Event e)
         {
             switch (e.type)
             {
@@ -174,7 +177,8 @@ namespace NodeSystem
                     break;
 
                 case EventType.MouseDrag:
-                    if (e.button == 0 && isDragged)
+                    //if ((e.button == 0 || e.pointerType == PointerType.Touch) && isDragged)
+					if (e.button == 0 && isDragged)
                     {
                         Drag(e.delta);
                         e.Use();

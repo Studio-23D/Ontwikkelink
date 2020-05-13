@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] public Transform body;
     [SerializeField] private Transform hairPosition;
     [SerializeField] private Transform torsoPosition;
     [SerializeField] private Transform legsPosition;

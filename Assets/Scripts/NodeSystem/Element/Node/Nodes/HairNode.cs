@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NodeSystem {
     public class HairNode : AppearanceItemNode
 	{
-        protected override string ResourcePath => "Apparance/Hair";
+        protected override string ResourcePath => "Appearance/Hair";
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{

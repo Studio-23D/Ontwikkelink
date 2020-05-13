@@ -7,7 +7,11 @@ namespace NodeSystem
 {
     public abstract class Element
     {
-        protected Action<Element> onClick = delegate { };
+		public Vector2 SetStartPosition(Vector2 startPosition) => this.startPosition = startPosition;
+		public Vector2 GetStartPosition => startPosition;
+		protected Vector2 startPosition;
+
+		protected Action<Element> onClick = delegate { };
         protected Action<Element> onHover = delegate { };
 
         protected Rect rect = new Rect();
@@ -16,9 +20,11 @@ namespace NodeSystem
         public Vector2 Size => rect.size;
         protected SystemEventHandeler eventHandeler;
 
-        public virtual void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public virtual void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
-            Vector2 size = new Vector2(100, 100);
+			startPosition = position;
+
+			Vector2 size = new Vector2(100, 100);
             rect = new Rect(position, size);
             SystemEventHandeler.OnElementCreate?.Invoke(this);
             this.eventHandeler = eventHandeler;
@@ -26,12 +32,18 @@ namespace NodeSystem
             this.eventHandeler.CheckHover += () => CheckHover();
             onClick += (Element element) => SystemEventHandeler.OnElementClick.Invoke(element);
             onHover += (Element element) => SystemEventHandeler.OnElementHover.Invoke(element);
-        }
-        
-        public virtual void Destroy()
+		}
+
+		public void ResetPosition()
+		{
+			rect.position = startPosition;
+		}
+
+		public virtual void Destroy()
         {
             SystemEventHandeler.OnElementRemove?.Invoke(this);
         }
+
         private void CheckClick()
         {
             if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;

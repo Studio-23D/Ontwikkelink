@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6927758024463118986
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -37,24 +24,28 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Textile:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_2AACA074:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_34C2DFE8:
-        m_Texture: {fileID: 2800000, guid: eb4d3315580c2e14f8e7e732ab1b5026, type: 3}
+        m_Texture: {fileID: 2800000, guid: 407213efb6413f443913cb741fb42161, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_4952D049:
-        m_Texture: {fileID: 2800000, guid: ee787817d05942949a89e56865bed02a, type: 3}
+        m_Texture: {fileID: 2800000, guid: db597bf50f5d5a54f8e6983e5bcef1ae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_D9D6A345:
-        m_Texture: {fileID: 2800000, guid: 7d67d7ec8de3e7644aede84db36f6519, type: 3}
+        m_Texture: {fileID: 2800000, guid: dd923dc0b6f50f545bef68d6b0f3cdb6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_FC124153:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1db14b0d059757d4085b53e407f1d631, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -113,11 +104,24 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - Color_451E5A82: {r: 0.5471698, g: 0.3745633, b: 0.2710039, a: 1}
-    - Color_AB0FD0D: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
-    - Color_ABDE12DD: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
-    - Color_FD697381: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
+    - Color_451E5A82: {r: 0.4056604, g: 0.3177298, b: 0.28511038, a: 1}
+    - Color_AB0FD0D: {r: 0, g: 0.10895157, b: 1, a: 0}
+    - Color_ABDE12DD: {r: 0.41509432, g: 0.3994227, b: 0.26432893, a: 0}
+    - Color_FD697381: {r: 1, g: 0.116780095, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+--- !u!114 &4520414443712877280
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1

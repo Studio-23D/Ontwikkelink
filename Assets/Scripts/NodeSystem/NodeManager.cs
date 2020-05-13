@@ -6,6 +6,9 @@ namespace NodeSystem
 {
     public class NodeManager : MonoBehaviour
     {
+		public List<Element> GetElements => elements;
+
+
         [SerializeField]
         private CharacterAppearance characterAppearance;
 

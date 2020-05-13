@@ -11,7 +11,8 @@ namespace NodeSystem {
         [InputPropperty]
         public Texture2D textile;
 
-        protected override string ResourcePath => "Apparance/Torso";
+		protected override string ResourcePath => "Appearance/Torso";
+
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
@@ -24,8 +25,8 @@ namespace NodeSystem {
         public override void CalculateChange()
         {
             base.CalculateChange();
-            apperanceItem.SetPattern(pattern);
-            apperanceItem.SetTextile(textile);
+            appearanceItem.SetPattern(pattern);
+            appearanceItem.SetTextile(textile);
         }
     }
 }

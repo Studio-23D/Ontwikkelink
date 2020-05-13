@@ -44,18 +44,17 @@ public class MaterialPropertyApplier : MonoBehaviour
 
 	#region PRIVATE_MEMBERS
 	
-	[Tooltip("The material of the mesh renderer of this object will be edited and outputed")]
-	[SerializeField] private Transform clothingPiece;
+	[SerializeField, Tooltip("This will be the output of the node")] private Transform clothingPiece;
 
 	[Header("Shader property keywords")]
-	[SerializeField] private string textileColorPropKey = "Color_C67D4219";
-    [SerializeField] private string textileAlbedoPropKey = "Texture2D_23DA1713";
+    [SerializeField] private string textileAlbedoPropKey = "Texture2D_";
+	[SerializeField] private string textileColorPropKey = "Color_";
 	[SerializeField] private string patternAlbedoPropKey = "";
 	[SerializeField] private string patternColor1PropKey = "";
 	[SerializeField] private string patternColor2PropKey = "";
 	[SerializeField] private string patternColor3PropKey = "";
-    [SerializeField] private string maskMapPropKey = "Texture2D_58606ADF";
-	[SerializeField] private string normalMapPropKey = "Texture2D_F734C7A";
+    [SerializeField] private string maskMapPropKey = "Texture2D_";
+	[SerializeField] private string normalMapPropKey = "Texture2D_";
 
 	private Material customMaterial;
 

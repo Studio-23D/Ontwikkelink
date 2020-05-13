@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7299345834367375801
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -37,8 +24,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - Texture2D_23DA1713:
-        m_Texture: {fileID: 2800000, guid: 1190547ecd5a69e49a802af1ce6ab367, type: 3}
+    - Textile:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_2AACA074:
@@ -46,27 +33,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_34C2DFE8:
-        m_Texture: {fileID: 2800000, guid: dcc573645c9eecc4d8d9ee4b0c059498, type: 3}
+        m_Texture: {fileID: 2800000, guid: a521e37be9a054c44a90e0caf85794c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_4952D049:
-        m_Texture: {fileID: 2800000, guid: 1190547ecd5a69e49a802af1ce6ab367, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_58606ADF:
-        m_Texture: {fileID: 2800000, guid: c948951b3d014bc46945e11be439faa6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d0c3ffb6476f86469829963b0291891, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_D9D6A345:
-        m_Texture: {fileID: 2800000, guid: c948951b3d014bc46945e11be439faa6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_F734C7A:
-        m_Texture: {fileID: 2800000, guid: dcc573645c9eecc4d8d9ee4b0c059498, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7b9278b199706ab4187e47c44a603abc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_FC124153:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c58be2295ffb0ff40a047003c49223c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -93,10 +72,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_89D82B9D_Texture_1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -106,8 +81,6 @@ Material:
     - Vector1_686A008A: 0
     - Vector1_6F40634F: 0
     - Vector1_8053286B: 0
-    - Vector1_D085A377: 0
-    - Vector1_D820220E: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -130,13 +103,25 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - Color_451E5A82: {r: 1, g: 1, b: 1, a: 1}
+    - BaseColor: {r: 0.48235294, g: 0.007843138, b: 0.003921569, a: 1}
+    - Color_451E5A82: {r: 0.8113208, g: 0.7503394, b: 0.21813813, a: 1}
     - Color_AB0FD0D: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
-    - Color_ABDE12DD: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
-    - Color_C67D4219: {r: 1, g: 1, b: 1, a: 1}
-    - Color_FD697381: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
+    - Color_ABDE12DD: {r: 1, g: 0.7122642, b: 0.7122642, a: 0}
+    - Color_FD697381: {r: 1, g: 0.7783019, b: 0.7783019, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+--- !u!114 &7071102827381977301
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1

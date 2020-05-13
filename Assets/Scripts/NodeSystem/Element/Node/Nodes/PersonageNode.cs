@@ -8,16 +8,19 @@ namespace NodeSystem
     public class PersonageNode : Node
     {
         [InputPropperty]
-        public ApperanceItem hair;
+        public Color skin;
 
         [InputPropperty]
-        public ApperanceItem torso;
+        public AppearanceItem hair;
 
         [InputPropperty]
-        public ApperanceItem legs;
+        public AppearanceItem torso;
 
         [InputPropperty]
-        public ApperanceItem feet;
+        public AppearanceItem legs;
+
+        [InputPropperty]
+        public AppearanceItem feet;
 
         public CharacterAppearance characterAppearance;
 
@@ -42,21 +45,25 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
+            if (skin != null)
+            {
+                characterAppearance.SetSkin(skin);
+            }
             if (hair != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Hair, hair));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Hair, hair));
             }
             if (torso != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Torso, torso));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Torso, torso));
             }
             if (legs != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Legs, legs));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Legs, legs));
             }
             if (feet != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, ApperanceItem>(AppearanceItemType.Feet, feet));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Feet, feet));
             }
             base.CalculateChange();
         }

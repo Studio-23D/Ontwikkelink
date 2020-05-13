@@ -20,7 +20,7 @@ namespace NodeSystem
         private GUIStyle noBoxStyle = new GUIStyle();
 
         private Texture2D previewTexture;
-        private Texture2D selectionTexture = Resources.Load<Texture2D>("NodeSystem/ColorNode/ColorPallete");
+        private Texture2D selectionTexture = Resources.Load<Texture2D>("NodeSystem/ColorNode/ColorSpectrum");
         private Texture2D draggableTexture;
 
         private Vector2 draggableCenter;
@@ -52,6 +52,8 @@ namespace NodeSystem
             previewTexture.Apply();
 
             multi = new Vector2(selectionTexture.width / palleteRect.width, selectionTexture.height / palleteRect.height);
+
+            Debug.Log(selectionTexture);
         }
 
         public override void Draw()
