@@ -14,6 +14,8 @@ namespace NodeSystem
 		protected Action<Element> onClick = delegate { };
         protected Action<Element> onHover = delegate { };
 
+        public int drawOrder = 0;
+
         protected Rect rect = new Rect();
         public virtual Rect Rect => rect;
         public virtual Vector2 Position => rect.position;

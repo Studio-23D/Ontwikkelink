@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ namespace NodeSystem
     public class NodeManager : MonoBehaviour
     {
 		public List<Element> GetElements => elements;
-
 
         [SerializeField]
         private CharacterAppearance characterAppearance;
@@ -25,9 +25,12 @@ namespace NodeSystem
 
 		public void Init()
         {
-            rect = new Rect(0, 0, Screen.width - 200, Screen.height);
+            rect = new Rect(0, 0, 1100, Screen.height);//GetComponent<RectTransform>().rect;//new Rect(0, 0, Screen.width - 200, Screen.height);
+            print(Screen.width);
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
+
+            elementDrawer.Rect = rect;
 
             masterNode = new PersonageNode();
             masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
@@ -45,6 +48,7 @@ namespace NodeSystem
         {
             node.Init(eventHandeler.MousePosition, eventHandeler);
             elements.Add(node);
+            elements = elements.OrderBy(e => e.drawOrder).ToList();
         }
 
         public void RemoveElement(Element element)
@@ -99,6 +103,16 @@ namespace NodeSystem
             if (GUILayout.Button("TorsoClothingNode"))
             {
                 InstantiateNode(new TorsoClothingNode());
+            }
+
+            if (GUILayout.Button("LegsClothingNode"))
+            {
+                InstantiateNode(new LegsClothingNode());
+            }
+
+            if (GUILayout.Button("FeetClothingNode"))
+            {
+                InstantiateNode(new FeetClothingNode());
             }
 
             if (GUILayout.Button("textileNode"))

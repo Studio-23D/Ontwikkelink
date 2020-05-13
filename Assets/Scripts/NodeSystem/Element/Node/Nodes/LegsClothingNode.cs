@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace NodeSystem {
-	public class TorsoClothingNode : AppearanceItemNode
+	public class LegsClothingNode : AppearanceItemNode
 	{
 		[InputPropperty]
 		public Texture2D pattern;
@@ -11,13 +11,13 @@ namespace NodeSystem {
         [InputPropperty]
         public Texture2D textile;
 
-		protected override string ResourcePath => "Appearance/Torso";
+		protected override string ResourcePath => "Appearance/Legs";
 
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			name = "romp Stijlen";
-			dropdownName = "Bovenlichaam stijlen kiezen";
+			name = "Benen Stijlen";
+			dropdownName = "Benen stijlen kiezen";
 
 			base.Init(position, eventHandeler);
 		}
