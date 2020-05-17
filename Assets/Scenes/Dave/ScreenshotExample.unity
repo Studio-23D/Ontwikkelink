@@ -1116,6 +1116,10 @@ MonoBehaviour:
   screenshotCamera: {fileID: 779763155}
   isRunningAndroid: 0
   blink: 1
+  UIElements:
+  - {fileID: 1305645271}
+  - {fileID: 709687687}
+  - {fileID: 1657950611}
 --- !u!114 &1305645278
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -65,19 +65,16 @@ public class ScreenshotSaving : MonoBehaviour
         destinationFolderImageData = Application.dataPath + "/../Screenshots/Data/";
         destinationFolderImageDataFile = destinationFolderImageData + imageDataFileName;
 
-        string[] folderArray = { destinationFolderImage, destinationFolderImageData };
-
         CheckDirectory(destinationFolderImage, false);
-        CheckDirectory(destinationFolderImageData, false);
-        CheckDirectory(destinationFolderImageDataFile, true);
+        CheckDirectory(destinationFolderImageData, true);
     }
 
-    private void CheckDirectory(string directoryPath, bool instantiateFile)
+    private void CheckDirectory(string directoryPath, bool fileInstantiation)
     {
-        if(!Directory.Exists(directoryPath))
+        if (!Directory.Exists(directoryPath))
         {
-            if (instantiateFile) { File.WriteAllText(directoryPath, defaultValue); }
-            else if (!instantiateFile) { Directory.CreateDirectory(directoryPath); }
+            Directory.CreateDirectory(directoryPath);
+            if (fileInstantiation) { File.WriteAllText(directoryPath, defaultValue); }
         }
     }
 }

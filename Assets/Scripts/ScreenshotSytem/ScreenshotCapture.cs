@@ -16,10 +16,9 @@ public class ScreenshotCapture : MonoBehaviour
     [SerializeField] private Camera screenshotCamera;
     [SerializeField] private bool isRunningAndroid;
     [SerializeField] private bool blink;
+    [SerializeField] private GameObject[] UIElements;
 
     private ScreenshotSaving screenshotSaving;
-
-    private GameObject[] UIElements;
 
     private WaitForEndOfFrame frameEnd = new WaitForEndOfFrame();
 
@@ -33,12 +32,13 @@ public class ScreenshotCapture : MonoBehaviour
 
     private void Start()
     {
+        if (Application.platform == RuntimePlatform.Android) { isRunningAndroid = true; }
 
-    /*#if UNITY_ANDROID
+    #if UNITY_ANDROID
         isRunningAndroid = true;
     #else 
         isRunningAndroid  = false;
-    #endif*/
+    #endif
     }
 
     public void TakeScreenshotWithButton()
@@ -54,6 +54,8 @@ public class ScreenshotCapture : MonoBehaviour
 
     private IEnumerator ScreenshotProcessDesktop(int width, int height)
     {
+        VisibleUI(UIElements, false);
+
         screenshotCamera.targetTexture = RenderTexture.GetTemporary(width, height, 16);
 
         yield return frameEnd;
@@ -71,7 +73,9 @@ public class ScreenshotCapture : MonoBehaviour
         RenderTexture.ReleaseTemporary(renderTexture);
         screenshotCamera.targetTexture = null;
 
-        if(blink) { StartCoroutine(Blink()); }
+        if (blink) { StartCoroutine(Blink(blinkImage, blinkTime)); }
+
+        VisibleUI(UIElements, true);
     }
 
     private IEnumerator ScreenshotProcessMobile()
@@ -84,15 +88,22 @@ public class ScreenshotCapture : MonoBehaviour
         yield return frameEnd;
     }
 
-    private IEnumerator Blink()
+    private IEnumerator Blink(Image image, float time)
     {
-        blinkImage.enabled = true;
-        yield return new WaitForSeconds(blinkTime);
-        blinkImage.enabled = false;
+        image.enabled = true;
+        yield return new WaitForSeconds(time);
+        image.enabled = false;
     }
 
-    private void HideUI()
+    private void VisibleUI(GameObject[] elementArray, bool elementsActive)
     {
+        float alpha = 1.0f;
 
+        if (!elementsActive) { alpha = 0.0f; }
+        else { alpha = 1.0f; }
+
+        for (int i = 0; i < elementArray.Length; i++) { elementArray[i].GetComponent<CanvasRenderer>().SetAlpha(alpha); }
+
+        // ADD: check if the element in the array is a button and disable the child (text) aswell
     }
 }
