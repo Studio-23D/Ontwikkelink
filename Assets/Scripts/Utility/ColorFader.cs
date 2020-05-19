@@ -25,31 +25,32 @@ public class ColorFader : MonoBehaviour
 
         if (Mode == FadeMode.In)
         {
-            StartCoroutine(FadeIn());
+			FadeIn();
         }
         else
         {
-            StartCoroutine(FadeOut());
-        }
-    }
+			FadeOut();
+		}
+	}
 
     private void OnDisable()
     {
 		SetAllAlphas(1);
         FirstFade = false;
-    }
-
-	public void StartFadeOut()
-	{
-        StartCoroutine(FadeOut());
 	}
 
-    public IEnumerator FadeIn()
-    {
-        yield return null;
-    }
+	public void FadeIn()
+	{
+		StartCoroutine(Fade(FadeStep));
+	}
 
-    public IEnumerator FadeOut()
+
+	public void FadeOut()
+	{
+        StartCoroutine(Fade(-FadeStep));
+	}
+
+	public IEnumerator Fade(float fadeStep)
     {
         if (Fading)
         {
@@ -66,12 +67,12 @@ public class ColorFader : MonoBehaviour
 
 		foreach (Text t in textsToFade)
 		{
-			SetTextAlpha(t, t.color.a - FadeStep);
+			SetTextAlpha(t, t.color.a + fadeStep);
 		}
 
 		foreach (Image i in imagesToFade)
 		{
-			SetImageAlpha(i, i.color.a - FadeStep);
+			SetImageAlpha(i, i.color.a + fadeStep);
 		}
 
         yield return new WaitForSeconds(FadeTime);
@@ -82,14 +83,19 @@ public class ColorFader : MonoBehaviour
 		{
 			if (i.color.a > 0)
 			{
-				StartCoroutine(FadeOut());
-			}
-			else
-			{
-				i.gameObject.SetActive(false);
+				StartCoroutine(Fade(fadeStep));
+				yield break;
 			}
 		}
+
+		gameObject.SetActive(false);
     }
+
+
+	public bool isFading()
+	{
+		return Fading;
+	}
 
 	private void SetAllAlphas(float a)
 	{

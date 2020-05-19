@@ -51,6 +51,7 @@ public class InputManager : MonoBehaviour
 		}
 		else if (IsMouseButtonDown)
 		{
+			if (OnTouch != null)
 			OnTouch(GetTouchCount, touchStartPos);
 		}
 
