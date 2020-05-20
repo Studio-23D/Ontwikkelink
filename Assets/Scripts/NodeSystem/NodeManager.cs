@@ -33,7 +33,7 @@ namespace NodeSystem
             elementDrawer.Rect = rect;
 
             masterNode = new PersonageNode();
-            masterNode.Init(new Vector2(0, 0), eventHandeler);
+            masterNode.Init(new Vector2(rect.size.x/2, rect.size.y/2), eventHandeler);
             masterNode.characterAppearance = characterAppearance;
             elements.Add(masterNode);
 
@@ -75,8 +75,8 @@ namespace NodeSystem
             elementDrawer.Draw(elements);
             DestroyGarbage();
             eventHandeler.CheckInput();
-
-            foreach(Element element in elements)
+            
+            foreach (Element element in elements)
             {
                 if (element is Node)
                 {

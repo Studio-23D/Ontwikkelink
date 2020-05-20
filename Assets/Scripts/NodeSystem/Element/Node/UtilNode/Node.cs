@@ -34,23 +34,25 @@ namespace NodeSystem
             outputPoints = new List<ConnectionPoint>();
 
             styleTopArea = new GUIStyle();
-            styleTopArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Normal/node_top");
+            styleTopArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Node/Normal/node_top");
 
             styleMiddleArea = new GUIStyle();
-            styleMiddleArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Normal/node_Middle");
+            styleMiddleArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Node/Normal/node_middle");
             //stylemiddleArea.font = (Font)Resources.Load("NodeSystem/bebas-neue-semiroundedNode");
 
             styleBottomArea = new GUIStyle();
-            styleBottomArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Normal/node_bottom");
+            styleBottomArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Node/Normal/node_bottom");
         }
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
             base.Init(position, eventHandeler);
 
-            areas.Add("top", new Rect());
-            areas.Add("middle", new Rect());
-            areas.Add("bottom", new Rect());
+            areas.Add("top", new Rect(0, 0, 160, 20));
+            areas.Add("middle", new Rect(0, areas["top"].height, 160, 150));
+            areas.Add("bottom", new Rect(0, areas["top"].height + areas["middle"].height, 160, 20));
+
+            Size = new Vector2(160, 190);
 
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
@@ -67,7 +69,7 @@ namespace NodeSystem
                     AddConnectionPoint(field, ConnectionPointType.Out);
                 }
             }
-            PositionConnectionPoints(inputPoints, areas["middle"].height / 2);
+            PositionConnectionPoints(inputPoints, areas["middle"].height / 2 + areas["top"].height);
         }
 
 		public override void Draw()
@@ -76,7 +78,7 @@ namespace NodeSystem
 
             GUI.Box(areas["top"], "", styleTopArea);
             GUI.Box(areas["middle"], "", styleMiddleArea);
-            GUI.Box(areas["middle"], "", styleBottomArea);
+            GUI.Box(areas["bottom"], "", styleBottomArea);
 
             foreach (ConnectionPoint point in inputPoints)
             {
@@ -133,10 +135,10 @@ namespace NodeSystem
                 switch (type)
                 {
                     case ConnectionPointType.In:
-                        points[i].Position = new Vector2(0, i * (points[i].Size.y + connectionPointOffset) + positionY - totalSizePoints);
+                        points[i].Position = new Vector2(0, i * (points[i].Size.y + connectionPointOffset) + positionY - totalSizePoints / 2);
                         break;
                     case ConnectionPointType.Out:
-                        points[i].Position = new Vector2(areas["middle"].width, i * (points[i].Size.y + connectionPointOffset) + positionY - totalSizePoints);
+                        points[i].Position = new Vector2(areas["middle"].width, i * (points[i].Size.y + connectionPointOffset) + positionY - totalSizePoints / 2);
                         break;
                 }
 

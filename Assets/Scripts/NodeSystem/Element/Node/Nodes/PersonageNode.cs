@@ -33,7 +33,7 @@ namespace NodeSystem
         public override void Draw()
         {
             base.Draw();
-            Debug.Log("hi");
+
             GUI.EndGroup();
         }
 
