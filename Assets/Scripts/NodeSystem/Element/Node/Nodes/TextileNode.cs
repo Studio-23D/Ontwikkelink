@@ -5,21 +5,21 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public class TextileNode : DropdownNode <Texture2D>
+    public class TextileNode : DropdownNode <TextileData>
     {
         [OutputPropperty]
-        public Texture2D textileTexture;
+        public TextileData textileTexture;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
             name = "Textiel Node";
             dropdownName = "Textielen";
 
-            foreach (Texture2D texture in Resources.LoadAll("Textiles", typeof(Texture2D)))
+            foreach (TextileData texture in Resources.LoadAll("Textiles", typeof(TextileData)))
             {
-                DropdownElement<Texture2D> element = new DropdownElement<Texture2D>
+                DropdownElement<TextileData> element = new DropdownElement<TextileData>
                 {
-                    visual = texture,
+                    visual = texture.albedoMap,
                     value = texture,
                 };
                 dropdownElements.Add(element);
@@ -39,7 +39,7 @@ namespace NodeSystem
         {
             base.Draw();
 
-            GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), textileTexture, styleCenter);
+            GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), textileTexture.albedoMap, styleCenter);
             GUI.Box(nodeAreas[3], "", styleBottomArea);
             GUI.EndGroup();
         }

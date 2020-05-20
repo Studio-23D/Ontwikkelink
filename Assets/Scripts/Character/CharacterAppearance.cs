@@ -14,11 +14,16 @@ public class CharacterAppearance : MonoBehaviour
 
     public void SetAppearanceItem(KeyValuePair<AppearanceItemType, AppearanceItem> appearanceItem)
     {
+        Transform itemLocation = character.appearenceItemLocations[appearanceItem.Key];
+
         if (character.appearenceItemLocations[appearanceItem.Key].childCount != 0)
         {
-            Destroy(character.appearenceItemLocations[appearanceItem.Key].GetChild(0).gameObject);
+            foreach(Transform child in itemLocation)
+            {
+                Destroy(child.gameObject);
+            }
         }
-        Instantiate(appearanceItem.Value, character.appearenceItemLocations[appearanceItem.Key]);
+        Instantiate(appearanceItem.Value, itemLocation);
     }
 
     public void SetSkin(Color color)
