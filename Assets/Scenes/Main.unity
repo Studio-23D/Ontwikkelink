@@ -1862,6 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewManager: {fileID: 1597547816}
+  startTutorial: 0
   tutorials:
   - label: Goal
     feature: {fileID: -828761290848099546, guid: 9a6a59e119a19194b82cc8e8e26f28d6,
@@ -1878,6 +1879,7 @@ MonoBehaviour:
       type: 3}
     activationView: {fileID: 0}
     startTutorial: 
+  fingerCursor: {fileID: 2800000, guid: d8e114b7b167f4344a2b344c35ae3f1d, type: 3}
 --- !u!1 &476239611
 GameObject:
   m_ObjectHideFlags: 0

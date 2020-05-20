@@ -16,7 +16,9 @@ public struct Tutorial
 public class TutorialManager : MonoBehaviour
 {
 	[SerializeField] private ViewManager viewManager;
+	[SerializeField] private bool startTutorial;
 	[SerializeField] private List<Tutorial> tutorials;
+	[SerializeField] private Texture2D fingerCursor;
 
 	private Tutorial currentTutorial;
 	private GameObject currentTutorialPart;
@@ -26,6 +28,11 @@ public class TutorialManager : MonoBehaviour
 	private void Awake()
 	{
 		viewManager.OnNewView += CheckNewView;
+
+		if (fingerCursor)
+		{
+			Cursor.SetCursor(fingerCursor, Vector2.zero, CursorMode.ForceSoftware);
+		}
 	}
 
 
@@ -64,6 +71,8 @@ public class TutorialManager : MonoBehaviour
 
 	private void CheckNewView(GameObject view)
 	{
+		if (!startTutorial) return;
+
 		foreach (Tutorial tutorial in tutorials)
 		{
 			if (view != tutorial.activationView || !IsTutorialEnabled(tutorial)) continue;
