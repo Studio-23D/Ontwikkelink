@@ -26,7 +26,6 @@ namespace NodeSystem
 		public void Init()
         {
             rect = new Rect(0, 0, 1100, Screen.height);//GetComponent<RectTransform>().rect;//new Rect(0, 0, Screen.width - 200, Screen.height);
-            print(Screen.width);
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
 
