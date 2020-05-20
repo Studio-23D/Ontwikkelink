@@ -9,24 +9,4 @@ public class Movement : InputState
     {
 
     }
-
-    public override void OnElementClick(Element element)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnElementHover(Element element)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnStateEnter()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnStateLeave()
-    {
-        throw new System.NotImplementedException();
-    }
 }

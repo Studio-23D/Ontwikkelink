@@ -41,31 +41,6 @@ namespace NodeSystem
         {
             base.Init(position, eventHandeler);
             rect.size = new Vector2(10,10);
-            
-            OnClick((Element element) =>
-            {
-                if (!(element is ConnectionPoint)) return;
-                ConnectionPoint point = element as ConnectionPoint;
-                //if (eventHandeler.selectedPropertyPoint != null)
-                //{
-                //    eventHandeler.selectedPropertyPoint.connection.Connect(point);
-                //    return;
-                //}
-                CreateConnection();
-
-                switch (point.type)
-                {
-                    case ConnectionPointType.In:
-                        connection.InPoint = point;
-                        break;
-                    default:
-                        connection.OutPoint = point;
-                        break;
-                }
-
-                connection.Init(Vector2.zero, eventHandeler);
-                //eventHandeler.selectedPropertyPoint = point;
-            });
             rect.width = 10;
             rect.height = 10;
 
@@ -82,6 +57,30 @@ namespace NodeSystem
         public void OnConnection(Connection connection)
         {
             this.connection = connection;
+        }
+
+        public override void OnClick()
+        {
+            base.OnClick();
+            if (eventHandeler.IsSelectedElementThis<ConnectionPoint>())
+            {
+                eventHandeler.GetSelectedElement<ConnectionPoint>().connection.Connect(this);
+               return;
+            }
+            CreateConnection();
+
+            switch (this.type)
+            {
+                case ConnectionPointType.In:
+                    connection.InPoint = this;
+                    break;
+                default:
+                    connection.OutPoint = this;
+                    break;
+            }
+
+            connection.Init(Vector2.zero, eventHandeler);
+            //eventHandeler.selectedPropertyPoint = point;
         }
 
         public void Disconect()

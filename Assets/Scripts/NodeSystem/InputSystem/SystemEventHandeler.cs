@@ -14,34 +14,50 @@ namespace NodeSystem
 			get => currentState;
 			set {
 				currentState?.OnStateLeave();
-				OnElementClicked -= currentState.OnElementClick;
-
 				currentState = value;
 				currentState.OnStateEnter();
 			}
 		}
 
 		public Vector2 MousePosition => Event.current.mousePosition;
-		public Element selectedElement;
+		private Element selectedElement;
+		public Element SelectedElement
+		{
+			get => selectedElement;
+			set => selectedElement = value;
+		}
+		public bool IsSelectedElementThis<T>()
+		{
+			if (currentState == null) return false;
+			if (currentState is T)
+				return true;
+			return false;
+		}
+		public T GetSelectedElement<T>()
+		{
+			if (selectedElement == null) return default;
+			if (selectedElement is T)
+				return (T)Convert.ChangeType(selectedElement, typeof(T));
+			throw new Exception("Given datatype is not a variant of InputState");
+		}
 
 		public Action<Element> OnElementCreate = delegate { };
 		public Action<Element> OnElementDestroy = delegate { };
 		public Action<Element> OnElementClicked = delegate { };
 		public Action<Element> OnElementHover = delegate { };
 		public Action<Element> OnElementSelected = delegate { };
-		public Action OnClick = delegate { };
-		public Action OnHover = delegate { };
-		public Action OnHold = delegate { };
+		public Action<InputTypes> OnInput = delegate { };
 
 		private EventType prevouseEventType;
 
 		public SystemEventHandler()
 		{
-			currentState = new Movement(this);
+			currentState = new Idle(this);
 		}
 
 		public bool IsCurrentStateThis<T>()
 		{
+			if (currentState == null) return default;
 			if (currentState is T)
 				return true;
 			return false;
@@ -49,7 +65,10 @@ namespace NodeSystem
 
 		public T GetCurrentState<T>()
 		{
-			return (T)Convert.ChangeType(currentState, typeof(T));
+			if (currentState == null) return default;
+			if (currentState is T)
+				return (T)Convert.ChangeType(currentState, typeof(T));
+			throw new Exception("Given datatype is not a variant of InputState");
 		}
 
 		public void CheckInput()
@@ -61,7 +80,7 @@ namespace NodeSystem
 					this.StartCoroutine(CheckIfHolding());
 					break;
 				case EventType.MouseUp:
-					OnClick?.Invoke();
+					OnInput?.Invoke(InputTypes.Clicked);
 					break;
 			}
 
@@ -73,7 +92,7 @@ namespace NodeSystem
 			yield return new WaitForSeconds(0.5f);
 			if (prevouseEventType == EventType.MouseDown)
 			{
-				OnHold?.Invoke();
+				OnInput?.Invoke(InputTypes.Clicked);
 			}
 		}
 	}

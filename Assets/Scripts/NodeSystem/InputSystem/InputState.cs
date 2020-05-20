@@ -7,7 +7,7 @@ namespace NodeSystem
 {
 	public abstract class InputState
 	{
-		protected Dictionary<Condition, InputState> conditions = new Dictionary<Condition, InputState>();
+		protected Dictionary<InputTypes, InputState> conditions = new Dictionary<InputTypes, InputState>();
 		protected SystemEventHandler eventHandler;
 
 		public InputState(SystemEventHandler eventHandler)
@@ -15,14 +15,24 @@ namespace NodeSystem
 			this.eventHandler = eventHandler;
 		}
 
-		public void CheckState(Condition condition)
+		public void ChangeState(InputTypes inputTypes)
 		{
-			if (conditions.ContainsKey(condition))
-				eventHandler.CurrentState = conditions[condition];
+			if (conditions.ContainsKey(inputTypes))
+				eventHandler.CurrentState = conditions[inputTypes];
 		}
 
-		public abstract void OnStateEnter();
-		public abstract void OnStateLeave();
+		public virtual void OnStateEnter()
+		{
+			eventHandler.OnElementClicked += this.OnElementClick;
+			eventHandler.OnElementHover += this.OnElementHover;
+			eventHandler.OnElementSelected += this.OnElementSelected;
+		}
+		public virtual void OnStateLeave()
+		{
+			eventHandler.OnElementClicked -= this.OnElementClick;
+			eventHandler.OnElementHover -= this.OnElementHover;
+			eventHandler.OnElementSelected -= this.OnElementSelected;
+		}
 
 		public virtual void OnElementHover(Element element) {
 

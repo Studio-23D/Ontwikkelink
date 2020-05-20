@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using NodeSystem;
 
-public class NodeSelected : InputState
+public class Idle : InputState
 {
-    public NodeSelected(SystemEventHandler eventHandler) : base(eventHandler)
+    public Idle(SystemEventHandler eventHandler) : base(eventHandler)
     {
+        this.conditions.Add(InputTypes.Clicked, new NodeSelected(eventHandler));
         this.conditions.Add(InputTypes.Hold, new Movement(eventHandler));
     }
 
     public override void OnElementClick(Element element)
     {
         base.OnElementClick(element);
+        eventHandler.SelectedElement = element;
+        this.ChangeState(InputTypes.Clicked);
     }
 
     public override void OnElementHover(Element element)
     {
         base.OnElementHover(element);
-    }
-
-    public override void OnElementSelected(Element element)
-    {
-        base.OnElementSelected(element);
+        this.ChangeState(InputTypes.Hold);
     }
 
     public override void OnStateEnter()

@@ -12,6 +12,8 @@ namespace NodeSystem
 		protected Vector2 startPosition;
 
 		protected Action<Element> onClick = delegate { };
+        protected Action<Element> onDubbleClick = delegate { };
+        protected Action<Element, Vector3> onHold = delegate { };
         protected Action<Element> onHover = delegate { };
 
         public int drawOrder = 0;
@@ -30,8 +32,7 @@ namespace NodeSystem
             rect = new Rect(position, size);
             this.eventHandeler = eventHandeler;
             eventHandeler.OnElementCreate?.Invoke(this);
-            this.eventHandeler.OnClick += CheckClick;
-            this.eventHandeler.OnHover += () => CheckHover();
+            this.eventHandeler.OnInput += CheckInput;
             onClick += (Element element) => eventHandeler.OnElementClicked.Invoke(element);
             onHover += (Element element) => eventHandeler.OnElementHover.Invoke(element);
 		}
@@ -46,26 +47,37 @@ namespace NodeSystem
            eventHandeler.OnElementDestroy?.Invoke(this);
         }
 
-        private void CheckClick()
+        private void CheckInput(InputTypes input)
         {
             if (!Rect.Contains(eventHandeler.MousePosition)) return;
-            onClick?.Invoke(this);
+            switch (input)
+            {
+                case InputTypes.Clicked:
+                    onClick?.Invoke(this);
+                    break;
+                case InputTypes.DubbleClick:
+                    onDubbleClick?.Invoke(this);
+                    break;
+                case InputTypes.Hover:
+                    onHover?.Invoke(this);
+                    break;
+                case InputTypes.Hold:
+                    onHold?.Invoke(this, eventHandeler.MousePosition);
+                    break;
+                default:
+
+                    break;
+            }
         }
 
-        private void CheckHover()
+        public virtual void OnClick()
         {
-            if (!Rect.Contains(eventHandeler.MousePosition)) return;
-            onHover?.Invoke(this);
+            
         }
 
-        public virtual void OnClick(Action<Element> action)
+        public virtual void OnHover()
         {
-            this.onClick += action;
-        }
-
-        public virtual void OnHover(Action<Element> action)
-        {
-            this.onHover += action;
+            
         }
 
         public abstract void Draw();
