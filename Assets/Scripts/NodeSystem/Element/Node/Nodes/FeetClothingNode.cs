@@ -14,7 +14,7 @@ namespace NodeSystem {
 		protected override string ResourcePath => "Appearance/Feet";
 
 
-		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public override void Init(Vector2 position, SystemEventHandler eventHandeler)
 		{
 			name = "Voeten Stijlen";
 			dropdownName = "Voeten stijlen kiezen";

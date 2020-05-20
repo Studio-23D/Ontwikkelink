@@ -54,7 +54,7 @@ namespace NodeSystem
             styleCenter.alignment = TextAnchor.MiddleCenter;
         }
 
-        public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+        public override void Init(Vector2 position, SystemEventHandler eventHandeler)
 		{
             base.Init(position, eventHandeler);
 

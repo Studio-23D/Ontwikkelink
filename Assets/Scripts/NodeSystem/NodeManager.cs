@@ -15,7 +15,7 @@ namespace NodeSystem
         protected Rect rect;
 
         protected ElementDrawer elementDrawer;
-        protected SystemEventHandeler eventHandeler;
+        protected SystemEventHandler eventHandeler;
         //protected Menu menu;
 
         protected PersonageNode masterNode;
@@ -26,8 +26,7 @@ namespace NodeSystem
 		public void Init()
         {
             rect = new Rect(0, 0, 1100, Screen.height);//GetComponent<RectTransform>().rect;//new Rect(0, 0, Screen.width - 200, Screen.height);
-            print(Screen.width);
-            eventHandeler = new SystemEventHandeler(rect);
+            eventHandeler = gameObject.AddComponent<SystemEventHandler>();
             elementDrawer = new ElementDrawer();
 
             elementDrawer.Rect = rect;
@@ -37,8 +36,8 @@ namespace NodeSystem
             masterNode.characterAppearance = characterAppearance;
             elements.Add(masterNode);
 
-            SystemEventHandeler.OnElementRemove += RemoveElement;
-            SystemEventHandeler.OnElementCreate += (Element element) =>
+            eventHandeler.OnElementDestroy += RemoveElement;
+            eventHandeler.OnElementCreate += (Element element) =>
             {
                 if (element is Connection) elements.Add(element);
             };
@@ -74,7 +73,7 @@ namespace NodeSystem
 
             elementDrawer.Draw(elements);
             DestroyGarbage();
-            eventHandeler.CheckInput();
+            //eventHandeler.CheckInput();
 
             foreach(Element element in elements)
             {

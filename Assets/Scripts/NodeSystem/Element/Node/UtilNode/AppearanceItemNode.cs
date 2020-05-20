@@ -16,7 +16,7 @@ namespace NodeSystem
 		[OutputPropperty]
 		public AppearanceItem appearanceItem;
 
-		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public override void Init(Vector2 position, SystemEventHandler eventHandeler)
 		{
 			foreach (AppearanceItem item in Resources.LoadAll<AppearanceItem>(ResourcePath)){
 				DropdownElement<AppearanceItem> element = new DropdownElement<AppearanceItem>

@@ -37,7 +37,7 @@ namespace NodeSystem
             rect = new Rect();
         }
 
-        public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+        public override void Init(Vector2 position, SystemEventHandler eventHandeler)
         {
             base.Init(position, eventHandeler);
             rect.size = new Vector2(10,10);
@@ -46,11 +46,11 @@ namespace NodeSystem
             {
                 if (!(element is ConnectionPoint)) return;
                 ConnectionPoint point = element as ConnectionPoint;
-                if (eventHandeler.selectedPropertyPoint != null)
-                {
-                    eventHandeler.selectedPropertyPoint.connection.Connect(point);
-                    return;
-                }
+                //if (eventHandeler.selectedPropertyPoint != null)
+                //{
+                //    eventHandeler.selectedPropertyPoint.connection.Connect(point);
+                //    return;
+                //}
                 CreateConnection();
 
                 switch (point.type)
@@ -64,7 +64,7 @@ namespace NodeSystem
                 }
 
                 connection.Init(Vector2.zero, eventHandeler);
-                eventHandeler.selectedPropertyPoint = point;
+                //eventHandeler.selectedPropertyPoint = point;
             });
             rect.width = 10;
             rect.height = 10;

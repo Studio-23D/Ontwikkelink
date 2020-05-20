@@ -21,7 +21,7 @@ namespace NodeSystem
 
         protected Texture2D pattern;
 
-        public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+        public override void Init(Vector2 position, SystemEventHandler eventHandeler)
         {
             name = "Patronen Node";
             dropdownName = "Patronen";

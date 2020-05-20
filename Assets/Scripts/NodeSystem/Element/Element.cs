@@ -20,20 +20,20 @@ namespace NodeSystem
         public virtual Rect Rect => rect;
         public virtual Vector2 Position => rect.position;
         public Vector2 Size => rect.size;
-        protected SystemEventHandeler eventHandeler;
+        protected SystemEventHandler eventHandeler;
 
-		public virtual void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public virtual void Init(Vector2 position, SystemEventHandler eventHandeler)
         {
 			startPosition = position;
 
 			Vector2 size = new Vector2(100, 100);
             rect = new Rect(position, size);
-            SystemEventHandeler.OnElementCreate?.Invoke(this);
             this.eventHandeler = eventHandeler;
-            this.eventHandeler.SubscribeTo(EventType.MouseDown, () => CheckClick());
-            this.eventHandeler.CheckHover += () => CheckHover();
-            onClick += (Element element) => SystemEventHandeler.OnElementClick.Invoke(element);
-            onHover += (Element element) => SystemEventHandeler.OnElementHover.Invoke(element);
+            eventHandeler.OnElementCreate?.Invoke(this);
+            this.eventHandeler.OnClick += CheckClick;
+            this.eventHandeler.OnHover += () => CheckHover();
+            onClick += (Element element) => eventHandeler.OnElementClicked.Invoke(element);
+            onHover += (Element element) => eventHandeler.OnElementHover.Invoke(element);
 		}
 
 		public void ResetPosition()
@@ -43,18 +43,18 @@ namespace NodeSystem
 
 		public virtual void Destroy()
         {
-            SystemEventHandeler.OnElementRemove?.Invoke(this);
+           eventHandeler.OnElementDestroy?.Invoke(this);
         }
 
         private void CheckClick()
         {
-            if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;
+            if (!Rect.Contains(eventHandeler.MousePosition)) return;
             onClick?.Invoke(this);
         }
 
         private void CheckHover()
         {
-            if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;
+            if (!Rect.Contains(eventHandeler.MousePosition)) return;
             onHover?.Invoke(this);
         }
 

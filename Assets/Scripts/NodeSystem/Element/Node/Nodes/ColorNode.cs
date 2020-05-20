@@ -29,7 +29,7 @@ namespace NodeSystem
 
         private bool isSelectingColor = false;
 
-		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public override void Init(Vector2 position, SystemEventHandler eventHandeler)
 		{
 			base.Init(position, eventHandeler);
             name = "Kleuren Node";

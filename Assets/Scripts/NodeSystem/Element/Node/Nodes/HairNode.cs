@@ -7,7 +7,7 @@ namespace NodeSystem {
 	{
         protected override string ResourcePath => "Appearance/Hair";
 
-		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public override void Init(Vector2 position, SystemEventHandler eventHandeler)
 		{
 			name = "Haar Stijlen";
 			dropdownName = "Haar stijlen kiezen";

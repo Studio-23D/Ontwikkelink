@@ -10,7 +10,7 @@ namespace NodeSystem
         [OutputPropperty]
         public Texture2D textileTexture;
 
-        public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+        public override void Init(Vector2 position, SystemEventHandler eventHandeler)
         {
             name = "Textiel Node";
             dropdownName = "Textielen";
