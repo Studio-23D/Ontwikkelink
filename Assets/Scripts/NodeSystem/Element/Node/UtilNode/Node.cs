@@ -28,6 +28,8 @@ namespace NodeSystem
 
         public Action OnChange = delegate { };
 
+		private float connectionPointAreaHeight = 28;
+
 		public Node()
 		{
 			inputPoints = new List<ConnectionPoint>();
@@ -58,8 +60,6 @@ namespace NodeSystem
 		{
             base.Init(position, eventHandeler);
 
-            //rect.size = new Vector2(200, 0);
-
             nodeAreas.Add(new Rect(0, 0, 200, 25));
 
             FieldInfo[] objectFields = this.GetType().GetFields();
@@ -77,15 +77,17 @@ namespace NodeSystem
                     AddConnectionPoint(field, ConnectionPointType.Out);
                 }
             }
+
             float pointAreaHeight = 0;
             if (inputPoints.Count > outputPoints.Count)
             {
-                pointAreaHeight = 25 * inputPoints.Count;
+                pointAreaHeight = connectionPointAreaHeight * inputPoints.Count;
             }
             else
             {
-                pointAreaHeight = 25 * outputPoints.Count;
+                pointAreaHeight = connectionPointAreaHeight * outputPoints.Count;
             }
+
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count-1].y + nodeAreas[nodeAreas.Count - 1].height, 200, pointAreaHeight));
         }
 

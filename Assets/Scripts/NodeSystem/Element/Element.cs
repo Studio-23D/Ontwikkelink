@@ -22,12 +22,12 @@ namespace NodeSystem
         public Vector2 Size => rect.size;
         protected SystemEventHandeler eventHandeler;
 
-		public virtual void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		public virtual void Init(Vector2 position,  SystemEventHandeler eventHandeler)
         {
 			startPosition = position;
-
 			Vector2 size = new Vector2(100, 100);
             rect = new Rect(position, size);
+
             SystemEventHandeler.OnElementCreate?.Invoke(this);
             this.eventHandeler = eventHandeler;
             this.eventHandeler.SubscribeTo(EventType.MouseDown, () => CheckClick());

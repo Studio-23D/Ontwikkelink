@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NodeSystem
 {
@@ -9,16 +9,17 @@ namespace NodeSystem
     {
 		public List<Element> GetElements => elements;
 
-        [SerializeField]
-        private CharacterAppearance characterAppearance;
+        [SerializeField] private CharacterAppearance characterAppearance;
+        [SerializeField] private Image nodeFieldBackground;
+        [SerializeField] private bool drawGUI;
 
-        protected Rect rect;
+		protected Rect rect;
 
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
         //protected Menu menu;
 
-        protected PersonageNode masterNode;
+        protected CharacterNode characterNode;
 
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
@@ -31,10 +32,10 @@ namespace NodeSystem
 
             elementDrawer.Rect = rect;
 
-            masterNode = new PersonageNode();
-            masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            masterNode.characterAppearance = characterAppearance;
-            elements.Add(masterNode);
+            characterNode = new CharacterNode();
+            characterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
+            characterNode.characterAppearance = characterAppearance;
+            elements.Add(characterNode);
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
             SystemEventHandeler.OnElementCreate += (Element element) =>
@@ -50,7 +51,52 @@ namespace NodeSystem
             elements = elements.OrderBy(e => e.drawOrder).ToList();
         }
 
-        public void RemoveElement(Element element)
+		public void InstantiateNode(string nodeName)
+		{
+			Node node;
+
+			switch (nodeName)
+			{
+				case "Color":
+					node = new ColorNode();
+					break;
+
+				case "Pattern":
+					node = new PatternNode();
+					break;
+
+				case "Textile":
+					node = new TextileNode();
+					break;
+
+				case "Hair":
+					node = new HairNode();
+					break;
+
+				case "Torso":
+					node = new TorsoClothingNode();
+					break;
+
+				case "Legs":
+					node = new LegsClothingNode();
+					break;
+
+				case "Feet":
+					node = new FeetClothingNode();
+					break;
+
+				default:
+					Debug.LogError(nodeName + " IS NOT A VALID NODE NAME");
+					return;
+			}
+
+			node.Init(nodeFieldBackground.transform.position, eventHandeler);
+            //node.Init(eventHandeler.MousePosition, eventHandeler);
+			elements.Add(node);
+			elements = elements.OrderBy(e => e.drawOrder).ToList();
+		}
+
+		public void RemoveElement(Element element)
         {
             garbage.Add(element);
         }
@@ -84,40 +130,43 @@ namespace NodeSystem
                 }
             }
 
-            if (GUILayout.Button("ColorNode"))
-            {
-                InstantiateNode(new ColorNode());
-            }
+			if (drawGUI)
+			{
+				if (GUILayout.Button("ColorNode"))
+				{
+					InstantiateNode(new ColorNode());
+				}
 
-            if (GUILayout.Button("PatternNode"))
-            {
-                InstantiateNode(new PatternNode());
-            }
+				if (GUILayout.Button("PatternNode"))
+				{
+					InstantiateNode(new PatternNode());
+				}
 
-            if (GUILayout.Button("HairNode"))
-            {
-                InstantiateNode(new HairNode());
-            }
+				if (GUILayout.Button("HairNode"))
+				{
+					InstantiateNode(new HairNode());
+				}
 
-            if (GUILayout.Button("TorsoClothingNode"))
-            {
-                InstantiateNode(new TorsoClothingNode());
-            }
+				if (GUILayout.Button("TorsoClothingNode"))
+				{
+					InstantiateNode(new TorsoClothingNode());
+				}
 
-            if (GUILayout.Button("LegsClothingNode"))
-            {
-                InstantiateNode(new LegsClothingNode());
-            }
+				if (GUILayout.Button("LegsClothingNode"))
+				{
+					InstantiateNode(new LegsClothingNode());
+				}
 
-            if (GUILayout.Button("FeetClothingNode"))
-            {
-                InstantiateNode(new FeetClothingNode());
-            }
+				if (GUILayout.Button("FeetClothingNode"))
+				{
+					InstantiateNode(new FeetClothingNode());
+				}
 
-            if (GUILayout.Button("textileNode"))
-            {
-                InstantiateNode(new TextileNode());
-            }
+				if (GUILayout.Button("textileNode"))
+				{
+					InstantiateNode(new TextileNode());
+				}
+			}
         }
     }
 }
