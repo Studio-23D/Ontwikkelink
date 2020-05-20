@@ -34,19 +34,6 @@ namespace NodeSystem
 			base.Init(position, eventHandeler);
             name = "Kleuren Node";
 
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 30));
-
-            previewRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 30);
-
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 200));
-
-            palleteRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 200);
-            draggableRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 10, 10);
-
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-
             previewTexture = new Texture2D(1, 1);
             previewTexture.SetPixel(0, 0, previewColor);
             previewTexture.Apply();
@@ -60,11 +47,8 @@ namespace NodeSystem
         {
             base.Draw();
 
-            GUI.Box(nodeAreas[2], "", styleExtraArea);
 
             GUI.DrawTextureWithTexCoords(previewRect, previewTexture, new Rect(0, 0, 1, -1));
-
-            GUI.Box(nodeAreas[3], "", styleExtraArea);
 
             GUI.DrawTextureWithTexCoords(palleteRect, selectionTexture, new Rect(0, 0, 1, -1));
 
@@ -80,8 +64,6 @@ namespace NodeSystem
 
             SelectColor();
             SetPreview();
-
-            GUI.Box(nodeAreas[4], "", styleBottomArea);
 
             GUI.EndGroup();
         }
@@ -99,7 +81,7 @@ namespace NodeSystem
                 draggableRect.x = draggableCenter.x;
                 draggableRect.y = draggableCenter.y;
 
-                selectionColor = selectionTexture.GetPixel((int)(draggableCenter.x * multi.x), (int)(draggableCenter.y * multi.y - nodeAreas[nodeAreas.Count - 2].y - 16));
+                //selectionColor = selectionTexture.GetPixel((int)(draggableCenter.x * multi.x), (int)(draggableCenter.y * multi.y - nodeAreas[nodeAreas.Count - 2].y - 16));
             }
         }
 

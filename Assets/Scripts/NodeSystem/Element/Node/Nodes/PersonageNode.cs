@@ -28,18 +28,12 @@ namespace NodeSystem
         {
             base.Init(position, eventHandeler);
             name = "Personage Node";
-
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
         }
 
         public override void Draw()
         {
             base.Draw();
-
-            GUI.Box(nodeAreas[2], "", styleBottomArea);
-
+            Debug.Log("hi");
             GUI.EndGroup();
         }
 

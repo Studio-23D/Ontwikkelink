@@ -26,14 +26,14 @@ namespace NodeSystem
 		public void Init()
         {
             rect = new Rect(0, 0, 1100, Screen.height);//GetComponent<RectTransform>().rect;//new Rect(0, 0, Screen.width - 200, Screen.height);
-            print(Screen.width);
+
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
 
             elementDrawer.Rect = rect;
 
             masterNode = new PersonageNode();
-            masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
+            masterNode.Init(new Vector2(0, 0), eventHandeler);
             masterNode.characterAppearance = characterAppearance;
             elements.Add(masterNode);
 
@@ -70,8 +70,8 @@ namespace NodeSystem
 
         private void OnGUI()
         {
-			if (elementDrawer == null) return;
-
+            if (elementDrawer == null) return;
+            
             elementDrawer.Draw(elements);
             DestroyGarbage();
             eventHandeler.CheckInput();

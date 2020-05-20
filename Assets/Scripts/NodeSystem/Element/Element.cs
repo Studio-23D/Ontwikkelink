@@ -18,20 +18,45 @@ namespace NodeSystem
 
         protected Rect rect = new Rect();
         public virtual Rect Rect => rect;
-        public virtual Vector2 Position => rect.position;
-        public Vector2 Size => rect.size;
+
+        public virtual Vector2 Position
+        {
+            get
+            {
+                return rect.position;
+            }
+            set
+            {
+                rect.position = value;
+            }
+        }
+        public virtual Vector2 Size
+        {
+            get
+            {
+                return rect.size;
+            }
+            set
+            {
+                rect.size = value;
+            }
+        }
+
         protected SystemEventHandeler eventHandeler;
 
 		public virtual void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
 			startPosition = position;
 
-			Vector2 size = new Vector2(100, 100);
+			Vector2 size = new Vector2(0, 0);
             rect = new Rect(position, size);
+
             SystemEventHandeler.OnElementCreate?.Invoke(this);
+
             this.eventHandeler = eventHandeler;
             this.eventHandeler.SubscribeTo(EventType.MouseDown, () => CheckClick());
             this.eventHandeler.CheckHover += () => CheckHover();
+
             onClick += (Element element) => SystemEventHandeler.OnElementClick.Invoke(element);
             onHover += (Element element) => SystemEventHandeler.OnElementHover.Invoke(element);
 		}

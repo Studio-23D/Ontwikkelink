@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-	public abstract class AppearanceItemNode : DropdownNode <AppearanceItem>
+	public abstract class AppearanceItemNode : SliderNode <AppearanceItem>
 	{
 		protected abstract string ResourcePath {
 			get;
@@ -18,23 +18,11 @@ namespace NodeSystem
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			foreach (AppearanceItem item in Resources.LoadAll<AppearanceItem>(ResourcePath)){
-				DropdownElement<AppearanceItem> element = new DropdownElement<AppearanceItem>
-				{
-					visual = item.Icon.texture,
-					value = item
-				};
-				dropdownElements.Add(element);
-			}
+            GetSliderOptions();
 
-			base.Init(position, eventHandeler);
+            base.Init(position, eventHandeler);
 
 			CalculateChange();
-
-			nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-			rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-			originalSize = new Vector2(Size.x, Size.y);
 		}
 
 		public override void CalculateChange()
@@ -50,10 +38,21 @@ namespace NodeSystem
 		{
 			base.Draw();
 
-			GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), appearanceItem.Icon.texture, styleCenter);
-			GUI.Box(nodeAreas[3], "", styleBottomArea);
 			GUI.EndGroup();
 		}
-	}
+
+        public void GetSliderOptions()
+        {
+            foreach (AppearanceItem item in Resources.LoadAll<AppearanceItem>(ResourcePath))
+            {
+                SliderOption<AppearanceItem> option = new SliderOption<AppearanceItem>
+                {
+                    visual = item.Icon.texture,
+                    value = item
+                };
+                sliderOptions.Add(option);
+            }
+        }
+    }
 }
 

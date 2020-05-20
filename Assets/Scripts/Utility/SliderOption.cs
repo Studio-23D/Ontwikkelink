@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public struct DropdownElement<T>
+    public struct SliderOption<T>
     {
         public Texture2D visual;
         public T value;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public class PatternNode : DropdownNode<Texture2D>
+    public class PatternNode : SliderNode<Texture2D>
     {
         [InputPropperty]
         public Color colorR = Color.red;
@@ -26,32 +26,17 @@ namespace NodeSystem
             name = "Patronen Node";
             dropdownName = "Patronen";
 
-            foreach (Texture2D texture in Resources.LoadAll("Patterns", typeof(Texture2D)))
-            {
-                DropdownElement<Texture2D> element = new DropdownElement<Texture2D>
-                {
-                    visual = texture,
-                    value = texture,
-                };
-                dropdownElements.Add(element);
-            }
+            GetSliderOptions();
 
             base.Init(position, eventHandeler);
 
             CalculateChange();
-
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-            originalSize = new Vector2(Size.x, Size.y);
         }
 
         public override void Draw()
         {
             base.Draw();
-            
-            GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), patternTexture, styleCenter);
-            GUI.Box(nodeAreas[3], "", styleBottomArea);
+
             GUI.EndGroup();
         }
       
@@ -82,6 +67,19 @@ namespace NodeSystem
             patternTexture.Apply();
 
             base.CalculateChange();
+        }
+
+        public void GetSliderOptions()
+        {
+            foreach (Texture2D texture in Resources.LoadAll("Patterns", typeof(Texture2D)))
+            {
+                SliderOption<Texture2D> option = new SliderOption<Texture2D>
+                {
+                    visual = texture,
+                    value = texture,
+                };
+                sliderOptions.Add(option);
+            }
         }
     }
 }

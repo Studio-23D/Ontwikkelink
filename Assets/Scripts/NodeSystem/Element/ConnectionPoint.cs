@@ -71,7 +71,6 @@ namespace NodeSystem
 
             style = new GUIStyle();
             style.normal.background = Resources.Load<Texture2D>("NodeSystem/nodeDot");
-
         }
 
         private Connection CreateConnection()

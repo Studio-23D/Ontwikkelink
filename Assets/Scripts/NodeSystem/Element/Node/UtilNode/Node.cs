@@ -15,52 +15,42 @@ namespace NodeSystem
 
         protected string name;
 
-        protected List<Rect> nodeAreas;
+        protected Dictionary<string, Rect> areas = new Dictionary<string, Rect>();
 
-        protected GUIStyle styleTitleArea;
-        protected GUIStyle styleConnectionPointsArea;
-        protected GUIStyle styleExtraArea;
+        private List<ConnectionPoint> inputPoints = new List<ConnectionPoint>();
+        private List<ConnectionPoint> outputPoints = new List<ConnectionPoint>();
+
+        private float connectionPointOffset = 5;
+
+        protected GUIStyle styleTopArea;
+        protected GUIStyle styleMiddleArea;
         protected GUIStyle styleBottomArea;
-        protected GUIStyle styleCenter;
-
-        private List<ConnectionPoint> inputPoints;
-		private List<ConnectionPoint> outputPoints;
 
         public Action OnChange = delegate { };
 
 		public Node()
 		{
-			inputPoints = new List<ConnectionPoint>();
-			outputPoints = new List<ConnectionPoint>();
+            inputPoints = new List<ConnectionPoint>();
+            outputPoints = new List<ConnectionPoint>();
 
-            nodeAreas = new List<Rect>();
+            styleTopArea = new GUIStyle();
+            styleTopArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Normal/node_top");
 
-            styleTitleArea = new GUIStyle();
-            styleTitleArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Top");
-            styleTitleArea.alignment = TextAnchor.MiddleCenter;
-            styleTitleArea.normal.textColor = Color.white;
-            styleTitleArea.font = (Font)Resources.Load("NodeSystem/bebas-neue-semiroundedNode");
-
-            styleConnectionPointsArea = new GUIStyle();
-            styleConnectionPointsArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Middle");
-
-            styleExtraArea = new GUIStyle();
-            styleExtraArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Middle2");
+            styleMiddleArea = new GUIStyle();
+            styleMiddleArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Normal/node_Middle");
+            //stylemiddleArea.font = (Font)Resources.Load("NodeSystem/bebas-neue-semiroundedNode");
 
             styleBottomArea = new GUIStyle();
-            styleBottomArea.normal.background = Resources.Load<Texture2D>("NodeSystem/node_1Bottom");
-
-            styleCenter = new GUIStyle();
-            styleCenter.alignment = TextAnchor.MiddleCenter;
+            styleBottomArea.normal.background = Resources.Load<Texture2D>("NodeSystem/Normal/node_bottom");
         }
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
             base.Init(position, eventHandeler);
 
-            //rect.size = new Vector2(200, 0);
-
-            nodeAreas.Add(new Rect(0, 0, 200, 25));
+            areas.Add("top", new Rect());
+            areas.Add("middle", new Rect());
+            areas.Add("bottom", new Rect());
 
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
@@ -77,65 +67,36 @@ namespace NodeSystem
                     AddConnectionPoint(field, ConnectionPointType.Out);
                 }
             }
-            float pointAreaHeight = 0;
-            if (inputPoints.Count > outputPoints.Count)
-            {
-                pointAreaHeight = 25 * inputPoints.Count;
-            }
-            else
-            {
-                pointAreaHeight = 25 * outputPoints.Count;
-            }
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count-1].y + nodeAreas[nodeAreas.Count - 1].height, 200, pointAreaHeight));
-        }
-
-		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
-		{
-			ConnectionPoint point = new ConnectionPoint(this, field, pointType);
-            Vector2 position;
-            Vector2 size = new Vector2(10, 10);
-			switch (pointType)
-			{
-				case ConnectionPointType.In:
-					inputPoints.Add(point);
-                    position = new Vector2(10, ((point.Size.y + nodeAreas[nodeAreas.Count-1].height) * inputPoints.Count) + 10);
-					break;
-                default:
-                    outputPoints.Add(point);
-                    position = new Vector2(200 - point.Size.x - 20, ((point.Size.y + nodeAreas[nodeAreas.Count-1].height) * outputPoints.Count) + 10);
-					break;
-			}
-            point.Init(position, this.eventHandeler);
-		}
-
-        public virtual void CalculateChange()
-        {
-            OnChange?.Invoke();
+            PositionConnectionPoints(inputPoints, areas["middle"].height / 2);
         }
 
 		public override void Draw()
 		{
             GUI.BeginGroup(rect);
 
-            GUI.Box(nodeAreas[0], name, styleTitleArea);
+            GUI.Box(areas["top"], "", styleTopArea);
+            GUI.Box(areas["middle"], "", styleMiddleArea);
+            GUI.Box(areas["middle"], "", styleBottomArea);
 
-            GUI.Box(nodeAreas[1], "", styleConnectionPointsArea);
-
-            List<ConnectionPoint> points = new List<ConnectionPoint>();
-            points.AddRange(inputPoints);
-            points.AddRange(outputPoints);
-
-            foreach (ConnectionPoint point in points)
+            foreach (ConnectionPoint point in inputPoints)
             {
                 point.Draw();
             };
-		}
+            foreach (ConnectionPoint point in outputPoints)
+            {
+                point.Draw();
+            };
+        }
 
-		public override void Destroy()
+        public virtual void CalculateChange()
+        {
+            OnChange?.Invoke();
+        }
+
+        public override void Destroy()
 		{
 			throw new NotImplementedException();
 		}
-
 
 		public virtual void Drag(Vector2 position)
 		{
@@ -146,7 +107,43 @@ namespace NodeSystem
 #endif
 		}
 
-		public bool ProcessEvents(Event e)
+        public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
+        {
+            ConnectionPoint point = new ConnectionPoint(this, field, pointType);
+
+            switch (pointType)
+            {
+                case ConnectionPointType.In:
+                    inputPoints.Add(point);
+                    break;
+                case ConnectionPointType.Out:
+                    outputPoints.Add(point);
+                    break;
+            }
+            point.Init(new Vector2(0, 0), this.eventHandeler);
+        }
+
+        public virtual void PositionConnectionPoints(List<ConnectionPoint> points, float positionY)
+        {
+            ConnectionPointType type = points[0].type;
+            float totalSizePoints = (points[0].Size.y + connectionPointOffset) * points.Count;
+
+            for(int i = 0; i < points.Count; i++)
+            {
+                switch (type)
+                {
+                    case ConnectionPointType.In:
+                        points[i].Position = new Vector2(0, i * (points[i].Size.y + connectionPointOffset) + positionY - totalSizePoints);
+                        break;
+                    case ConnectionPointType.Out:
+                        points[i].Position = new Vector2(areas["middle"].width, i * (points[i].Size.y + connectionPointOffset) + positionY - totalSizePoints);
+                        break;
+                }
+
+            }
+        }
+
+        public bool ProcessEvents(Event e)
         {
             switch (e.type)
             {
