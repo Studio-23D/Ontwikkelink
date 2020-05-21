@@ -5,7 +5,7 @@ namespace NodeSystem
 {
     public class ElementDrawer 
     {
-        private Rect rect;
+        /*private Rect rect;
 
         public Rect Rect
         {
@@ -19,7 +19,7 @@ namespace NodeSystem
                 element.Draw();
             });
             GUI.EndGroup();
-        }
+        }*/
     }
 }
 

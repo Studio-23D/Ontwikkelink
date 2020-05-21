@@ -6,7 +6,7 @@ namespace NodeSystem
 {
 	public class ColorNode : Node
 	{
-		[OutputPropperty]
+        /*[OutputPropperty]
 		public Color colorOut = Color.white;
 
         private Rect previewRect;
@@ -114,7 +114,7 @@ namespace NodeSystem
         {
             colorOut = selectionColor;
             base.CalculateChange();
-        }
+        }*/
     }
 }
 

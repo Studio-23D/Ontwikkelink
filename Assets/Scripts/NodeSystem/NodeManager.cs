@@ -7,119 +7,134 @@ namespace NodeSystem
 {
     public class NodeManager : MonoBehaviour
     {
-		public List<Element> GetElements => elements;
+        private Rect rect;
 
         [SerializeField]
-        private CharacterAppearance characterAppearance;
+        private List<GameObject> elements = new List<GameObject>();
+        [SerializeField]
+        private Transform nodeField;
 
-        protected Rect rect;
+        private SystemEventHandeler eventHandeler;
 
-        protected ElementDrawer elementDrawer;
-        protected SystemEventHandeler eventHandeler;
-        //protected Menu menu;
+        private void Start() { Init(); }
 
-        protected PersonageNode masterNode;
-
-        protected List<Element> elements = new List<Element>();
-        protected List<Element> garbage = new List<Element>();
-
-		public void Init()
+        public void Init()
         {
-            rect = new Rect(0, 0, 1100, Screen.height);//GetComponent<RectTransform>().rect;//new Rect(0, 0, Screen.width - 200, Screen.height);
-            print(Screen.width);
+            rect = GetComponent<RectTransform>().rect;
+
             eventHandeler = new SystemEventHandeler(rect);
-            elementDrawer = new ElementDrawer();
+ 
+            GameObject personageNode = Instantiate(elements[0], nodeField);
+            PersonageNode node = personageNode.GetComponent<PersonageNode>();
+            node.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
+        }
+            /*public List<Element> GetElements => elements;
 
-            elementDrawer.Rect = rect;
+            [SerializeField]
+            private CharacterAppearance characterAppearance;
 
-            masterNode = new PersonageNode();
-            masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            masterNode.characterAppearance = characterAppearance;
-            elements.Add(masterNode);
+            protected Rect rect;
 
-            SystemEventHandeler.OnElementRemove += RemoveElement;
-            SystemEventHandeler.OnElementCreate += (Element element) =>
+            protected ElementDrawer elementDrawer;
+            protected SystemEventHandeler eventHandeler;
+
+            protected PersonageNode masterNode;
+
+            protected List<Element> elements = new List<Element>();
+            protected List<Element> garbage = new List<Element>();
+
+            public void Init()
             {
-                if (element is Connection) elements.Add(element);
-            };
-        }
+                eventHandeler = new SystemEventHandeler(rect);
 
-        public void InstantiateNode(Node node)
-        {
-            node.Init(eventHandeler.MousePosition, eventHandeler);
-            elements.Add(node);
-            elements = elements.OrderBy(e => e.drawOrder).ToList();
-        }
+                masterNode = new PersonageNode();
+                masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
+                masterNode.characterAppearance = characterAppearance;
+                elements.Add(masterNode);
 
-        public void RemoveElement(Element element)
-        {
-            garbage.Add(element);
-        }
-
-        private void DestroyGarbage()
-        {
-            garbage.ForEach(element =>
-            {
-                if (elements.Contains(element))
+                SystemEventHandeler.OnElementRemove += RemoveElement;
+                SystemEventHandeler.OnElementCreate += (Element element) =>
                 {
-                    elements.Remove(element);
-                }
-            });
-            garbage = new List<Element>();
-        }
+                    if (element is Connection) elements.Add(element);
+                };
+            }
 
-        private void OnGUI()
-        {
-			if (elementDrawer == null) return;
-
-            elementDrawer.Draw(elements);
-            DestroyGarbage();
-            eventHandeler.CheckInput();
-
-            foreach(Element element in elements)
+            public void InstantiateNode(Node node)
             {
-                if (element is Node)
+                node.Init(eventHandeler.MousePosition, eventHandeler);
+                elements.Add(node);
+                elements = elements.OrderBy(e => e.drawOrder).ToList();
+            }
+
+            public void RemoveElement(Element element)
+            {
+                garbage.Add(element);
+            }
+
+            private void DestroyGarbage()
+            {
+                garbage.ForEach(element =>
                 {
-                    Node node = element as Node;
-                    node.ProcessEvents(Event.current);
+                    if (elements.Contains(element))
+                    {
+                        elements.Remove(element);
+                    }
+                });
+                garbage = new List<Element>();
+            }
+
+            private void OnGUI()
+            {
+                if (elementDrawer == null) return;
+
+                elementDrawer.Draw(elements);
+                DestroyGarbage();
+                eventHandeler.CheckInput();
+
+                foreach(Element element in elements)
+                {
+                    if (element is Node)
+                    {
+                        Node node = element as Node;
+                        node.ProcessEvents(Event.current);
+                    }
                 }
-            }
 
-            if (GUILayout.Button("ColorNode"))
-            {
-                InstantiateNode(new ColorNode());
-            }
+                if (GUILayout.Button("ColorNode"))
+                {
+                    InstantiateNode(new ColorNode());
+                }
 
-            if (GUILayout.Button("PatternNode"))
-            {
-                InstantiateNode(new PatternNode());
-            }
+                if (GUILayout.Button("PatternNode"))
+                {
+                    InstantiateNode(new PatternNode());
+                }
 
-            if (GUILayout.Button("HairNode"))
-            {
-                InstantiateNode(new HairNode());
-            }
+                if (GUILayout.Button("HairNode"))
+                {
+                    InstantiateNode(new HairNode());
+                }
 
-            if (GUILayout.Button("TorsoClothingNode"))
-            {
-                InstantiateNode(new TorsoClothingNode());
-            }
+                if (GUILayout.Button("TorsoClothingNode"))
+                {
+                    InstantiateNode(new TorsoClothingNode());
+                }
 
-            if (GUILayout.Button("LegsClothingNode"))
-            {
-                InstantiateNode(new LegsClothingNode());
-            }
+                if (GUILayout.Button("LegsClothingNode"))
+                {
+                    InstantiateNode(new LegsClothingNode());
+                }
 
-            if (GUILayout.Button("FeetClothingNode"))
-            {
-                InstantiateNode(new FeetClothingNode());
-            }
+                if (GUILayout.Button("FeetClothingNode"))
+                {
+                    InstantiateNode(new FeetClothingNode());
+                }
 
-            if (GUILayout.Button("textileNode"))
-            {
-                InstantiateNode(new TextileNode());
-            }
+                if (GUILayout.Button("textileNode"))
+                {
+                    InstantiateNode(new TextileNode());
+                }
+            }*/
         }
-    }
 }
                                                                          

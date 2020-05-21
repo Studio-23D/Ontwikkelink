@@ -5,7 +5,7 @@ using NodeSystem;
 
 public class PanZoom : MonoBehaviour
 {
-	[Header("Zoom")]
+	/*[Header("Zoom")]
 	[SerializeField, Tooltip("Minimal zoom range")] private float zoomMin = 0.1f;
 	[SerializeField, Tooltip("Maximal zoom range")] private float zoomMax = 2;
 	[SerializeField, Tooltip("Modifies the difference between zoom steps")] private float zoomDifferenceModifier = 0.01f;
@@ -157,5 +157,5 @@ public class PanZoom : MonoBehaviour
 		ChangeZoom(scroll);
 	}
 
-	#endregion
+	#endregion*/
 }

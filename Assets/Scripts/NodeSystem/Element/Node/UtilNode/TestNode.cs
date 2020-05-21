@@ -6,7 +6,7 @@ namespace NodeSystem
 {
     public class TestNode : Node
     {
-        [OutputPropperty]
+        /*[OutputPropperty]
         public GameObject hair = null;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
@@ -36,7 +36,7 @@ namespace NodeSystem
         public override void CalculateChange()
         {
             base.CalculateChange();
-        }
+        }*/
     }
 }
 

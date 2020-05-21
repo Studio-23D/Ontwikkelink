@@ -7,7 +7,7 @@ namespace NodeSystem
 {
     public class PatternNode : DropdownNode<Texture2D>
     {
-        [InputPropperty]
+        /*[InputPropperty]
         public Color colorR = Color.red;
 
         [InputPropperty]
@@ -82,6 +82,6 @@ namespace NodeSystem
             patternTexture.Apply();
 
             base.CalculateChange();
-        }
+        }*/
     }
 }

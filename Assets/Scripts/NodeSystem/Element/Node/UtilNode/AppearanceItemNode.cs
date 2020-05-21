@@ -6,7 +6,7 @@ namespace NodeSystem
 {
 	public abstract class AppearanceItemNode : DropdownNode <AppearanceItem>
 	{
-		protected abstract string ResourcePath {
+        /*protected abstract string ResourcePath {
 			get;
 		}
 
@@ -53,7 +53,7 @@ namespace NodeSystem
 			GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), appearanceItem.Icon.texture, styleCenter);
 			GUI.Box(nodeAreas[3], "", styleBottomArea);
 			GUI.EndGroup();
-		}
-	}
+		}*/
+    }
 }
 

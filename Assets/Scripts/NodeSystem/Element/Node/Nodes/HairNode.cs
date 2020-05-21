@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NodeSystem {
     public class HairNode : AppearanceItemNode
 	{
-        protected override string ResourcePath => "Appearance/Hair";
+        /*protected override string ResourcePath => "Appearance/Hair";
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
@@ -13,7 +13,7 @@ namespace NodeSystem {
 			dropdownName = "Haar stijlen kiezen";
 
 			base.Init(position, eventHandeler);
-		}
-	}
+		}*/
+    }
 }
 

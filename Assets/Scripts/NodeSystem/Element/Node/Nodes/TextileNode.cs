@@ -7,7 +7,7 @@ namespace NodeSystem
 {
     public class TextileNode : DropdownNode <TextileData>
     {
-        [OutputPropperty]
+        /*[OutputPropperty]
         public TextileData textileTexture;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
@@ -49,6 +49,6 @@ namespace NodeSystem
             textileTexture = chosenValue;
 
             base.CalculateChange();
-        }
+        }*/
     }
 }

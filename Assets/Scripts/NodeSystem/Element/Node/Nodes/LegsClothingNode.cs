@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NodeSystem {
 	public class LegsClothingNode : AppearanceItemNode
 	{
-		[InputPropperty]
+		/*[InputPropperty]
 		public Texture2D pattern;
 
         [InputPropperty]
@@ -27,7 +27,7 @@ namespace NodeSystem {
             base.CalculateChange();
             appearanceItem.SetPattern(pattern);
             appearanceItem.SetTextile(textile);
-        }
+        }*/
     }
 }
 

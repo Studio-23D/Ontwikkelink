@@ -13,7 +13,7 @@ namespace NodeSystem
 
     public class Menu : Element
     {
-        private List<MenuEntry> menuEntries;
+        /*private List<MenuEntry> menuEntries;
 
         private bool show = false;
 
@@ -77,6 +77,6 @@ namespace NodeSystem
                 }
             }
             GUI.EndGroup();
-        }
+        }*/
     }
 }

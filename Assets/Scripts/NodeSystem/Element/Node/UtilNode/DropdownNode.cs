@@ -7,7 +7,7 @@ namespace NodeSystem
 
     public abstract class DropdownNode <T> : Node
     {
-        protected string dropdownName;
+        /*protected string dropdownName;
 
         protected Vector2 ElementSize = new Vector2(100, 100);
         protected int rowLimit = 2;
@@ -90,6 +90,6 @@ namespace NodeSystem
 
             dropdrownRect = new Rect(Size.x, Size.y / 4, dropdownElementSize.x, dropdownElementSize.y);
             this.dropdownSize = Size + dropdownElementSize * rowLimit;
-        }
+        }*/
     }
 }

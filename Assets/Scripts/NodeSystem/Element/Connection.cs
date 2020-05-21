@@ -3,9 +3,9 @@ using UnityEditor;
 using UnityEngine;
 
 namespace NodeSystem {
-	public class Connection : Element
+	public class Connection
 	{
-		private ConnectionPoint inPoint;
+        /*private ConnectionPoint inPoint;
 		private ConnectionPoint outPoint;	
 
 		private Type type;
@@ -91,6 +91,6 @@ namespace NodeSystem {
 			Vector2 positionB = (inPoint != null) ? inPoint.Position + inPoint.Size / new Vector2(2, 2) : SystemEventHandeler.mousePosition;
 
 			GuiLineRenderer.DrawLine(positionA, positionB, Color.black, 2);
-		}
-	}
+		}*/
+    }
 }
