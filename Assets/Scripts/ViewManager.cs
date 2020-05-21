@@ -104,7 +104,7 @@ public class ViewManager : MonoBehaviour
 			RemoveLastView();
 		}
 
-		Debug.Log("Changed view to " + newView.name);
+		//Debug.Log("Changed view to " + newView.name);
 	}
 
 	public void SetViewTo(GameObject newView)

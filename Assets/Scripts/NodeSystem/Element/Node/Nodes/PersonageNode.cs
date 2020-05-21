@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public class PersonageNode : Node
+    public class CharacterNode : Node
     {
         [InputPropperty]
         public Color skin = Color.white;

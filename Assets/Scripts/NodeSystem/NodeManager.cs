@@ -11,34 +11,39 @@ namespace NodeSystem
 
         [SerializeField]
         private CharacterAppearance characterAppearance;
+        [SerializeField]
+        private RectTransform characterStage;
+        [SerializeField]
+        private RectTransform buttonMenu;
 
         protected Rect rect;
 
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
-        //protected Menu menu;
+        
+        private bool canDraw = false;
 
-        protected PersonageNode masterNode;
+        protected CharacterNode characterNode;
 
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
 
 		public void Init()
         {
-            float width = this.GetComponent<RectTransform>().rect.width * 0.9f;
-            float height = this.GetComponent<RectTransform>().rect.height;
-            rect = new Rect(0, 0, width, height);
-            Debug.Log(rect);
-            print(Screen.width);
+            rect = new Rect();
+            rect.width = Screen.width - (characterStage.rect.width / 1920 * Screen.width);
+            rect.height = Screen.height;
+
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
 
-            elementDrawer.Rect = rect;
+            characterNode = new CharacterNode();
+            characterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
+            characterAppearance.Character = FindObjectOfType<Character>();
+            characterNode.characterAppearance = characterAppearance;
+            elements.Add(characterNode);
 
-            masterNode = new PersonageNode();
-            masterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            masterNode.characterAppearance = characterAppearance;
-            elements.Add(masterNode);
+            canDraw = true;
 
             SystemEventHandeler.OnElementRemove += RemoveElement;
             SystemEventHandeler.OnElementCreate += (Element element) =>
@@ -59,6 +64,11 @@ namespace NodeSystem
             garbage.Add(element);
         }
 
+        public void ToggleDraw(bool canDraw)
+        {
+            this.canDraw = canDraw;
+        }
+
         private void DestroyGarbage()
         {
             garbage.ForEach(element =>
@@ -73,11 +83,12 @@ namespace NodeSystem
 
         private void OnGUI()
         {
-			if (elementDrawer == null) return;
+			if (elementDrawer == null || !canDraw) return;
 
-            GUI.Box(rect, "");
+            rect.width = Screen.width - (characterStage.rect.width / 1920 * Screen.width);
+            rect.height = Screen.height - (buttonMenu.rect.height / 1080 * Screen.height);
 
-            elementDrawer.Draw(elements);
+            elementDrawer.Draw(elements, rect);
             DestroyGarbage();
             eventHandeler.CheckInput();
 

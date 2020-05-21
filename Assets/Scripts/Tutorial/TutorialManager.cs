@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NodeSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public struct Tutorial
 public class TutorialManager : MonoBehaviour
 {
 	[SerializeField] private ViewManager viewManager;
+	[SerializeField] private NodeManager nodeManager;
 	[SerializeField] private List<Tutorial> tutorials;
 
 	private Tutorial currentTutorial;
@@ -77,7 +79,7 @@ public class TutorialManager : MonoBehaviour
 	{
 		currentTutorial.feature = Instantiate(currentTutorial.feature, transform);
 		currentTutorial.feature.GetContinueButton.onClick.AddListener(ContinueTutorial);
-
+		nodeManager.ToggleDraw(false);
 		if (currentTutorial.feature.GetParts.Count > 0)
 		{
 			currentTutorialPart = currentTutorial.feature.GetParts[0];

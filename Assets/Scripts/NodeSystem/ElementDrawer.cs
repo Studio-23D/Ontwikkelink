@@ -5,14 +5,7 @@ namespace NodeSystem
 {
     public class ElementDrawer 
     {
-        private Rect rect;
-
-        public Rect Rect
-        {
-            set { rect = value; }
-        }
-
-        public void Draw(List<Element> elements)
+        public void Draw(List<Element> elements, Rect rect)
         {
             GUI.BeginGroup(rect);
             elements.ForEach(element => {
