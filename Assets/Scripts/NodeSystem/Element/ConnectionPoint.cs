@@ -6,31 +6,29 @@ namespace NodeSystem
 {
 
     public class ConnectionPoint : Element
-    {
-        public Node node;
-        private Connection connection;
-
+	{
+		public override Vector2 Position => Rect.position;
+		public override Rect Rect
+		{
+			get
+			{
+				Rect rect = this.rect;
+				rect.position = node.Position + this.rect.position;
+				return rect;
+			}
+		}
 		public FieldInfo Value { get; }
 
-        public ConnectionPointType type;
+		public ConnectionPointType type;
+		public Node node;
 
-        public override Rect Rect
-        {
-            get
-            {
-                Rect rect = this.rect;
-                rect.position = node.Position + this.rect.position;
-                return rect;
-            }
-        }
-        GUIStyle style;
-
-        public override Vector2 Position => Rect.position;
+		private Connection connection;
+        private GUIStyle style;
+		private float size = 20;
 
         public ConnectionPoint(Node node, FieldInfo value, ConnectionPointType type)
         {
             this.node = node;
-
             this.Value = value;
             this.type = type;
             
@@ -40,7 +38,8 @@ namespace NodeSystem
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
             base.Init(position, eventHandeler);
-            rect.size = new Vector2(10,10);
+
+			rect.size = new Vector2(size, size);
             
             OnClick((Element element) =>
             {
@@ -66,8 +65,9 @@ namespace NodeSystem
                 connection.Init(Vector2.zero, eventHandeler);
                 eventHandeler.selectedPropertyPoint = point;
             });
-            rect.width = 10;
-            rect.height = 10;
+
+            rect.width = size;
+            rect.height = size;
 
             style = new GUIStyle();
             style.normal.background = Resources.Load<Texture2D>("NodeSystem/nodeDot");
@@ -95,10 +95,10 @@ namespace NodeSystem
             switch(type)
             {
                 case ConnectionPointType.In:
-                    GUI.Label(new Rect(base.Position.x + 15, base.Position.y - 5, 30, 20), Value.Name);
+                    GUI.Label(new Rect(base.Position.x + size + 5, base.Position.y - 5, 30, 20), Value.Name);
                     break;
                 case ConnectionPointType.Out:
-                    GUI.Label(new Rect(base.Position.x - 30, base.Position.y - 5, 30, 20), Value.Name);
+                    GUI.Label(new Rect(base.Position.x - size - 10, base.Position.y - 5, 30, 20), Value.Name);
                     break;
             }
         }

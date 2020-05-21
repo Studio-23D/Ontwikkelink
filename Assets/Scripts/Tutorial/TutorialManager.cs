@@ -1,5 +1,4 @@
-﻿using NodeSystem;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,8 +16,9 @@ public struct Tutorial
 public class TutorialManager : MonoBehaviour
 {
 	[SerializeField] private ViewManager viewManager;
-	[SerializeField] private NodeManager nodeManager;
+	[SerializeField] private bool startTutorials;
 	[SerializeField] private List<Tutorial> tutorials;
+	[SerializeField] private Texture2D fingerCursor;
 
 	private Tutorial currentTutorial;
 	private GameObject currentTutorialPart;
@@ -28,18 +28,23 @@ public class TutorialManager : MonoBehaviour
 	private void Awake()
 	{
 		viewManager.OnNewView += CheckNewView;
+
+		if (fingerCursor)
+		{
+			Cursor.SetCursor(fingerCursor, Vector2.zero, CursorMode.ForceSoftware);
+		}
 	}
 
 
 
-	public void EnableTutorial(TutorialContainer tutorial)
+	public void EnableTutorial(Tutorial tutorial)
 	{
-		PlayerPrefs.SetInt(tutorial.GetName, 0);
+		PlayerPrefs.SetInt(tutorial.label, 0);
 	}
 
-	public void DisableTutorial(TutorialContainer tutorial)
+	public void DisableTutorial(Tutorial tutorial)
 	{
-		PlayerPrefs.SetInt(tutorial.GetName, 1);
+		PlayerPrefs.SetInt(tutorial.label, 1);
 	}
 
 
@@ -54,18 +59,22 @@ public class TutorialManager : MonoBehaviour
 		}
 		else if (currentTutorial.startTutorial != "")
 		{
+			DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
 			currentTutorial = GetTutorial(currentTutorial.startTutorial);
 			InitTutorial(currentTutorial);
 		}
 		else
 		{
+			DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
 		}
 	}
 
 	private void CheckNewView(GameObject view)
 	{
+		if (!startTutorials) return;
+
 		foreach (Tutorial tutorial in tutorials)
 		{
 			if (view != tutorial.activationView || !IsTutorialEnabled(tutorial)) continue;
@@ -79,7 +88,7 @@ public class TutorialManager : MonoBehaviour
 	{
 		currentTutorial.feature = Instantiate(currentTutorial.feature, transform);
 		currentTutorial.feature.GetContinueButton.onClick.AddListener(ContinueTutorial);
-		nodeManager.ToggleDraw(false);
+
 		if (currentTutorial.feature.GetParts.Count > 0)
 		{
 			currentTutorialPart = currentTutorial.feature.GetParts[0];
@@ -93,7 +102,7 @@ public class TutorialManager : MonoBehaviour
 
 	private bool IsTutorialEnabled(Tutorial tutorial)
 	{
-		return PlayerPrefs.GetInt(tutorial.feature.GetName) == 0;
+		return PlayerPrefs.GetInt(tutorial.label) == 0;
 	}
 
 	private bool IsLastPart(GameObject part)

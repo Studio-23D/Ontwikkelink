@@ -19,11 +19,13 @@ public class ViewManager : MonoBehaviour
 	public GameObject PreviousView { get { return usedViews[usedViews.Count - 2]; } }
 	public GameObject LastView { get { return usedViews[usedViews.Count - 1]; } }
 	public GameObject SetBuffer { set { viewBuffer = value; } }
+	
 
 
 	[Header("View References")]
 	[SerializeField] private GameObject currentView = null;
 	[SerializeField] private GameObject mainMenu = null;
+	[SerializeField] private GameObject characterMenu = null;
 
 	[Header("Variables")]
 	[Tooltip("All used menus with home menu as start")]
@@ -42,17 +44,16 @@ public class ViewManager : MonoBehaviour
 	}
 
 
-	private void Init()
-	{
-		usedViews.Add(mainMenu);
-		activeViews.Add(mainMenu);
-	}
 
 	public void ChangeViewTo(GameObject newView)
 	{
 		if (newView == mainMenu)
 		{
 			ResetScene();
+		}
+		else if (newView == characterMenu && currentView != mainMenu)
+		{
+			ResetScene(1);
 		}
 
 		if (!usedViews.Contains(newView))
@@ -103,8 +104,6 @@ public class ViewManager : MonoBehaviour
 		{
 			RemoveLastView();
 		}
-
-		//Debug.Log("Changed view to " + newView.name);
 	}
 
 	public void SetViewTo(GameObject newView)
@@ -133,8 +132,6 @@ public class ViewManager : MonoBehaviour
 		{
 			activeViews.Add(currentView);
 		}
-
-		Debug.Log("Set view to " + newView.name);
 	}
 
 	public void ChangeViewToBuffer()
@@ -148,12 +145,6 @@ public class ViewManager : MonoBehaviour
 	private void RemoveLastView()
 	{
 		usedViews.Remove(LastView);
-	}
-
-	private void ResetUsedViews()
-	{
-		usedViews.Clear();
-		usedViews.Add(mainMenu);
 	}
 
 	public void Return()
@@ -170,6 +161,20 @@ public class ViewManager : MonoBehaviour
 	public void Quit()
 	{
 		Application.Quit();
+	}
+
+
+
+	private void Init()
+	{
+		usedViews.Add(mainMenu);
+		activeViews.Add(mainMenu);
+
+		if (PlayerPrefs.GetInt(characterMenu.name) == 1)
+		{
+			ChangeViewTo(characterMenu);
+			PlayerPrefs.DeleteKey(characterMenu.name);
+		}
 	}
 
 
@@ -190,6 +195,15 @@ public class ViewManager : MonoBehaviour
 		if (OnReset != null)
 			OnReset(true);
 
+		StartCoroutine(ExitScene(SceneManager.GetActiveScene().name));
+	}
+
+	public void ResetScene(int openCharacterMenu)
+	{
+		if (OnReset != null)
+			OnReset(true);
+
+		PlayerPrefs.SetInt(characterMenu.name, openCharacterMenu);
 		StartCoroutine(ExitScene(SceneManager.GetActiveScene().name));
 	}
 
