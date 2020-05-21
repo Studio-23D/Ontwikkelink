@@ -15,8 +15,7 @@ public class CharacterRotating : MonoBehaviour
 
     protected Vector3 savedMousePosition;
 
-    [SerializeField]
-    private RectTransform rect;
+    [SerializeField] private RectTransform characterImage;
 
 	[SerializeField]
 	private Transform characterContainer;
@@ -30,7 +29,7 @@ public class CharacterRotating : MonoBehaviour
         else if (!buttonHeldDown)
         {
             if (Input.GetMouseButtonDown(0)) { savedMousePosition = Input.mousePosition; }
-            if (Input.GetMouseButton(0) && rect.rect.Contains(new Vector2(Input.mousePosition.x - 1100, Input.mousePosition.y))) { RotateByMouse(); }
+            if (Input.GetMouseButton(0) && characterImage.rect.Contains(new Vector2(Input.mousePosition.x - 1100, Input.mousePosition.y))) { RotateByMouse(); }
         }
     }
 

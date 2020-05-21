@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 465922305371267361}
   - component: {fileID: 3149104816312339245}
   m_Layer: 0
-  m_Name: Hair_03
+  m_Name: Hair_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,4 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc65231556041142bca916dc603a518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 864a6c3878c35874fb1e5ce4de4d304d, type: 3}
+  icon: {fileID: 21300000, guid: a003f8f554378e64e829e5ae9a935ebf, type: 3}
