@@ -18,6 +18,9 @@ public class ViewManager : MonoBehaviour
 	public GameObject MainMenu { get { return mainMenu; } set { mainMenu = value; } }
 	public GameObject PreviousView { get { return usedViews[usedViews.Count - 2]; } }
 	public GameObject LastView { get { return usedViews[usedViews.Count - 1]; } }
+	public GameObject SetBuffer { set { viewBuffer = value; } }
+	
+
 
 	[Header("View References")]
 	[SerializeField] private GameObject currentView = null;
@@ -30,6 +33,8 @@ public class ViewManager : MonoBehaviour
 	[Tooltip("All active menus that are shown to the user")]
 	[SerializeField] private List<GameObject> activeViews = new List<GameObject>();
 	[SerializeField] private string overlayTag = "Overlay";
+
+	private GameObject viewBuffer = null;
 
 
 
@@ -45,6 +50,10 @@ public class ViewManager : MonoBehaviour
 		if (newView == mainMenu)
 		{
 			ResetScene();
+		}
+		else if (newView == characterMenu && currentView != mainMenu)
+		{
+			ResetScene(1);
 		}
 
 		if (!usedViews.Contains(newView))
@@ -123,6 +132,11 @@ public class ViewManager : MonoBehaviour
 		{
 			activeViews.Add(currentView);
 		}
+	}
+
+	public void ChangeViewToBuffer()
+	{
+		ChangeViewTo(viewBuffer);
 	}
 
 	/// <summary>

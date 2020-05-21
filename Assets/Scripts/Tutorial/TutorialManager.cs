@@ -16,7 +16,7 @@ public struct Tutorial
 public class TutorialManager : MonoBehaviour
 {
 	[SerializeField] private ViewManager viewManager;
-	[SerializeField] private bool startTutorial;
+	[SerializeField] private bool startTutorials;
 	[SerializeField] private List<Tutorial> tutorials;
 	[SerializeField] private Texture2D fingerCursor;
 
@@ -73,7 +73,7 @@ public class TutorialManager : MonoBehaviour
 
 	private void CheckNewView(GameObject view)
 	{
-		if (!startTutorial) return;
+		if (!startTutorials) return;
 
 		foreach (Tutorial tutorial in tutorials)
 		{
@@ -102,7 +102,7 @@ public class TutorialManager : MonoBehaviour
 
 	private bool IsTutorialEnabled(Tutorial tutorial)
 	{
-		return PlayerPrefs.GetInt(tutorial.feature.GetName) == 0;
+		return PlayerPrefs.GetInt(tutorial.label) == 0;
 	}
 
 	private bool IsLastPart(GameObject part)

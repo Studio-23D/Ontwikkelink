@@ -19,8 +19,6 @@ public class PanZoom : MonoBehaviour
 	[SerializeField] private NodeManager nodeManager;
 
 	private int fingersToZoom = 2;
-	private Vector3 startPosition;
-	private Vector3 startScale;
 
 
 
@@ -29,13 +27,6 @@ public class PanZoom : MonoBehaviour
 		inputManager.OnTouch += CheckTouch;
 		//inputManager.OnScroll += Zoom;
 	}
-
-	private void Start()
-	{
-		startPosition = transform.position;
-		startScale = transform.localScale;
-	}
-
 
 	public void SaveView()
 	{
@@ -61,9 +52,6 @@ public class PanZoom : MonoBehaviour
 				node.ResetPosition();
 			}
 		}
-
-		transform.position = startPosition;
-		transform.localScale = startScale;
 	}
 
 
@@ -142,7 +130,7 @@ public class PanZoom : MonoBehaviour
 	private void ChangeZoom(float increment)
 	{
 		float scale = Mathf.Clamp(transform.localScale.x + increment, zoomMin, zoomMax);
-		transform.localScale = new Vector3(scale, scale, scale);
+		//transform.localScale = new Vector3(scale, scale, scale);
 	}
 
 

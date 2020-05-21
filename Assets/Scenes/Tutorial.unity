@@ -1995,7 +1995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &374915178
@@ -2216,7 +2216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewManager: {fileID: 1597547816}
-  startTutorial: 1
+  startTutorials: 1
   tutorials:
   - label: Goal
     feature: {fileID: -828761290848099546, guid: 9a6a59e119a19194b82cc8e8e26f28d6,
@@ -9602,7 +9602,7 @@ MonoBehaviour:
         m_MethodName: set_SetBuffer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1244429983}
+          m_ObjectArgument: {fileID: 1874208622}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0

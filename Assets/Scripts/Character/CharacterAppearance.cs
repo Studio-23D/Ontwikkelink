@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterAppearance : MonoBehaviour
 {
-    private Character character;
+	public Character Character
+	{
+		get { return character; }
+		set { character = value; }
+	}
 
-    public Character Character
-    {
-        get { return character; }
-        set { character = value; }
-    }
+	private Character character;
 
     public void SetAppearanceItem(KeyValuePair<AppearanceItemType, AppearanceItem> appearanceItem)
     {
