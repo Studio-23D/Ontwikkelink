@@ -25,7 +25,10 @@ namespace NodeSystem
 
 		public void Init()
         {
-            rect = new Rect(0, 0, 1100, Screen.height);//GetComponent<RectTransform>().rect;//new Rect(0, 0, Screen.width - 200, Screen.height);
+            float width = this.GetComponent<RectTransform>().rect.width * 0.9f;
+            float height = this.GetComponent<RectTransform>().rect.height;
+            rect = new Rect(0, 0, width, height);
+            Debug.Log(rect);
             print(Screen.width);
             eventHandeler = new SystemEventHandeler(rect);
             elementDrawer = new ElementDrawer();
@@ -71,6 +74,8 @@ namespace NodeSystem
         private void OnGUI()
         {
 			if (elementDrawer == null) return;
+
+            GUI.Box(rect, "");
 
             elementDrawer.Draw(elements);
             DestroyGarbage();
