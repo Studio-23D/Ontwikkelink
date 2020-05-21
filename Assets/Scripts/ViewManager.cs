@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using NodeSystem;
 
 public class ViewManager : MonoBehaviour
 {
@@ -19,13 +20,14 @@ public class ViewManager : MonoBehaviour
 	public GameObject PreviousView { get { return usedViews[usedViews.Count - 2]; } }
 	public GameObject LastView { get { return usedViews[usedViews.Count - 1]; } }
 	public GameObject SetBuffer { set { viewBuffer = value; } }
-	
 
+	[SerializeField] private NodeManager nodeManager;
 
 	[Header("View References")]
 	[SerializeField] private GameObject currentView = null;
 	[SerializeField] private GameObject mainMenu = null;
 	[SerializeField] private GameObject characterMenu = null;
+	[SerializeField] private GameObject DesignView = null;
 
 	[Header("Variables")]
 	[Tooltip("All used menus with home menu as start")]
@@ -47,6 +49,14 @@ public class ViewManager : MonoBehaviour
 
 	public void ChangeViewTo(GameObject newView)
 	{
+		if (newView == DesignView)
+		{
+			nodeManager.ToggleDraw(true);
+		} else if (LastView == DesignView) {
+			nodeManager.ToggleDraw(false);
+		}
+
+
 		if (newView == mainMenu)
 		{
 			ResetScene();
