@@ -1862,6 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewManager: {fileID: 1597547816}
+  startTutorials: 0
   tutorials:
   - label: Goal
     feature: {fileID: -828761290848099546, guid: 9a6a59e119a19194b82cc8e8e26f28d6,
@@ -1878,6 +1879,7 @@ MonoBehaviour:
       type: 3}
     activationView: {fileID: 0}
     startTutorial: 
+  fingerCursor: {fileID: 0}
 --- !u!1 &476239611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &725924233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5722,8 +5724,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a558e14af216aa43a9840a2f393d2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeManager: {fileID: 1052945807}
   currentView: {fileID: 725924232}
   mainMenu: {fileID: 725924232}
+  characterMenu: {fileID: 0}
+  DesignView: {fileID: 1244429983}
   usedViews: []
   activeViews: []
   overlayTag: Overlay
