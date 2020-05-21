@@ -18,12 +18,11 @@ public class ViewManager : MonoBehaviour
 	public GameObject MainMenu { get { return mainMenu; } set { mainMenu = value; } }
 	public GameObject PreviousView { get { return usedViews[usedViews.Count - 2]; } }
 	public GameObject LastView { get { return usedViews[usedViews.Count - 1]; } }
-	public GameObject SetBuffer { set { viewBuffer = value; } }
-
 
 	[Header("View References")]
 	[SerializeField] private GameObject currentView = null;
 	[SerializeField] private GameObject mainMenu = null;
+	[SerializeField] private GameObject characterMenu = null;
 
 	[Header("Variables")]
 	[Tooltip("All used menus with home menu as start")]
@@ -31,8 +30,6 @@ public class ViewManager : MonoBehaviour
 	[Tooltip("All active menus that are shown to the user")]
 	[SerializeField] private List<GameObject> activeViews = new List<GameObject>();
 	[SerializeField] private string overlayTag = "Overlay";
-
-	private GameObject viewBuffer = null;
 
 
 
@@ -42,11 +39,6 @@ public class ViewManager : MonoBehaviour
 	}
 
 
-	private void Init()
-	{
-		usedViews.Add(mainMenu);
-		activeViews.Add(mainMenu);
-	}
 
 	public void ChangeViewTo(GameObject newView)
 	{
@@ -103,8 +95,6 @@ public class ViewManager : MonoBehaviour
 		{
 			RemoveLastView();
 		}
-
-		Debug.Log("Changed view to " + newView.name);
 	}
 
 	public void SetViewTo(GameObject newView)
@@ -133,13 +123,6 @@ public class ViewManager : MonoBehaviour
 		{
 			activeViews.Add(currentView);
 		}
-
-		Debug.Log("Set view to " + newView.name);
-	}
-
-	public void ChangeViewToBuffer()
-	{
-		ChangeViewTo(viewBuffer);
 	}
 
 	/// <summary>
@@ -148,12 +131,6 @@ public class ViewManager : MonoBehaviour
 	private void RemoveLastView()
 	{
 		usedViews.Remove(LastView);
-	}
-
-	private void ResetUsedViews()
-	{
-		usedViews.Clear();
-		usedViews.Add(mainMenu);
 	}
 
 	public void Return()
@@ -170,6 +147,20 @@ public class ViewManager : MonoBehaviour
 	public void Quit()
 	{
 		Application.Quit();
+	}
+
+
+
+	private void Init()
+	{
+		usedViews.Add(mainMenu);
+		activeViews.Add(mainMenu);
+
+		if (PlayerPrefs.GetInt(characterMenu.name) == 1)
+		{
+			ChangeViewTo(characterMenu);
+			PlayerPrefs.DeleteKey(characterMenu.name);
+		}
 	}
 
 
@@ -190,6 +181,15 @@ public class ViewManager : MonoBehaviour
 		if (OnReset != null)
 			OnReset(true);
 
+		StartCoroutine(ExitScene(SceneManager.GetActiveScene().name));
+	}
+
+	public void ResetScene(int openCharacterMenu)
+	{
+		if (OnReset != null)
+			OnReset(true);
+
+		PlayerPrefs.SetInt(characterMenu.name, openCharacterMenu);
 		StartCoroutine(ExitScene(SceneManager.GetActiveScene().name));
 	}
 

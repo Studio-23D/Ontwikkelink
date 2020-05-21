@@ -37,14 +37,14 @@ public class TutorialManager : MonoBehaviour
 
 
 
-	public void EnableTutorial(TutorialContainer tutorial)
+	public void EnableTutorial(Tutorial tutorial)
 	{
-		PlayerPrefs.SetInt(tutorial.GetName, 0);
+		PlayerPrefs.SetInt(tutorial.label, 0);
 	}
 
-	public void DisableTutorial(TutorialContainer tutorial)
+	public void DisableTutorial(Tutorial tutorial)
 	{
-		PlayerPrefs.SetInt(tutorial.GetName, 1);
+		PlayerPrefs.SetInt(tutorial.label, 1);
 	}
 
 
@@ -59,12 +59,14 @@ public class TutorialManager : MonoBehaviour
 		}
 		else if (currentTutorial.startTutorial != "")
 		{
+			DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
 			currentTutorial = GetTutorial(currentTutorial.startTutorial);
 			InitTutorial(currentTutorial);
 		}
 		else
 		{
+			DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
 		}
 	}

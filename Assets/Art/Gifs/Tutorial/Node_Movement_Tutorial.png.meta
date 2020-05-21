@@ -1,0 +1,2719 @@
+fileFormatVersion: 2
+guid: 596bb1f95bcf5844ab1a8bda66d4797b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7273864169503388279
+    second: Node_Movement_Tutoria_0
+  - first:
+      213: -7641852587347380706
+    second: Node_Movement_Tutoria_1
+  - first:
+      213: -5210147724373899689
+    second: Node_Movement_Tutoria_2
+  - first:
+      213: -7587378007917517139
+    second: Node_Movement_Tutoria_3
+  - first:
+      213: 7506311449059414456
+    second: Node_Movement_Tutoria_4
+  - first:
+      213: -5213403186252572697
+    second: Node_Movement_Tutoria_5
+  - first:
+      213: -1233739737720295743
+    second: Node_Movement_Tutoria_6
+  - first:
+      213: -9118735630982067302
+    second: Node_Movement_Tutoria_7
+  - first:
+      213: -8532265645868621825
+    second: Node_Movement_Tutoria_8
+  - first:
+      213: 6819134591313490755
+    second: Node_Movement_Tutoria_9
+  - first:
+      213: 614845008390103841
+    second: Node_Movement_Tutoria_10
+  - first:
+      213: -1644504585698259179
+    second: Node_Movement_Tutoria_11
+  - first:
+      213: -843937279329367260
+    second: Node_Movement_Tutoria_12
+  - first:
+      213: 1970798744826826370
+    second: Node_Movement_Tutoria_13
+  - first:
+      213: -7503808264678696978
+    second: Node_Movement_Tutoria_14
+  - first:
+      213: -3322119346839207590
+    second: Node_Movement_Tutoria_15
+  - first:
+      213: 5358461540143698801
+    second: Node_Movement_Tutoria_16
+  - first:
+      213: -1014941662726358102
+    second: Node_Movement_Tutoria_17
+  - first:
+      213: 7930859539720022090
+    second: Node_Movement_Tutoria_18
+  - first:
+      213: 8385599504906718780
+    second: Node_Movement_Tutoria_19
+  - first:
+      213: -8552637564564880801
+    second: Node_Movement_Tutoria_20
+  - first:
+      213: -8044300984618026871
+    second: Node_Movement_Tutoria_21
+  - first:
+      213: -5359074334729104152
+    second: Node_Movement_Tutoria_22
+  - first:
+      213: 4582672968755819418
+    second: Node_Movement_Tutoria_23
+  - first:
+      213: 9152910575620310644
+    second: Node_Movement_Tutoria_24
+  - first:
+      213: -4261376927301180698
+    second: Node_Movement_Tutoria_25
+  - first:
+      213: -714945520372966529
+    second: Node_Movement_Tutoria_26
+  - first:
+      213: 1131867851340929727
+    second: Node_Movement_Tutoria_27
+  - first:
+      213: -2064939139402842289
+    second: Node_Movement_Tutoria_28
+  - first:
+      213: 4307796759022886408
+    second: Node_Movement_Tutoria_29
+  - first:
+      213: 4832484884034582853
+    second: Node_Movement_Tutoria_30
+  - first:
+      213: -6601891202842629604
+    second: Node_Movement_Tutoria_31
+  - first:
+      213: -5584947487400268755
+    second: Node_Movement_Tutoria_32
+  - first:
+      213: -5049556146988936631
+    second: Node_Movement_Tutoria_33
+  - first:
+      213: -5613245635692524977
+    second: Node_Movement_Tutoria_34
+  - first:
+      213: 5168745996279162301
+    second: Node_Movement_Tutoria_35
+  - first:
+      213: -6466237681686728503
+    second: Node_Movement_Tutoria_36
+  - first:
+      213: 6679581071343387397
+    second: Node_Movement_Tutoria_37
+  - first:
+      213: 1496425020935011702
+    second: Node_Movement_Tutoria_38
+  - first:
+      213: 2113985345894220529
+    second: Node_Movement_Tutoria_39
+  - first:
+      213: -1415989574704848403
+    second: Node_Movement_Tutoria_40
+  - first:
+      213: -7082057981743781964
+    second: Node_Movement_Tutoria_41
+  - first:
+      213: -9070343651928452782
+    second: Node_Movement_Tutoria_42
+  - first:
+      213: 9189568832437974327
+    second: Node_Movement_Tutoria_43
+  - first:
+      213: 5089767650818206412
+    second: Node_Movement_Tutoria_44
+  - first:
+      213: 1138221429910049871
+    second: Node_Movement_Tutoria_45
+  - first:
+      213: 1008207553894010803
+    second: Node_Movement_Tutoria_46
+  - first:
+      213: -4016530553876772523
+    second: Node_Movement_Tutoria_47
+  - first:
+      213: 3931951127213361909
+    second: Node_Movement_Tutoria_48
+  - first:
+      213: -1749185950580634850
+    second: Node_Movement_Tutoria_49
+  - first:
+      213: 7559778551412806023
+    second: Node_Movement_Tutoria_50
+  - first:
+      213: -8985927375611907565
+    second: Node_Movement_Tutoria_51
+  - first:
+      213: 7691780249581688271
+    second: Node_Movement_Tutoria_52
+  - first:
+      213: 6654307135746898296
+    second: Node_Movement_Tutoria_53
+  - first:
+      213: -4140135413028838371
+    second: Node_Movement_Tutoria_54
+  - first:
+      213: 7340797103991836982
+    second: Node_Movement_Tutoria_55
+  - first:
+      213: 4145361846769932305
+    second: Node_Movement_Tutoria_56
+  - first:
+      213: -224184922442661242
+    second: Node_Movement_Tutoria_57
+  - first:
+      213: 2786729215580627028
+    second: Node_Movement_Tutoria_58
+  - first:
+      213: 1618976472014993096
+    second: Node_Movement_Tutoria_59
+  - first:
+      213: -1408342647682813992
+    second: Node_Movement_Tutoria_60
+  - first:
+      213: -7339897684511687001
+    second: Node_Movement_Tutoria_61
+  - first:
+      213: -5066020477856674140
+    second: Node_Movement_Tutoria_62
+  - first:
+      213: -8135906217549320966
+    second: Node_Movement_Tutoria_63
+  - first:
+      213: 7112104996083307319
+    second: Node_Movement_Tutoria_64
+  - first:
+      213: -9102145151249172745
+    second: Node_Movement_Tutoria_65
+  - first:
+      213: 5577406699788118589
+    second: Node_Movement_Tutoria_66
+  - first:
+      213: 7420733411104293411
+    second: Node_Movement_Tutoria_67
+  - first:
+      213: 2559661955528378407
+    second: Node_Movement_Tutoria_68
+  - first:
+      213: -4298374124294340797
+    second: Node_Movement_Tutoria_69
+  - first:
+      213: -5230530893829876300
+    second: Node_Movement_Tutoria_70
+  - first:
+      213: 7464380485079603421
+    second: Node_Movement_Tutoria_71
+  - first:
+      213: -11824554314320345
+    second: Node_Movement_Tutoria_72
+  - first:
+      213: 8580922850016691646
+    second: Node_Movement_Tutoria_73
+  - first:
+      213: 7539435504986984823
+    second: Node_Movement_Tutoria_74
+  - first:
+      213: -6353616274030770979
+    second: Node_Movement_Tutoria_75
+  - first:
+      213: 6950916283551895317
+    second: Node_Movement_Tutoria_76
+  - first:
+      213: 2663685134735493125
+    second: Node_Movement_Tutoria_77
+  - first:
+      213: -6121904867762425565
+    second: Node_Movement_Tutoria_78
+  - first:
+      213: -6488589517084143333
+    second: Node_Movement_Tutoria_79
+  - first:
+      213: 2541341833499648902
+    second: Node_Movement_Tutoria_80
+  - first:
+      213: -6111311694296252258
+    second: Node_Movement_Tutoria_81
+  - first:
+      213: 7503925986474350109
+    second: Node_Movement_Tutoria_82
+  - first:
+      213: -6567547066490890415
+    second: Node_Movement_Tutoria_83
+  - first:
+      213: 9186369860260117398
+    second: Node_Movement_Tutoria_84
+  - first:
+      213: 6392243928130650640
+    second: Node_Movement_Tutoria_85
+  - first:
+      213: -2238367653620638289
+    second: Node_Movement_Tutoria_86
+  - first:
+      213: 7992587831401139832
+    second: Node_Movement_Tutoria_87
+  - first:
+      213: 2859976685866442805
+    second: Node_Movement_Tutoria_88
+  - first:
+      213: -6116484482798137541
+    second: Node_Movement_Tutoria_89
+  - first:
+      213: 637920931903885355
+    second: Node_Movement_Tutoria_90
+  - first:
+      213: -6018799001922647813
+    second: Node_Movement_Tutoria_91
+  - first:
+      213: -6610730243161445901
+    second: Node_Movement_Tutoria_92
+  - first:
+      213: -4319883458937790533
+    second: Node_Movement_Tutoria_93
+  - first:
+      213: 4029455520724691057
+    second: Node_Movement_Tutoria_94
+  - first:
+      213: -7038673914659443711
+    second: Node_Movement_Tutoria_95
+  - first:
+      213: -6893093495310658197
+    second: Node_Movement_Tutoria_96
+  - first:
+      213: 8837712370952118841
+    second: Node_Movement_Tutoria_97
+  - first:
+      213: -238916304489971942
+    second: Node_Movement_Tutoria_98
+  - first:
+      213: 3392244972736837851
+    second: Node_Movement_Tutoria_99
+  - first:
+      213: 4830060836149500321
+    second: Node_Movement_Tutoria_100
+  - first:
+      213: 1670822747995784698
+    second: Node_Movement_Tutoria_101
+  - first:
+      213: -27089115502864954
+    second: Node_Movement_Tutoria_102
+  - first:
+      213: 1862308861756668954
+    second: Node_Movement_Tutoria_103
+  - first:
+      213: 3513435133924509031
+    second: Node_Movement_Tutoria_104
+  - first:
+      213: -5431527092815493891
+    second: Node_Movement_Tutoria_105
+  - first:
+      213: -9048192027184042592
+    second: Node_Movement_Tutoria_106
+  - first:
+      213: 4948058386837771644
+    second: Node_Movement_Tutoria_107
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98d0f40931b0e0b90800000000000000
+      internalID: -7273864169503388279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_1
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1672416f8fa2f590800000000000000
+      internalID: -7641852587347380706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_2
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 756426dcf36d1b7b0800000000000000
+      internalID: -5210147724373899689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_3
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da62775c6e734b690800000000000000
+      internalID: -7587378007917517139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_4
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b152a62e76cb2860800000000000000
+      internalID: 7506311449059414456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_5
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e796848c6546a7b0800000000000000
+      internalID: -5213403186252572697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_6
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cee5e3ce30e0eee0800000000000000
+      internalID: -1233739737720295743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_7
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9bcd9ab14eb37180800000000000000
+      internalID: -9118735630982067302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_8
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 9449
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff5bb8d99d479980800000000000000
+      internalID: -8532265645868621825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343b1de08ce62ae50800000000000000
+      internalID: 6819134591313490755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_10
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123a30d074e588800800000000000000
+      internalID: 614845008390103841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_11
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f44f1dacb8d29e0800000000000000
+      internalID: -1644504585698259179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_12
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b0ddc048bb944f0800000000000000
+      internalID: -843937279329367260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_13
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e4035440fa95b10800000000000000
+      internalID: 1970798744826826370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_14
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee79f21e32e1dd790800000000000000
+      internalID: -7503808264678696978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_15
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51423e2e0675e1d0800000000000000
+      internalID: -3322119346839207590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_16
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1739bd261641d5a40800000000000000
+      internalID: 5358461540143698801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_17
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 8590
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab73756fe33ae1f0800000000000000
+      internalID: -1014941662726358102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48a78c5bb2101e60800000000000000
+      internalID: 7930859539720022090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_19
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e08a62252af5470800000000000000
+      internalID: 8385599504906718780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_20
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52c277e27dee4980800000000000000
+      internalID: -8552637564564880801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_21
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988748100e6ec5090800000000000000
+      internalID: -8044300984618026871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_22
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e41f81494eb0a5b0800000000000000
+      internalID: -5359074334729104152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_23
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93b978f8cce89f30800000000000000
+      internalID: 4582672968755819418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_24
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476c3c0acaba50f70800000000000000
+      internalID: 9152910575620310644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_25
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2ea2a234c8cd4c0800000000000000
+      internalID: -4261376927301180698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_26
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 7731
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b996056d00416f0800000000000000
+      internalID: -714945520372966529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba5cdb50d335bf00800000000000000
+      internalID: 1131867851340929727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_28
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fb7111bccd753e0800000000000000
+      internalID: -2064939139402842289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_29
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e5322245e58cb30800000000000000
+      internalID: 4307796759022886408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_30
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549735ff56f601340800000000000000
+      internalID: 4832484884034582853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_31
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ae9c8edee5164a0800000000000000
+      internalID: -6601891202842629604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_32
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2ceb4cb9d74e72b0800000000000000
+      internalID: -5584947487400268755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_33
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9429551207f5ce9b0800000000000000
+      internalID: -5049556146988936631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_34
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a0987a5deb912b0800000000000000
+      internalID: -5613245635692524977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_35
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 6872
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5217239131bb740800000000000000
+      internalID: 5168745996279162301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c031dd861f4346a0800000000000000
+      internalID: -6466237681686728503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_37
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50388dd2893a2bc50800000000000000
+      internalID: 6679581071343387397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_38
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d76ddc0ae54c410800000000000000
+      internalID: 1496425020935011702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_39
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f20862c872665d10800000000000000
+      internalID: 2113985345894220529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_40
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1af0aebf4695ce0800000000000000
+      internalID: -1415989574704848403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_41
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b72177b9c977bd90800000000000000
+      internalID: -7082057981743781964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_42
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251d51c518aaf1280800000000000000
+      internalID: -9070343651928452782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_43
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73577782a28e78f70800000000000000
+      internalID: 9189568832437974327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_44
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 6013
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca2b4036bc72a640800000000000000
+      internalID: 5089767650818206412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4496852c56cbcf00800000000000000
+      internalID: 1138221429910049871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_46
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfc7b5bd6fddfd00800000000000000
+      internalID: 1008207553894010803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_47
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5590ca2edba6248c0800000000000000
+      internalID: -4016530553876772523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_48
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5facfb3c7b8119630800000000000000
+      internalID: 3931951127213361909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_49
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b898145a4a9b7e0800000000000000
+      internalID: -1749185950580634850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_50
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781d3910a8ab9e860800000000000000
+      internalID: 7559778551412806023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_51
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312b13f49a29b4380800000000000000
+      internalID: -8985927375611907565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_52
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc59eaa5261beba60800000000000000
+      internalID: 7691780249581688271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_53
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 5154
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8797a8c7519d85c50800000000000000
+      internalID: 6654307135746898296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14a668f6c84b86c0800000000000000
+      internalID: -4140135413028838371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_55
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63156a7a210cfd560800000000000000
+      internalID: 7340797103991836982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_56
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118dd26f2a8478930800000000000000
+      internalID: 4145361846769932305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_57
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6828ec5300983ecf0800000000000000
+      internalID: -224184922442661242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_58
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450e2e3f4737ca620800000000000000
+      internalID: 2786729215580627028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_59
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c63b2a0682c77610800000000000000
+      internalID: 1618976472014993096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_60
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8df25dad2df847ce0800000000000000
+      internalID: -1408342647682813992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_61
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aef7f2c1f1732a90800000000000000
+      internalID: -7339897684511687001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_62
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 4295
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae8f706731e1b9b0800000000000000
+      internalID: -5066020477856674140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afca419a664771f80800000000000000
+      internalID: -8135906217549320966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_64
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73393d8ffc543b260800000000000000
+      internalID: 7112104996083307319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_65
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6bfbdc53faea180800000000000000
+      internalID: -9102145151249172745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_66
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3a21c4d7dde66d40800000000000000
+      internalID: 5577406699788118589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_67
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3228ebd78bdbbf660800000000000000
+      internalID: 7420733411104293411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_68
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 728c954acfeb58320800000000000000
+      internalID: 2559661955528378407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_69
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34f74b9f18b1954c0800000000000000
+      internalID: -4298374124294340797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_70
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b550965ddb6967b0800000000000000
+      internalID: -5230530893829876300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_71
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 3436
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd81781d08ec69760800000000000000
+      internalID: 7464380485079603421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 726b77861adf5dff0800000000000000
+      internalID: -11824554314320345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_73
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb507405edf851770800000000000000
+      internalID: 8580922850016691646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_74
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77197b965a471a860800000000000000
+      internalID: 7539435504986984823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_75
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd4414369ab63d7a0800000000000000
+      internalID: -6353616274030770979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_76
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51fc698488d967060800000000000000
+      internalID: 6950916283551895317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_77
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508c569648f47f420800000000000000
+      internalID: 2663685134735493125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_78
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321394045ff9a0ba0800000000000000
+      internalID: -6121904867762425565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_79
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1150e45636e3f5a0800000000000000
+      internalID: -6488589517084143333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_80
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 2577
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6832696dee8a44320800000000000000
+      internalID: 2541341833499648902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_81
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9008c5a462403ba0800000000000000
+      internalID: -6111311694296252258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_82
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1650ac5dec432860800000000000000
+      internalID: 7503925986474350109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_83
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 157d6284db26bd4a0800000000000000
+      internalID: -6567547066490890415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_84
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69bb82867ba8c7f70800000000000000
+      internalID: 9186369860260117398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_85
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01200ed2cffc5b850800000000000000
+      internalID: 6392243928130650640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_86
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad97397a78bfe0e0800000000000000
+      internalID: -2238367653620638289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_87
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e46ce39406bee60800000000000000
+      internalID: 7992587831401139832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_88
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530e7fa94ada0b720800000000000000
+      internalID: 2859976685866442805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_89
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 1718
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3fc0a8f4c1ed1ba0800000000000000
+      internalID: -6116484482798137541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20daec25b95ad800800000000000000
+      internalID: 637920931903885355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_91
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8cceb523ee87ca0800000000000000
+      internalID: -6018799001922647813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_92
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f92e667ed7f144a0800000000000000
+      internalID: -6610730243161445901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_93
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf5deeb1e0bc04c0800000000000000
+      internalID: -4319883458937790533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_94
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178280772708be730800000000000000
+      internalID: 4029455520724691057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_95
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c6aeafd5b915e90800000000000000
+      internalID: -7038673914659443711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_96
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65d378bcffc650a0800000000000000
+      internalID: -6893093495310658197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_97
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9322da1c39cd5aa70800000000000000
+      internalID: 8837712370952118841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_98
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 859
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f73db03e23facf0800000000000000
+      internalID: -238916304489971942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_99
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd8751f64dca31f20800000000000000
+      internalID: 3392244972736837851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_100
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9973e5db2d70340800000000000000
+      internalID: 4830060836149500321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_101
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af54ee8df64ff2710800000000000000
+      internalID: 1670822747995784698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_102
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c51c2dc792cf9ff0800000000000000
+      internalID: -27089115502864954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_103
+      rect:
+        serializedVersion: 2
+        x: 4996
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c7117fa0048d910800000000000000
+      internalID: 1862308861756668954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_104
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76582faa3aa32c030800000000000000
+      internalID: 3513435133924509031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_105
+      rect:
+        serializedVersion: 2
+        x: 7494
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df482d4f2e65f94b0800000000000000
+      internalID: -5431527092815493891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_106
+      rect:
+        serializedVersion: 2
+        x: 8743
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad6c286a4d5e6280800000000000000
+      internalID: -9048192027184042592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Node_Movement_Tutoria_107
+      rect:
+        serializedVersion: 2
+        x: 9992
+        y: 0
+        width: 1249
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c759b5b03e80ba440800000000000000
+      internalID: 4948058386837771644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d67a7bba47b0c144eb444d1be16927ee
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
