@@ -4147,6 +4147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAppearance: {fileID: 761508724}
   characterStage: {fileID: 2096811782}
+  nodeStage: {fileID: 0}
   buttonMenu: {fileID: 2082505456}
 --- !u!223 &1052945808
 Canvas:
@@ -4188,8 +4189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1079.7177}
-  m_SizeDelta: {x: 1320, y: 1079.7177}
+  m_AnchoredPosition: {x: 0, y: -910.8016}
+  m_SizeDelta: {x: 1320, y: 910.8016}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1052945810
 MonoBehaviour:
@@ -4276,7 +4277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08627451, g: 0.427451, b: 0.41176474, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5727,7 +5728,7 @@ MonoBehaviour:
   nodeManager: {fileID: 1052945807}
   currentView: {fileID: 725924232}
   mainMenu: {fileID: 725924232}
-  characterMenu: {fileID: 0}
+  characterMenu: {fileID: 1874208622}
   DesignView: {fileID: 1244429983}
   usedViews: []
   activeViews: []
@@ -5788,7 +5789,7 @@ PrefabInstance:
     - target: {fileID: 527946595283990707, guid: 327af43722606574dab1a107b9531eb6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 527946595283990707, guid: 327af43722606574dab1a107b9531eb6,
         type: 3}
@@ -7086,8 +7087,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1920, y: -539.8588}
-  m_SizeDelta: {x: 600, y: 1079.7177}
+  m_AnchoredPosition: {x: 1920, y: -455.4008}
+  m_SizeDelta: {x: 600, y: 910.8016}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2096811783
 MonoBehaviour:

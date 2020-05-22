@@ -9,20 +9,17 @@ namespace NodeSystem
     {
 		public List<Element> GetElements => elements;
 
-        [SerializeField]
-        private CharacterAppearance characterAppearance;
-        [SerializeField]
-        private RectTransform characterStage;
-        [SerializeField]
-        private RectTransform buttonMenu;
+        [SerializeField] private CharacterAppearance characterAppearance;
+        [SerializeField] private RectTransform characterStage;
+		[SerializeField] private RectTransform nodeStage;
+		[SerializeField] private RectTransform buttonMenu;
 
-        protected Rect rect;
+		private bool canDraw = false;
+
+		protected Rect rect;
 
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
-        
-        private bool canDraw = false;
-
         protected CharacterNode characterNode;
 
         protected List<Element> elements = new List<Element>();
@@ -85,10 +82,10 @@ namespace NodeSystem
         {
 			if (elementDrawer == null || !canDraw) return;
 
-            rect.width = Screen.width - (characterStage.rect.width / 1920 * Screen.width);
-            rect.height = Screen.height - (buttonMenu.rect.height / 1080 * Screen.height);
+            rect.width = Screen.width - characterStage.rect.width / 1920 * Screen.width;
+            rect.height = Screen.height - buttonMenu.rect.height / characterStage.rect.height * Screen.height;
 
-            elementDrawer.Draw(elements, rect);
+			elementDrawer.Draw(elements, rect);
             DestroyGarbage();
             eventHandeler.CheckInput();
 
