@@ -5,14 +5,15 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public class NodeManager : MonoBehaviour
-    {
+	public class NodeManager : MonoBehaviour
+	{
 		public List<Element> GetElements => elements;
 
-        [SerializeField] private CharacterAppearance characterAppearance;
-        [SerializeField] private RectTransform characterStage;
+		[SerializeField] private CharacterAppearance characterAppearance;
+		[SerializeField] private RectTransform characterStage;
 		[SerializeField] private RectTransform nodeStage;
-		[SerializeField] private RectTransform buttonMenu;
+		[SerializeField] private RectTransform nodeButtonBar;
+		[SerializeField] private bool drawGUI  = false;
 
 		private bool canDraw = false;
 
@@ -51,12 +52,46 @@ namespace NodeSystem
 
         public void InstantiateNode(Node node)
         {
-            node.Init(eventHandeler.MousePosition, eventHandeler);
+            node.Init(new Vector2(nodeStage.rect.width / 2, nodeStage.rect.height / 2), eventHandeler);
             elements.Add(node);
             elements = elements.OrderBy(e => e.drawOrder).ToList();
         }
 
-        public void RemoveElement(Element element)
+		public void InstantiateNode(string nodeName)
+		{
+			switch (nodeName)
+			{
+				case "Color":
+					InstantiateNode(new ColorNode());
+					break;
+
+				case "Pattern":
+					InstantiateNode(new PatternNode());
+					break;
+
+				case "Textile":
+					InstantiateNode(new TextileNode());
+					break;
+
+				case "Hair":
+					InstantiateNode(new HairNode());
+					break;
+
+				case "Torso":
+					InstantiateNode(new TorsoClothingNode());
+					break;
+
+				case "Legs":
+					InstantiateNode(new LegsClothingNode());
+					break;
+
+				case "Feet":
+					InstantiateNode(new FeetClothingNode());
+					break;
+			}
+		}
+
+		public void RemoveElement(Element element)
         {
             garbage.Add(element);
         }
@@ -83,7 +118,7 @@ namespace NodeSystem
 			if (elementDrawer == null || !canDraw) return;
 
             rect.width = Screen.width - characterStage.rect.width / 1920 * Screen.width;
-            rect.height = Screen.height - buttonMenu.rect.height / characterStage.rect.height * Screen.height;
+            rect.height = Screen.height - nodeButtonBar.rect.height / nodeStage.rect.height * Screen.height;
 
 			elementDrawer.Draw(elements, rect);
             DestroyGarbage();
@@ -98,40 +133,42 @@ namespace NodeSystem
                 }
             }
 
-            if (GUILayout.Button("ColorNode"))
-            {
-                InstantiateNode(new ColorNode());
-            }
+			if (drawGUI) {
+				if (GUILayout.Button("ColorNode"))
+				{
+					InstantiateNode(new ColorNode());
+				}
 
-            if (GUILayout.Button("PatternNode"))
-            {
-                InstantiateNode(new PatternNode());
-            }
+				if (GUILayout.Button("PatternNode"))
+				{
+					InstantiateNode(new PatternNode());
+				}
 
-            if (GUILayout.Button("HairNode"))
-            {
-                InstantiateNode(new HairNode());
-            }
+				if (GUILayout.Button("HairNode"))
+				{
+					InstantiateNode(new HairNode());
+				}
 
-            if (GUILayout.Button("TorsoClothingNode"))
-            {
-                InstantiateNode(new TorsoClothingNode());
-            }
+				if (GUILayout.Button("TorsoClothingNode"))
+				{
+					InstantiateNode(new TorsoClothingNode());
+				}
 
-            if (GUILayout.Button("LegsClothingNode"))
-            {
-                InstantiateNode(new LegsClothingNode());
-            }
+				if (GUILayout.Button("LegsClothingNode"))
+				{
+					InstantiateNode(new LegsClothingNode());
+				}
 
-            if (GUILayout.Button("FeetClothingNode"))
-            {
-                InstantiateNode(new FeetClothingNode());
-            }
+				if (GUILayout.Button("FeetClothingNode"))
+				{
+					InstantiateNode(new FeetClothingNode());
+				}
 
-            if (GUILayout.Button("textileNode"))
-            {
-                InstantiateNode(new TextileNode());
-            }
+				if (GUILayout.Button("textileNode"))
+				{
+					InstantiateNode(new TextileNode());
+				}
+			}
         }
     }
 }
