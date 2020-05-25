@@ -9351,7 +9351,7 @@ MonoBehaviour:
         m_MethodName: SetCharacter
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4023381834798882719, guid: 95b0640b6c52c6041a5886ae6c2c4c0c,
+          m_ObjectArgument: {fileID: 1940071094556449572, guid: 95b0640b6c52c6041a5886ae6c2c4c0c,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
@@ -10616,7 +10616,7 @@ MonoBehaviour:
         m_MethodName: SetCharacter
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4023381834798882719, guid: 9f79ec104c2e3de49bf5ca4ae8e68b31,
+          m_ObjectArgument: {fileID: 6964816658593259559, guid: 9f79ec104c2e3de49bf5ca4ae8e68b31,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
