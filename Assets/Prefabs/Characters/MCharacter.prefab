@@ -283,10 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4881450300464744340}
-  hairPosition: {fileID: 4881450300464744340}
-  torsoPosition: {fileID: 4881450300464744340}
-  legsPosition: {fileID: 4881450300464744340}
-  feetPosition: {fileID: 4881450300464744340}
+  renderer: {fileID: 9122314414411175447}
 --- !u!1 &3280655649617106030
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class AppearanceItem : MonoBehaviour
 {
     [SerializeField]
     private Sprite icon;
+
+    [SerializeField] private AppearanceItemType appearanceItemType;
+    public AppearanceItemType AppearanceItemtype => appearanceItemType;
+    [SerializeField] private List<AppearanceItemType> inCompatibleWith;
+    public List<AppearanceItemType> InCompatibleWith => inCompatibleWith;
     public Sprite Icon => icon;
+
+    public bool HasInCompatibilities
+    {
+        get
+        {
+            if (inCompatibleWith.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 
     public void SetColor(Color color)
     {
@@ -14,8 +32,8 @@ public class AppearanceItem : MonoBehaviour
     {
         this.gameObject.GetComponent<Renderer>().sharedMaterial.SetTexture("Pattern", texture);
     }
-    public void SetTextile(Texture2D texture)
+    public void SetTextile(TextileData texture)
     {
-        this.gameObject.GetComponent<Renderer>().sharedMaterial.SetTexture("Textile", texture);
+        //this.gameObject.GetComponent<Renderer>().sharedMaterial.SetTexture("Textile", texture.albedoMap);
     }
 }

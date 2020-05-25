@@ -93,3 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e883b8b9158666a468d58156ae5f8c29, type: 3}
+  appearanceItemType: 1
+  inCompatibleWith: 
+  InCompatibleWith: 

@@ -14,20 +14,11 @@ public class CharacterAppearance : MonoBehaviour
 
     public void SetAppearanceItem(KeyValuePair<AppearanceItemType, AppearanceItem> appearanceItem)
     {
-        Transform itemLocation = character.appearenceItemLocations[appearanceItem.Key];
-
-        if (character.appearenceItemLocations[appearanceItem.Key].childCount != 0)
-        {
-            foreach(Transform child in itemLocation)
-            {
-                Destroy(child.gameObject);
-            }
-        }
-        Instantiate(appearanceItem.Value, itemLocation);
+        character.AddItem(appearanceItem.Value);
     }
 
     public void SetSkin(Color color)
     {
-        character.body.GetComponent<Renderer>().material.SetColor("BaseColor", color);
+        character.SetSkinCollor(color);
     }
 }

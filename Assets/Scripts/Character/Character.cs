@@ -4,19 +4,48 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] public Transform body;
-    [SerializeField] private Transform hairPosition;
-    [SerializeField] private Transform torsoPosition;
-    [SerializeField] private Transform legsPosition;
-    [SerializeField] private Transform feetPosition;
+    [SerializeField] private Transform body;
 
-    public Dictionary<AppearanceItemType, Transform> appearenceItemLocations = new Dictionary<AppearanceItemType, Transform>();
+    private Dictionary<AppearanceItemType, AppearanceItem> appearanceItems = new Dictionary<AppearanceItemType, AppearanceItem>();
+    private Animator animator;
+    [SerializeField] private new Renderer renderer;
 
-    private void OnEnable()
+    private void Awake()
     {
-        appearenceItemLocations.Add(AppearanceItemType.Hair, hairPosition);
-        appearenceItemLocations.Add(AppearanceItemType.Torso, torsoPosition);
-        appearenceItemLocations.Add(AppearanceItemType.Legs, legsPosition);
-        appearenceItemLocations.Add(AppearanceItemType.Feet, feetPosition);
+        animator = GetComponent<Animator>();
+        renderer = renderer ?? GetComponent<Renderer>();
+    }
+
+    public void AddItem(AppearanceItem item)
+    {
+        if (item.HasInCompatibilities)
+        {
+            foreach (AppearanceItemType type in item.InCompatibleWith)
+            {
+                if (!appearanceItems.ContainsKey(type))
+                {
+                    RemoveItem(type);
+                }
+            }
+        }
+
+        if (appearanceItems.ContainsKey(item.AppearanceItemtype))
+            RemoveItem(item.AppearanceItemtype);
+        AppearanceItem itemAsGameObject = Instantiate<AppearanceItem>(item, body);
+        appearanceItems.Add(item.AppearanceItemtype, itemAsGameObject);
+        animator.Play("Idle", -1, 0);
+
+        //itemAsGameObject.Animator.Play("Idle", -1, 0);
+    }
+
+    public void RemoveItem(AppearanceItemType type)
+    {
+        Destroy(appearanceItems[type].gameObject);
+        appearanceItems.Remove(type);
+    }
+
+    public void SetSkinCollor(Color color)
+    {
+        renderer.material.SetColor("BaseColor", color);
     }
 }

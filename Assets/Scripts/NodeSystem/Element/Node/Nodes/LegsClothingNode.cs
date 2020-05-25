@@ -9,7 +9,7 @@ namespace NodeSystem {
 		public Texture2D pattern;
 
         [InputPropperty]
-        public Texture2D textile;
+        public TextileData textile;
 
 		protected override string ResourcePath => "Appearance/Legs";
 
