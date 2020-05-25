@@ -28,8 +28,6 @@ namespace NodeSystem
 
         public Action OnChange = delegate { };
 
-		private float connectionPointAreaHeight = 28;
-
 		public Node()
 		{
 			inputPoints = new List<ConnectionPoint>();
@@ -62,52 +60,54 @@ namespace NodeSystem
 
             nodeAreas.Add(new Rect(0, 0, 200, 25));
 
+            int index = 0;
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
             {
-                var inputAttribute = Attribute.GetCustomAttribute(field, typeof(InputProppertyAttribute));
-                var outputAttribute = Attribute.GetCustomAttribute(field, typeof(OutputProppertyAttribute));
 
-                if (inputAttribute != null)
+                if (Attribute.IsDefined(field, typeof(InputProppertyAttribute)))
                 {
-                    AddConnectionPoint(field, ConnectionPointType.In);
+                    if (inputPoints.Count < index) index = 0;
+                    AddConnectionPoint(field, ConnectionPointType.In, inputPoints, index);
+                    
                 }
-                else if (outputAttribute != null)
+                else if (Attribute.IsDefined(field, typeof(OutputProppertyAttribute)))
                 {
-                    AddConnectionPoint(field, ConnectionPointType.Out);
+                    if (outputPoints.Count < index) index = 0;
+                    AddConnectionPoint(field, ConnectionPointType.Out, outputPoints, index);
+                    
                 }
+
+                
+                index++;
             }
 
             float pointAreaHeight = 0;
-            if (inputPoints.Count > outputPoints.Count)
-            {
-                pointAreaHeight = connectionPointAreaHeight * inputPoints.Count;
-            }
-            else
-            {
-                pointAreaHeight = connectionPointAreaHeight * outputPoints.Count;
-            }
+            List<ConnectionPoint> higherList = inputPoints.Count > outputPoints.Count ? inputPoints : outputPoints;
+            pointAreaHeight = higherList[0].Size.y * (higherList.Count + 1);
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count-1].y + nodeAreas[nodeAreas.Count - 1].height, 200, pointAreaHeight));
         }
 
-		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType)
+		public virtual void AddConnectionPoint(FieldInfo field, ConnectionPointType pointType, List<ConnectionPoint> list, int index)
 		{
 			ConnectionPoint point = new ConnectionPoint(this, field, pointType);
-            Vector2 position;
-            Vector2 size = new Vector2(10, 10);
+            Vector2 position = new Vector2(0, 0);
+
 			switch (pointType)
 			{
 				case ConnectionPointType.In:
 					inputPoints.Add(point);
-                    position = new Vector2(10, ((point.Size.y + nodeAreas[nodeAreas.Count-1].height) * inputPoints.Count) + 10);
+                    position.x = 10;
 					break;
                 default:
                     outputPoints.Add(point);
-                    position = new Vector2(200 - point.Size.x - 20, ((point.Size.y + nodeAreas[nodeAreas.Count-1].height) * outputPoints.Count) + 10);
+                    position.x = 200 - point.Size.x - 2;
 					break;
 			}
-            point.Init(position, this.eventHandeler);
+
+            position.y = index > 0 ? list[index - 1].LocalPros.y + list[index - 1].Size.y : point.Size.y;
+            point.Init(position, eventHandeler);
 		}
 
         public virtual void CalculateChange()

@@ -640,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6964816658593259559}
   - component: {fileID: 207842405054006870}
+  - component: {fileID: -7039271775759767015}
   m_Layer: 0
   m_Name: FCharacter
   m_TagString: Untagged
@@ -682,6 +683,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7039271775759767015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115053567538786984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dda34d3b7cc1b499bb46cb296ee72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 6092568995205146761}
+  hairPosition: {fileID: 6092568995205146761}
+  torsoPosition: {fileID: 6092568995205146761}
+  legsPosition: {fileID: 6092568995205146761}
+  feetPosition: {fileID: 6092568995205146761}
 --- !u!1 &7369067583805850612
 GameObject:
   m_ObjectHideFlags: 0

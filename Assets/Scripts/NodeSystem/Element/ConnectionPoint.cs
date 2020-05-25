@@ -8,6 +8,9 @@ namespace NodeSystem
     public class ConnectionPoint : Element
 	{
 		public override Vector2 Position => Rect.position;
+
+        public Vector2 LocalPros => this.rect.position;
+
 		public override Rect Rect
 		{
 			get
@@ -24,7 +27,7 @@ namespace NodeSystem
 
 		private Connection connection;
         private GUIStyle style;
-		private float size = 20;
+		private float size = 40;
 
         public ConnectionPoint(Node node, FieldInfo value, ConnectionPointType type)
         {
@@ -32,15 +35,15 @@ namespace NodeSystem
             this.Value = value;
             this.type = type;
             
+
             rect = new Rect();
+            rect.size = new Vector2(size, size);
         }
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
             base.Init(position, eventHandeler);
 
-			rect.size = new Vector2(size, size);
-            
             OnClick((Element element) =>
             {
                 if (!(element is ConnectionPoint)) return;
@@ -86,6 +89,11 @@ namespace NodeSystem
 
         public void Disconect()
         {
+            if (connection.IsConnected)
+            {
+                node.OnChange -= node.CalculateChange;
+                node.OnChange -= connection.SetValue;
+            }
             connection = null;
         }
 
@@ -95,10 +103,10 @@ namespace NodeSystem
             switch(type)
             {
                 case ConnectionPointType.In:
-                    GUI.Label(new Rect(base.Position.x + size + 5, base.Position.y - 5, 30, 20), Value.Name);
+                    GUI.Label(new Rect(base.Position.x + size + 5, base.Position.y + size / 4, 30, 20), Value.Name);
                     break;
                 case ConnectionPointType.Out:
-                    GUI.Label(new Rect(base.Position.x - size - 10, base.Position.y - 5, 30, 20), Value.Name);
+                    GUI.Label(new Rect(base.Position.x - size - 10, base.Position.y + size / 4, 30, 20), Value.Name);
                     break;
             }
         }
