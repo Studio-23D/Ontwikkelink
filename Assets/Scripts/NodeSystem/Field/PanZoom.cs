@@ -56,8 +56,10 @@ public class PanZoom : MonoBehaviour
 
 
 
-	private void CheckTouch(int touchCount, Vector3 startPosition)
+	private void CheckTouch(int touchCount, Vector3 startPosition, Transform selectedView)
 	{
+		if (selectedView != transform) return;
+
 		if (touchCount == fingersToZoom)
 		{
 			//Zoom();
