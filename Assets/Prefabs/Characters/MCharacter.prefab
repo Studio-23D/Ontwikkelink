@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 8387540477290673758}
   - component: {fileID: -6227880103730148867}
   m_Layer: 0
-  m_Name: Mcharacter
+  m_Name: MCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,10 +279,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3222287846146353463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efdafc0070fc6b4e875dfb1ccc8abf7, type: 3}
+  m_Script: {fileID: 11500000, guid: d9dda34d3b7cc1b499bb46cb296ee72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4881450300464744340}
+  hairPosition: {fileID: 4881450300464744340}
+  torsoPosition: {fileID: 4881450300464744340}
+  legsPosition: {fileID: 4881450300464744340}
+  feetPosition: {fileID: 4881450300464744340}
 --- !u!1 &3280655649617106030
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,13 +52,16 @@ namespace NodeSystem
 
         public void InstantiateNode(Node node)
         {
-            node.Init(new Vector2(nodeStage.rect.width / 2, nodeStage.rect.height / 2), eventHandeler);
+			Debug.Log(nodeStage.rect.size);
+
+            node.Init(new Vector2(nodeStage.rect.width / 4, nodeStage.rect.height / 4), eventHandeler);
             elements.Add(node);
             elements = elements.OrderBy(e => e.drawOrder).ToList();
         }
 
 		public void InstantiateNode(string nodeName)
 		{
+			Debug.Log(nodeName);
 			switch (nodeName)
 			{
 				case "Color":

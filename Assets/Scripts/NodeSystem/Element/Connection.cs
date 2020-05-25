@@ -11,6 +11,7 @@ namespace NodeSystem {
 		private Type type;
 
 		private bool isConnected = false;
+		public bool IsConnected => isConnected;
 
 		public ConnectionPoint InPoint
 		{
@@ -78,9 +79,6 @@ namespace NodeSystem {
 
 		private void Disconect()
 		{
-			outPoint.node.OnChange -= this.SetValue;
-			if (isConnected)
-				outPoint.node.OnChange -= inPoint.node.CalculateChange;
 			inPoint?.Disconect();
 			outPoint?.Disconect();
 		}
