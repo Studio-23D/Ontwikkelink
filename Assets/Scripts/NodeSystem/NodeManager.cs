@@ -97,7 +97,7 @@ namespace NodeSystem
                     node.ProcessEvents(Event.current);
                 }
             }
-
+            /*
             if (GUILayout.Button("ColorNode"))
             {
                 InstantiateNode(new ColorNode());
@@ -131,7 +131,7 @@ namespace NodeSystem
             if (GUILayout.Button("textileNode"))
             {
                 InstantiateNode(new TextileNode());
-            }
+            }*/
         }
     }
 }
