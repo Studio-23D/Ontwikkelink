@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class CharacterRotating : MonoBehaviour
 {
-	// TODO create regions
-	// TODO set rotation only if mouse hold down on character (raw image on UI)
-
-    private bool buttonHeldDown = false;
     [SerializeField] private bool freeRotation = false;
+	[SerializeField] private RectTransform characterImage;
+	[SerializeField] private Transform characterContainer;
+	[SerializeField] private float rotateSpeed = 100;
 
-    private string direction;
-    private int rotateMomentum = 100;
+	private bool buttonHeldDown = false;
+	private string direction;
 
     protected Vector3 savedMousePosition;
-
-    [SerializeField]
-    private RectTransform rect;
-
-	[SerializeField]
-	private Transform characterContainer;
 
     private void Update()
     {
@@ -30,7 +23,7 @@ public class CharacterRotating : MonoBehaviour
         else if (!buttonHeldDown)
         {
             if (Input.GetMouseButtonDown(0)) { savedMousePosition = Input.mousePosition; }
-            if (Input.GetMouseButton(0) && rect.rect.Contains(new Vector2(Input.mousePosition.x - 1100, Input.mousePosition.y))) { RotateByMouse(); }
+            if (Input.GetMouseButton(0) && characterImage.rect.Contains(new Vector2(Input.mousePosition.x - 1100, Input.mousePosition.y))) { RotateByMouse(); }
         }
     }
 
@@ -54,7 +47,7 @@ public class CharacterRotating : MonoBehaviour
         }
         else if (!freeRotation)
         {
-            float rotationX = Input.GetAxis("Mouse X") * rotateMomentum * Mathf.Deg2Rad;
+            float rotationX = Input.GetAxis("Mouse X") * rotateSpeed * Mathf.Deg2Rad;
             characterContainer.transform.Rotate(Vector3.down, rotationX);
         }
     }
@@ -64,10 +57,10 @@ public class CharacterRotating : MonoBehaviour
         switch (direction)
         {
             case "Left":
-                characterContainer.transform.Rotate(Vector3.down, -rotateMomentum * Time.deltaTime);
+                characterContainer.transform.Rotate(Vector3.down, -rotateSpeed * Time.deltaTime);
                 break;
             case "Right":
-                characterContainer.transform.Rotate(Vector3.down, rotateMomentum * Time.deltaTime);
+                characterContainer.transform.Rotate(Vector3.down, rotateSpeed * Time.deltaTime);
                 break;
         }
     }

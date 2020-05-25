@@ -17,7 +17,7 @@ public class ColorFader : MonoBehaviour
     [SerializeField] private float FadeTime = 0.01f;
 
     private bool Fading = false;
-    private bool FirstFade = false;
+	private bool FirstFade = false;
 
     private void OnEnable()
     {
@@ -37,6 +37,7 @@ public class ColorFader : MonoBehaviour
     {
 		SetAllAlphas(1);
         FirstFade = false;
+		Fading = false;
 	}
 
 	public void FadeIn()
