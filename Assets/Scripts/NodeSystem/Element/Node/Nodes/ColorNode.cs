@@ -41,7 +41,7 @@ namespace NodeSystem
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 200));
 
             palleteRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 200);
-            draggableRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 10, 10);
+            draggableRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 50, 50);
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
@@ -53,7 +53,7 @@ namespace NodeSystem
 
             multi = new Vector2(selectionTexture.width / palleteRect.width, selectionTexture.height / palleteRect.height);
 
-            Debug.Log(selectionTexture);
+            //Debug.Log(selectionTexture);
         }
 
         public override void Draw()
