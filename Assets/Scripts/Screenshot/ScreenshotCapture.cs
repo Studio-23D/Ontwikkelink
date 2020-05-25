@@ -79,19 +79,19 @@ public class ScreenshotCapture : MonoBehaviour
         RenderTexture.ReleaseTemporary(renderTexture);
         screenshotCamera.targetTexture = null;
 
-#if UNITY_ANDROID
-		yield return new WaitForEndOfFrame();
+		if (SystemInfo.deviceType == DeviceType.Handheld)
+		{
+			yield return new WaitForEndOfFrame();
 
-		string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy");
-		screenshotName = ("Screenshot " + timeStamp + ".png");
+			string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy");
+			screenshotName = ("Screenshot " + timeStamp + ".png");
 
-		//screenshotPath = Application.persistentDataPath + "/" + fileName;
-		screenshotName = Path.Combine("Screenshots" + screenshotName);
-		screenshotPath = Path.Combine(Application.persistentDataPath, screenshotName);
-		screenshotSaving.CheckDirectory(Path.Combine(Application.persistentDataPath, screenshotSaving.GetImageFolderName));
+			screenshotPath = Path.Combine(Application.persistentDataPath, "Screenshots", screenshotName);
+			screenshotSaving.CheckDirectory(screenshotPath);
 
-		ScreenCapture.CaptureScreenshot(screenshotName, 1);
-#endif
+			ScreenCapture.CaptureScreenshot("Screenshots/" + screenshotName, 1);
+		}
+
 		ActiveUIElements(true);
 
 		viewManager.ChangeViewTo(screenshotMenu);
@@ -118,8 +118,6 @@ public class ScreenshotCapture : MonoBehaviour
 
 	private void ActiveUIElements(bool active)
 	{
-		Debug.Log("ACTIVATE " + active);
-
 		foreach (GameObject element in UIElements)
 		{
 			element.SetActive(active);

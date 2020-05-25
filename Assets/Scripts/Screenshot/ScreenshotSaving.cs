@@ -34,9 +34,17 @@ public class ScreenshotSaving : MonoBehaviour
 
 	public void SaveImageToGallery(byte[] data, string imageName)
 	{
-		NativeGallery.SaveImageToGallery(data, galleryAlbumName, imageName);
 		savedScreenshotWindow.gameObject.SetActive(false);
 		savedScreenshotWindow.gameObject.SetActive(true);
+
+		if (SystemInfo.deviceType != DeviceType.Handheld)
+		{
+			print("Saved image to gallary");
+		}
+		else
+		{
+			NativeGallery.SaveImageToGallery(data, galleryAlbumName, imageName);
+		}
 	}
 
 	private void InitDirectory()
