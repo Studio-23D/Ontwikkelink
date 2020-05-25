@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7835,11 +7835,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a558e14af216aa43a9840a2f393d2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeManager: {fileID: 0}
+  nodeManager: {fileID: 1052945807}
   currentView: {fileID: 725924232}
   mainMenu: {fileID: 725924232}
   characterMenu: {fileID: 1874208622}
-  DesignView: {fileID: 0}
+  DesignView: {fileID: 1244429983}
   usedViews: []
   activeViews: []
   overlayTag: Overlay
