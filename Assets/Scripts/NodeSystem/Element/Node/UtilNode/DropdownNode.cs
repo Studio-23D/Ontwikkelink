@@ -37,7 +37,7 @@ namespace NodeSystem
             GUI.Box(nodeAreas[2], "", styleExtraArea);
             
 
-            if (GUI.Button(new Rect(0, 100, 200, 20), dropdownName))
+            if (GUI.Button(new Rect(0, nodeAreas[2].y, 200, 20), dropdownName))
             {
                 ToggleDropdown();
             }

@@ -50,7 +50,7 @@ namespace NodeSystem
 		{
 			base.Draw();
 
-			GUI.Label(new Rect(0, 120, nodeAreas[2].width, nodeAreas[2].width), appearanceItem.Icon.texture, styleCenter);
+			GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), appearanceItem.Icon.texture, styleCenter);
 			GUI.Box(nodeAreas[3], "", styleBottomArea);
 			GUI.EndGroup();
 		}

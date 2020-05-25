@@ -28,8 +28,6 @@ namespace NodeSystem
 
         public Action OnChange = delegate { };
 
-		private float connectionPointAreaHeight = 80;
-
 		public Node()
 		{
 			inputPoints = new List<ConnectionPoint>();
@@ -66,14 +64,21 @@ namespace NodeSystem
             FieldInfo[] objectFields = this.GetType().GetFields();
             foreach (FieldInfo field in objectFields)
             {
+
                 if (Attribute.IsDefined(field, typeof(InputProppertyAttribute)))
                 {
+                    if (inputPoints.Count < index) index = 0;
                     AddConnectionPoint(field, ConnectionPointType.In, inputPoints, index);
+                    
                 }
                 else if (Attribute.IsDefined(field, typeof(OutputProppertyAttribute)))
                 {
+                    if (outputPoints.Count < index) index = 0;
                     AddConnectionPoint(field, ConnectionPointType.Out, outputPoints, index);
+                    
                 }
+
+                
                 index++;
             }
 
@@ -88,7 +93,7 @@ namespace NodeSystem
 		{
 			ConnectionPoint point = new ConnectionPoint(this, field, pointType);
             Vector2 position = new Vector2(0, 0);
-           
+
 			switch (pointType)
 			{
 				case ConnectionPointType.In:
@@ -101,10 +106,8 @@ namespace NodeSystem
 					break;
 			}
 
-            if (index > 0)
-            Debug.Log(list[index - 1].LocalPros.y + " " + list[index - 1].Size.y);
             position.y = index > 0 ? list[index - 1].LocalPros.y + list[index - 1].Size.y : point.Size.y;
-            point.Init(position, this.eventHandeler);
+            point.Init(position, eventHandeler);
 		}
 
         public virtual void CalculateChange()
