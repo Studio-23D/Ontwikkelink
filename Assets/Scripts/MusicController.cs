@@ -12,7 +12,12 @@ public class MusicController : MonoBehaviour
     private int currentIndex = 0;
     private bool pause = false;
 
-    private void Start()
+	private void Awake()
+	{
+		DontDestroyOnLoad(this);
+	}
+
+	private void Start()
     {
         currentIndex = Random.Range(0, music.Count);
         audioSource.clip = music[currentIndex];
