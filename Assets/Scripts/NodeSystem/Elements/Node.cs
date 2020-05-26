@@ -6,28 +6,46 @@ using UnityEngine;
 
 public class Node : Element
 {
-	[Header("Point system")]
+	private bool isExtendable = false;
+	private Dictionary<string, ConnectionPoint> connectionPoints = new Dictionary<string, ConnectionPoint>();
+
+	[Header("Node system")]
+	[SerializeField] protected NodeType nodeType;
 	[SerializeField] protected ConnectionPoint connectionPointPrefab;
 	[SerializeField] protected Transform inputPoints;
 	[SerializeField] protected Transform outputPoints;
 
+	protected NodeContent content;
+	protected NodeExtentionBehaviour extention;
 
-	private NodeContent nodeContent;
-
-	public NodeContent NodeContent
+	public NodeContent Content
 	{
-		get => nodeContent;
-		set => nodeContent = value;
+		get => content;
+		set
+		{
+			content.Node = this;
+			content = value;
+		}
 	}
+	public NodeExtentionBehaviour Extention
+	{
+		get
+		{
+			if (isExtendable)
+				return extention;
+			return null;
+		}
+	}
+	public NodeType Type => nodeType;
+	public bool IsExtendable => isExtendable;
 
 	public override void Init()
 	{
 		base.Init();
 
-		nodeContent = new NodeContent();
+		isExtendable = gameObject.TryGetComponent(out extention);
 
-		FieldInfo[] objectFields = nodeContent.GetType().GetFields();
-		Debug.Log(objectFields);
+		FieldInfo[] objectFields = content.GetType().GetFields();
 		foreach (FieldInfo field in objectFields)
 		{
 			if (Attribute.IsDefined(field, typeof(InputProppertyAttribute))) {
@@ -42,5 +60,10 @@ public class Node : Element
 	{
 		ConnectionPoint point = Instantiate(connectionPointPrefab);
 		point.transform.parent = connections;
+	}
+
+	public void SetValue<T>(string name, T value)
+	{
+		//connectionPoints[name];
 	}
 }

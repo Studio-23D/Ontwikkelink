@@ -8,6 +8,12 @@ public class AppearanceItem : MonoBehaviour
     public AppearanceItemType AppearanceItemtype => appearanceItemType;
     [SerializeField] private List<AppearanceItemType> inCompatibleWith;
     public List<AppearanceItemType> InCompatibleWith;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public bool HasInCompatibilities
     {
@@ -21,5 +27,5 @@ public class AppearanceItem : MonoBehaviour
         }
     }
 
-    public Animator Animator => GetComponent<Animator>();
+    public Animator Animator => animator;
 }

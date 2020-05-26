@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1701959142, guid: 451fc3516e07bf94cbf65600fa03929d, type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 229610446054644009, guid: 451fc3516e07bf94cbf65600fa03929d,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -235,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 8745727353984586155, guid: 451fc3516e07bf94cbf65600fa03929d,
         type: 3}
       propertyPath: m_Name
-      value: PersonageNode
+      value: CharacterNode
       objectReference: {fileID: 0}
     - target: {fileID: 8796072972992844961, guid: 451fc3516e07bf94cbf65600fa03929d,
         type: 3}
