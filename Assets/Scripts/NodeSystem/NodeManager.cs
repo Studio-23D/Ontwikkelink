@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace NodeSystem
@@ -10,6 +10,7 @@ namespace NodeSystem
 		public List<Element> GetElements => elements;
 
 		[SerializeField] private CharacterAppearance characterAppearance;
+		[SerializeField] private RectTransform trashCan;
 		[SerializeField] private RectTransform characterStage;
 		[SerializeField] private RectTransform nodeStage;
 		[SerializeField] private RectTransform nodeButtonBar;
@@ -43,8 +44,8 @@ namespace NodeSystem
 
             canDraw = true;
 
-            SystemEventHandeler.OnElementRemove += RemoveElement;
-            SystemEventHandeler.OnElementCreate += (Element element) =>
+			SystemEventHandeler.OnElementRemove += AddToGarbage;
+			SystemEventHandeler.OnElementCreate += (Element element) =>
             {
                 if (element is Connection) elements.Add(element);
             };
@@ -91,7 +92,7 @@ namespace NodeSystem
 			}
 		}
 
-		public void RemoveElement(Element element)
+		public void AddToGarbage(Element element)
         {
             garbage.Add(element);
         }
@@ -101,7 +102,33 @@ namespace NodeSystem
             this.canDraw = canDraw;
         }
 
-        private void DestroyGarbage()
+		public void CheckForGarbage()
+		{
+			foreach (Element element in elements)
+			{
+				if (element is Node)
+				{
+					Node node = element as Node;
+
+					if (!trashCan.rect.Overlaps(node.Rect) || node.GetType() == typeof(CharacterNode)) continue;
+
+					AddToGarbage(node);
+					DestroyGarbage();
+				}
+			}
+		}
+
+		private void OpenGarbage()
+		{
+			trashCan.gameObject.SetActive(true);
+		}
+
+		private void CloseGarbage()
+		{
+			trashCan.gameObject.SetActive(false);
+		}
+
+		private void DestroyGarbage()
         {
             garbage.ForEach(element =>
             {
@@ -111,9 +138,28 @@ namespace NodeSystem
                 }
             });
             garbage = new List<Element>();
-        }
+			CloseGarbage();
+		}
 
-        private void OnGUI()
+		private bool IsNodeDragged()
+		{
+			foreach (Element element in elements)
+			{
+				if (element is Node)
+				{
+					Node node = element as Node;
+
+					if (node.isDragged)
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		private void OnGUI()
         {
 			if (elementDrawer == null || !canDraw) return;
 
@@ -121,17 +167,28 @@ namespace NodeSystem
             rect.height = Screen.height - nodeButtonBar.rect.height / nodeStage.rect.height * Screen.height;
 
 			elementDrawer.Draw(elements, rect);
-            DestroyGarbage();
             eventHandeler.CheckInput();
 
-            foreach(Element element in elements)
+			foreach (Element element in elements)
             {
                 if (element is Node)
                 {
                     Node node = element as Node;
                     node.ProcessEvents(Event.current);
+
+					if (node.isDragged && node.GetType() != typeof(CharacterNode))
+					{
+						OpenGarbage();
+						continue;
+					}
                 }
             }
+
+			if (!IsNodeDragged())
+			{
+				CheckForGarbage();
+				CloseGarbage();
+			}
 
 			if (drawGUI) {
 				if (GUILayout.Button("ColorNode"))
