@@ -58,7 +58,7 @@ namespace NodeSystem
 		{
             base.Init(position, eventHandeler);
 
-            nodeAreas.Add(new Rect(0, 0, 200, 25));
+			nodeAreas.Add(new Rect(0, 0, 200, 25));
 
             int index = 0;
             FieldInfo[] objectFields = this.GetType().GetFields();
@@ -77,8 +77,6 @@ namespace NodeSystem
                     AddConnectionPoint(field, ConnectionPointType.Out, outputPoints, index);
                     
                 }
-
-                
                 index++;
             }
 
@@ -179,7 +177,6 @@ namespace NodeSystem
                     break;
 
                 case EventType.MouseDrag:
-                    //if ((e.button == 0 || e.pointerType == PointerType.Touch) && isDragged)
 					if (e.button == 0 && isDragged)
                     {
                         Drag(e.delta);

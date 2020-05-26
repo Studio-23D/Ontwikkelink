@@ -84,12 +84,10 @@ public class ScreenshotCapture : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 
 			string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy");
-			screenshotName = ("Screenshot " + timeStamp + ".png");
+			screenshotName = ("Screenshot_" + timeStamp + ".png");
+			screenshotPath = Path.Combine(Application.persistentDataPath, screenshotName);
 
-			screenshotPath = Path.Combine(Application.persistentDataPath, "Screenshots", screenshotName);
-			screenshotSaving.CheckDirectory(screenshotPath);
-
-			ScreenCapture.CaptureScreenshot("Screenshots/" + screenshotName, 1);
+			ScreenCapture.CaptureScreenshot(screenshotName, 1);
 		}
 
 		ActiveUIElements(true);

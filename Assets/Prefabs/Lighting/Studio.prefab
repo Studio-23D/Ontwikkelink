@@ -62,8 +62,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeRotation: 0
-  rect: {fileID: 0}
+  characterImage: {fileID: 0}
   characterContainer: {fileID: 3855017685253074959}
+  rotateSpeed: 100
+  inputManager: {fileID: 0}
+  fieldsToBeSelected:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &7089476005483070031
 MonoBehaviour:
   m_ObjectHideFlags: 0

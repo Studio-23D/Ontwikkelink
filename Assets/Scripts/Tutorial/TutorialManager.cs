@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NodeSystem;
 
 [System.Serializable]
 public struct Tutorial
@@ -15,6 +16,7 @@ public struct Tutorial
 
 public class TutorialManager : MonoBehaviour
 {
+	[SerializeField] private NodeManager nodeManager;
 	[SerializeField] private ViewManager viewManager;
 	[SerializeField] private bool startTutorials;
 	[SerializeField] private List<Tutorial> tutorials;
@@ -68,6 +70,8 @@ public class TutorialManager : MonoBehaviour
 		{
 			DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
+
+			if (nodeManager) nodeManager.ToggleDraw(true);
 		}
 	}
 
@@ -86,6 +90,8 @@ public class TutorialManager : MonoBehaviour
 
 	private void InitTutorial(Tutorial tutorial)
 	{
+		if (nodeManager) nodeManager.ToggleDraw(false);
+
 		currentTutorial.feature = Instantiate(currentTutorial.feature, transform);
 		currentTutorial.feature.GetContinueButton.onClick.AddListener(ContinueTutorial);
 
