@@ -28,6 +28,6 @@ public class CharacterAppearance : MonoBehaviour
 
     public void SetSkin(Color color)
     {
-        character.body.GetComponent<Renderer>().material.SetColor("BaseColor", color);
+        character.body.GetComponentInChildren<Renderer>().material.SetColor("BaseColor", color);
     }
 }

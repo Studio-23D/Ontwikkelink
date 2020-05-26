@@ -24,6 +24,7 @@ namespace NodeSystem
 					visual = item.Icon.texture,
 					value = item
 				};
+
 				dropdownElements.Add(element);
 			}
 
