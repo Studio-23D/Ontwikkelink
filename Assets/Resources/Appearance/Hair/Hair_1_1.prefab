@@ -101,9 +101,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9173001660141143966}
-  - component: {fileID: 349533496609595938}
-  - component: {fileID: 6863163242993261442}
-  - component: {fileID: -8826531454790333100}
+  - component: {fileID: 4195024601296580642}
+  - component: {fileID: -5456095855330046747}
   m_Layer: 0
   m_Name: Hair_1_1
   m_TagString: Untagged
@@ -127,61 +126,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &349533496609595938
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266491029386622349}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 3bd52c50fceed1540857c8febbcab40a, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 524209746590955052, guid: 8d66a37207860fd4998af2a84c44db4c, type: 3}
-  m_Bones:
-  - {fileID: 7196822226317058793}
-  - {fileID: 7943569458553509385}
-  - {fileID: 1389981728570876265}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 7196822226317058793}
-  m_AABB:
-    m_Center: {x: -0.34198266, y: 0.00034583732, z: -0.0011906177}
-    m_Extent: {x: 0.13694972, y: 0.12232289, z: 0.08385402}
-  m_DirtyAABB: 0
---- !u!95 &6863163242993261442
+--- !u!95 &4195024601296580642
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -200,7 +145,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-8826531454790333100
+--- !u!114 &-5456095855330046747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 864a6c3878c35874fb1e5ce4de4d304d, type: 3}
+  animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
 --- !u!1 &6656712625428658712
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +169,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7477467468999353828}
   - component: {fileID: 7023169953985684725}
-  - component: {fileID: 9218513012396435326}
   m_Layer: 0
   m_Name: Hair_1_1
   m_TagString: Untagged
@@ -252,7 +197,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6656712625428658712}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -299,25 +244,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.34198266, y: 0.00034583732, z: -0.0011906177}
     m_Extent: {x: 0.13694972, y: 0.12232289, z: 0.08385402}
   m_DirtyAABB: 0
---- !u!95 &9218513012396435326
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656712625428658712}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: db2cd809a4946b34090f8ab1426e93a1, type: 3}
-  m_Controller: {fileID: 9100000, guid: fd10c9e2e24317648bbf6765fab1825d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7329100221490997034
 GameObject:
   m_ObjectHideFlags: 0

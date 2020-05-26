@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8991053367159183954}
   - component: {fileID: 4160226166950380767}
-  - component: {fileID: 768582062398620527}
+  - component: {fileID: 3926725507668911730}
   m_Layer: 0
   m_Name: Hair_1_4
   m_TagString: Untagged
@@ -292,7 +292,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &768582062398620527
+--- !u!114 &3926725507668911730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 864a6c3878c35874fb1e5ce4de4d304d, type: 3}
+  animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
 --- !u!1 &7367219248879860454
 GameObject:
   m_ObjectHideFlags: 0

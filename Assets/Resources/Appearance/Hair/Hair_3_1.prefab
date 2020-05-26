@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6119130540284733313}
   - component: {fileID: 1265845750542147089}
-  - component: {fileID: 1384871388810054302}
+  - component: {fileID: -5158332894339582778}
   m_Layer: 0
   m_Name: Hair_3_1
   m_TagString: Untagged
@@ -238,7 +238,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1384871388810054302
+--- !u!114 &-5158332894339582778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 864a6c3878c35874fb1e5ce4de4d304d, type: 3}
+  animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
 --- !u!1 &7329263288012164252
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a78b49e97f6dad34f81d758e04cdeb47, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
