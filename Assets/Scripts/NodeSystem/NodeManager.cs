@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -104,13 +103,14 @@ namespace NodeSystem
 
 		public void CheckForGarbage()
 		{
-			foreach (Element element in elements)
+			for (int i = 0; i < elements.Count; i++)
 			{
-				if (element is Node)
-				{
-					Node node = element as Node;
 
-					if (!trashCan.rect.Overlaps(node.Rect) || node.GetType() == typeof(CharacterNode)) continue;
+				if (elements[i] is Node)
+				{
+					Node node = elements[i] as Node;
+
+					if (!trashCan.rect.Overlaps(node.Rect) || node.GetType() == typeof(CharacterNode) || !trashCan.gameObject.activeSelf) continue;
 
 					AddToGarbage(node);
 					DestroyGarbage();
@@ -130,13 +130,19 @@ namespace NodeSystem
 
 		private void DestroyGarbage()
         {
-            garbage.ForEach(element =>
-            {
-                if (elements.Contains(element))
-                {
-                    elements.Remove(element);
-                }
-            });
+			for (int i = 0; i < garbage.Count; i++)
+			{
+				if (elements.Contains(garbage[i]))
+				{
+					if (garbage[i] is Node)
+					{
+						Node node = garbage[i] as Node;
+
+						node.Destroy();
+					}
+					elements.Remove(garbage[i]);
+				}
+			}
             garbage = new List<Element>();
 			CloseGarbage();
 		}

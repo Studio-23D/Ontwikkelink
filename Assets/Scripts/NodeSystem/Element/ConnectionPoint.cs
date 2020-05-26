@@ -5,12 +5,12 @@ using UnityEngine;
 namespace NodeSystem
 {
 
-    public class ConnectionPoint : Element
+	public class ConnectionPoint : Element
 	{
+		public Connection Connection => connection;
+		
 		public override Vector2 Position => Rect.position;
-
         public Vector2 LocalPros => this.rect.position;
-
 		public override Rect Rect
 		{
 			get
@@ -47,26 +47,43 @@ namespace NodeSystem
             OnClick((Element element) =>
             {
                 if (!(element is ConnectionPoint)) return;
-                ConnectionPoint point = element as ConnectionPoint;
-                if (eventHandeler.selectedPropertyPoint != null)
-                {
-                    eventHandeler.selectedPropertyPoint.connection.Connect(point);
-                    return;
-                }
-                CreateConnection();
 
-                switch (point.type)
+                ConnectionPoint point = element as ConnectionPoint;
+
+				switch (point.type)
                 {
                     case ConnectionPointType.In:
-                        connection.InPoint = point;
-                        break;
-                    default:
-                        connection.OutPoint = point;
-                        break;
-                }
+						// Connects connection to input when connection has been made from a outpoint
+						if (eventHandeler.selectedPropertyPoint != null && connection == null)
+						{
+							eventHandeler.selectedPropertyPoint.connection.Connect(point);
+							connection.InPoint = point;
+							connection.Init(Vector2.zero, eventHandeler);
+							return;
+						}
+						else
+						{
+							Disconnect();
 
-                connection.Init(Vector2.zero, eventHandeler);
-                eventHandeler.selectedPropertyPoint = point;
+							if (eventHandeler.selectedPropertyPoint != null)
+							{
+								if (eventHandeler.selectedPropertyPoint.connection != null)
+								{
+									eventHandeler.selectedPropertyPoint.connection.Destroy();
+								}
+							}
+						}
+
+
+						break;
+
+					case ConnectionPointType.Out:
+						CreateConnection();
+						connection.OutPoint = point;
+						connection.Init(Vector2.zero, eventHandeler);
+						eventHandeler.selectedPropertyPoint = point;
+						break;
+				}
             });
 
             rect.width = size;
@@ -87,14 +104,18 @@ namespace NodeSystem
             this.connection = connection;
         }
 
-        public void Disconect()
+        public void Disconnect()
         {
-            if (connection.IsConnected)
-            {
+			if (connection == null) return;
+
+			if (connection.IsConnected)
+			{
+				connection.Destroy();
                 node.OnChange -= node.CalculateChange;
                 node.OnChange -= connection.SetValue;
-            }
-            connection = null;
+
+			}
+			connection = null;
         }
 
         public override void Draw()
@@ -113,7 +134,13 @@ namespace NodeSystem
 
         public override void Destroy()
         {
-            throw new NotImplementedException();
-        }
-    }
+			if (connection != null)
+			{
+				connection.Destroy();
+				connection = null;
+			}
+
+			base.Destroy();
+		}
+	}
 }
