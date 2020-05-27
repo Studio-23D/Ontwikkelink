@@ -27,17 +27,17 @@ namespace NodeSystem
 
 		private Connection connection;
         private GUIStyle style;
-		private float size = 40;
+		private float pointSize = 40f;
+		private float textWidth = 100f;
 
-        public ConnectionPoint(Node node, FieldInfo value, ConnectionPointType type)
+		public ConnectionPoint(Node node, FieldInfo value, ConnectionPointType type)
         {
             this.node = node;
             this.Value = value;
             this.type = type;
-            
 
             rect = new Rect();
-            rect.size = new Vector2(size, size);
+            rect.size = new Vector2(pointSize, pointSize);
         }
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
@@ -86,8 +86,8 @@ namespace NodeSystem
 				}
             });
 
-            rect.width = size;
-            rect.height = size;
+            rect.width = pointSize;
+            rect.height = pointSize;
 
             style = new GUIStyle();
             style.normal.background = Resources.Load<Texture2D>("NodeSystem/nodeDot");
@@ -124,10 +124,10 @@ namespace NodeSystem
             switch(type)
             {
                 case ConnectionPointType.In:
-                    GUI.Label(new Rect(base.Position.x + size + 5, base.Position.y + size / 4, 30, 20), Value.Name);
+                    GUI.Label(new Rect(base.Position.x + pointSize + 5, base.Position.y + pointSize / 4, textWidth, pointSize / 2), Value.Name);
                     break;
                 case ConnectionPointType.Out:
-                    GUI.Label(new Rect(base.Position.x - size - 10, base.Position.y + size / 4, 30, 20), Value.Name);
+                    GUI.Label(new Rect(base.Position.x - pointSize - 10, base.Position.y + pointSize / 4, textWidth, pointSize / 2), Value.Name);
                     break;
             }
         }

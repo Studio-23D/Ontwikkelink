@@ -9,8 +9,8 @@ namespace NodeSystem {
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			name = "Haar Stijlen";
-			dropdownName = "Haar stijlen kiezen";
+			name = "Haar Node";
+			dropdownName = "Haar stijlen";
 
 			base.Init(position, eventHandeler);
 		}

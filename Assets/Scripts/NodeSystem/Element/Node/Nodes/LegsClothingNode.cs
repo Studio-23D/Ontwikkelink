@@ -6,18 +6,18 @@ namespace NodeSystem {
 	public class LegsClothingNode : AppearanceItemNode
 	{
 		[InputPropperty]
-		public Texture2D pattern;
+		public Texture2D patroon;
 
-        [InputPropperty]
-        public Texture2D textile;
+        //[InputPropperty]
+        //public Texture2D materiaal;
 
 		protected override string ResourcePath => "Appearance/Legs";
 
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			name = "Benen Stijlen";
-			dropdownName = "Benen stijlen kiezen";
+			name = "Onderstuk Node";
+			dropdownName = "Onderstukken";
 
 			base.Init(position, eventHandeler);
 		}
@@ -25,9 +25,9 @@ namespace NodeSystem {
         public override void CalculateChange()
         {
             base.CalculateChange();
-            appearanceItem.SetPattern(pattern);
-            appearanceItem.SetTextile(textile);
-        }
-    }
+			uitvoer.SetPattern(patroon);
+			//uitvoer.SetTextile(materiaal);
+		}
+	}
 }
 

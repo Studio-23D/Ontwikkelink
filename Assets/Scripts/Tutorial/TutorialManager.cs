@@ -91,14 +91,14 @@ public class TutorialManager : MonoBehaviour
 		}
 		else if (currentTutorial.nextTutorial != "")
 		{
-			DisableTutorial(currentTutorial);
+			//DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
 			currentTutorial = GetTutorial(currentTutorial.nextTutorial);
 			InitTutorial(currentTutorial);
 		}
 		else
 		{
-			DisableTutorial(currentTutorial);
+			//DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
 
 			if (nodeManager) nodeManager.ToggleDraw(true);

@@ -8,22 +8,22 @@ namespace NodeSystem
     public class PatternNode : DropdownNode<Texture2D>
     {
         [InputPropperty]
-        public Color colorR = Color.red;
+        public Color rood = Color.red;
 
         [InputPropperty]
-        public Color colorG = Color.green;
+        public Color groen = Color.green;
 
         [InputPropperty]
-        public Color colorB = Color.blue;
+        public Color blauw = Color.blue;
 
         [OutputPropperty]
-        public Texture2D patternTexture;
+        public Texture2D patroon;
 
-        protected Texture2D pattern;
+        protected Texture2D texture;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
-            name = "Patronen Node";
+            name = "Patroon Node";
             dropdownName = "Patronen";
 
             foreach (Texture2D texture in Resources.LoadAll("Patterns", typeof(Texture2D)))
@@ -50,36 +50,36 @@ namespace NodeSystem
         {
             base.Draw();
             
-            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), patternTexture, styleCenter);
+            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), patroon, styleCenter);
             GUI.Box(nodeAreas[3], "", styleBottomArea);
             GUI.EndGroup();
         }
       
         public override void CalculateChange()
         {
-            pattern = chosenValue;
-            patternTexture = new Texture2D(pattern.width, pattern.height, pattern.format, false);
-            Graphics.CopyTexture(pattern, patternTexture);
+			texture = chosenValue;
+			patroon = new Texture2D(texture.width, texture.height, texture.format, false);
+            Graphics.CopyTexture(texture, patroon);
 
-            for (int w = 0; w < pattern.width; w++)
+            for (int w = 0; w < texture.width; w++)
             {
-                for (int h = 0; h < pattern.height; h++)
+                for (int h = 0; h < texture.height; h++)
                 {
-                    if (pattern.GetPixel(w, h).r >= .3)
+                    if (texture.GetPixel(w, h).r >= .3)
                     {
-                        patternTexture.SetPixel(w, h, colorR);
+						patroon.SetPixel(w, h, rood);
                     }
-                    else if (pattern.GetPixel(w, h).g >= .3)
+                    else if (texture.GetPixel(w, h).g >= .3)
                     {
-                        patternTexture.SetPixel(w, h, colorG);
+						patroon.SetPixel(w, h, groen);
                     }
-                    else if (pattern.GetPixel(w, h).b >= .3)
+                    else if (texture.GetPixel(w, h).b >= .3)
                     {
-                        patternTexture.SetPixel(w, h, colorB);
+						patroon.SetPixel(w, h, blauw);
                     }
                 }
             }
-            patternTexture.Apply();
+			patroon.Apply();
 
             base.CalculateChange();
         }

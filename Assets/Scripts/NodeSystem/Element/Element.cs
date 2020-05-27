@@ -12,7 +12,6 @@ namespace NodeSystem
 		protected Vector2 startPosition;
 
 		protected Action<Element> onClick = delegate { };
-		protected Action<Element> onDrag = delegate { };
 		protected Action<Element> onRelease = delegate { };
 		protected Action<Element> onHover = delegate { };
 

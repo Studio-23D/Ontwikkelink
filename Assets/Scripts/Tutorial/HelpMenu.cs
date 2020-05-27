@@ -38,7 +38,6 @@ public class HelpMenu : MonoBehaviour
 
 	private void InitItem(HelpMenuItem item)
 	{
-		CheckToggle(true);
 		ActivateExample(currentItem.gif, currentItem.animator);
 	}
 

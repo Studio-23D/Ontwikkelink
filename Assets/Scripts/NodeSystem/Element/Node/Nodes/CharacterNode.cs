@@ -8,19 +8,19 @@ namespace NodeSystem
     public class CharacterNode : Node
     {
         [InputPropperty]
-        public Color skin = Color.white;
+        public Color huid = Color.white;
 
         [InputPropperty]
-        public AppearanceItem hair;
+        public AppearanceItem haar;
 
         [InputPropperty]
-        public AppearanceItem torso;
+        public AppearanceItem bovenstuk;
 
         [InputPropperty]
-        public AppearanceItem legs;
+        public AppearanceItem onderstuk;
 
         [InputPropperty]
-        public AppearanceItem feet;
+        public AppearanceItem schoenen;
 
         public CharacterAppearance characterAppearance;
 
@@ -45,25 +45,25 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
-            if (skin != null)
+            if (huid != null)
             {
-                characterAppearance.SetSkin(skin);
+                characterAppearance.SetSkin(huid);
             }
-            if (hair != null)
+            if (haar != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Hair, hair));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Hair, haar));
             }
-            if (torso != null)
+            if (bovenstuk != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Torso, torso));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Torso, bovenstuk));
             }
-            if (legs != null)
+            if (onderstuk != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Legs, legs));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Legs, onderstuk));
             }
-            if (feet != null)
+            if (schoenen != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Feet, feet));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Feet, schoenen));
             }
             base.CalculateChange();
         }

@@ -8,12 +8,12 @@ namespace NodeSystem
     public class TextileNode : DropdownNode <TextileData>
     {
         [OutputPropperty]
-        public TextileData textileTexture;
+        public TextileData materiaal;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
-            name = "Textiel Node";
-            dropdownName = "Textielen";
+            name = "Materiaal Node";
+            dropdownName = "Materialen";
 
             foreach (TextileData texture in Resources.LoadAll("Textiles", typeof(TextileData)))
             {
@@ -39,14 +39,14 @@ namespace NodeSystem
         {
             base.Draw();
 
-            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), textileTexture.albedoMap, styleCenter);
+            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), materiaal.albedoMap, styleCenter);
             GUI.Box(nodeAreas[3], "", styleBottomArea);
             GUI.EndGroup();
         }
 
         public override void CalculateChange()
         {
-            textileTexture = chosenValue;
+			materiaal = chosenValue;
 
             base.CalculateChange();
         }
