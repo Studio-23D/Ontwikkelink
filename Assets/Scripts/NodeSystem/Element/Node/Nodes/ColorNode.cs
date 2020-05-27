@@ -68,18 +68,21 @@ namespace NodeSystem
 
             GUI.DrawTextureWithTexCoords(palleteRect, selectionTexture, new Rect(0, 0, 1, -1));
 
-            draggableTexture = new Texture2D(1, 1);
-            draggableTexture.SetPixel(0, 0, Color.black);
-            draggableTexture.Apply();
+			if (isSelected)
+			{
+				draggableTexture = new Texture2D(1, 1);
+				draggableTexture.SetPixel(0, 0, Color.black);
+				draggableTexture.Apply();
 
-            if (GUI.Button(draggableRect, draggableTexture))
-            {
-                isSelectingColor = !isSelectingColor;
-                CalculateChange();
-            }
+				if (GUI.Button(draggableRect, draggableTexture))
+				{
+					isSelectingColor = !isSelectingColor;
+					CalculateChange();
+				}
 
-            SelectColor();
-            SetPreview();
+				SelectColor();
+				SetPreview();
+			}
 
             GUI.Box(nodeAreas[4], "", styleBottomArea);
 

@@ -65,6 +65,11 @@ public class InputManager : MonoBehaviour
 		selectedView = view;
 	}
 
+	public void DeslectView()
+	{
+		selectedView = null;
+	}
+
 
 	#region EDITOR
 

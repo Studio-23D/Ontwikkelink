@@ -6,6 +6,33 @@ namespace NodeSystem
 {
 	public class NodeManager : MonoBehaviour
 	{
+		public bool DraggingAllNodes
+		{
+			set
+			{
+				draggingAllNodes = value;
+			}
+		}
+		public bool AreNodesDragged
+		{
+			get
+			{
+				foreach (Element element in elements)
+				{
+					if (element is Node)
+					{
+						Node node = element as Node;
+
+						if (node.isDragged)
+						{
+							return true;
+						}
+					}
+				}
+
+				return false;
+			}
+		}
 		public List<Element> GetElements => elements;
 
 		[SerializeField] private CharacterAppearance characterAppearance;
@@ -16,6 +43,7 @@ namespace NodeSystem
 		[SerializeField] private bool drawGUI  = false;
 
 		private bool canDraw = false;
+		private bool draggingAllNodes = false;
 
 		protected Rect rect;
 
@@ -118,6 +146,26 @@ namespace NodeSystem
 			}
 		}
 
+		public bool IsNodeDragged(Node node)
+		{
+			foreach (Element element in elements)
+			{
+				if (element is Node)
+				{
+					Node nodeToCheck = element as Node;
+
+					if (node.GetType() == nodeToCheck.GetType() && node.isDragged)
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+
+
 		private void OpenGarbage()
 		{
 			trashCan.gameObject.SetActive(true);
@@ -147,24 +195,6 @@ namespace NodeSystem
 			CloseGarbage();
 		}
 
-		private bool IsNodeDragged()
-		{
-			foreach (Element element in elements)
-			{
-				if (element is Node)
-				{
-					Node node = element as Node;
-
-					if (node.isDragged)
-					{
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
-
 		private void OnGUI()
         {
 			if (elementDrawer == null || !canDraw) return;
@@ -182,7 +212,7 @@ namespace NodeSystem
                     Node node = element as Node;
                     node.ProcessEvents(Event.current);
 
-					if (node.isDragged && node.GetType() != typeof(CharacterNode))
+					if (node.isDragged && !IsNodeDragged(characterNode) && !draggingAllNodes)
 					{
 						OpenGarbage();
 						continue;
@@ -190,7 +220,7 @@ namespace NodeSystem
                 }
             }
 
-			if (!IsNodeDragged())
+			if (!AreNodesDragged)
 			{
 				CheckForGarbage();
 				CloseGarbage();

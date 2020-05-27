@@ -165,16 +165,16 @@ namespace NodeSystem
 
 		public virtual void Drag(Vector2 position)
 		{
-#if UNITY_EDITOR
-			rect.position += new Vector2(position.x, position.y);
-#else
+#if UNITY_ANDROID
 			rect.position += new Vector2(position.x, -position.y);
+#else
+			rect.position += new Vector2(position.x, position.y);
 #endif
 		}
 
 		public bool ProcessEvents(Event e)
         {
-            switch (e.type)
+			switch (e.type)
             {
                 case EventType.MouseDown:
                     if (e.button == 0)
@@ -206,7 +206,6 @@ namespace NodeSystem
 					if (e.button == 0 && isDragged)
                     {
                         Drag(e.delta);
-                        e.Use();
                         return true;
                     }
                     break;
