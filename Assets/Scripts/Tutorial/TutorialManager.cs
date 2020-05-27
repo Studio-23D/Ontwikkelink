@@ -11,11 +11,17 @@ public struct Tutorial
 	public TutorialContainer feature;
 	public GameObject activationView;
 	[Tooltip("After this tutorial has finished, it will start the next tutorial with this label")]
-	public string startTutorial;
+	public string nextTutorial;
 }
+
+[System.Serializable]
+public enum TutorialType { Goal, Creation, Movement, Linking, Removal }
 
 public class TutorialManager : MonoBehaviour
 {
+	public List<Tutorial> Tutorials => tutorials;
+	public bool StartTutorials { get { return startTutorials; } }
+
 	[SerializeField] private NodeManager nodeManager;
 	[SerializeField] private ViewManager viewManager;
 	[SerializeField] private bool startTutorials;
@@ -38,7 +44,6 @@ public class TutorialManager : MonoBehaviour
 	}
 
 
-
 	public void EnableTutorial(Tutorial tutorial)
 	{
 		PlayerPrefs.SetInt(tutorial.label, 0);
@@ -47,6 +52,31 @@ public class TutorialManager : MonoBehaviour
 	public void DisableTutorial(Tutorial tutorial)
 	{
 		PlayerPrefs.SetInt(tutorial.label, 1);
+	}
+
+	public void EnableAllTutorials()
+	{
+		foreach (Tutorial tutorial in tutorials)
+		{
+			EnableTutorial(tutorial);
+		}
+
+		startTutorials = true;
+	}
+
+	public void DisableAllTutorials()
+	{
+		foreach (Tutorial tutorial in tutorials)
+		{
+			DisableTutorial(tutorial);
+		}
+
+		startTutorials = false;
+	}
+
+	public bool IsTutorialEnabled(Tutorial tutorial)
+	{
+		return PlayerPrefs.GetInt(tutorial.label) == 0;
 	}
 
 
@@ -59,11 +89,11 @@ public class TutorialManager : MonoBehaviour
 			currentTutorialPart = GetNextPart(currentTutorialPart);
 			currentTutorialPart.SetActive(true);
 		}
-		else if (currentTutorial.startTutorial != "")
+		else if (currentTutorial.nextTutorial != "")
 		{
 			DisableTutorial(currentTutorial);
 			Destroy(currentTutorial.feature.gameObject);
-			currentTutorial = GetTutorial(currentTutorial.startTutorial);
+			currentTutorial = GetTutorial(currentTutorial.nextTutorial);
 			InitTutorial(currentTutorial);
 		}
 		else
@@ -85,12 +115,13 @@ public class TutorialManager : MonoBehaviour
 
 			currentTutorial = tutorial;
 			InitTutorial(currentTutorial);
+			return;
 		}
 	}
 
 	private void InitTutorial(Tutorial tutorial)
 	{
-		if (nodeManager) nodeManager.ToggleDraw(false);
+		nodeManager.ToggleDraw(false);
 
 		currentTutorial.feature = Instantiate(currentTutorial.feature, transform);
 		currentTutorial.feature.GetContinueButton.onClick.AddListener(ContinueTutorial);
@@ -104,11 +135,6 @@ public class TutorialManager : MonoBehaviour
 		{
 			currentTutorialPart = null;
 		}
-	}
-
-	private bool IsTutorialEnabled(Tutorial tutorial)
-	{
-		return PlayerPrefs.GetInt(tutorial.label) == 0;
 	}
 
 	private bool IsLastPart(GameObject part)
