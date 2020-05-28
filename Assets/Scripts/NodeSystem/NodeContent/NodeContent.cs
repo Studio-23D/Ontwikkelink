@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeContent
+public abstract class NodeContent
 {
-    [InputPropperty]
-    public Color color = Color.white;
-
-    [OutputPropperty]
-    public Color color2 = Color.white;
+	protected Node node;
+	public Node Node
+	{
+		get => node;
+		set => node = value;
+	}
 }
