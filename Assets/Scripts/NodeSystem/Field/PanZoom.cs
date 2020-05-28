@@ -56,15 +56,22 @@ public class PanZoom : MonoBehaviour
 
 
 
-	private void CheckTouch(int touchCount, Vector3 startPosition)
+	private void CheckTouch(int touchCount, Vector3 startPosition, Transform selectedView)
 	{
+		if (selectedView != transform)
+		{
+			EnableFieldDrag(false);
+			return;
+		}
+
 		if (touchCount == fingersToZoom)
 		{
 			//Zoom();
 		}
 		else
 		{
-			Pan(startPosition);
+			//Pan(startPosition);
+			EnableFieldDrag(true);
 		}
 	}
 
@@ -90,13 +97,13 @@ public class PanZoom : MonoBehaviour
 		// Pans when player swipes
 		Vector3 direction = startPosition - inputManager.GetTouchPos;
 
-#if UNITY_EDITOR
-		direction = new Vector3(direction.x, -direction.y, direction.z);
-#else
+#if UNITY_ANDROID
 		direction = new Vector3(direction.x, direction.y, direction.z);
+#else
+		direction = new Vector3(direction.x, -direction.y, direction.z);
 #endif
 
-		foreach (Element element in nodeManager.GetElements)
+		/*foreach (Element element in nodeManager.GetElements)
 		{
 			if (element is Node)
 			{
@@ -107,7 +114,7 @@ public class PanZoom : MonoBehaviour
 					return;
 				}
 			}
-		}
+		}*/
 
 		foreach (Element element in nodeManager.GetElements)
 		{
@@ -121,8 +128,29 @@ public class PanZoom : MonoBehaviour
 				}
 				else
 				{
-					node.Drag(direction * panDifferenceModifier);
+					//node.Drag(direction * panDifferenceModifier);
 				}
+			}
+		}
+	}
+
+	private void EnableFieldDrag(bool enable)
+	{
+		if (nodeManager.AreNodesDragged)
+		{
+			nodeManager.DraggingAllNodes = false;
+			return;
+		}
+
+		nodeManager.DraggingAllNodes = enable;
+
+		foreach (Element element in nodeManager.GetElements)
+		{
+			if (element is Node)
+			{
+				Node node = (Node)element;
+
+				node.isDragged = enable;
 			}
 		}
 	}

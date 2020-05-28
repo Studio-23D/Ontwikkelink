@@ -7,7 +7,7 @@ namespace NodeSystem
 	public class ColorNode : Node
 	{
 		[OutputPropperty]
-		public Color colorOut = Color.white;
+		public Color kleur = Color.white;
 
         private Rect previewRect;
         private Rect palleteRect;
@@ -32,7 +32,7 @@ namespace NodeSystem
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
 			base.Init(position, eventHandeler);
-            name = "Kleuren Node";
+            name = "Kleur Node";
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 30));
 
@@ -68,18 +68,21 @@ namespace NodeSystem
 
             GUI.DrawTextureWithTexCoords(palleteRect, selectionTexture, new Rect(0, 0, 1, -1));
 
-            draggableTexture = new Texture2D(1, 1);
-            draggableTexture.SetPixel(0, 0, Color.black);
-            draggableTexture.Apply();
+			if (isSelected)
+			{
+				draggableTexture = new Texture2D(1, 1);
+				draggableTexture.SetPixel(0, 0, Color.black);
+				draggableTexture.Apply();
 
-            if (GUI.Button(draggableRect, draggableTexture))
-            {
-                isSelectingColor = !isSelectingColor;
-                CalculateChange();
-            }
+				if (GUI.Button(draggableRect, draggableTexture))
+				{
+					isSelectingColor = !isSelectingColor;
+					CalculateChange();
+				}
 
-            SelectColor();
-            SetPreview();
+				SelectColor();
+				SetPreview();
+			}
 
             GUI.Box(nodeAreas[4], "", styleBottomArea);
 
@@ -112,7 +115,7 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
-            colorOut = selectionColor;
+            kleur = selectionColor;
             base.CalculateChange();
         }
     }

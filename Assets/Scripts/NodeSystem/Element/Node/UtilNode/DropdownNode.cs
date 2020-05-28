@@ -23,13 +23,13 @@ namespace NodeSystem
 
         private bool toggleDropdown = false;
 
-        public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
-        {
-            base.Init(position, eventHandeler);
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 230));
+		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
+		{
+			base.Init(position, eventHandeler);
+			nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 230));
 
-            chosenValue = dropdownElements[0].value;
-        }
+			chosenValue = dropdownElements[0].value;
+		}
 
         public override void Draw()
         {

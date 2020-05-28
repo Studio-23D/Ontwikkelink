@@ -12,7 +12,8 @@ namespace NodeSystem
 		protected Vector2 startPosition;
 
 		protected Action<Element> onClick = delegate { };
-        protected Action<Element> onHover = delegate { };
+		protected Action<Element> onRelease = delegate { };
+		protected Action<Element> onHover = delegate { };
 
         public int drawOrder = 0;
 
@@ -31,9 +32,9 @@ namespace NodeSystem
             SystemEventHandeler.OnElementCreate?.Invoke(this);
             this.eventHandeler = eventHandeler;
             this.eventHandeler.SubscribeTo(EventType.MouseDown, () => CheckClick());
-            this.eventHandeler.CheckHover += () => CheckHover();
+			this.eventHandeler.CheckHover += () => CheckHover();
             onClick += (Element element) => SystemEventHandeler.OnElementClick.Invoke(element);
-            onHover += (Element element) => SystemEventHandeler.OnElementHover.Invoke(element);
+			onHover += (Element element) => SystemEventHandeler.OnElementHover.Invoke(element);
 		}
 
 		public void ResetPosition()
@@ -49,10 +50,10 @@ namespace NodeSystem
         private void CheckClick()
         {
             if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;
-            onClick?.Invoke(this);
+			onClick?.Invoke(this);
         }
 
-        private void CheckHover()
+		private void CheckHover()
         {
             if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;
             onHover?.Invoke(this);
@@ -63,7 +64,7 @@ namespace NodeSystem
             this.onClick += action;
         }
 
-        public virtual void OnHover(Action<Element> action)
+		public virtual void OnHover(Action<Element> action)
         {
             this.onHover += action;
         }

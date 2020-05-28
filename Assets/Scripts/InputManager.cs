@@ -13,7 +13,7 @@ public struct TouchActions
 
 public class InputManager : MonoBehaviour
 {
-	public Action<int, Vector3> OnTouch;
+	public Action<int, Vector3, Transform> OnTouch;
 	public Action<float> OnScroll;
 
 	public bool IsMouseButtonDown { get { return Input.GetMouseButton(0); } }
@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
 
 	[SerializeField] private List<TouchActions> touchbindings = new List<TouchActions>();
 	[SerializeField] private string ScrollWheelAxis = "Mouse ScrollWheel";
+	[SerializeField] private Transform selectedView;
 
 	private Camera cam;
 	private EventSystem events;
@@ -47,16 +48,26 @@ public class InputManager : MonoBehaviour
 
 		if (GetTouchCount > 1)
 		{
-			OnTouch(GetTouchCount, touchStartPos);
+			OnTouch(GetTouchCount, touchStartPos, selectedView);
 		}
 		else if (IsMouseButtonDown)
 		{
 			if (OnTouch != null)
-			OnTouch(GetTouchCount, touchStartPos);
+				OnTouch(GetTouchCount, touchStartPos, selectedView);
 		}
 
 		if (OnScroll != null)
 			OnScroll(-Input.GetAxis(ScrollWheelAxis));
+	}
+
+	public void SelectView(Transform view)
+	{
+		selectedView = view;
+	}
+
+	public void DeslectView()
+	{
+		selectedView = null;
 	}
 
 

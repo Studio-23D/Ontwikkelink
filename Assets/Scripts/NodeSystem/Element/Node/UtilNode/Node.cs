@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEditor;
 using UnityEngine;
 
 public enum ConnectionPointType { In, Out }
@@ -10,7 +10,21 @@ namespace NodeSystem
 {
 	public abstract class Node : Element
 	{
-        public bool isDragged;
+		public List<ConnectionPoint> ConnectionPoints
+		{
+			get
+			{
+				List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
+
+				connectionPoints = inputPoints.Union<ConnectionPoint>(outputPoints).ToList<ConnectionPoint>();
+
+				return connectionPoints;
+			}
+		}
+		public List<ConnectionPoint> InputPoints => inputPoints;
+		public List<ConnectionPoint> OutputPoints => outputPoints;
+
+		public bool isDragged;
         public bool isSelected;
 
         protected string name;
@@ -58,7 +72,7 @@ namespace NodeSystem
 		{
             base.Init(position, eventHandeler);
 
-            nodeAreas.Add(new Rect(0, 0, 200, 25));
+			nodeAreas.Add(new Rect(0, 0, 200, 25));
 
             int index = 0;
             FieldInfo[] objectFields = this.GetType().GetFields();
@@ -77,8 +91,6 @@ namespace NodeSystem
                     AddConnectionPoint(field, ConnectionPointType.Out, outputPoints, index);
                     
                 }
-
-                
                 index++;
             }
 
@@ -135,22 +147,37 @@ namespace NodeSystem
 
 		public override void Destroy()
 		{
-			throw new NotImplementedException();
+			foreach (ConnectionPoint connectionPoint in ConnectionPoints)
+			{
+				connectionPoint.Destroy();
+				ConnectionPoints.Remove(connectionPoint);
+			}
+
+			if (eventHandeler.selectedPropertyPoint != null)
+			{
+				eventHandeler.selectedPropertyPoint.Destroy();
+				ConnectionPoints.Remove(eventHandeler.selectedPropertyPoint);
+			}
+
+			base.Destroy();
 		}
 
 
 		public virtual void Drag(Vector2 position)
 		{
-#if UNITY_EDITOR
-			rect.position += new Vector2(position.x, position.y);
-#else
-			rect.position += new Vector2(position.x, -position.y);
-#endif
+			if (SystemInfo.deviceType == DeviceType.Desktop)
+			{
+				rect.position += new Vector2(position.x, position.y);
+			}
+			else
+			{
+				rect.position += new Vector2(position.x, -position.y);
+			}
 		}
 
 		public bool ProcessEvents(Event e)
         {
-            switch (e.type)
+			switch (e.type)
             {
                 case EventType.MouseDown:
                     if (e.button == 0)
@@ -179,11 +206,9 @@ namespace NodeSystem
                     break;
 
                 case EventType.MouseDrag:
-                    //if ((e.button == 0 || e.pointerType == PointerType.Touch) && isDragged)
 					if (e.button == 0 && isDragged)
                     {
                         Drag(e.delta);
-                        e.Use();
                         return true;
                     }
                     break;

@@ -4,24 +4,27 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class MusicController : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField]
     private List<AudioClip> music = new List<AudioClip>();
-    [SerializeField]
-    private int currentIndex = 0;
+    [SerializeField] private int currentIndex = 0;
     private bool pause = false;
 
-    private void Start()
+	private void Awake()
+	{
+		DontDestroyOnLoad(this);
+	}
+
+	private void Start()
     {
         currentIndex = Random.Range(0, music.Count);
         audioSource.clip = music[currentIndex];
         audioSource.Play();
     }
 
-    public void NextMusic(int step)
+    public void NextSong()
     {
-        currentIndex += step;
+        currentIndex += 1;
 
         if(currentIndex >= music.Count)
         {

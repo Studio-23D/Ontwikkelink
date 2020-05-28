@@ -8,48 +8,43 @@ public class CharacterRotating : MonoBehaviour
 	[SerializeField] private RectTransform characterImage;
 	[SerializeField] private Transform characterContainer;
 	[SerializeField] private float rotateSpeed = 100;
+	[SerializeField] private InputManager inputManager;
+	[SerializeField] private List<Transform> fieldsToBeSelected;
 
 	private bool buttonHeldDown = false;
 	private string direction;
 
     protected Vector3 savedMousePosition;
 
-    private void Update()
+	private void Awake()
+	{
+		inputManager.OnTouch += CheckTouch;
+	}
+
+
+	private void CheckTouch(int touchCount, Vector3 startPosition, Transform selectedView)
+	{
+		if (!fieldsToBeSelected.Contains(selectedView)) return;
+
+		RotateByMouse(startPosition);
+	}
+
+
+    private void RotateByMouse(Vector3 savedMousePosition)
     {
-		if (buttonHeldDown)
-        {
-            RotateByButton();
+        if (!freeRotation)
+		{
+			float rotationX = Input.GetAxis("Mouse X") * rotateSpeed * Mathf.Deg2Rad;
+			characterContainer.transform.Rotate(Vector3.down, rotationX);
         }
-        else if (!buttonHeldDown)
+        else
         {
-            if (Input.GetMouseButtonDown(0)) { savedMousePosition = Input.mousePosition; }
-            if (Input.GetMouseButton(0) && characterImage.rect.Contains(new Vector2(Input.mousePosition.x - 1100, Input.mousePosition.y))) { RotateByMouse(); }
-        }
-    }
+			Vector3 delta = (Input.mousePosition - savedMousePosition);
+			savedMousePosition = Input.mousePosition;
 
-    public void HoldRotateButton(string directionParameter)
-    {
-        buttonHeldDown = true;
-        direction = directionParameter;
-    }
-
-    public void ReleaseRotateButton() { buttonHeldDown = false; }
-
-    private void RotateByMouse()
-    {
-        if (freeRotation)
-        {
-            Vector3 delta = (Input.mousePosition - savedMousePosition);
-            savedMousePosition = Input.mousePosition;
-
-            Vector3 axis = Quaternion.AngleAxis(-90f, Vector3.forward) * delta;
-            characterContainer.transform.rotation = Quaternion.AngleAxis(delta.magnitude * 0.5f, axis) * characterContainer.transform.rotation;
-        }
-        else if (!freeRotation)
-        {
-            float rotationX = Input.GetAxis("Mouse X") * rotateSpeed * Mathf.Deg2Rad;
-            characterContainer.transform.Rotate(Vector3.down, rotationX);
-        }
+			Vector3 axis = Quaternion.AngleAxis(-90f, Vector3.forward) * delta;
+			characterContainer.transform.rotation = Quaternion.AngleAxis(delta.magnitude * 0.5f, axis) * characterContainer.transform.rotation;
+		}
     }
 
     private void RotateByButton()

@@ -5,13 +5,13 @@ using UnityEngine;
 namespace NodeSystem {
 	public class Connection : Element
 	{
+		public bool IsConnected => isConnected;
+
 		private ConnectionPoint inPoint;
 		private ConnectionPoint outPoint;	
-
 		private Type type;
 
 		private bool isConnected = false;
-		public bool IsConnected => isConnected;
 
 		public ConnectionPoint InPoint
 		{
@@ -35,16 +35,15 @@ namespace NodeSystem {
 		public void SetValue()
 		{
 			if (!isConnected) return;
+
 			inPoint.Value.SetValue(inPoint.node, outPoint.Value.GetValue(outPoint.node));
 		}
 
 		public override void Destroy()
 		{
-			base.Destroy();
-			Disconect();
 			inPoint = null;
 			outPoint = null;
-			eventHandeler.selectedPropertyPoint = null;
+			base.Destroy();
 		}
 
 		public void Connect(Element element)
@@ -70,21 +69,16 @@ namespace NodeSystem {
 
 			point.OnConnection(this);
 			isConnected = true;
-			eventHandeler.selectedPropertyPoint = null;
 			this.SetValue();
 			outPoint.node.OnChange += this.SetValue;
 			outPoint.node.OnChange += inPoint.node.CalculateChange;
 			InPoint.node.CalculateChange();
 		}
 
-		private void Disconect()
-		{
-			inPoint?.Disconect();
-			outPoint?.Disconect();
-		}
-
 		public override void Draw()
 		{
+			// KEEPS DRAWING EVENTHOUGH IT IS DESTROYED
+
 			Vector2 positionA = (outPoint != null) ? outPoint.Position + outPoint.Size / new Vector2(2 ,2) : SystemEventHandeler.mousePosition; 
 			Vector2 positionB = (inPoint != null) ? inPoint.Position + inPoint.Size / new Vector2(2, 2) : SystemEventHandeler.mousePosition;
 

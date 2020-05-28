@@ -11,10 +11,10 @@ namespace NodeSystem
 		}
 
         [InputPropperty]
-        public Color color = Color.white;
+        public Color kleur = Color.white;
 
 		[OutputPropperty]
-		public AppearanceItem appearanceItem;
+		public AppearanceItem uitvoer;
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
@@ -24,6 +24,7 @@ namespace NodeSystem
 					visual = item.Icon.texture,
 					value = item
 				};
+
 				dropdownElements.Add(element);
 			}
 
@@ -39,9 +40,9 @@ namespace NodeSystem
 
 		public override void CalculateChange()
 		{
-			appearanceItem = chosenValue;
+			uitvoer = chosenValue;
 
-			appearanceItem.SetColor(color);
+			uitvoer.SetColor(kleur);
 
 			base.CalculateChange();
 		}
@@ -50,7 +51,7 @@ namespace NodeSystem
 		{
 			base.Draw();
 
-			GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), appearanceItem.Icon.texture, styleCenter);
+			GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), uitvoer.Icon.texture, styleCenter);
 			GUI.Box(nodeAreas[3], "", styleBottomArea);
 			GUI.EndGroup();
 		}
