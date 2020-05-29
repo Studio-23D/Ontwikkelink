@@ -46,9 +46,8 @@ namespace NodeSystem
             characterAppearance.Character = characterAppearance.Character ?? FindObjectOfType<Character>();
             characterNode.characterAppearance = characterAppearance;
 
-			eventHandeler.OnElementHold += trashCan.OnElementDrag;
-			eventHandeler.OnElementRelease += trashCan.OnElementRelease;
-			//eventHandeler.OnElementRelease += (Element element) => trashCan.Hide();
+			eventHandeler.OnElementHold += garbageBin.OnElementDrag;
+			eventHandeler.OnElementRelease += garbageBin.OnElementRelease;
 
 			canDraw = true;
 
