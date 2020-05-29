@@ -55,8 +55,6 @@ public class NodeField : MonoBehaviour
 		{
 			if (nodeManager.Elements[i].IsBeingDragged)
 			{
-				Debug.Log(nodeManager.Elements[i] + " being dragged: " + nodeManager.Elements[i].IsBeingDragged);
-
 				return true;
 			}
 		}

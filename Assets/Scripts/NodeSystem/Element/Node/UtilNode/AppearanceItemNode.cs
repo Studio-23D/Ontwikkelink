@@ -40,9 +40,9 @@ namespace NodeSystem
 
 		public override void CalculateChange()
 		{
-			uitvoer = chosenValue;
+			this.uitvoer = chosenValue;
 
-			uitvoer.SetColor(kleur);
+			this.uitvoer.SetColor(kleur);
 
 			base.CalculateChange();
 		}

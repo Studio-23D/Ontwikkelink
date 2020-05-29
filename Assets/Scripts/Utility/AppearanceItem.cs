@@ -26,17 +26,21 @@ public class AppearanceItem : MonoBehaviour
 	[SerializeField] private Texture skinTexture;
 	[SerializeField] private AppearanceItemType appearanceItemType;
 	[SerializeField] private List<AppearanceItemType> inCompatibleWith;
-
+	private Material material;
 
 	public void SetColor(Color color)
 	{
-        renderer.sharedMaterial.SetColor("BaseColor", color);
+		Material material = Instantiate(renderer.sharedMaterial);
+		material.SetColor("BaseColor", color);
+		renderer.material = material;
     }
 
     public void SetPattern(Texture2D texture)
     {
+		Material material = Instantiate(renderer.sharedMaterial);
 		renderer.sharedMaterial.SetTexture("Pattern", texture);
-    }
+		renderer.material = material;
+	}
 
     public void SetTextile(TextileData texture)
     {
