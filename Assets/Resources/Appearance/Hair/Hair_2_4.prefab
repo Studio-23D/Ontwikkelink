@@ -97,7 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
+  renderer: {fileID: 0}
   animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
+  appearanceItemType: 0
+  inCompatibleWith: 
 --- !u!1 &1423788569146239842
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: a32bcc32eebdc4747bee6ba92e2c0643, type: 3}
+  renderer: {fileID: 4060120386446768049}
   animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
+  appearanceItemType: 0
+  inCompatibleWith: 
 --- !u!1 &3986068791006191572
 GameObject:
   m_ObjectHideFlags: 0

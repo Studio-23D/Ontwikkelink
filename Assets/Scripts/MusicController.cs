@@ -22,13 +22,17 @@ public class MusicController : MonoBehaviour
         audioSource.Play();
     }
 
-    public void NextSong()
+    public void OtherSong(int step)
     {
-        currentIndex += 1;
-
+        currentIndex += step;
+        
         if(currentIndex >= music.Count)
         {
             currentIndex = 0;
+        }
+        else if (currentIndex <= -1)
+        {
+            currentIndex = music.Count - 1;
         }
 
         audioSource.clip = music[currentIndex];
@@ -47,5 +51,10 @@ public class MusicController : MonoBehaviour
         {
             audioSource.Play();
         }
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 }

@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private MusicController musicController;
 	[SerializeField] private Button mute;
 	[SerializeField] private Button nextSong;
+    [SerializeField] private Button lastSong;
+    [SerializeField] private Slider volumeSlider;
 
-	private void Start()
+    private void Start()
 	{
 		InitMusic();
 	}
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
 		}
 
 		mute.onClick.AddListener(controller.ToggleMusic);
-		nextSong.onClick.AddListener(controller.NextSong);
-	}
+		nextSong.onClick.AddListener( delegate { controller.OtherSong(1); });
+        lastSong.onClick.AddListener( delegate { controller.OtherSong(-1); });
+        volumeSlider.onValueChanged.AddListener( delegate { controller.SetVolume(volumeSlider.value); });
+    }
 }
