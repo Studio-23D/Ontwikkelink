@@ -4969,7 +4969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAppearance: {fileID: 1323379484}
   nodeField: {fileID: 1052945806}
-  trashCan: {fileID: 1708137429}
+  garbageBin: {fileID: 1708137429}
   characterStage: {fileID: 2096811782}
   nodeStage: {fileID: 1052945809}
   nodeButtonBar: {fileID: 2082505456}
