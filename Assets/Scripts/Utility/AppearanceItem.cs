@@ -38,7 +38,7 @@ public class AppearanceItem : MonoBehaviour
     public void SetPattern(Texture2D texture)
     {
 		Material material = Instantiate(renderer.sharedMaterial);
-		renderer.sharedMaterial.SetTexture("Pattern", texture);
+		material.SetTexture("Pattern", texture);
 		renderer.material = material;
 	}
 
