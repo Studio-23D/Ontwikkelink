@@ -24,8 +24,7 @@ namespace NodeSystem
 		public List<ConnectionPoint> InputPoints => inputPoints;
 		public List<ConnectionPoint> OutputPoints => outputPoints;
 
-		public bool isDragged;
-        public bool isSelected;
+        public Vector3 StartPosition => startPosition;
 
         protected string name;
 
@@ -118,7 +117,7 @@ namespace NodeSystem
 					break;
 			}
 
-            position.y = index > 0 ? list[index - 1].LocalPros.y + list[index - 1].Size.y : point.Size.y;
+            position.y = index > 0 ? list[index - 1].LocalPosition.y + list[index - 1].Size.y : point.Size.y;
             point.Init(position, eventHandeler);
 		}
 
@@ -162,59 +161,44 @@ namespace NodeSystem
 			base.Destroy();
 		}
 
+        public void ResetPosition()
+        {
+            rect.position = startPosition;
+        }
 
-		public virtual void Drag(Vector2 position)
+        public void SaveStartPosition()
+        {
+            startPosition = this.Position;
+        }
+
+
+		public void EnableFieldDrag()
 		{
+			IsFieldDragged(true);
+		}
+
+		public void DisableFieldDrag()
+		{
+			IsFieldDragged(false);
+		}
+
+
+		public override void OnClickDown()
+        {
+            base.OnClickDown();
+        }
+
+        public override void OnHold(Vector2 position)
+		{
+            base.OnHold(position);
 			if (SystemInfo.deviceType == DeviceType.Desktop)
 			{
-				rect.position += new Vector2(position.x, position.y);
+				LocalPosition += new Vector2(position.x, position.y);
 			}
 			else
 			{
-				rect.position += new Vector2(position.x, -position.y);
+                LocalPosition += new Vector2(position.x, -position.y);
 			}
 		}
-
-		public bool ProcessEvents(Event e)
-        {
-			switch (e.type)
-            {
-                case EventType.MouseDown:
-                    if (e.button == 0)
-                    {
-                        if (rect.Contains(e.mousePosition))
-                        {
-                            isDragged = true;
-                            GUI.changed = true;
-                            isSelected = true;
-                        }
-                        else
-                        {
-                            GUI.changed = true;
-                            isSelected = false;
-                        }
-                    }
-
-                    if (e.button == 1 && isSelected && rect.Contains(e.mousePosition))
-                    {
-                        e.Use();
-                    }
-                    break;
-
-                case EventType.MouseUp:
-                    isDragged = false;
-                    break;
-
-                case EventType.MouseDrag:
-					if (e.button == 0 && isDragged)
-                    {
-                        Drag(e.delta);
-                        return true;
-                    }
-                    break;
-            }
-
-            return false;
-        }
     }
 }

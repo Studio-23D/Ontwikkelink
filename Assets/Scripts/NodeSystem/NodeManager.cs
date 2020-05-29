@@ -6,46 +6,21 @@ namespace NodeSystem
 {
 	public class NodeManager : MonoBehaviour
 	{
-		public bool DraggingAllNodes
-		{
-			set
-			{
-				draggingAllNodes = value;
-			}
-		}
-		public bool AreNodesDragged
-		{
-			get
-			{
-				foreach (Element element in elements)
-				{
-					if (element is Node)
-					{
-						Node node = element as Node;
-
-						if (node.isDragged)
-						{
-							return true;
-						}
-					}
-				}
-
-				return false;
-			}
-		}
-		public List<Element> GetElements => elements;
+		public List<Element> Elements => elements;
 
 		[SerializeField] private CharacterAppearance characterAppearance;
-		[SerializeField] private RectTransform trashCan;
+		[SerializeField] private NodeField nodeField;
+		[SerializeField] private GarbageBin garbageBin;
 		[SerializeField] private RectTransform characterStage;
 		[SerializeField] private RectTransform nodeStage;
 		[SerializeField] private RectTransform nodeButtonBar;
 		[SerializeField] private bool drawGUI  = false;
 
 		private bool canDraw = false;
-		private bool draggingAllNodes = false;
 
-		protected Rect rect;
+		
+
+		public Rect rect;
 
         protected ElementDrawer elementDrawer;
         protected SystemEventHandeler eventHandeler;
@@ -54,35 +29,49 @@ namespace NodeSystem
         protected List<Element> elements = new List<Element>();
         protected List<Element> garbage = new List<Element>();
 
+		public SystemEventHandeler EventHandeler => eventHandeler;
+
 		public void Init()
         {
-            rect = new Rect();
-            rect.width = Screen.width - (characterStage.rect.width / 1920 * Screen.width);
-            rect.height = Screen.height;
+			rect = new Rect
+			{
+				width = Screen.width - (characterStage.rect.width / 1920 * Screen.width),
+				height = Screen.height
+			};
 
-            eventHandeler = new SystemEventHandeler(rect);
+			eventHandeler = new SystemEventHandeler();
             elementDrawer = new ElementDrawer();
 
-            characterNode = new CharacterNode();
-            characterNode.Init(new Vector2(rect.width/2, rect.height/2), eventHandeler);
-            characterAppearance.Character = FindObjectOfType<Character>();
+			characterNode = InstantiateNode(new CharacterNode());
+            characterAppearance.Character = characterAppearance.Character ?? FindObjectOfType<Character>();
             characterNode.characterAppearance = characterAppearance;
-            elements.Add(characterNode);
 
-            canDraw = true;
+			eventHandeler.OnElementHold += garbageBin.OnElementDrag;
+			eventHandeler.OnElementRelease += garbageBin.OnElementRelease;
 
-			SystemEventHandeler.OnElementRemove += AddToGarbage;
-			SystemEventHandeler.OnElementCreate += (Element element) =>
+			canDraw = true;
+
+			eventHandeler.OnElementRemove += AddToGarbage;
+			eventHandeler.OnElementCreate += (Element element) =>
             {
                 if (element is Connection) elements.Add(element);
             };
         }
 
-        public void InstantiateNode(Node node)
+        public T InstantiateNode<T>(T node) where T : Node
         {
             node.Init(new Vector2(nodeStage.rect.width / 4, nodeStage.rect.height / 4), eventHandeler);
+			node.parent = rect;
             elements.Add(node);
-            elements = elements.OrderBy(e => e.drawOrder).ToList();
+            elements = elements.OrderBy(e => e.DrawOrder).ToList();
+			nodeField.OnSave += node.SaveStartPosition;
+			nodeField.OnReset += node.ResetPosition;
+
+			nodeField.OnDrag += node.EnableFieldDrag;
+			nodeField.OnRelease += node.DisableFieldDrag;
+
+			eventHandeler.OnParrentChange += () => node.parent = rect;
+			return node;
         }
 
 		public void InstantiateNode(string nodeName)
@@ -129,70 +118,22 @@ namespace NodeSystem
             this.canDraw = canDraw;
         }
 
-		public void CheckForGarbage()
-		{
-			for (int i = 0; i < elements.Count; i++)
-			{
-
-				if (elements[i] is Node)
-				{
-					Node node = elements[i] as Node;
-
-					if (!trashCan.rect.Overlaps(node.Rect) || node.GetType() == typeof(CharacterNode) || !trashCan.gameObject.activeSelf) continue;
-
-					AddToGarbage(node);
-					DestroyGarbage();
-				}
-			}
-		}
-
-		public bool IsNodeDragged(Node node)
-		{
-			foreach (Element element in elements)
-			{
-				if (element is Node)
-				{
-					Node nodeToCheck = element as Node;
-
-					if (node.GetType() == nodeToCheck.GetType() && node.isDragged)
-					{
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
-
-
-
-		private void OpenGarbage()
-		{
-			trashCan.gameObject.SetActive(true);
-		}
-
-		private void CloseGarbage()
-		{
-			trashCan.gameObject.SetActive(false);
-		}
-
 		private void DestroyGarbage()
         {
 			for (int i = 0; i < garbage.Count; i++)
 			{
-				if (elements.Contains(garbage[i]))
-				{
-					if (garbage[i] is Node)
-					{
-						Node node = garbage[i] as Node;
+				Element elementToRemove = garbage[i];
 
-						node.Destroy();
-					}
-					elements.Remove(garbage[i]);
+				if (elementToRemove is Node) {
+					Node elementAsNode = elementToRemove as Node;
+					nodeField.OnReset -= elementAsNode.ResetPosition;
+					nodeField.OnSave -= elementAsNode.SaveStartPosition;
+					elementAsNode = null;
 				}
+				elements.Remove(elementToRemove);
+
+				elementToRemove = null;
 			}
-            garbage = new List<Element>();
-			CloseGarbage();
 		}
 
 		private void OnGUI()
@@ -202,66 +143,21 @@ namespace NodeSystem
             rect.width = Screen.width - characterStage.rect.width / 1920 * Screen.width;
             rect.height = Screen.height - nodeButtonBar.rect.height / nodeStage.rect.height * Screen.height;
 
-			elementDrawer.Draw(elements, rect);
-            eventHandeler.CheckInput();
-
-			foreach (Element element in elements)
-            {
-                if (element is Node)
-                {
-                    Node node = element as Node;
-                    node.ProcessEvents(Event.current);
-
-					if (node.isDragged && !IsNodeDragged(characterNode) && !draggingAllNodes)
-					{
-						OpenGarbage();
-						continue;
-					}
-                }
-            }
-
-			if (!AreNodesDragged)
+			if (Event.current.type == EventType.MouseDrag)
 			{
-				CheckForGarbage();
-				CloseGarbage();
+				nodeField.Drag();
+				GUI.Box(new Rect(100, 100, 100, 100), "");
+			}
+			else if (nodeField.isDragging && Event.current.type == EventType.MouseUp)
+			{
+				nodeField.Release();
 			}
 
-			if (drawGUI) {
-				if (GUILayout.Button("ColorNode"))
-				{
-					InstantiateNode(new ColorNode());
-				}
+			elementDrawer.Draw(elements, rect);
+			eventHandeler.OnGui?.Invoke(Event.current);
 
-				if (GUILayout.Button("PatternNode"))
-				{
-					InstantiateNode(new PatternNode());
-				}
-
-				if (GUILayout.Button("HairNode"))
-				{
-					InstantiateNode(new HairNode());
-				}
-
-				if (GUILayout.Button("TorsoClothingNode"))
-				{
-					InstantiateNode(new TorsoClothingNode());
-				}
-
-				if (GUILayout.Button("LegsClothingNode"))
-				{
-					InstantiateNode(new LegsClothingNode());
-				}
-
-				if (GUILayout.Button("FeetClothingNode"))
-				{
-					InstantiateNode(new FeetClothingNode());
-				}
-
-				if (GUILayout.Button("textileNode"))
-				{
-					InstantiateNode(new TextileNode());
-				}
-			}
+			if (garbage.Count > 0)
+				DestroyGarbage();
         }
     }
 }

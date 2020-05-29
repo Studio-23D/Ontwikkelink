@@ -7,66 +7,109 @@ namespace NodeSystem
 {
     public abstract class Element
     {
+        public Rect parent;
+        public bool IsBeingDragged => isBeingDragged;
+        public bool IsFieldDragged(bool drag) => isFieldDragged = drag;
+        public bool IsSelected => isSelected;
 		public Vector2 SetStartPosition(Vector2 startPosition) => this.startPosition = startPosition;
 		public Vector2 GetStartPosition => startPosition;
-		protected Vector2 startPosition;
-
-		protected Action<Element> onClick = delegate { };
-		protected Action<Element> onRelease = delegate { };
-		protected Action<Element> onHover = delegate { };
-
-        public int drawOrder = 0;
-
-        protected Rect rect = new Rect();
+        public int DrawOrder => drawOrder;
         public virtual Rect Rect => rect;
-        public virtual Vector2 Position => rect.position;
-        public Vector2 Size => rect.size;
-        protected SystemEventHandeler eventHandeler;
+        public virtual Vector2 Position => parent.position + rect.position;
 
-		public virtual void Init(Vector2 position,  SystemEventHandeler eventHandeler)
+        public virtual Vector2 LocalPosition
         {
+            get => rect.position;
+            protected set => rect.position = value;
+        }
+        public Vector2 Size => rect.size;
+
+
+        protected Vector2 startPosition;
+        protected Rect rect = new Rect();
+        protected SystemEventHandeler eventHandeler;
+        protected bool isBeingDragged;
+
+        private bool isFieldDragged;
+        private bool isSelected;
+		private int drawOrder = 0;
+        private Dictionary<EventType, Action<Event>> eventTypes = new Dictionary<EventType, Action<Event>>();
+
+        public virtual void Init(Vector2 position,  SystemEventHandeler eventHandeler)
+        {
+            parent = new Rect();
 			startPosition = position;
 			Vector2 size = new Vector2(100, 100);
             rect = new Rect(position, size);
 
-            SystemEventHandeler.OnElementCreate?.Invoke(this);
-            this.eventHandeler = eventHandeler;
-            this.eventHandeler.SubscribeTo(EventType.MouseDown, () => CheckClick());
-			this.eventHandeler.CheckHover += () => CheckHover();
-            onClick += (Element element) => SystemEventHandeler.OnElementClick.Invoke(element);
-			onHover += (Element element) => SystemEventHandeler.OnElementHover.Invoke(element);
-		}
+            eventHandeler.OnElementCreate?.Invoke(this);
+            eventHandeler.OnGui += ProcessEvents;
 
-		public void ResetPosition()
-		{
-			rect.position = startPosition;
-		}
+            eventTypes.Add(EventType.MouseDown, (Event e) =>
+            {
+                if (e.button == 0)
+                {
+                    if (Rect.Contains(e.mousePosition))
+                    {
+                        OnClickDown();
+                    }
+                    else
+                    {
+                        GUI.changed = true;
+                        isSelected = false;
+                    }
+                }
+            });
+
+            eventTypes.Add(EventType.MouseUp, (Event e) =>
+            {
+                OnClickUp();
+            });
+
+            eventTypes.Add(EventType.MouseDrag, (Event e) =>
+            {
+                if (Rect.Contains(e.mousePosition) || isFieldDragged)
+                {
+                    OnHold(e.delta);
+                }
+            });
+
+            this.eventHandeler = eventHandeler;
+        }
+
+        public void ProcessEvents(Event e)
+        {
+            EventType type = e.type;
+
+            if (eventTypes.ContainsKey(type))
+            {
+                eventTypes[type].Invoke(e);
+            }
+        }
 
 		public virtual void Destroy()
         {
-            SystemEventHandeler.OnElementRemove?.Invoke(this);
+            eventHandeler.OnGui -= ProcessEvents;
+            eventHandeler.OnElementRemove?.Invoke(this);
         }
 
-        private void CheckClick()
+        public virtual void OnClickDown()
         {
-            if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;
-			onClick?.Invoke(this);
+            eventHandeler.OnElementClick.Invoke(this);
+            isBeingDragged = true;
+            GUI.changed = true;
+            isSelected = true;
         }
 
-		private void CheckHover()
+        public virtual void OnClickUp()
         {
-            if (!Rect.Contains(SystemEventHandeler.mousePosition)) return;
-            onHover?.Invoke(this);
+            eventHandeler.OnElementRelease.Invoke(this);
+            isBeingDragged = false;
         }
 
-        public virtual void OnClick(Action<Element> action)
+        public virtual void OnHold(Vector2 delta)
         {
-            this.onClick += action;
-        }
-
-		public virtual void OnHover(Action<Element> action)
-        {
-            this.onHover += action;
+            eventHandeler.OnElementHold.Invoke(this);
         }
 
         public abstract void Draw();

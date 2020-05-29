@@ -8,10 +8,13 @@ namespace NodeSystem
 {
 	public class SystemEventHandeler
 	{
-		private Dictionary<EventType, Action> guiEventPairs;
-        private Rect inputField;
+		private bool isDragging = false;
+		private int dragCount = 0;
+		public bool IsDragging => isDragging;
+		public int DragCount => dragCount;
 
-		private Action onButtonDown = delegate { };
+
+		public ConnectionPoint selectedPropertyPoint;
 		public Vector2 MousePosition {
 			get
 			{
@@ -19,37 +22,25 @@ namespace NodeSystem
 			}
 		}
 
-		public Action CheckHover = delegate { };
-
-		public static Vector2 mousePosition => Event.current.mousePosition;
-		public SystemEventHandeler(Rect inputField)
+		public SystemEventHandeler()
 		{
-            this.inputField = inputField;
-
-			guiEventPairs = new Dictionary<EventType, Action>();
-
-			guiEventPairs.Add(EventType.MouseDown, onButtonDown);
+			OnElementHold += (Element element) =>
+			{
+				isDragging = true;
+			};
+			OnElementRelease += (Element element) =>
+			{
+				isDragging = false;
+			};
 		}
 
-		public void CheckInput()
-		{
-			EventType currentEvent = Event.current.type;
-			CheckHover?.Invoke();
-			if (!guiEventPairs.ContainsKey(currentEvent) || !inputField.Contains(MousePosition)) return;
-			guiEventPairs[currentEvent]?.Invoke();
-		}
 
-		public void SubscribeTo(EventType eventType, Action action)
-		{
-			if (!guiEventPairs.ContainsKey(eventType)) return;
-			guiEventPairs[eventType] += action;
-		}
-
-		public ConnectionPoint selectedPropertyPoint;
-
-		public static Action<Element> OnElementCreate = (element) => { };
-		public static Action<Element> OnElementClick = (element) => { };
-		public static Action<Element> OnElementHover = (element) => { };
-		public static Action<Element> OnElementRemove = (element) => { };
+		public Action OnParrentChange = delegate { };
+		public Action<Element> OnElementCreate = delegate { };
+		public Action<Event> OnGui = delegate { };
+		public Action<Element> OnElementClick = delegate { };
+		public Action<Element> OnElementRelease = delegate { };
+		public Action<Element> OnElementHold = delegate { };
+		public Action<Element> OnElementRemove = delegate { };
 	}
 }

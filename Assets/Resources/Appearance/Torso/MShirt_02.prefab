@@ -572,6 +572,7 @@ GameObject:
   - component: {fileID: 6417818229585746706}
   - component: {fileID: 2047483494588818658}
   - component: {fileID: -2682277915279831754}
+  - component: {fileID: -7411617770746780292}
   m_Layer: 0
   m_Name: MShirt_02
   m_TagString: Untagged
@@ -626,8 +627,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc65231556041142bca916dc603a518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2ea1a72a36ee64f4d9588b0993993e50, type: 3}
+  icon: {fileID: 21300000, guid: 1338e87eab824b247b494aeadd112ad6, type: 3}
   renderer: {fileID: 4127190822620690045}
   animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
+  skinTexture: {fileID: 2800000, guid: 5534a88decf3fc8468ae578464771f59, type: 3}
+  appearanceItemType: 1
+  inCompatibleWith: 
+--- !u!114 &-7411617770746780292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019770149293451521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc65231556041142bca916dc603a518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1338e87eab824b247b494aeadd112ad6, type: 3}
+  renderer: {fileID: 4127190822620690045}
+  animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
+  skinTexture: {fileID: 0}
   appearanceItemType: 1
   inCompatibleWith: 

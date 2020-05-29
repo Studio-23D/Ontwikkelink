@@ -8,9 +8,8 @@ namespace NodeSystem
 	public class ConnectionPoint : Element
 	{
 		public Connection Connection => connection;
-		
 		public override Vector2 Position => Rect.position;
-        public Vector2 LocalPros => this.rect.position;
+
 		public override Rect Rect
 		{
 			get
@@ -44,52 +43,10 @@ namespace NodeSystem
         {
             base.Init(position, eventHandeler);
 
-            OnClick((Element element) =>
-            {
-                if (!(element is ConnectionPoint)) return;
-
-                ConnectionPoint point = element as ConnectionPoint;
-
-				switch (point.type)
-                {
-                    case ConnectionPointType.In:
-						// Connects connection to input when connection has been made from a outpoint
-						if (eventHandeler.selectedPropertyPoint != null && connection == null)
-						{
-							eventHandeler.selectedPropertyPoint.connection.Connect(point);
-							connection.InPoint = point;
-							connection.Init(Vector2.zero, eventHandeler);
-							return;
-						}
-						else
-						{
-							Disconnect();
-
-							if (eventHandeler.selectedPropertyPoint != null)
-							{
-								if (eventHandeler.selectedPropertyPoint.connection != null)
-								{
-									eventHandeler.selectedPropertyPoint.connection.Destroy();
-								}
-							}
-						}
-
-
-						break;
-
-					case ConnectionPointType.Out:
-						CreateConnection();
-						connection.OutPoint = point;
-						connection.Init(Vector2.zero, eventHandeler);
-						eventHandeler.selectedPropertyPoint = point;
-						break;
-				}
-            });
-
             rect.width = pointSize;
             rect.height = pointSize;
 
-            style = new GUIStyle();
+			style = new GUIStyle();
             style.normal.background = Resources.Load<Texture2D>("NodeSystem/nodeDot");
 
         }
@@ -132,7 +89,50 @@ namespace NodeSystem
             }
         }
 
-        public override void Destroy()
+		public override void OnClickDown()
+		{
+			base.OnClickDown();
+
+			switch (type)
+			{
+				case ConnectionPointType.In:
+					// Connects connection to input when connection has been made from a outpoint
+					if (eventHandeler.selectedPropertyPoint != null && connection == null)
+					{
+						eventHandeler.selectedPropertyPoint.connection.Connect(this);
+
+						if (connection != null)
+						{
+							connection.InPoint = this;
+						}
+						return;
+					}
+					else
+					{
+						Disconnect();
+
+						if (eventHandeler.selectedPropertyPoint != null)
+						{
+							if (eventHandeler.selectedPropertyPoint.connection != null)
+							{
+								eventHandeler.selectedPropertyPoint.connection.Destroy();
+							}
+						}
+					}
+
+
+					break;
+
+				case ConnectionPointType.Out:
+					CreateConnection();
+					connection.OutPoint = this;
+					connection.Init(Vector2.zero, eventHandeler);
+					eventHandeler.selectedPropertyPoint = this;
+					break;
+			}
+		}
+
+		public override void Destroy()
         {
 			if (connection != null)
 			{

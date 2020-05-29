@@ -6,6 +6,8 @@ public class AppearanceItem : MonoBehaviour
 	public List<AppearanceItemType> InCompatibleWith => inCompatibleWith;
 	public AppearanceItemType AppearanceItemtype => appearanceItemType;
 	public Sprite Icon => icon;
+	public Texture SkinTexture => skinTexture;
+
 	public bool HasInCompatibilities
 	{
 		get
@@ -21,6 +23,7 @@ public class AppearanceItem : MonoBehaviour
 	[SerializeField] private Sprite icon;
 	[SerializeField] private Renderer renderer;
 	[SerializeField] private AnimationClip animation;
+	[SerializeField] private Texture skinTexture;
 	[SerializeField] private AppearanceItemType appearanceItemType;
 	[SerializeField] private List<AppearanceItemType> inCompatibleWith;
 

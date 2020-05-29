@@ -68,7 +68,7 @@ namespace NodeSystem
 
             GUI.DrawTextureWithTexCoords(palleteRect, selectionTexture, new Rect(0, 0, 1, -1));
 
-			if (isSelected)
+			if (IsSelected)
 			{
 				draggableTexture = new Texture2D(1, 1);
 				draggableTexture.SetPixel(0, 0, Color.black);
