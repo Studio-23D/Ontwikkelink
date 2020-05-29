@@ -8,7 +8,7 @@ namespace NodeSystem
 	{
 
 		[SerializeField] private CharacterAppearance characterAppearance;
-		[SerializeField] private PanZoom pan;
+		[SerializeField] private NodeField nodeField;
 		[SerializeField] private GarbageCan trashCan;
 		[SerializeField] private RectTransform characterStage;
 		[SerializeField] private RectTransform nodeStage;
@@ -65,8 +65,10 @@ namespace NodeSystem
 			node.parent = rect;
             elements.Add(node);
             elements = elements.OrderBy(e => e.DrawOrder).ToList();
-			pan.OnSave += node.SaveStartPosition;
-			pan.OnReset += node.ResetPosition;
+			nodeField.OnSave += node.SaveStartPosition;
+			nodeField.OnReset += node.ResetPosition;
+			nodeField.OnDrag += node.EnableDrag;
+			nodeField.OnRelease += node.DisableDrag;
 			eventHandeler.OnParrentChange += () => node.parent = rect;
 			return node;
         }
@@ -123,8 +125,8 @@ namespace NodeSystem
 
 				if (elementToRemove is Node) {
 					Node elementAsNode = elementToRemove as Node;
-					pan.OnReset -= elementAsNode.ResetPosition;
-					pan.OnSave -= elementAsNode.SaveStartPosition;
+					nodeField.OnReset -= elementAsNode.ResetPosition;
+					nodeField.OnSave -= elementAsNode.SaveStartPosition;
 					elementAsNode = null;
 				}
 				elements.Remove(elementToRemove);
@@ -142,20 +144,17 @@ namespace NodeSystem
 
 			if (Event.current.type == EventType.MouseDrag)
 			{
-				pan.Pan();
+				nodeField.OnDrag();
 				GUI.Box(new Rect(100, 100, 100, 100), "");
 			}
 
-			else if (pan.isPanning && Event.current.type == EventType.MouseUp)
+			else if (nodeField.isDragging && Event.current.type == EventType.MouseUp)
 			{
-				pan.OnRelease();
+				nodeField.OnRelease();
 			}
 
 			elementDrawer.Draw(elements, rect);
-
 			eventHandeler.OnGui?.Invoke(Event.current);
-
-			
 
 			if (garbage.Count > 0)
 				DestroyGarbage();
