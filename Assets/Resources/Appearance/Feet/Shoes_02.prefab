@@ -99,6 +99,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e7141068edccf814aa40d6f36fb19599, type: 3}
   renderer: {fileID: 609605199126133778}
   animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
+  skinTexture: {fileID: 2800000, guid: 014e980303efbb84fb54d0462637a477, type: 3}
   appearanceItemType: 3
   inCompatibleWith: 
 --- !u!1 &826054427462019887

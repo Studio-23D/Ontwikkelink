@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_FCharacter
-  m_Shader: {fileID: -6465566751694194690, guid: c0adc4065dcfd51499d75cb2eb892e54,
+  m_Shader: {fileID: -6465566751694194690, guid: 40c37a45fbb3af74d95d96f919fd598b,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -33,12 +33,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Feet:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Legs:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Pattern:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Textile:
         m_Texture: {fileID: 2800000, guid: 54853a7f242b5ea4ba5c6bab845ce0d6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_23C5A8C6:
+        m_Texture: {fileID: 2800000, guid: 7ea88ab9e60c82941968ce245b740788, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_23DA1713:
@@ -61,6 +73,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 26b754cde252918459ca7e2f333d773a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_4690C108:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_4952D049:
         m_Texture: {fileID: 2800000, guid: d418b23c02b3c0e49af49ed208c321ba, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -73,7 +89,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_A698BDBD:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_B40EBACC:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_D1BDF8B2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -86,6 +110,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_FC124153:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FDF5C27D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Torso:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -164,6 +196,7 @@ Material:
     m_Colors:
     - BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - Color_2EF133F4: {r: 0, g: 0, b: 0, a: 0}
+    - Color_44F0859: {r: 0, g: 0, b: 0, a: 0}
     - Color_451E5A82: {r: 1, g: 1, b: 1, a: 1}
     - Color_AB0FD0D: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}
     - Color_ABDE12DD: {r: 0.7169812, g: 0.38892847, b: 0.38892847, a: 0}

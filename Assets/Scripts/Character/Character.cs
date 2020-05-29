@@ -31,7 +31,10 @@ public class Character : MonoBehaviour
 
         if (appearanceItems.ContainsKey(item.AppearanceItemtype))
             RemoveItem(item.AppearanceItemtype);
-        AppearanceItem itemAsGameObject = Instantiate<AppearanceItem>(item, body);
+        
+            renderer.material.SetTexture(item.AppearanceItemtype.ToString(), item.SkinTexture);
+
+        AppearanceItem itemAsGameObject = Instantiate(item, body);
         appearanceItems.Add(item.AppearanceItemtype, itemAsGameObject);
         animator.Play("Idle", -1, 0);
 
