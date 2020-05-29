@@ -49,10 +49,12 @@ namespace NodeSystem {
 		public void Connect(Element element)
 		{
 			if (!(element is ConnectionPoint)) return;
+
 			ConnectionPoint point = element as ConnectionPoint;
 			ConnectionPoint otherPoint = (inPoint != null) ? inPoint : outPoint;
 
-			if (point.type == otherPoint.type || point.Value.FieldType != type) {
+			if (point.type == otherPoint.type || point.Value.FieldType != type)
+			{
 				Destroy();
 				return;
 			}

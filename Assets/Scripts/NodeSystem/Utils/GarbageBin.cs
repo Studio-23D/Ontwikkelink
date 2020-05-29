@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using NodeSystem;
 
-public class GarbageCan : MonoBehaviour
+public class GarbageBin : MonoBehaviour
 {
     [SerializeField] private Image lid;
     [SerializeField] private Image image;
-    private Rect rect;
+    [SerializeField] private NodeField nodeField;
+	private Rect rect;
 
     private void Awake()
     {
@@ -30,9 +31,18 @@ public class GarbageCan : MonoBehaviour
 
     public void OnElementDrag(Element element)
     {
-        if (element is CharacterNode) return;
+        if (element is CharacterNode || nodeField.isDragging) return;
+
         Show();
-        if (!rect.Overlaps(element.Rect)) return;
-        element.Destroy();
     }
+
+	public void OnElementRelease(Element element)
+	{
+		if (rect.Overlaps(element.Rect) && !(element is CharacterNode))
+		{
+			element.Destroy();
+		}
+
+		Hide();
+	}
 }

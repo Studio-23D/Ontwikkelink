@@ -172,7 +172,18 @@ namespace NodeSystem
         }
 
 
-        public override void OnClickDown()
+		public void EnableFieldDrag()
+		{
+			IsFieldDragged(true);
+		}
+
+		public void DisableFieldDrag()
+		{
+			IsFieldDragged(false);
+		}
+
+
+		public override void OnClickDown()
         {
             base.OnClickDown();
         }

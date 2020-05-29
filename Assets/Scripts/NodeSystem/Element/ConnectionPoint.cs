@@ -100,7 +100,11 @@ namespace NodeSystem
 					if (eventHandeler.selectedPropertyPoint != null && connection == null)
 					{
 						eventHandeler.selectedPropertyPoint.connection.Connect(this);
-						connection.InPoint = this;
+
+						if (connection != null)
+						{
+							connection.InPoint = this;
+						}
 						return;
 					}
 					else

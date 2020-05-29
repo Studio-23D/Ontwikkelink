@@ -9,6 +9,7 @@ namespace NodeSystem
     {
         public Rect parent;
         public bool IsBeingDragged => isBeingDragged;
+        public bool IsFieldDragged(bool drag) => isFieldDragged = drag;
         public bool IsSelected => isSelected;
 		public Vector2 SetStartPosition(Vector2 startPosition) => this.startPosition = startPosition;
 		public Vector2 GetStartPosition => startPosition;
@@ -29,8 +30,9 @@ namespace NodeSystem
         protected SystemEventHandeler eventHandeler;
         protected bool isBeingDragged;
 
+        private bool isFieldDragged;
         private bool isSelected;
-        private int drawOrder = 0;
+		private int drawOrder = 0;
         private Dictionary<EventType, Action<Event>> eventTypes = new Dictionary<EventType, Action<Event>>();
 
         public virtual void Init(Vector2 position,  SystemEventHandeler eventHandeler)
@@ -66,7 +68,7 @@ namespace NodeSystem
 
             eventTypes.Add(EventType.MouseDrag, (Event e) =>
             {
-                if (Rect.Contains(e.mousePosition))
+                if (Rect.Contains(e.mousePosition) || isFieldDragged)
                 {
                     OnHold(e.delta);
                 }

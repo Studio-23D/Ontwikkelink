@@ -6,10 +6,11 @@ namespace NodeSystem
 {
 	public class NodeManager : MonoBehaviour
 	{
+		public List<Element> Elements => elements;
 
 		[SerializeField] private CharacterAppearance characterAppearance;
 		[SerializeField] private NodeField nodeField;
-		[SerializeField] private GarbageCan trashCan;
+		[SerializeField] private GarbageBin garbageBin;
 		[SerializeField] private RectTransform characterStage;
 		[SerializeField] private RectTransform nodeStage;
 		[SerializeField] private RectTransform nodeButtonBar;
@@ -46,11 +47,10 @@ namespace NodeSystem
             characterNode.characterAppearance = characterAppearance;
 
 			eventHandeler.OnElementHold += trashCan.OnElementDrag;
-			eventHandeler.OnElementRelease += (Element element) => trashCan.Hide();
+			eventHandeler.OnElementRelease += trashCan.OnElementRelease;
+			//eventHandeler.OnElementRelease += (Element element) => trashCan.Hide();
 
-            canDraw = true;
-
-			
+			canDraw = true;
 
 			eventHandeler.OnElementRemove += AddToGarbage;
 			eventHandeler.OnElementCreate += (Element element) =>
@@ -67,8 +67,10 @@ namespace NodeSystem
             elements = elements.OrderBy(e => e.DrawOrder).ToList();
 			nodeField.OnSave += node.SaveStartPosition;
 			nodeField.OnReset += node.ResetPosition;
-			nodeField.OnDrag += node.EnableDrag;
-			nodeField.OnRelease += node.DisableDrag;
+
+			nodeField.OnDrag += node.EnableFieldDrag;
+			nodeField.OnRelease += node.DisableFieldDrag;
+
 			eventHandeler.OnParrentChange += () => node.parent = rect;
 			return node;
         }
@@ -144,13 +146,12 @@ namespace NodeSystem
 
 			if (Event.current.type == EventType.MouseDrag)
 			{
-				nodeField.OnDrag();
+				nodeField.Drag();
 				GUI.Box(new Rect(100, 100, 100, 100), "");
 			}
-
 			else if (nodeField.isDragging && Event.current.type == EventType.MouseUp)
 			{
-				nodeField.OnRelease();
+				nodeField.Release();
 			}
 
 			elementDrawer.Draw(elements, rect);

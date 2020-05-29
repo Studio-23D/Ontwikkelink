@@ -1,18 +1,10 @@
 ﻿using UnityEngine;
 using NodeSystem;
 using System;
+using System.Collections.Generic;
 
 public class NodeField : MonoBehaviour
 {
-	[Header("Zoom")]
-	[SerializeField, Tooltip("Minimal zoom range")] private float zoomMin = 0.1f;
-	[SerializeField, Tooltip("Maximal zoom range")] private float zoomMax = 2;
-	[SerializeField, Tooltip("Modifies the difference between zoom steps")] private float zoomDifferenceModifier = 0.01f;
-
-	[Header("Pan")]
-	[SerializeField, Tooltip("Modifies the difference between pan steps")] private float panDifferenceModifier = 0.01f;
-	[SerializeField, Tooltip("Uses size to calculate pan speed")] private bool useSize = false;
-
 	[Header("References")]
 	[SerializeField] private InputManager inputManager;
 	[SerializeField] private NodeManager nodeManager;
@@ -32,6 +24,7 @@ public class NodeField : MonoBehaviour
 		//inputManager.OnTouch += CheckTouch;
 	}
 
+
 	public void SaveView()
 	{
 		OnSave.Invoke();
@@ -40,6 +33,35 @@ public class NodeField : MonoBehaviour
 	public void ResetView()
 	{
 		OnReset?.Invoke();
+	}
+
+	public void Drag()
+	{
+		if (inputManager.SelectedView != transform || IsNodeDragged()) return;
+
+		isDragging = true;
+		OnDrag?.Invoke();
+	}
+
+	public void Release()
+	{
+		isDragging = false;
+		OnRelease?.Invoke();
+	}
+
+	private bool IsNodeDragged()
+	{
+		for (int i = 0; i < nodeManager.Elements.Count; i++)
+		{
+			if (nodeManager.Elements[i].IsBeingDragged)
+			{
+				Debug.Log(nodeManager.Elements[i] + " being dragged: " + nodeManager.Elements[i].IsBeingDragged);
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private void CheckTouch(int touchCount, Vector3 startPosition, Transform selectedView)
@@ -81,28 +103,5 @@ public class NodeField : MonoBehaviour
 		}*/
 
 
-	}
-
-	private void Zoom()
-	{
-		// Zooms when player pinches
-		Touch touchZero = Input.GetTouch(0);
-		Touch touchOne = Input.GetTouch(1);
-
-		Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-		Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-		float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-		float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
-
-		float difference = currentMagnitude - prevMagnitude;
-
-		ChangeZoom(difference * zoomDifferenceModifier);
-	}
-
-	private void ChangeZoom(float increment)
-	{
-		float scale = Mathf.Clamp(transform.localScale.x + increment, zoomMin, zoomMax);
-		//transform.localScale = new Vector3(scale, scale, scale);
 	}
 }

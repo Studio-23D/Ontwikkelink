@@ -21,7 +21,9 @@ public class ViewManager : MonoBehaviour
 	public GameObject LastView { get { return usedViews[usedViews.Count - 1]; } }
 	public GameObject SetBuffer { set { viewBuffer = value; } }
 
+	[Header("View References")]
 	[SerializeField] private NodeManager nodeManager;
+	[SerializeField] private Button quitButton;
 
 	[Header("View References")]
 	[SerializeField] private GameObject currentView = null;
@@ -184,6 +186,11 @@ public class ViewManager : MonoBehaviour
 		{
 			ChangeViewTo(characterMenu);
 			PlayerPrefs.DeleteKey(characterMenu.name);
+		}
+
+		if (SystemInfo.deviceType != DeviceType.Handheld)
+		{
+			quitButton.gameObject.SetActive(false);
 		}
 	}
 

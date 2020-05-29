@@ -16,10 +16,11 @@ public class InputManager : MonoBehaviour
 	public Action<int, Vector3, Transform> OnTouch;
 	public Action<float> OnScroll;
 
-	public bool IsMouseButtonDown { get { return Input.GetMouseButton(0); } }
-	public bool IsMouseButtonPressed { get { return Input.GetMouseButtonDown(0); } }
-	public Vector3 GetTouchPos { get { return Camera.main.ViewportToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)); } }
-	public int GetTouchCount { get { return Input.touchCount; } }
+	public Transform SelectedView => selectedView;
+	public bool IsMouseButtonDown => Input.GetMouseButton(0);
+	public bool IsMouseButtonPressed => Input.GetMouseButtonDown(0);
+	public Vector3 GetTouchPos => Camera.main.ViewportToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+	public int GetTouchCount => Input.touchCount;
 
 	[SerializeField] private List<TouchActions> touchbindings = new List<TouchActions>();
 	[SerializeField] private string ScrollWheelAxis = "Mouse ScrollWheel";
