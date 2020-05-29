@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 37d4ba6e1a76b5c46b362345822562e2, type: 3}
+  renderer: {fileID: 609724118836162362}
   animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
   appearanceItemType: 2
   inCompatibleWith: 

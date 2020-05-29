@@ -4836,7 +4836,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024533255}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4927,11 +4927,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAppearance: {fileID: 1323379484}
-  trashCan: {fileID: 1708137426}
+  pan: {fileID: 1052945811}
+  trashCan: {fileID: 1708137429}
   characterStage: {fileID: 2096811782}
   nodeStage: {fileID: 1052945809}
   nodeButtonBar: {fileID: 2082505456}
   drawGUI: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
 --- !u!224 &1052945809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4952,8 +4959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -909.3626}
-  m_SizeDelta: {x: 1320, y: 909.3626}
+  m_AnchoredPosition: {x: 0, y: -1062}
+  m_SizeDelta: {x: 1320, y: 1062}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1052945811
 MonoBehaviour:
@@ -4970,10 +4977,9 @@ MonoBehaviour:
   zoomMin: 0.1
   zoomMax: 2
   zoomDifferenceModifier: 0.01
-  panDifferenceModifier: 0.25
-  useSize: 0
-  inputManager: {fileID: 1212159566}
+  panDifferenceModifier: 5
   nodeManager: {fileID: 1052945807}
+  isPanning: 0
 --- !u!1 &1069640144
 GameObject:
   m_ObjectHideFlags: 0
@@ -7611,13 +7617,14 @@ GameObject:
   - component: {fileID: 1708137426}
   - component: {fileID: 1708137428}
   - component: {fileID: 1708137427}
+  - component: {fileID: 1708137429}
   m_Layer: 5
   m_Name: TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1708137426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7645,7 +7652,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708137425}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7674,6 +7681,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708137425}
   m_CullTransparentMesh: 0
+--- !u!114 &1708137429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708137425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a40dbd6c78d4ab43bc5690968587728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lid: {fileID: 1708137427}
+  image: {fileID: 1024533257}
 --- !u!1 &1708816302
 GameObject:
   m_ObjectHideFlags: 0
@@ -10099,8 +10120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1920, y: -454.6813}
-  m_SizeDelta: {x: 600, y: 909.3626}
+  m_AnchoredPosition: {x: 1920, y: -531}
+  m_SizeDelta: {x: 600, y: 1062}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2096811783
 MonoBehaviour:

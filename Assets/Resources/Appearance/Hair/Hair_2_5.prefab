@@ -242,7 +242,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 15f33335b5f521b4d9988213d747e39e, type: 3}
+  renderer: {fileID: 1849943613479910222}
   animation: {fileID: 7400000, guid: b80880104e8727f41b081bd364d17074, type: 2}
+  appearanceItemType: 0
+  inCompatibleWith: 
 --- !u!1 &7409965768443687956
 GameObject:
   m_ObjectHideFlags: 0

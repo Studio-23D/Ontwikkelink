@@ -79,8 +79,8 @@ namespace NodeSystem {
 		{
 			// KEEPS DRAWING EVENTHOUGH IT IS DESTROYED
 
-			Vector2 positionA = (outPoint != null) ? outPoint.Position + outPoint.Size / new Vector2(2 ,2) : SystemEventHandeler.mousePosition; 
-			Vector2 positionB = (inPoint != null) ? inPoint.Position + inPoint.Size / new Vector2(2, 2) : SystemEventHandeler.mousePosition;
+			Vector2 positionA = (outPoint != null) ? outPoint.Position + outPoint.Size / new Vector2(2 ,2) : eventHandeler.MousePosition; 
+			Vector2 positionB = (inPoint != null) ? inPoint.Position + inPoint.Size / new Vector2(2, 2) : eventHandeler.MousePosition;
 
 			GuiLineRenderer.DrawLine(positionA, positionB, Color.black, 2);
 		}

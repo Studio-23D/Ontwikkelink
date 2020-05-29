@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NodeSystem;
+using System;
 
 public class PanZoom : MonoBehaviour
 {
@@ -12,67 +13,31 @@ public class PanZoom : MonoBehaviour
 
 	[Header("Pan")]
 	[SerializeField, Tooltip("Modifies the difference between pan steps")] private float panDifferenceModifier = 0.01f;
-	[SerializeField, Tooltip("Uses size to calculate pan speed")] private bool useSize = false;
 
 	[Header("References")]
-	[SerializeField] private InputManager inputManager;
 	[SerializeField] private NodeManager nodeManager;
 
 	private int fingersToZoom = 2;
+	public bool isPanning = false;
 
+	private Vector2 startPosition = new Vector2();
 
+	public Action OnSave = delegate { };
+	public Action OnReset = delegate { };
 
 	private void Awake()
 	{
-		inputManager.OnTouch += CheckTouch;
-		//inputManager.OnScroll += Zoom;
+		
 	}
 
 	public void SaveView()
 	{
-		foreach (Element element in nodeManager.GetElements)
-		{
-			if (element is Node)
-			{
-				Node node = (Node)element;
-
-				node.SetStartPosition(node.Position);
-			}
-		}
+		OnSave.Invoke();
 	}
 
 	public void ResetView()
 	{
-		foreach (Element element in nodeManager.GetElements)
-		{
-			if (element is Node)
-			{
-				Node node = (Node)element;
-
-				node.ResetPosition();
-			}
-		}
-	}
-
-
-
-	private void CheckTouch(int touchCount, Vector3 startPosition, Transform selectedView)
-	{
-		if (selectedView != transform)
-		{
-			EnableFieldDrag(false);
-			return;
-		}
-
-		if (touchCount == fingersToZoom)
-		{
-			//Zoom();
-		}
-		else
-		{
-			//Pan(startPosition);
-			EnableFieldDrag(true);
-		}
+		OnReset?.Invoke();
 	}
 
 	private void Zoom()
@@ -92,67 +57,45 @@ public class PanZoom : MonoBehaviour
 		ChangeZoom(difference * zoomDifferenceModifier);
 	}
 
-	private void Pan(Vector3 startPosition)
+	public void Pan()
 	{
-		// Pans when player swipes
-		Vector3 direction = startPosition - inputManager.GetTouchPos;
+		if (!isPanning)
+		{
+			startPosition = Event.current.mousePosition;
+			isPanning = true;
+		}
+
+		Vector2 direction = Event.current.mousePosition - startPosition;
+		direction.Normalize();
+		direction *= panDifferenceModifier;
+		Debug.Log(Event.current.mousePosition);
+
+
+			// Pans when player swipes
+			
+			
 
 #if UNITY_ANDROID
-		direction = new Vector3(direction.x, direction.y, direction.z);
+			direction = new Vector2(direction.x, direction.y);
 #else
-		direction = new Vector3(direction.x, -direction.y, direction.z);
+		direction = new Vector3(direction.x, -direction.y, 1);
 #endif
+		
 
-		/*foreach (Element element in nodeManager.GetElements)
-		{
-			if (element is Node)
-			{
-				Node node = (Node)element;
-
-				if (node.isDragged)
-				{
-					return;
-				}
-			}
-		}*/
-
-		foreach (Element element in nodeManager.GetElements)
-		{
-			if (element is Node)
-			{
-				Node node = (Node)element;
-
-				if (useSize)
-				{
-					node.Drag(direction * node.Size.x * panDifferenceModifier);
-				}
-				else
-				{
-					//node.Drag(direction * panDifferenceModifier);
-				}
-			}
-		}
+		nodeManager.rect.position += direction;
+		//nodeManager.EventHandeler.OnParrentChange.Invoke();
 	}
 
-	private void EnableFieldDrag(bool enable)
+	public void OnRelease()
 	{
-		if (nodeManager.AreNodesDragged)
-		{
-			nodeManager.DraggingAllNodes = false;
-			return;
-		}
+		isPanning = false;
+	}
 
-		nodeManager.DraggingAllNodes = enable;
 
-		foreach (Element element in nodeManager.GetElements)
-		{
-			if (element is Node)
-			{
-				Node node = (Node)element;
-
-				node.isDragged = enable;
-			}
-		}
+	private void OnGUI()
+	{
+		if (isPanning)
+		GuiLineRenderer.DrawLine(startPosition, Event.current.mousePosition, Color.black, 20);
 	}
 
 	private void ChangeZoom(float increment)
@@ -160,8 +103,6 @@ public class PanZoom : MonoBehaviour
 		float scale = Mathf.Clamp(transform.localScale.x + increment, zoomMin, zoomMax);
 		//transform.localScale = new Vector3(scale, scale, scale);
 	}
-
-
 	#region EDITOR
 
 	/// <summary>
