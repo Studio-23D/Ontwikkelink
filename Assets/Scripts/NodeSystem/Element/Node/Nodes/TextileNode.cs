@@ -31,8 +31,8 @@ namespace NodeSystem
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
-            mainRect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-            originalSize = new Vector2(MainSize.x, MainSize.y);
+            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+            originalSize = new Vector2(Size.x, Size.y);
         }
 
         public override void Draw()

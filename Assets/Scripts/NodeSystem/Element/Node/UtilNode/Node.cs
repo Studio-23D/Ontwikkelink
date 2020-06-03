@@ -18,7 +18,7 @@ namespace NodeSystem
         }
         public Vector2 NodeSize
         {
-            get => new Vector2(MainSize.x - 100, MainSize.y);
+            get => new Vector2(Size.x - 100, Size.y);
         }
 
         public float topBottomSize;
@@ -108,7 +108,7 @@ namespace NodeSystem
             nodeAreas.Add(new Rect(NodePosition.x, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, width, topBottomSize));
 
             float nodeHeight = nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height;
-            mainRect.size = new Vector2(width + 100, nodeHeight);
+            rect.size = new Vector2(width + 100, nodeHeight);
             nodeRect.size = new Vector2(width, nodeHeight);
 
             elementY = 80;
@@ -169,7 +169,7 @@ namespace NodeSystem
 
 		public override void Draw()
 		{
-            GUI.BeginGroup(mainRect);
+            GUI.BeginGroup(rect);
 
             GUI.color = color;
             GUI.Box(nodeAreas[0], "", styleTopArea);
@@ -217,12 +217,12 @@ namespace NodeSystem
 
         public void ResetPosition()
         {
-            mainRect.position = startPosition;
+            rect.position = startPosition;
         }
 
         public void SaveStartPosition()
         {
-            startPosition = this.MainPosition;
+            startPosition = this.Position;
         }
 
 		public void EnableFieldDrag()
@@ -246,11 +246,11 @@ namespace NodeSystem
 
 			if (SystemInfo.deviceType == DeviceType.Desktop)
 			{
-				MainPosition += new Vector2(position.x, position.y);
+				Position += new Vector2(position.x, position.y);
 			}
 			else
 			{
-                MainPosition += new Vector2(position.x, -position.y);
+                Position += new Vector2(position.x, -position.y);
 			}
 		}
     }

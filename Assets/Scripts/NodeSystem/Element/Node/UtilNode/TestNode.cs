@@ -19,7 +19,7 @@ namespace NodeSystem
 
             hair = Resources.Load<GameObject>("Test");
 
-            mainRect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
         }
 
         public override void Draw()

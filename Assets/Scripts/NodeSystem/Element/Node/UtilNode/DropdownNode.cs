@@ -39,12 +39,12 @@ namespace NodeSystem
             {
                 ToggleDropdown();
             }
-            mainRect.size = originalSize;
+            rect.size = originalSize;
 
             if (!toggleDropdown)
              return;
 
-            mainRect.size = dropdownSize;
+            rect.size = dropdownSize;
 
             float dropdownWidthCap = dropdrownRect.position.x + rowLimit * ElementSize.x;
 
@@ -86,8 +86,8 @@ namespace NodeSystem
                 y = ElementSize.y * (dropdownElements.Count / rowLimit)
             };
 
-            dropdrownRect = new Rect(MainSize.x, MainSize.y / 4, dropdownElementSize.x, dropdownElementSize.y);
-            this.dropdownSize = MainSize + dropdownElementSize * rowLimit;
+            dropdrownRect = new Rect(Size.x, Size.y / 4, dropdownElementSize.x, dropdownElementSize.y);
+            this.dropdownSize = Size + dropdownElementSize * rowLimit;
         }
     }
 }

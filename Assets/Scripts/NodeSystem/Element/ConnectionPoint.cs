@@ -8,17 +8,18 @@ namespace NodeSystem
 	public class ConnectionPoint : Element
 	{
 		public Connection Connection => connection;
-		public override Vector2 MainPosition => MainRect.position;
+		public override Vector2 Position => rect.position;
 
-		public override Rect MainRect
+		public override Rect Rect
 		{
 			get
 			{
-				Rect rect = this.mainRect;
-				//rect.position = node.Position + this.rect.position;
+				Rect rect = this.rect;
+				rect.position = node.Position + this.rect.position;
 				return rect;
 			}
 		}
+
 		public FieldInfo Value { get; }
 
 		public ConnectionPointType type;
@@ -41,8 +42,8 @@ namespace NodeSystem
             this.startOffset = startOffset;
             this.offset = offset;
 
-            mainRect = new Rect();
-            mainRect.size = new Vector2(pointSize, pointSize);
+            rect = new Rect();
+            rect.size = new Vector2(pointSize, pointSize);
         }
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
@@ -52,8 +53,8 @@ namespace NodeSystem
             style = new GUIStyle();
             style.normal.background = Resources.Load<Texture2D>("NodeSystem/Overhaul/Node_punt");
 
-            mainRect.width = pointSize;
-            mainRect.height = pointSize;
+            rect.width = pointSize;
+            rect.height = pointSize;
 
             SetPosition();
         }
@@ -63,10 +64,10 @@ namespace NodeSystem
             switch (type)
             {
                 case ConnectionPointType.In:
-                    base.MainPosition = new Vector2(node.NodePosition.x - MainSize.x / 2, startOffset + index * (MainSize.x + offset));
+                    base.Position = new Vector2(node.NodePosition.x - Size.x / 2, startOffset + index * (Size.x + offset));
                     break;
                 case ConnectionPointType.Out:
-                    base.MainPosition = new Vector2(node.NodePosition.x + node.nodeRect.size.x - MainSize.x / 2, startOffset + index * (MainSize.x + offset));
+                    base.Position = new Vector2(node.NodePosition.x + node.nodeRect.size.x - Size.x / 2, startOffset + index * (Size.x + offset));
                     break;
             }
         }
@@ -96,15 +97,15 @@ namespace NodeSystem
 
         public override void Draw()
         {
-            GUI.Box(mainRect, "", style);
+            GUI.Box(rect, "", style);
 
             switch (type)
             {
                 case ConnectionPointType.In:
-                    GUI.Label(new Rect(base.MainPosition.x, base.MainPosition.y + pointSize / 4, textWidth, pointSize / 2), "");
+                    GUI.Label(new Rect(base.Position.x, base.Position.y + pointSize / 4, textWidth, pointSize / 2), "");
                     break;
                 case ConnectionPointType.Out:
-                    GUI.Label(new Rect(base.MainPosition.x, base.MainPosition.y + pointSize / 4, textWidth, pointSize / 2), "");
+                    GUI.Label(new Rect(base.Position.x, base.Position.y + pointSize / 4, textWidth, pointSize / 2), "");
                     break;
             }
         }

@@ -32,7 +32,7 @@ namespace NodeSystem
 
 			CalculateChange();
 
-			originalSize = new Vector2(MainSize.x, MainSize.y);
+			originalSize = new Vector2(Size.x, Size.y);
 		}
 
 		public override void CalculateChange()

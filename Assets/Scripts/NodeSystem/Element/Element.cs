@@ -13,21 +13,21 @@ namespace NodeSystem
 		public Vector2 SetStartPosition(Vector2 startPosition) => this.startPosition = startPosition;
 		public Vector2 GetStartPosition => startPosition;
         public int DrawOrder => drawOrder;
-        public virtual Rect MainRect => mainRect;
+        public virtual Rect Rect => rect;
 
-        public virtual Vector2 MainPosition
+        public virtual Vector2 Position
         {
-            get => mainRect.position;
-            protected set => mainRect.position = value;
+            get => Rect.position;
+            protected set => rect.position = value;
         }
-        public Vector2 MainSize
+        public Vector2 Size
         {
-            get => mainRect.size;
-            protected set => mainRect.size = value;
+            get => rect.size;
+            protected set => rect.size = value;
         }
 
         protected Vector2 startPosition;
-        protected Rect mainRect = new Rect();
+        protected Rect rect = new Rect();
         protected SystemEventHandeler eventHandeler;
         protected bool isBeingDragged;
 
@@ -42,7 +42,7 @@ namespace NodeSystem
 
 			startPosition = position;
 			Vector2 size = new Vector2(100, 100);
-            mainRect = new Rect(position, size);
+            rect = new Rect(position, size);
 
             eventHandeler.OnElementCreate?.Invoke(this);
             eventHandeler.OnGui += ProcessEvents;
@@ -51,7 +51,7 @@ namespace NodeSystem
             {
                 if (e.button == 0)
                 {
-                    if (MainRect.Contains(e.mousePosition))
+                    if (Rect.Contains(e.mousePosition))
                     {
                         OnClickDown();
                     }
@@ -70,7 +70,7 @@ namespace NodeSystem
 
             eventTypes.Add(EventType.MouseDrag, (Event e) =>
             {
-                if (MainRect.Contains(e.mousePosition) || isFieldDragged)
+                if (Rect.Contains(e.mousePosition) || isFieldDragged)
                 {
                     OnHold(e.delta);
                 }
