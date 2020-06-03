@@ -38,7 +38,7 @@ public class GarbageBin : MonoBehaviour
 
 	public void OnElementRelease(Element element)
 	{
-		if (rect.Overlaps(element.Rect) && !(element is CharacterNode))
+		if (rect.Overlaps(element.MainRect) && !(element is CharacterNode))
 		{
 			element.Destroy();
 		}

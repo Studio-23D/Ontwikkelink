@@ -18,8 +18,6 @@ namespace NodeSystem
 
 		private bool canDraw = false;
 
-		
-
 		public Rect rect;
 
         protected ElementDrawer elementDrawer;
@@ -61,7 +59,6 @@ namespace NodeSystem
         public T InstantiateNode<T>(T node) where T : Node
         {
             node.Init(new Vector2(nodeStage.rect.width / 4, nodeStage.rect.height / 4), eventHandeler);
-			node.parent = rect;
             elements.Add(node);
             elements = elements.OrderBy(e => e.DrawOrder).ToList();
 			nodeField.OnSave += node.SaveStartPosition;
@@ -70,7 +67,6 @@ namespace NodeSystem
 			nodeField.OnDrag += node.EnableFieldDrag;
 			nodeField.OnRelease += node.DisableFieldDrag;
 
-			eventHandeler.OnParrentChange += () => node.parent = rect;
 			return node;
         }
 

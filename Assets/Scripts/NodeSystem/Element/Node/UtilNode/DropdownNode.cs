@@ -34,19 +34,17 @@ namespace NodeSystem
         public override void Draw()
         {
             base.Draw();
-            GUI.Box(nodeAreas[2], "", styleExtraArea);
-            
 
             if (GUI.Button(new Rect(0, nodeAreas[2].y, 200, 20), dropdownName))
             {
                 ToggleDropdown();
             }
-            rect.size = originalSize;
+            mainRect.size = originalSize;
 
             if (!toggleDropdown)
              return;
 
-            rect.size = dropdownSize;
+            mainRect.size = dropdownSize;
 
             float dropdownWidthCap = dropdrownRect.position.x + rowLimit * ElementSize.x;
 
@@ -88,8 +86,8 @@ namespace NodeSystem
                 y = ElementSize.y * (dropdownElements.Count / rowLimit)
             };
 
-            dropdrownRect = new Rect(Size.x, Size.y / 4, dropdownElementSize.x, dropdownElementSize.y);
-            this.dropdownSize = Size + dropdownElementSize * rowLimit;
+            dropdrownRect = new Rect(MainSize.x, MainSize.y / 4, dropdownElementSize.x, dropdownElementSize.y);
+            this.dropdownSize = MainSize + dropdownElementSize * rowLimit;
         }
     }
 }

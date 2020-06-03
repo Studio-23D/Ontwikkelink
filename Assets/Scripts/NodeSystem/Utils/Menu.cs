@@ -65,7 +65,7 @@ namespace NodeSystem
         {
             if (!show) return;
 
-            GUI.BeginGroup(new Rect(Position.x, Position.y, 150, 300));
+            GUI.BeginGroup(new Rect(MainPosition.x, MainPosition.y, 150, 300));
             GUI.Box(new Rect(0, 0, 150, menuEntries.Count * 25), "", mainStyle);
 
             for (int i = 0; i < menuEntries.Count; i++)

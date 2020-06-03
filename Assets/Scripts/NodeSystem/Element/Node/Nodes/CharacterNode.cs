@@ -7,6 +7,9 @@ namespace NodeSystem
 {
     public class CharacterNode : Node
     {
+        private List<Texture2D> icons = new List<Texture2D>();
+        private List<Rect> iconPosition = new List<Rect>();
+
         [InputPropperty]
         public Color huid = Color.white;
 
@@ -26,19 +29,39 @@ namespace NodeSystem
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
+            name = "Personage";
+            color = new Color32(255, 240, 193, 255);
+            secondaireColor = new Color32(226, 171, 95, 255);
+
+            connectionPointStartOffset = 90;
+            connectionPointOffset = 40;
+
+            height = 500;
+            width = 180;
+
+            icons.Add(Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/Icon_Huid"));
+            icons.Add(Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/Icon_Haar"));
+            icons.Add(Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/Icon_Shirt"));
+            icons.Add(Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/Icon_Broek"));
+            icons.Add(Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/icon_Shoenen"));
+
             base.Init(position, eventHandeler);
-            name = "Personage Node";
 
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+            for (int i = 0; i < icons.Count; i++)
+            {
+                iconPosition.Add(new Rect(NodePosition.x + NodeSize.x / 2 - 40, NodePosition.y + elementY, 80, 80));
+                elementY += 80;
+            }
         }
 
         public override void Draw()
         {
             base.Draw();
 
-            GUI.Box(nodeAreas[2], "", styleBottomArea);
+            for(int i = 0; i < icons.Count; i++)
+            {
+                GUI.DrawTexture(iconPosition[i], icons[i], ScaleMode.ScaleToFit, true);
+            }
 
             GUI.EndGroup();
         }

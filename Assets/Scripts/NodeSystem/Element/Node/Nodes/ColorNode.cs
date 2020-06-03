@@ -9,7 +9,6 @@ namespace NodeSystem
 		[OutputPropperty]
 		public Color kleur = Color.white;
 
-        private Rect previewRect;
         private Rect palleteRect;
         private Rect draggableRect;
         private Rect draggableContainRect;
@@ -21,71 +20,53 @@ namespace NodeSystem
 
         private Texture2D previewTexture;
         private Texture2D selectionTexture = Resources.Load<Texture2D>("NodeSystem/ColorNode/ColorSpectrum");
-        private Texture2D draggableTexture;
+        private Texture2D draggableTexture = Resources.Load<Texture2D>("NodeSystem/ColorNode/ColorPicker");
 
         private Vector2 draggableCenter;
 
-        private Vector2 multi; 
+        private Vector2 resolutionMultiplier; 
 
         private bool isSelectingColor = false;
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			base.Init(position, eventHandeler);
-            name = "Kleur Node";
+            name = "Kleur";
+            color = new Color32(241, 242, 228, 255);
+            secondaireColor = new Color32(167, 209, 188, 255);
 
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 30));
+            nodeImage = Resources.Load<Texture2D>("NodeSystem/Overhaul/Icon_Kleuren");
 
-            previewRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 30);
+            connectionPointStartOffset = 90;
+            connectionPointOffset = 40;
 
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 200));
+            height = 310;
+            width = 180;
 
-            palleteRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 200, 200);
-            draggableRect = new Rect(0, nodeAreas[nodeAreas.Count - 1].y, 50, 50);
+            base.Init(position, eventHandeler);
 
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-
-            previewTexture = new Texture2D(1, 1);
-            previewTexture.SetPixel(0, 0, previewColor);
-            previewTexture.Apply();
-
-            multi = new Vector2(selectionTexture.width / palleteRect.width, selectionTexture.height / palleteRect.height);
-
-            //Debug.Log(selectionTexture);
+            palleteRect = new Rect(NodePosition.x + NodeSize.x / 2 - 70, NodePosition.y + elementY, 140, 140);
+            draggableRect = new Rect(NodePosition.x + NodeSize.x / 2 - 70, NodePosition.y + elementY, 32, 32);
+            resolutionMultiplier = new Vector2(selectionTexture.width / palleteRect.width, selectionTexture.height / palleteRect.height);
         }
 
         public override void Draw()
         {
             base.Draw();
+            GUI.color = Color.white;
 
-            GUI.Box(nodeAreas[2], "", styleExtraArea);
+            GUI.DrawTexture(palleteRect, selectionTexture);
 
-            GUI.DrawTextureWithTexCoords(previewRect, previewTexture, new Rect(0, 0, 1, -1));
-
-            GUI.Box(nodeAreas[3], "", styleExtraArea);
-
-            GUI.DrawTextureWithTexCoords(palleteRect, selectionTexture, new Rect(0, 0, 1, -1));
-
-			if (IsSelected)
+            GUI.color = selectionColor;
+            if (IsSelected)
 			{
-				draggableTexture = new Texture2D(1, 1);
-				draggableTexture.SetPixel(0, 0, Color.black);
-				draggableTexture.Apply();
-
-				if (GUI.Button(draggableRect, draggableTexture))
+				if (GUI.Button(draggableRect, draggableTexture, noBoxStyle))
 				{
 					isSelectingColor = !isSelectingColor;
 					CalculateChange();
 				}
-
 				SelectColor();
-				SetPreview();
 			}
-
-            GUI.Box(nodeAreas[4], "", styleBottomArea);
-
+            GUI.color = Color.white;
             GUI.EndGroup();
         }
 
@@ -102,15 +83,11 @@ namespace NodeSystem
                 draggableRect.x = draggableCenter.x;
                 draggableRect.y = draggableCenter.y;
 
-                selectionColor = selectionTexture.GetPixel((int)(draggableCenter.x * multi.x), (int)(draggableCenter.y * multi.y - nodeAreas[nodeAreas.Count - 2].y - 16));
-            }
-        }
+                float x = ((draggableRect.x - (NodePosition.x + NodeSize.x / 2 - 70)) + (draggableRect.width / 2));
+                float y = ((draggableRect.y - (NodePosition.y + elementY)) + (draggableRect.width / 2));
 
-        private void SetPreview()
-        {
-            previewColor = selectionColor;
-            previewTexture.SetPixel(0, 0, previewColor);
-            previewTexture.Apply();
+                selectionColor = selectionTexture.GetPixel((int)(x * resolutionMultiplier.x), (int)(y * resolutionMultiplier.y));
+            }
         }
 
         public override void CalculateChange()

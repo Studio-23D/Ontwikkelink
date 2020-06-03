@@ -28,14 +28,11 @@ namespace NodeSystem
 				dropdownElements.Add(element);
 			}
 
-			base.Init(position, eventHandeler);
+            base.Init(position, eventHandeler);
 
 			CalculateChange();
 
-			nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-			rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-			originalSize = new Vector2(Size.x, Size.y);
+			originalSize = new Vector2(MainSize.x, MainSize.y);
 		}
 
 		public override void CalculateChange()
@@ -51,7 +48,7 @@ namespace NodeSystem
 		{
 			base.Draw();
 
-			GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), uitvoer.Icon.texture, styleCenter);
+			GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), uitvoer.Icon.texture);
 			GUI.Box(nodeAreas[3], "", styleBottomArea);
 			GUI.EndGroup();
 		}

@@ -42,15 +42,15 @@ namespace NodeSystem
 
             nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
 
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-            originalSize = new Vector2(Size.x, Size.y);
+            mainRect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+            originalSize = new Vector2(MainSize.x, MainSize.y);
         }
 
         public override void Draw()
         {
             base.Draw();
             
-            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), patroon, styleCenter);
+            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), patroon);
             GUI.Box(nodeAreas[3], "", styleBottomArea);
             GUI.EndGroup();
         }

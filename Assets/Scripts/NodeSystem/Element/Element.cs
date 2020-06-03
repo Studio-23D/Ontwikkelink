@@ -7,26 +7,27 @@ namespace NodeSystem
 {
     public abstract class Element
     {
-        public Rect parent;
         public bool IsBeingDragged => isBeingDragged;
         public bool IsFieldDragged(bool drag) => isFieldDragged = drag;
         public bool IsSelected => isSelected;
 		public Vector2 SetStartPosition(Vector2 startPosition) => this.startPosition = startPosition;
 		public Vector2 GetStartPosition => startPosition;
         public int DrawOrder => drawOrder;
-        public virtual Rect Rect => rect;
-        public virtual Vector2 Position => parent.position + rect.position;
+        public virtual Rect MainRect => mainRect;
 
-        public virtual Vector2 LocalPosition
+        public virtual Vector2 MainPosition
         {
-            get => rect.position;
-            protected set => rect.position = value;
+            get => mainRect.position;
+            protected set => mainRect.position = value;
         }
-        public Vector2 Size => rect.size;
-
+        public Vector2 MainSize
+        {
+            get => mainRect.size;
+            protected set => mainRect.size = value;
+        }
 
         protected Vector2 startPosition;
-        protected Rect rect = new Rect();
+        protected Rect mainRect = new Rect();
         protected SystemEventHandeler eventHandeler;
         protected bool isBeingDragged;
 
@@ -37,10 +38,11 @@ namespace NodeSystem
 
         public virtual void Init(Vector2 position,  SystemEventHandeler eventHandeler)
         {
-            parent = new Rect();
+            drawOrder = 0;
+
 			startPosition = position;
 			Vector2 size = new Vector2(100, 100);
-            rect = new Rect(position, size);
+            mainRect = new Rect(position, size);
 
             eventHandeler.OnElementCreate?.Invoke(this);
             eventHandeler.OnGui += ProcessEvents;
@@ -49,7 +51,7 @@ namespace NodeSystem
             {
                 if (e.button == 0)
                 {
-                    if (Rect.Contains(e.mousePosition))
+                    if (MainRect.Contains(e.mousePosition))
                     {
                         OnClickDown();
                     }
@@ -68,7 +70,7 @@ namespace NodeSystem
 
             eventTypes.Add(EventType.MouseDrag, (Event e) =>
             {
-                if (Rect.Contains(e.mousePosition) || isFieldDragged)
+                if (MainRect.Contains(e.mousePosition) || isFieldDragged)
                 {
                     OnHold(e.delta);
                 }

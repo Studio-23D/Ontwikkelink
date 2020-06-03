@@ -34,8 +34,7 @@ namespace NodeSystem
 			};
 		}
 
-
-		public Action OnParrentChange = delegate { };
+		public Action OnParentChange = delegate { };
 		public Action<Element> OnElementCreate = delegate { };
 		public Action<Event> OnGui = delegate { };
 		public Action<Element> OnElementClick = delegate { };

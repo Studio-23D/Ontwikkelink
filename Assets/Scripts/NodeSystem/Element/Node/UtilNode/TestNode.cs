@@ -19,14 +19,12 @@ namespace NodeSystem
 
             hair = Resources.Load<GameObject>("Test");
 
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
+            mainRect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
         }
 
         public override void Draw()
         {
             base.Draw();
-
-            GUI.Box(nodeAreas[2], "", styleExtraArea);
  
             GUI.Box(nodeAreas[3], "", styleBottomArea);
 
