@@ -4,42 +4,48 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-	public abstract class AppearanceItemNode : DropdownNode <AppearanceItem>
+	public abstract class AppearanceItemNode : SliderNode <AppearanceItem>
 	{
 		protected abstract string ResourcePath {
 			get;
 		}
 
         [InputPropperty]
-        public Color kleur = Color.white;
+        public Color color = Color.white;
 
-		[OutputPropperty]
-		public AppearanceItem uitvoer;
+		public AppearanceItem output;
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			foreach (AppearanceItem item in Resources.LoadAll<AppearanceItem>(ResourcePath)){
-				DropdownElement<AppearanceItem> element = new DropdownElement<AppearanceItem>
+			foreach (AppearanceItem item in Resources.LoadAll<AppearanceItem>(ResourcePath))
+            {
+				SliderElement<AppearanceItem> element = new SliderElement<AppearanceItem>
 				{
 					visual = item.Icon.texture,
 					value = item
 				};
 
-				dropdownElements.Add(element);
+				sliderElements.Add(element);
 			}
+
+            connectionPointStartOffset = 90;
+            connectionPointOffset = 40;
+
+            height = 310;
+            width = 180;
 
             base.Init(position, eventHandeler);
 
 			CalculateChange();
-
-			originalSize = new Vector2(Size.x, Size.y);
 		}
 
 		public override void CalculateChange()
 		{
-			this.uitvoer = chosenValue;
+            currentVisual = sliderElements[current].visual;
 
-			this.uitvoer.SetColor(kleur);
+            this.output = chosenValue;
+
+			this.output.SetColor(color);
 
 			base.CalculateChange();
 		}
@@ -48,8 +54,6 @@ namespace NodeSystem
 		{
 			base.Draw();
 
-			GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), uitvoer.Icon.texture);
-			GUI.Box(nodeAreas[3], "", styleBottomArea);
 			GUI.EndGroup();
 		}
 	}

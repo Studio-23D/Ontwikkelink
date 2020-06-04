@@ -11,26 +11,26 @@ namespace NodeSystem
         private List<Rect> iconPosition = new List<Rect>();
 
         [InputPropperty]
-        public Color huid = Color.white;
+        public Color skin = Color.white;
 
         [InputPropperty]
-        public AppearanceItem haar;
+        public AppearanceItem hair;
 
         [InputPropperty]
-        public AppearanceItem bovenstuk;
+        public AppearanceItem torso;
 
         [InputPropperty]
-        public AppearanceItem onderstuk;
+        public AppearanceItem legs;
 
         [InputPropperty]
-        public AppearanceItem schoenen;
+        public AppearanceItem shoes;
 
         public CharacterAppearance characterAppearance;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
             name = "Personage";
-            color = new Color32(255, 240, 193, 255);
+            primaireColor = new Color32(241, 242, 228, 255);
             secondaireColor = new Color32(226, 171, 95, 255);
 
             connectionPointStartOffset = 90;
@@ -68,25 +68,25 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
-            if (huid != null)
+            if (skin != null)
             {
-                characterAppearance.SetSkin(huid);
+                characterAppearance.SetSkin(skin);
             }
-            if (haar != null)
+            if (hair != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Hair, haar));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Hair, hair));
             }
-            if (bovenstuk != null)
+            if (torso != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Torso, bovenstuk));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Torso, torso));
             }
-            if (onderstuk != null)
+            if (legs != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Legs, onderstuk));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Legs, legs));
             }
-            if (schoenen != null)
+            if (shoes != null)
             {
-                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Feet, schoenen));
+                characterAppearance.SetAppearanceItem(new KeyValuePair<AppearanceItemType, AppearanceItem>(AppearanceItemType.Feet, shoes));
             }
             base.CalculateChange();
         }

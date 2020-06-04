@@ -6,27 +6,33 @@ namespace NodeSystem {
 	public class LegsClothingNode : AppearanceItemNode
 	{
 		[InputPropperty]
-		public Texture2D patroon;
+		public Texture2D pattern;
 
-        //[InputPropperty]
-        //public Texture2D materiaal;
+        [OutputPropperty]
+        public AppearanceItem legs;
 
-		protected override string ResourcePath => "Appearance/Legs";
+        protected override string ResourcePath => "Appearance/Legs";
 
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			name = "Onderstuk Node";
-			dropdownName = "Onderstukken";
+			name = "Broek";
 
-			base.Init(position, eventHandeler);
+            primaireColor = new Color32(127, 134, 179, 255);
+            secondaireColor = Color.white;
+
+            nodeImage = Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/Icon_Broek");
+
+            base.Init(position, eventHandeler);
 		}
 
         public override void CalculateChange()
         {
             base.CalculateChange();
-			uitvoer.SetPattern(patroon);
-			//uitvoer.SetTextile(materiaal);
+
+            legs = output;
+
+			output.SetPattern(pattern);
 		}
 	}
 }

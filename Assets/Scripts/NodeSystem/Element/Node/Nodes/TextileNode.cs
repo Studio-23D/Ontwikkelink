@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/*
 namespace NodeSystem
 {
     public class TextileNode : DropdownNode <TextileData>
@@ -17,7 +17,7 @@ namespace NodeSystem
 
             foreach (TextileData texture in Resources.LoadAll("Textiles", typeof(TextileData)))
             {
-                DropdownElement<TextileData> element = new DropdownElement<TextileData>
+                SliderElement<TextileData> element = new SliderElement<TextileData>
                 {
                     visual = texture.albedoMap,
                     value = texture,
@@ -51,4 +51,4 @@ namespace NodeSystem
             base.CalculateChange();
         }
     }
-}
+}*/

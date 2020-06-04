@@ -82,9 +82,9 @@ namespace NodeSystem
 					InstantiateNode(new PatternNode());
 					break;
 
-				case "Textile":
+/*				case "Textile":
 					InstantiateNode(new TextileNode());
-					break;
+					break;*/
 
 				case "Hair":
 					InstantiateNode(new HairNode());

@@ -6,26 +6,32 @@ namespace NodeSystem {
 	public class TorsoClothingNode : AppearanceItemNode
 	{
 		[InputPropperty]
-		public Texture2D patroon;
+		public Texture2D pattern;
 
-        //[InputPropperty]
-        //public Texture2D materiaal;
+        [OutputPropperty]
+        public AppearanceItem torso;
 
 		protected override string ResourcePath => "Appearance/Torso";
 
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
-			name = "Bovenstuk Node";
-			dropdownName = "Bovenstukken";
+			name = "Shirt";
 
-			base.Init(position, eventHandeler);
+            primaireColor = new Color32(129, 181, 203, 255);
+            secondaireColor = Color.white;
+
+            nodeImage = Resources.Load<Texture2D>("NodeSystem/Overhaul/PersonageNode/Icon_Shirt");
+
+            base.Init(position, eventHandeler);
 		}
 
         public override void CalculateChange()
         {
             base.CalculateChange();
-			uitvoer.SetPattern(patroon);
-			//uitvoer.SetTextile(materiaal);
+
+            torso = output;
+
+			output.SetPattern(pattern);
 		}
 	}
 }

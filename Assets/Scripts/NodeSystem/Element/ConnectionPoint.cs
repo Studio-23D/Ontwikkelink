@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -27,6 +28,10 @@ namespace NodeSystem
         public int index;
         public float startOffset;
         public float offset;
+
+        private Dictionary<string, Color32> primaireColors = new Dictionary<string, Color32>();
+
+        private Color color;
 
 		private Connection connection;
         private GUIStyle style;
@@ -57,6 +62,26 @@ namespace NodeSystem
             rect.height = pointSize;
 
             SetPosition();
+
+            primaireColors.Add("color", new Color32(241, 242, 228, 255));
+            primaireColors.Add("red", new Color32(241, 242, 228, 255));
+            primaireColors.Add("blue", new Color32(241, 242, 228, 255));
+            primaireColors.Add("green", new Color32(241, 242, 228, 255));
+            primaireColors.Add("Pattern", new Color32(225, 98, 100, 255));
+
+            primaireColors.Add("hair", new Color32(237, 180, 211, 255));
+            primaireColors.Add("torso", new Color32(129, 181, 203, 255));
+            primaireColors.Add("legs", new Color32(127, 134, 179, 255));
+            primaireColors.Add("shoes", new Color32(236, 190, 103, 255));
+
+            if (!primaireColors.ContainsKey(Value.Name))
+            {
+                this.color = Color.white;
+            }
+            else
+            {
+                this.color = primaireColors[Value.Name];
+            }
         }
 
         public void SetPosition()
@@ -97,17 +122,11 @@ namespace NodeSystem
 
         public override void Draw()
         {
+            GUI.color = color;
+            
             GUI.Box(rect, "", style);
 
-            switch (type)
-            {
-                case ConnectionPointType.In:
-                    GUI.Label(new Rect(base.Position.x, base.Position.y + pointSize / 4, textWidth, pointSize / 2), "");
-                    break;
-                case ConnectionPointType.Out:
-                    GUI.Label(new Rect(base.Position.x, base.Position.y + pointSize / 4, textWidth, pointSize / 2), "");
-                    break;
-            }
+            GUI.color = Color.white;
         }
 
 		public override void OnClickDown()

@@ -7,7 +7,7 @@ namespace NodeSystem
 	public class ColorNode : Node
 	{
 		[OutputPropperty]
-		public Color kleur = Color.white;
+		public Color color = Color.white;
 
         private Rect palleteRect;
         private Rect draggableRect;
@@ -15,8 +15,6 @@ namespace NodeSystem
 
         private Color previewColor;
         private Color selectionColor = Color.red;
-
-        private GUIStyle noBoxStyle = new GUIStyle();
 
         private Texture2D previewTexture;
         private Texture2D selectionTexture = Resources.Load<Texture2D>("NodeSystem/ColorNode/ColorSpectrum");
@@ -31,8 +29,8 @@ namespace NodeSystem
 		public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
 		{
             name = "Kleur";
-            color = new Color32(241, 242, 228, 255);
-            secondaireColor = new Color32(167, 209, 188, 255);
+            primaireColor = new Color32(241, 242, 228, 255);
+            secondaireColor = new Color32(153, 206, 180, 255);
 
             nodeImage = Resources.Load<Texture2D>("NodeSystem/Overhaul/Icon_Kleuren");
 
@@ -57,16 +55,16 @@ namespace NodeSystem
             GUI.DrawTexture(palleteRect, selectionTexture);
 
             GUI.color = selectionColor;
-            if (IsSelected)
-			{
-				if (GUI.Button(draggableRect, draggableTexture, noBoxStyle))
-				{
-					isSelectingColor = !isSelectingColor;
-					CalculateChange();
-				}
-				SelectColor();
-			}
+
+            if (GUI.Button(draggableRect, draggableTexture, noStyle))
+            {
+                isSelectingColor = !isSelectingColor;
+                CalculateChange();
+            }
+
+            SelectColor();
             GUI.color = Color.white;
+
             GUI.EndGroup();
         }
 
@@ -92,7 +90,7 @@ namespace NodeSystem
 
         public override void CalculateChange()
         {
-            kleur = selectionColor;
+            color = selectionColor;
             base.CalculateChange();
         }
     }

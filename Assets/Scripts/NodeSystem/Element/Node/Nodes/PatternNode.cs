@@ -5,61 +5,57 @@ using UnityEngine;
 
 namespace NodeSystem
 {
-    public class PatternNode : DropdownNode<Texture2D>
+    public class PatternNode : SliderNode<Texture2D>
     {
         [InputPropperty]
-        public Color rood = Color.red;
+        public Color red = Color.red;
 
         [InputPropperty]
-        public Color groen = Color.green;
+        public Color green = Color.green;
 
         [InputPropperty]
-        public Color blauw = Color.blue;
+        public Color blue = Color.blue;
 
         [OutputPropperty]
-        public Texture2D patroon;
+        public Texture2D pattern;
 
         protected Texture2D texture;
 
         public override void Init(Vector2 position, SystemEventHandeler eventHandeler)
         {
-            name = "Patroon Node";
-            dropdownName = "Patronen";
+            name = "Patroon";
+            primaireColor = new Color32(225, 98, 100, 255);
+            secondaireColor = Color.white;
+
+            nodeImage = Resources.Load<Texture2D>("NodeSystem/Overhaul/Icon_Patroon");
 
             foreach (Texture2D texture in Resources.LoadAll("Patterns", typeof(Texture2D)))
             {
-                DropdownElement<Texture2D> element = new DropdownElement<Texture2D>
+                SliderElement<Texture2D> element = new SliderElement<Texture2D>
                 {
                     visual = texture,
                     value = texture,
                 };
-                dropdownElements.Add(element);
+                sliderElements.Add(element);
             }
 
             base.Init(position, eventHandeler);
 
             CalculateChange();
-
-            nodeAreas.Add(new Rect(0, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height, 200, 10));
-
-            rect.size = new Vector2(200, nodeAreas[nodeAreas.Count - 1].y + nodeAreas[nodeAreas.Count - 1].height);
-            originalSize = new Vector2(Size.x, Size.y);
         }
 
         public override void Draw()
         {
             base.Draw();
-            
-            GUI.Label(new Rect(0, nodeAreas[2].y + 20, nodeAreas[2].width, nodeAreas[2].width), patroon);
-            GUI.Box(nodeAreas[3], "", styleBottomArea);
+
             GUI.EndGroup();
         }
       
         public override void CalculateChange()
         {
 			texture = chosenValue;
-			patroon = new Texture2D(texture.width, texture.height, texture.format, false);
-            Graphics.CopyTexture(texture, patroon);
+			pattern = new Texture2D(texture.width, texture.height, texture.format, false);
+            Graphics.CopyTexture(texture, pattern);
 
             for (int w = 0; w < texture.width; w++)
             {
@@ -67,19 +63,20 @@ namespace NodeSystem
                 {
                     if (texture.GetPixel(w, h).r >= .3)
                     {
-						patroon.SetPixel(w, h, rood);
+						pattern.SetPixel(w, h, red);
                     }
                     else if (texture.GetPixel(w, h).g >= .3)
                     {
-						patroon.SetPixel(w, h, groen);
+						pattern.SetPixel(w, h, green);
                     }
                     else if (texture.GetPixel(w, h).b >= .3)
                     {
-						patroon.SetPixel(w, h, blauw);
+						pattern.SetPixel(w, h, blue);
                     }
                 }
             }
-			patroon.Apply();
+			pattern.Apply();
+            currentVisual = pattern;
 
             base.CalculateChange();
         }

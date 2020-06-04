@@ -43,7 +43,7 @@ namespace NodeSystem
         public Vector3 StartPosition => startPosition;
 
         protected string name;
-        protected Color32 color = Color.white;
+        protected Color32 primaireColor = Color.white;
         protected Color32 secondaireColor = Color.white;
 
         protected float height;
@@ -60,6 +60,8 @@ namespace NodeSystem
         protected GUIStyle styleTopArea;
         protected GUIStyle styleMiddleArea;
         protected GUIStyle styleBottomArea;
+
+        protected GUIStyle noStyle = new GUIStyle();
 
         protected Rect iconRect;
         protected Rect titleRect;
@@ -131,13 +133,11 @@ namespace NodeSystem
                 {
                     if (inputPoints.Count < index) index = 0;
                     AddConnectionPoint(field, ConnectionPointType.In, inputPoints, index);
-                    
                 }
                 else if (Attribute.IsDefined(field, typeof(OutputProppertyAttribute)))
                 {
                     if (outputPoints.Count < index) index = 0;
                     AddConnectionPoint(field, ConnectionPointType.Out, outputPoints, index);
-                    
                 }
                 index++;
             }
@@ -154,7 +154,7 @@ namespace NodeSystem
 				case ConnectionPointType.In:
 					inputPoints.Add(point);
 					break;
-                default:
+                case ConnectionPointType.Out:
                     outputPoints.Add(point);
 					break;
 			}
@@ -171,7 +171,7 @@ namespace NodeSystem
 		{
             GUI.BeginGroup(rect);
 
-            GUI.color = color;
+            GUI.color = primaireColor;
             GUI.Box(nodeAreas[0], "", styleTopArea);
             GUI.Box(nodeAreas[1], "", styleMiddleArea);
             GUI.Box(nodeAreas[2], "", styleBottomArea);
@@ -192,7 +192,7 @@ namespace NodeSystem
             GUI.color = secondaireColor;
             GUI.Label(titleRect, name, styleText);
 
-            GUI.color = color;
+            GUI.color = primaireColor;
             GUI.DrawTexture(divideLineRect, divideLine, ScaleMode.ScaleToFit, true);
 
             GUI.color = secondaireColor;
