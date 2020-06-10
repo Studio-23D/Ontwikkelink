@@ -27,6 +27,8 @@ public class ScreenshotCapture : MonoBehaviour
 	public string screenshotPath;
 	public string screenshotName;
 
+    int imageID = 1;
+
 	private void Awake()
     {
         screenshotSaving = GetComponent<ScreenshotSaving>();
@@ -84,8 +86,10 @@ public class ScreenshotCapture : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 
 			string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy");
-			screenshotName = ("Screenshot_" + timeStamp + ".png");
+			screenshotName = ("Screenshot_" + timeStamp + "_" + imageID + ".png");
 			screenshotPath = Path.Combine(Application.persistentDataPath, screenshotName);
+
+            imageID++;
 
 			ScreenCapture.CaptureScreenshot(screenshotName, 1);
 		}
