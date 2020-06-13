@@ -61,7 +61,6 @@ public class ScreenshotCapture : MonoBehaviour
 		ScreenshotSharing.ShareImage(screenshotPath);
 	}
 
-
 	private IEnumerator ScreenshotProcess(int width, int height)
     {
 		ActiveUIElements(false);
