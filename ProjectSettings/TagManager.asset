@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - Overlay
+  - Gallery
   layers:
   - Default
   - TransparentFX

@@ -34,6 +34,21 @@ public class ScreenshotLoading : MonoBehaviour
 
     private bool initialSetupDone = false;
 
+    [SerializeField] private Image inspectingBackground;
+    [SerializeField] private Image inspectingPreview;
+
+    public Image background
+    {
+        get { return inspectingBackground; }
+        set { inspectingBackground = value; }
+    }
+
+    public Image preview
+    {
+        get { return inspectingPreview; }
+        set { inspectingPreview = value; }
+    }
+
     private void Start()
     {
         /* Apply functions to the buttons */
