@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-///  This script is resposible for loading in back-end files, instantiating containers and applying images to previews.
+///  This script is responsible for loading in back-end files, instantiating containers and applying images to previews
 /// </summary> 
 
 public class ScreenshotLoading : MonoBehaviour
@@ -15,6 +14,11 @@ public class ScreenshotLoading : MonoBehaviour
     [SerializeField] private Button backButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private Button enterButton;
+
+    [SerializeField] private Image inspectingBackground;
+    [SerializeField] private Image inspectingPreview;
+
+    [SerializeField] private Text contentText;
 
     [SerializeField] private List<Image> previews;
     [SerializeField] private List<GameObject> containers;
@@ -34,9 +38,6 @@ public class ScreenshotLoading : MonoBehaviour
 
     private bool initialSetupDone = false;
 
-    [SerializeField] private Image inspectingBackground;
-    [SerializeField] private Image inspectingPreview;
-
     public Image background
     {
         get { return inspectingBackground; }
@@ -51,32 +52,53 @@ public class ScreenshotLoading : MonoBehaviour
 
     private void Start()
     {
+        BindButtonFunctionality();
+        GetDirectoryFiles();
+
+        /* Process of instantiation */
+        if (files.Length > 0) { InstantiateContainers(); }
+        else { NoContentInstantiation(); }
+    }
+
+    private void BindButtonFunctionality()
+    {
         /* Apply functions to the buttons */
         backButton.onClick.AddListener(() => GalleryCirculation(backButton));
         nextButton.onClick.AddListener(() => GalleryCirculation(nextButton));
         enterButton.onClick.AddListener(UpdateGallery);
+    }
 
-        /* Conditions at start for the first container */
+    private void NoContentInstantiation()
+    {
+        contentText.gameObject.SetActive(true);
         backButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+    }
 
+    private void UpdateGallery()
+    {
         GetDirectoryFiles();
 
         if (files.Length > 0)
         {
-            InstantiateContainers();
-
-            for (int i = 0; i < files.Length; i++)
+            if (initialSetupDone && files.Length > currentFileIndex)
             {
-                SetImagesOnPreviews(false);
+                UpdateContainers();
+            }
+            else if (!initialSetupDone)
+            {
+                contentText.gameObject.SetActive(false);
+                InstantiateContainers();
             }
         }
-
-        /* Condition if there is only one container */
-        if (containers.Count <= 1) { nextButton.gameObject.SetActive(false); }
     }
 
     private void InstantiateContainers()
     {
+        /* Button set at start, for the first container */
+        backButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(true);
+
         containerAmount = Mathf.CeilToInt(files.Length / containerPreviewAmount);
 
         /* Instantiates the prefabs */
@@ -98,10 +120,13 @@ public class ScreenshotLoading : MonoBehaviour
         }
 
         /* Deactivates the remaining containers */
-        for (int i = 1; i < containers.Count; i++)
-        {
-            containers[i].SetActive(false);
-        }
+        for (int i = 1; i < containers.Count; i++) { containers[i].SetActive(false); }
+
+        /* Deactivates the remaning previews */
+        for (int i = 0; i < files.Length; i++) { SetImagesOnPreviews(); }
+
+        /* Condition if there is only one container */
+        if (containers.Count <= 1) { nextButton.gameObject.SetActive(false); }
 
         currentContainerIndex = containers.Count;
         currentFileIndex = files.Length;
@@ -109,7 +134,49 @@ public class ScreenshotLoading : MonoBehaviour
         initialSetupDone = true;
     }
 
-    private void SetImagesOnPreviews(bool update)
+    private void UpdateContainers()
+    {
+        /* Calculates the current amount of containers */
+        int newContainerAmount = Mathf.CeilToInt(files.Length / containerPreviewAmount);
+        int containerDifference = newContainerAmount - currentContainerIndex;
+
+        /* Adding the new containers */
+        if (containerDifference > 0)
+        {
+            /* Updates the gallery with containers */
+            for (int i = 0; i < containerDifference; i++)
+            {
+                GameObject instantiatedContainer = Instantiate(containerPrefab);
+                instantiatedContainer.transform.SetParent(this.gameObject.transform, false);
+
+                containers.Add(instantiatedContainer);
+            }
+
+            /* Updates the gallery with previews */
+            for (int i = currentContainerIndex; i < currentContainerIndex + containerDifference; i++)
+            {
+                for (int j = 0; j < containers[i].transform.childCount; j++) { previews.Add(containers[i].gameObject.transform.GetChild(j).GetComponent<Image>()); }
+
+                containers[i].SetActive(false);
+            }
+
+            currentContainerIndex = containers.Count;
+            nextButton.gameObject.SetActive(true);
+        }
+
+        /* Calculates the difference between current and new files */
+        int fileDifference = files.Length - currentFileIndex;
+
+        currentFileIndex += 1;
+
+        /* Adding the new files to the previews*/
+        for (int i = currentFileIndex; i < currentFileIndex + fileDifference; i++)
+        {
+            SetImagesOnPreviews();
+        }
+    }
+
+    private void SetImagesOnPreviews()
     {
         string filePath = files[fileIndex];
 
@@ -124,66 +191,16 @@ public class ScreenshotLoading : MonoBehaviour
         fileIndex++;
         previewIndex = fileIndex;
     }
-
-    private void UpdateGallery()
-    {
-        if (initialSetupDone)
-        {
-            GetDirectoryFiles();
-
-            /* Conditions if new files have been added */
-            if (files.Length > currentFileIndex)
-            {
-                /* Calculates the current amount of containers */
-                int newContainerAmount = Mathf.CeilToInt(files.Length / containerPreviewAmount);
-                int containerDifference = newContainerAmount - currentContainerIndex;
-
-                /* Adding the new containers */
-                if (containerDifference > 0)
-                {
-                    for (int i = 0; i < containerDifference; i++)
-                    {
-                        GameObject instantiatedContainer = Instantiate(containerPrefab);
-                        instantiatedContainer.transform.SetParent(this.gameObject.transform, false);
-
-                        containers.Add(instantiatedContainer);
-                    }
-
-                    for (int j = currentContainerIndex; j < currentContainerIndex + containerDifference; j++)
-                    {
-                        for (int k = 0; k < containers[j].transform.childCount; k++)
-                        {
-                            previews.Add(containers[j].gameObject.transform.GetChild(k).GetComponent<Image>());
-                        }
-
-                        containers[j].SetActive(false);
-                    }
-
-                    currentContainerIndex = containers.Count;
-                    nextButton.gameObject.SetActive(true);
-                }
-
-                /* Calculates the difference between current and new files */
-                int fileDifference = files.Length - currentFileIndex;
-
-                currentFileIndex += 1;
-
-                /* Adding the new files to the previews*/
-                for (int i = currentFileIndex; i < currentFileIndex + fileDifference; i++)
-                {
-                    SetImagesOnPreviews(true);
-                }
-            }
-        }
-    }
-
+    
     private void GalleryCirculation(Button type)
     {
         containers[containerIndex].SetActive(false);
-            
+
+        /* Conditions for cycling through containers */
         if (type == backButton) { containerIndex--; }
         else if (type == nextButton) { containerIndex++; }
 
+        /* Conditions if the current container is the first container */
         if (containerIndex == 0) { backButton.gameObject.SetActive(false); }
         if (containerIndex > 0) { backButton.gameObject.SetActive(true); }
 

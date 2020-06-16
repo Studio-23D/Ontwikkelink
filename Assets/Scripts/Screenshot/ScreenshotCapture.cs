@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-///  This script is part of the sreenshot system.
-///  It captures a screenshot, with a custom resolution, and stores it locally- to later be processed by a screenshot saving system.
+///  This script is part of the sreenshot system
+///  It captures a screenshot, with a custom resolution, and stores it locally- to later be processed by a screenshot saving system
 ///  Needs input to be called
 /// </summary> 
 

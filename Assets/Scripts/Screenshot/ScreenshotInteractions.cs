@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
+/// <summary>
+///  This script is responsible for the interaction with previews, and inspecting images
+/// </summary> 
 
 public class ScreenshotInteractions : MonoBehaviour, IPointerClickHandler
 {
@@ -15,7 +17,7 @@ public class ScreenshotInteractions : MonoBehaviour, IPointerClickHandler
 
     private bool inspectingToggle = false;
 
-    private void Start() { GetBackground(); }
+    private void Start() { GetInspectionElements(); }
 
     private void Update()
     {
@@ -26,17 +28,20 @@ public class ScreenshotInteractions : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void GetBackground()
+    private void GetInspectionElements()
     {
         gallery = GameObject.FindGameObjectWithTag(galleryTag);
-
         inspectingBackgroundImage = gallery.GetComponent<ScreenshotLoading>().background;
         inspectingPreview = gallery.GetComponent<ScreenshotLoading>().preview;
     }
 
     private void InteractionAction()
-    { 
-        if (!inspectingToggle)
+    {
+        /* Conditions if the preview has an image */
+        bool hasImage = this.gameObject.GetComponent<Image>().sprite != null ? true : false;
+
+        /* Conditions for toggling inspection */
+        if (!inspectingToggle && hasImage)
         {
             inspectingBackgroundImage.gameObject.SetActive(true);
             inspectingPreview.sprite = this.gameObject.GetComponent<Image>().sprite;
