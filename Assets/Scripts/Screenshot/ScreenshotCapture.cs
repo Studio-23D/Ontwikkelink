@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-///  This script is part of the sreenshot system.
-///  It captures a screenshot, with a custom resolution, and stores it locally- to later be processed by a screenshot saving system.
+///  This script is part of the sreenshot system
+///  It captures a screenshot, with a custom resolution, and stores it locally- to later be processed by a screenshot saving system
 ///  Needs input to be called
 /// </summary> 
 
@@ -26,6 +26,8 @@ public class ScreenshotCapture : MonoBehaviour
 	private byte[] screenshotData;
 	public string screenshotPath;
 	public string screenshotName;
+
+    int imageID = 1;
 
 	private void Awake()
     {
@@ -59,7 +61,6 @@ public class ScreenshotCapture : MonoBehaviour
 		ScreenshotSharing.ShareImage(screenshotPath);
 	}
 
-
 	private IEnumerator ScreenshotProcess(int width, int height)
     {
 		ActiveUIElements(false);
@@ -84,8 +85,10 @@ public class ScreenshotCapture : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 
 			string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy");
-			screenshotName = ("Screenshot_" + timeStamp + ".png");
+			screenshotName = ("Screenshot_" + timeStamp + "_" + imageID + ".png");
 			screenshotPath = Path.Combine(Application.persistentDataPath, screenshotName);
+
+            imageID++;
 
 			ScreenCapture.CaptureScreenshot(screenshotName, 1);
 		}
