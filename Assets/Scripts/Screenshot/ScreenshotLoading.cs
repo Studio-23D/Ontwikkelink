@@ -110,7 +110,7 @@ public class ScreenshotLoading : MonoBehaviour
             containers.Add(instantiatedContainer);
         }
 
-        /* Gets the all the children images */
+        /* Gets the all the children previews */
         for (int i = 0; i < containers.Count; i++)
         {
             for (int j = 0; j < containers[i].transform.childCount; j++)
@@ -122,7 +122,7 @@ public class ScreenshotLoading : MonoBehaviour
         /* Deactivates the remaining containers */
         for (int i = 1; i < containers.Count; i++) { containers[i].SetActive(false); }
 
-        /* Deactivates the remaning previews */
+        /* Sets the images on the previews */
         for (int i = 0; i < files.Length; i++) { SetImagesOnPreviews(); }
 
         /* Condition if there is only one container */
@@ -170,10 +170,7 @@ public class ScreenshotLoading : MonoBehaviour
         currentFileIndex += 1;
 
         /* Adding the new files to the previews*/
-        for (int i = currentFileIndex; i < currentFileIndex + fileDifference; i++)
-        {
-            SetImagesOnPreviews();
-        }
+        for (int i = currentFileIndex; i < currentFileIndex + fileDifference; i++) { SetImagesOnPreviews(); }
     }
 
     private void SetImagesOnPreviews()

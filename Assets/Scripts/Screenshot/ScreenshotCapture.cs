@@ -34,7 +34,6 @@ public class ScreenshotCapture : MonoBehaviour
         screenshotSaving = GetComponent<ScreenshotSaving>();
 	}
 
-
     public void CaptureScreenshot()
 	{
 		screenshotCamera.targetTexture = RenderTexture.GetTemporary(Screen.width, Screen.height, 16);
