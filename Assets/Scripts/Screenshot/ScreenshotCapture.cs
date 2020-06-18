@@ -29,10 +29,18 @@ public class ScreenshotCapture : MonoBehaviour
 
     int imageID = 1;
 
+    private MobileJson mobileJson;
+
 	private void Awake()
     {
         screenshotSaving = GetComponent<ScreenshotSaving>();
 	}
+
+    private void Start()
+    {
+        mobileJson = new MobileJson();
+        mobileJson.InitializeDataFile();
+    }
 
     public void CaptureScreenshot()
 	{
@@ -81,13 +89,16 @@ public class ScreenshotCapture : MonoBehaviour
 
 		if (SystemInfo.deviceType == DeviceType.Handheld)
 		{
-			yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+
+            LoadData();
 
 			string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy");
 			screenshotName = ("Screenshot_" + timeStamp + "_" + imageID + ".png");
 			screenshotPath = Path.Combine(Application.persistentDataPath, screenshotName);
 
             imageID++;
+            SaveData();
 
 			ScreenCapture.CaptureScreenshot(screenshotName, 1);
 		}
@@ -123,4 +134,16 @@ public class ScreenshotCapture : MonoBehaviour
 			element.SetActive(active);
 		}
 	}
+
+    private void SaveData()
+    {
+        JsonObject jsonObject = new JsonObject(imageID);
+        mobileJson.WriteJson(jsonObject);
+    }
+
+    private void LoadData()
+    {
+        JsonObject jsonObject = mobileJson.LoadJson();
+        imageID = jsonObject.id;
+    }
 }
